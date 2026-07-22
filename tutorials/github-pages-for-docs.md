@@ -16,9 +16,42 @@ Because i was building a docs-website for my coding language i also wanted to ac
 
 ---
 
+## let's go
+
+### the file structure
+
+```md
+repo/
+├── docs/
+│   ├── _includes/
+│   │   ├── custom.css
+│   │   ├── custom.js
+│   │   └── head-custom.html
+└── README.md
+```
+
+### the files
+
+`_includes/head-custom.html`
+
+```html
+<style>
+  {% include custom.css %}
+</style>
+
+<script>
+  {% include custom.js %}
+</script>
+```
+
+`_includes/style.css`
+
+```css
+/* custom css comes here */
+```
 
 
-`custom.js`
+`_includes/custom.js`
 
 ```javascript
 import hljs          from 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/+esm';
