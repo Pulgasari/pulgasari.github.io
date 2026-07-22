@@ -18,7 +18,7 @@ Because i was building a docs-website for my coding language i also wanted to ac
 
 ---
 
-* [the setup](#the setup)
+* [the setup](#the-setup)
 * [the file structure](#the-file-structure)
 * [the files](#the-files)
 * [notes](#notes)
