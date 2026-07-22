@@ -1,5 +1,7 @@
 # Create a Docs Website for a Project
 
+Because I came up on so many idiotic and complicated ways to achieve sth. this I wrote this document to prevent my future me to have this trouble ever again – and maybe it saves another soul from feeling these kind of pain introduced by modern web insanity.
+
 ## Goals:
 * deploy from regular `/docs` folder in your project's repository
 * no duplicated doc files: one could read docs in repository or on the website –both is served from the exact same files
@@ -16,7 +18,16 @@ Because i was building a docs-website for my coding language i also wanted to ac
 
 ---
 
+* [the setup](#the setup)
+* [the file structure](#the-file-structure)
+* [the files](#the-files)
+* [notes](#notes)
+
+---
+
 ## let's go
+
+### the setup
 
 ### the file structure
 
@@ -119,4 +130,10 @@ window.addEventListener('DOMContentLoaded', () => {
   render(html`<${Menu} />`, $target);
 });
 ```
+
+---
+
+## additional notes
+
+
 
