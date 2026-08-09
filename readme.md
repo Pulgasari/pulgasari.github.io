@@ -9,6 +9,7 @@
 - und evtl generell so standard-design für die elemente, dass simpel ist, quasi nur aus `currentcolor` als farbe besteht (bspw der slider) und vom stil flat/outlined/modern/clean ist
 - <aufbau-code> um `poo/hljs` erweitern
 - <aufbau-flag> wird scheinbar vom stylesheet von <aufbau-icon> zerstört (bzw die mask überlagert)
+- evtl. mechanismus um elemente (nur controls?) optional persistent zu machen
 - neues element: <aufbau-modal>
 
 # notizen
