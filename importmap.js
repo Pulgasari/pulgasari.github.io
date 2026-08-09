@@ -20,6 +20,7 @@ const map = { imports: {
   "@aufbau/plugins/vite"    : "./aufbau/plugins/vite/index.js",
   "@aufbau/plugins/worker"  : "./aufbau/plugins/worker/index.js",
   "@aufbau/shaders"         : "./aufbau/shaders/index.js",
+  "@aufbau/store"           : "./aufbau/shaders/store.js",
   "@aufbau/stylesheet"      : "./aufbau/stylesheet/index.js",
   "@aufbau/stylesheet/"     : "./aufbau/stylesheet/",
   "@aufbau/utils"           : "./aufbau/js/index.js",
