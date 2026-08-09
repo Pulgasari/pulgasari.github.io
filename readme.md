@@ -1,4 +1,9 @@
-#
+# todo
+
+- [ ] `@aufbau/stylesheet` tunen
+- [ ] optimistic ui stuff in aufbau
+
+# notizen
 
 ```
 abschrift, anschein,
