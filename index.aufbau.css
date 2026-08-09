@@ -1,0 +1,7 @@
+@aufbau-config {
+  theme: zombie;
+}
+
+body {
+  aufbau-webfont: 'JetBrains Mono';
+}
