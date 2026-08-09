@@ -7,7 +7,7 @@
 
 - struktur-css (zb picker/combobox, oder dass bei inputs das icon rechts im input steht)
 - und evtl generell so standard-design für die elemente, dass simpel ist, quasi nur aus `currentcolor` als farbe besteht (bspw der slider) und vom stil flat/outlined/modern/clean ist
-- `<aufbau-code>` um support von `poo/hljs` erweitern
+- `<aufbau-code>` um support von `poo/hljs` erweitern: `import registerPoo from '@poo/hljs'; hljs.registerLanguage('poo', registerPoo);` (vermutlich wärs am sinnvollsten in aufbau-config n mechanismus zu schaffen, dass man da langs registrieren kann und standardmäßig poo damit registrieren)
 - `<aufbau-code>` um `editable`-attribut erweitern
 - `<aufbau-flag>` wird scheinbar vom stylesheet von `<aufbau-icon>` zerstört (bzw die mask überlagert)
 - evtl. mechanismus um elemente (nur controls?) optional persistent zu machen
