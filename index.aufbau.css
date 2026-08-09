@@ -1,5 +1,6 @@
 @aufbau-config {
-  theme: zombie;
+  import : reset, default;
+  theme  : zombie;
 }
 
 body {
