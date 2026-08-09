@@ -1,5 +1,5 @@
 @aufbau-config {
-  import : reset, default;
+  import : reset, default, aufbau;
   theme  : zombie;
 }
 
