@@ -23,7 +23,14 @@ const map = { imports: {
   "@aufbau/stylesheet"      : "./aufbau/stylesheet/index.js",
   "@aufbau/stylesheet/"     : "./aufbau/stylesheet/",
   "@aufbau/utils"           : "./aufbau/js/index.js",
-  
+
+  "@bunker/cache"   : "./bunker/cache/index.js",
+  "@bunker/core"    : "./bunker/core/index.js",
+  "@bunker/db"      : "./bunker/db/index.js",
+  "@bunker/files"   : "./bunker/files/index.js",
+  "@bunker/kit"     : "./bunker/kit/index.js",
+  "@bunker/storage" : "./bunker/storage/index.js",
+
   "@cosmonaut/compiler" : "./cosmonaut/packages/compiler/index.js",
   "@cosmonaut/ebnf"     : "./cosmonaut/packages/ebnf/index.js",
   "@cosmonaut/layouter" : "./cosmonaut/packages/layouter/index.js",
