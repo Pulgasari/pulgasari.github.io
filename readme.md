@@ -10,6 +10,7 @@
 - `<aufbau-code>` um support von `poo/hljs` erweitern: `import registerPoo from '@poo/hljs'; hljs.registerLanguage('poo', registerPoo);` (vermutlich wärs am sinnvollsten in aufbau-config n mechanismus zu schaffen, dass man da langs registrieren kann und standardmäßig poo damit registrieren)
 - `<aufbau-code>` um `editable`-attribut erweitern
 - `<aufbau-flag>` wird scheinbar vom stylesheet von `<aufbau-icon>` zerstört (bzw die mask überlagert)
+- `<aufbau-toggle>` zeigt nix, evtl `<aufbau-icon>` nutzen?
 - evtl. mechanismus um elemente (nur controls?) optional persistent zu machen
 
 - neues element: `<aufbau-modal>`
