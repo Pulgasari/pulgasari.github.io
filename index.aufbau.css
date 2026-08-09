@@ -4,5 +4,6 @@
 }
 
 body {
-  aufbau-webfont: 'JetBrains Mono';
+  aufbau-webfont : 'JetBrains Mono';
+  padfing : 1rem;
 }
