@@ -12,6 +12,9 @@
 </head>
 
 <body class="mobilefix">
+	<div id='app'></div>
+
+
 
   <main>
 	  https://pulgasari.github.io/aufbau/
@@ -26,6 +29,12 @@
 
   <script type="module">
     import aufbau, { html, preact } from '@aufbau/kits/preact-htm';
+	  window.html = html; aufbau.init();
+	  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker
+      .register(new URL('./sw.js', import.meta.url), { type: 'module' })
+      .catch(err => console.error('[SW Error]:', err));
+	  }
   </script>
 
 </body>
