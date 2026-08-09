@@ -10,7 +10,9 @@
 - <aufbau-code> um `poo/hljs` erweitern
 - <aufbau-flag> wird scheinbar vom stylesheet von <aufbau-icon> zerstört (bzw die mask überlagert)
 - evtl. mechanismus um elemente (nur controls?) optional persistent zu machen
+
 - neues element: <aufbau-modal>
+- überlegung: so elemente wie toast oder modal brauchen ja meist (also kenn ichs von preact, svelte und co) so ne art ankerpunkt im dom, falls das bei webcomponents auch so ist, wäre vllt ne überlegung ob das quasi <aufbau-config> automatisch sein könnte?
 
 # notizen
 
