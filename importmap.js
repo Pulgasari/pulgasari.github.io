@@ -5,6 +5,25 @@
 const pkg = ['compiler', 'hljs'];
 
 const map = { imports: {
+  "@aufbau/builders/docs"   : "./builders/docs/index.js",
+  "@aufbau/builders/docs/"  : "./builders/docs/",
+    "@aufbau/cache"           : "./cache/index.js",
+    "@aufbau/elements"        : "./elements/index.js",
+    "@aufbau/elements/"       : "./elements/",
+    "@aufbau/import"          : "./import/index.js",
+    "@aufbau/js"              : "./js/index.js",
+    "@aufbau/kits"            : "./kits/aufbau.js",
+    "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
+    "@aufbau/patterns"        : "./patterns/index.js",
+    "@aufbau/plugins"         : "./plugins/index.js",
+    "@aufbau/plugins/client"  : "./plugins/client/index.js",
+    "@aufbau/plugins/vite"    : "./plugins/vite/index.js",
+    "@aufbau/plugins/worker"  : "./plugins/worker/index.js",
+    "@aufbau/shaders"         : "./shaders/index.js",
+    "@aufbau/stylesheet"      : "./stylesheet/index.js",
+    "@aufbau/stylesheet/"     : "./stylesheet/",
+    "@aufbau/utils"           : "./js/index.js",
+  
   "@cosmonaut/compiler" : "./cosmonaut/packages/compiler/index.js",
   "@cosmonaut/ebnf"     : "./cosmonaut/packages/ebnf/index.js",
   "@cosmonaut/layouter" : "./cosmonaut/packages/layouter/index.js",
@@ -17,6 +36,17 @@ const map = { imports: {
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
+
+  "htm"              : "https://esm.sh/htm@3.1.1",
+      "preact"           : "https://esm.sh/preact@10.20.1",
+      "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
+      "@preact/signals"  : "https://esm.sh/@preact/signals@1.2.2?external=preact",
+  
+    
+
+    "@domina/core" : "https://pulgasari.github.io/domina/core/index.js",
+    
+    "hljs" : "https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/+esm"
 }};
 
   const mapURL = document.currentScript?.src;
