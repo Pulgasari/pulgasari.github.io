@@ -91,3 +91,24 @@ try {
   }
 } catch (error) { /* splash ist kosmetik, niemals die seite mitreissen */ }
 ```
+
+```css
+:root aufbau-splash {
+  position: fixed; inset: 0; z-index: var(--aufbau-splash-z, 200);
+  display: grid; place-items: center; gap: 1rem;
+  background: var(--aufbau-bg, var(--bg, Canvas));
+  color:      var(--aufbau-fg, var(--fg, CanvasText));
+  font: 1rem/1 system-ui, sans-serif;
+  opacity: 0;
+  animation: aufbau-splash-reveal   var(--aufbau-splash-fade, 160ms) ease var(--aufbau-splash-delay, 180ms) both,
+             aufbau-splash-failsafe 0s linear var(--aufbau-splash-limit, 10s) forwards;
+}
+:root aufbau-splash[data-state="done"]    { animation: aufbau-splash-dismiss var(--aufbau-splash-fade, 160ms) ease both; pointer-events: none; }
+:root aufbau-splash[data-state="skipped"] { display: none; }
+
+@keyframes aufbau-splash-reveal   { to   { opacity: 1; } }
+@keyframes aufbau-splash-dismiss  { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+@keyframes aufbau-splash-failsafe { to   { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+@media (prefers-reduced-motion: reduce) { :root aufbau-splash { --aufbau-splash-fade: 0s; } }
+```
