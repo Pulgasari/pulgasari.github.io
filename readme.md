@@ -56,4 +56,38 @@ systems
 https://skypack.dev
 https://svgjs.dev
 
+---
 
+```css
+/* die geteilte Substanz — in jeder Variante dieselbe */
+:root aufbau-splash {
+  position: fixed; inset: 0;
+  z-index: var(--aufbau-splash-z, 200);
+  display: grid; place-items: center; gap: 1rem;
+  background: var(--aufbau-bg, var(--bg, Canvas));
+  color:      var(--aufbau-fg, var(--fg, CanvasText));
+  font: 1rem/1 system-ui, sans-serif;      /* nicht auf Hubot Sans warten */
+  opacity: 0;
+  animation: aufbau-splash-reveal   var(--aufbau-splash-fade, 160ms) ease var(--aufbau-splash-delay, 180ms) both,
+             aufbau-splash-failsafe 0s linear var(--aufbau-splash-limit, 10s) forwards;
+}
+:root aufbau-splash[data-state="done"]    { animation: aufbau-splash-dismiss var(--aufbau-splash-fade,160ms) ease both; pointer-events: none; }
+:root aufbau-splash[data-state="skipped"] { display: none; }
+
+@keyframes aufbau-splash-reveal   { to   { opacity: 1; } }
+@keyframes aufbau-splash-dismiss  { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+@keyframes aufbau-splash-failsafe { to   { opacity: 0; visibility: hidden; pointer-events: none; } }
+```
+
+```javascript
+// in boot.js
+/* neuer block in boot.js, VOR dem storage-block, eigener try/catch */
+try {
+  if (document.currentScript?.dataset.splash !== undefined) {
+    const style = document.createElement('style');
+    style.setAttribute('data-aufbau-splash', '');
+    style.textContent = SPLASH_CSS;         // string-konstante im file
+    (document.head || document.getElementsByTagName('head')[0])?.appendChild(style);
+  }
+} catch (error) { /* splash ist kosmetik, niemals die seite mitreissen */ }
+```
