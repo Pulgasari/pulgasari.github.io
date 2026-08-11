@@ -4,41 +4,36 @@ usage: <script src="https://pulgasari.github.io/aufbau/importmap.js"></script>
 */
 (() => {
 
-  const baseURLs = {
-    '@aufbau' : './',
-    '@bunker' : 'https://pulgasari.github.io/bunker/',
-    '@domina' : 'https://pulgasari.github.io/domina/',
-    '@poo'    : 'https://pulgasari.github.io/poo/',
-  };
+const baseURLs = {
+  '@aufbau'    : './aufbau/',
+  '@bunker'    : './bunker/',
+  '@cosmonaut' : './cosmonaut/packages/',
+  '@domina'    : './domina/',
+  '@poo'       : './poo/js-packages/',
+};
 
   const rawMap = {
     // External dependencies
+    "hljs"             : "https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/+esm",
     "htm"              : "https://esm.sh/htm@3.1.1",
     "preact"           : "https://esm.sh/preact@10.20.1",
     "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
     "@preact/signals"  : "https://esm.sh/@preact/signals@1.2.2?external=preact",
 
     // Explicit non-standard overrides (no magic)
-    "@aufbau/kits"            : "./kits/aufbau.js",
-    "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
-    "@aufbau/utils"           : "./js/index.js",
+    "@aufbau/kits"            : "./aufbau/kits/aufbau.js",
+    "@aufbau/kits/preact-htm" : "./aufbau/kits/preact-htm.js",
+    "@aufbau/utils"           : "./aufbau/js/index.js",
+    '@aufbau/svg'             : './aufbau/svg/',
 
-    // Standard module expansions (strictly follows dir/index.js and dir/)
     '@aufbau' : [
-      { builders: ['docs'] },
-      'cache',
-      'elements',
-      'import',
-      'js',
-      'patterns',
-      'plugins',
-      { plugins: ['client', 'vite', 'worker'] },
-      'shaders',
-      'store',
-      'stylesheet',
+      'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'store', 'stylesheet',
+      { builders: ['docs'] }, { plugins: ['client', 'vite', 'worker'] },
     ],
-    '@bunker' : ['cache', 'core', 'db', 'files', 'kit', 'storage'],
-    '@domina' : ['core'],
+    '@bunker'    : ['cache', 'core', 'db', 'files', 'kit', 'storage'],
+    '@cosmonaut' : ['compiler', 'ebnf', 'layouter', 'lsd', 'parsers'],
+    '@domina'    : ['core'],
+    '@poo'       : ['compiler', 'hljs'],
   };
 
   const PRELOAD_CRITICAL = ['@aufbau/kits', '@aufbau/elements'];
