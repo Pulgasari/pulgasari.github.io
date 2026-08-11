@@ -34,6 +34,8 @@ const baseURLs = {
     '@cosmonaut' : ['compiler', 'ebnf', 'layouter', 'lsd', 'parsers'],
     '@domina'    : ['core'],
     '@poo'       : ['compiler', 'hljs'],
+    //'@domina'    : { core },
+    //'@poo'       : { compiler, hljs },
   };
 
   const PRELOAD_CRITICAL = ['@aufbau/kits', '@aufbau/elements'];
