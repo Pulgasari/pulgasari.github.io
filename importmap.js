@@ -77,6 +77,9 @@ if (!mapURL) throw new Error('[aufbau] importmap injector must be a classic scri
 const createElement = (tag, props) => Object.assign(document.createElement(tag), props);
 
 const PRELOAD_CRITICAL = [
+  '@bunker/core',
+  '@bunker/cache',
+  '@domina/core',
   '@aufbau/elements',
   '@aufbau/kits',
 ];
