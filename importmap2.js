@@ -24,7 +24,7 @@ const baseURLs = {
     "@aufbau/kits"            : "./kits/aufbau.js",
     "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
     "@aufbau/utils"           : "./js/index.js",
-    '@aufbau/svg'             : './svg/',
+    '@aufbau/svg/'            : './svg/',
 
     '@aufbau' : [
       'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'store', 'stylesheet',
