@@ -47,6 +47,8 @@ const map = { imports: {
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
 
+  "@pulgasari/str"   : "./js/str.js",
+
   "htm"              : "https://esm.sh/htm@3.1.1",
   "preact"           : "https://esm.sh/preact@10.20.1",
   "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
