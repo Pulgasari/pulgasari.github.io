@@ -21,10 +21,10 @@ const baseURLs = {
     "@preact/signals"  : "https://esm.sh/@preact/signals@1.2.2?external=preact",
 
     // Explicit non-standard overrides (no magic)
-    "@aufbau/kits"            : "./aufbau/kits/aufbau.js",
-    "@aufbau/kits/preact-htm" : "./aufbau/kits/preact-htm.js",
-    "@aufbau/utils"           : "./aufbau/js/index.js",
-    '@aufbau/svg'             : './aufbau/svg/',
+    "@aufbau/kits"            : "./kits/aufbau.js",
+    "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
+    "@aufbau/utils"           : "./js/index.js",
+    '@aufbau/svg'             : './svg/',
 
     '@aufbau' : [
       'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'store', 'stylesheet',
