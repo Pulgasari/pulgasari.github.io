@@ -31,7 +31,7 @@
 	  window.html = html; aufbau.init();
 	  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
       navigator.serviceWorker
-      .register(new URL('./sw.js', import.meta.url), { type: 'module' })
+      .register(new URL('./sw.js', import.meta.url))
       .catch(err => console.error('[SW Error]:', err));
 	  }
   </script>
