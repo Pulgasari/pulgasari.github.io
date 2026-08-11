@@ -55,8 +55,8 @@ const map = { imports: {
   "hljs" : "https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/+esm"
 }};
 
-  const mapURL = document.currentScript?.src;
-  if (!mapURL) throw new Error('[aufbau] importmap injector must be a classic script');
+const mapURL = document.currentScript?.src;
+if (!mapURL) throw new Error('[aufbau] importmap injector must be a classic script');
 
   // rebase relative urls against this file, not the host page
   const rebase = m => { for (const k in m) m[k] = new URL(m[k], mapURL).href; return m; };
@@ -71,5 +71,21 @@ const map = { imports: {
       }
     )
   );
+
+const createElement = (tag, props) => Object.assign(document.createElement(tag), props);
+ 
+// Inject <link rel="modulepreload"> for critical modules
+const fragment = document.createDocumentFragment();
+for (const key of PRELOAD_CRITICAL) {
+  const href = map.imports[key];
+  if (href) {
+    const link = createElement('link', { href, rel: 'modulepreload' });
+    fragment.appendChild(link);
+  }
+}
+
+if (fragment.childNodes.length > 0) {
+  document.head.appendChild(fragment);
+}
 
 })();
