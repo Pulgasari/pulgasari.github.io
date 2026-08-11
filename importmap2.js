@@ -10,8 +10,10 @@ const baseURLs = {
   '@aufbau'    : './aufbau/',
   '@bunker'    : './bunker/',
   '@cosmonaut' : './cosmonaut/packages/',
+  '@dingsbums' : './dingsbums/',
   '@domina'    : './domina/',
   '@poo'       : './poo/js-packages/',
+  '@pulgasari' : "./js/",
 };
 
   const rawMap = {
@@ -21,13 +23,14 @@ const baseURLs = {
     "preact"           : "https://esm.sh/preact@10.20.1",
     "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
     "@preact/signals"  : "https://esm.sh/@preact/signals@1.2.2?external=preact",
-    "@pulgasari/str"   : "./js/str.js",
+    
 
     // Explicit non-standard overrides (no magic)
     "@aufbau/kits"            : "./kits/aufbau.js",
     "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
     "@aufbau/utils"           : "./js/index.js",
     '@aufbau/svg/'            : './svg/',
+    "@pulgasari/str"          : "./str.js",
 
     '@aufbau' : [
       'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'store', 'stylesheet',
