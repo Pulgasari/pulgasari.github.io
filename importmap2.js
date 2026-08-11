@@ -4,6 +4,8 @@ usage: <script src="https://pulgasari.github.io/aufbau/importmap.js"></script>
 */
 (() => {
 
+const createElement = (tag, props) => Object.assign(document.createElement(tag), props);
+
 const baseURLs = {
   '@aufbau'    : './aufbau/',
   '@bunker'    : './bunker/',
@@ -38,14 +40,17 @@ const baseURLs = {
     //'@poo'       : { compiler, hljs },
   };
 
-  const PRELOAD_CRITICAL = ['@aufbau/kits', '@aufbau/elements'];
+  const PRELOAD_CRITICAL = [
+    '@aufbau/elements',
+    '@aufbau/kits',
+  ];
 
   /**
    * Expands shorthand configuration object into a standard importmap.
    * Strings in rawMap are preserved as-is. Arrays strictly generate
    * `${path}/index.js` and `${path}/` without magic conditionals.
    */
-  function expandImportMap(bases, config) {
+  function expandImportMap (bases, config) {
     const imports = {};
 
     for (const [key, val] of Object.entries(config)) {
@@ -70,37 +75,29 @@ const baseURLs = {
             const relPath = currentPath ? `${currentPath}/${item}` : item;
             const fullKey = `${key}/${relPath}`;
 
-            imports[fullKey] = `${base}${relPath}/index.js`;
+            imports[fullKey]       = `${base}${relPath}/index.js`;
             imports[`${fullKey}/`] = `${base}${relPath}/`;
           } 
           else if (typeof item === 'object' && item !== null) {
             for (const [subKey, subItems] of Object.entries(item)) {
               const newPath = currentPath ? `${currentPath}/${subKey}` : subKey;
-
               // Folder mapping for the namespace only
               imports[`${key}/${newPath}/`] = `${base}${newPath}/`;
-
-              if (Array.isArray(subItems)) {
-                walk(subItems, newPath);
-              }
+              if (Array.isArray(subItems)) walk(subItems, newPath);
             }
           }
         }
       };
 
-      if (Array.isArray(val)) {
-        walk(val);
-      }
+      if (Array.isArray(val)) walk(val);
     }
 
     return { imports };
   }
 
   const scriptEl = document.currentScript;
-  const mapURL = scriptEl?.src;
-  if (!mapURL) throw new Error('[aufbau] importmap injector must be a classic script');
-
-  const map = expandImportMap(baseURLs, rawMap);
+  const mapURL   = scriptEl?.src; if (!mapURL) throw new Error('[aufbau] importmap injector must be a classic script');   
+  const map      = expandImportMap(baseURLs, rawMap);
 
   // Rebase relative URLs against the script location
   const rebase = m => {
@@ -111,9 +108,8 @@ const baseURLs = {
 
   // Inject <script type="importmap">
   scriptEl.after(
-    Object.assign(document.createElement('script'), {
-      type: 'importmap',
-      textContent: JSON.stringify(map)
+    createElement('script', {
+      type: 'importmap', textContent: JSON.stringify(map)
     })
   );
 
@@ -122,9 +118,7 @@ const baseURLs = {
   for (const key of PRELOAD_CRITICAL) {
     const href = map.imports[key];
     if (href) {
-      const link = document.createElement('link');
-      link.rel = 'modulepreload';
-      link.href = href;
+      const link = createElement('link', { href, rel: 'modulepreload' });
       fragment.appendChild(link);
     }
   }
