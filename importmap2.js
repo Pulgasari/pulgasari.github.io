@@ -21,6 +21,7 @@ const baseURLs = {
     "preact"           : "https://esm.sh/preact@10.20.1",
     "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
     "@preact/signals"  : "https://esm.sh/@preact/signals@1.2.2?external=preact",
+    "@pulgasari/str"   : "./js/str.js",
 
     // Explicit non-standard overrides (no magic)
     "@aufbau/kits"            : "./kits/aufbau.js",
@@ -41,6 +42,9 @@ const baseURLs = {
   };
 
   const PRELOAD_CRITICAL = [
+    '@bunker/core',
+    '@bunker/cache',
+    '@domina/core',
     '@aufbau/elements',
     '@aufbau/kits',
   ];
