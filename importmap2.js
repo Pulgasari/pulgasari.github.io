@@ -26,14 +26,13 @@ const baseURLs = {
     
 
     // Explicit non-standard overrides (no magic)
-    "@aufbau/kits"            : "./kits/aufbau.js",
     "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
     "@aufbau/utils"           : "./js/index.js",
     '@aufbau/svg/'            : './svg/',
     "@pulgasari/str"          : "./str.js",
 
     '@aufbau' : [
-      'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'store', 'stylesheet',
+      'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'runtime', 'store', 'stylesheet',
       { builders: ['docs'] }, { plugins: ['client', 'vite', 'worker'] },
     ],
     '@bunker'    : ['cache', 'core', 'db', 'files', 'kit', 'storage'],
