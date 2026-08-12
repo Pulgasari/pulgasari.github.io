@@ -1,51 +1,94 @@
-// logger.js
-// minimal console wrapper: prefix, named colors, groups, tables, optional debug gating.
-// styling goes through %c in browsers and ansi truecolor in node
+/* logger.js
+
+minimal console wrapper: prefix, named colors, groups, tables, optional debug gating.
+styling goes through %c in browsers and ansi truecolor in node.
+
+writers are getters returning a *bound* native console method, 
+so devtools report the real call site instead of this file. 
+price: no chaining, every call returns undefined. 
+a chainable variant sits at the bottom of this file.
+*/
 
 const IS_NODE = !!globalThis.process?.versions?.node;
 // node only: respect NO_COLOR and piped/redirected output
 const NO_ANSI = IS_NODE && (!!process.env.NO_COLOR || !process.stdout?.isTTY);
 
-// api method -> console method
-const METHODS = { log: 'log', warn: 'warn', error: 'error', success: 'log' };
-
-const COLORS = {
-  red: '#ff5555',
-  green: '#22c55e',
-  yellow: '#eab308',
-  orange: '#f97316',
-  blue: '#3b82f6',
-  cyan: '#06b6d4',
-  purple: '#a855f7',
-  gray: '#888888',
+// variadic writers, get the styled prefix. api method -> console method
+const METHODS = {
+  debug: 'debug',
+  error: 'error',
+  info: 'info',
+  log: 'log',
+  success: 'log',
+  trace: 'trace',
+  warn: 'warn',
 };
 
-const DEFAULTS = { log: 'gray', warn: 'orange', error: 'red', success: 'green' };
+// bring their own arg shape, so no prefix is possible -> bound and forwarded as is.
+// labels stay unnamespaced on purpose, the call site is worth more here
+const NATIVE = [
+  'assert',
+  'clear',
+  'count',
+  'countReset',
+  'dir',
+  'dirxml',
+  'table',
+  'time',
+  'timeEnd',
+  'timeLog',
+];
 
-// one value for every method
+const COLORS = {
+  blue   : '#3b82f6',
+  cyan   : '#06b6d4',
+  gray   : '#888888',
+  green  : '#22c55e',
+  orange : '#f97316',
+  purple : '#a855f7',
+  red    : '#ff5555',
+  yellow : '#eab308',
+};
+
+const DEFAULTS = {
+  debug   : 'gray',
+  error   : 'red',
+  info    : 'blue',
+  log     : 'gray',
+  success : 'green',
+  trace   : 'gray',
+  warn    : 'orange',
+};
+
+const noop = () => {};
+
+// one value for every writer
 const mapAll = (color) => Object.fromEntries(Object.keys(METHODS).map((n) => [n, color]));
 
 // #rgb | #rrggbb -> "r;g;b"
 const rgb = (hex) => {
-  const h    = hex.replace('#', '');
+  const h = hex.replace('#', '');
   const full = h.length === 3 ? [...h].map((c) => c + c).join('') : h;
   return [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16)).join(';');
 };
 
 export default class Logger {
-  #colors; #gated; #palette; prefix;
+  #colors; #gated; #palette; #prefix;
 
   // `debugger` is a reserved word -> renamed while destructuring.
-  // color: one value for all methods, or a per-method map { log, warn, error, success }
+  // color: one value for all writers, or a per-method map { log, warn, error, success, ... }
   // colors: extends the named palette, same key overrides
-  constructor({ color, colors, prefix = '', debugger: gated = false } = {}) {
-    this.#prefix = prefix;
-    this.#gated = gated;
+  constructor ({ color, colors, prefix = '', debugger: gated = false } = {}) {
+    this.#colors  = { ...DEFAULTS, ...(typeof color === 'string' ? mapAll(color) : color) };
+    this.#gated   = gated;
     this.#palette = { ...COLORS, ...colors };
-    this.#colors = { ...DEFAULTS, ...(typeof color === 'string' ? mapAll(color) : color) };
+    this.#prefix  = prefix;
 
-    // default api lands directly on the instance -> logger.log(...)
-    Object.assign(this, this.#api((name) => this.#colors[name]));
+
+    // copy descriptors, not values: Object.assign would evaluate the getters once
+    // and freeze both the gate and the bound arguments at construction time
+    const api = this.#api((name) => this.#colors[name]);
+    Object.defineProperties(this, Object.getOwnPropertyDescriptors(api));
   }
 
   // read at call time, so flipping globalThis.DEBUG at runtime takes effect
@@ -53,13 +96,24 @@ export default class Logger {
     return !this.#gated || globalThis.DEBUG === true;
   }
 
+  // sub namespace inheriting palette, colors and the gate. options override per child
+  child(prefix, { color, colors, ...rest } = {}) {
+    return new Logger({
+      prefix: [this.#prefix, prefix].filter(Boolean).join(':'),
+      color: { ...this.#colors, ...(typeof color === 'string' ? mapAll(color) : color) },
+      colors: { ...this.#palette, ...colors },
+      debugger: this.#gated,
+      ...rest,
+    });
+  }
+
   // palette name or a raw value, unknown names pass through untouched
-  #hex(color) {
+  #hex (color) {
     return this.#palette[color] ?? color;
   }
 
   // leading console args for the current environment
-  #tag(color) {
+  #tag (color) {
     if (!this.#prefix) return [];
     const hex = this.#hex(color);
     if (!IS_NODE) return [`%c${this.#prefix}`, `color:${hex};font-weight:bold`];
@@ -71,35 +125,69 @@ export default class Logger {
 
   // builds the whole api around a picker: (method name) => color
   #api(pick) {
-    const write = (name) => (...args) => {
-      if (this.#on) console[METHODS[name]](...this.#tag(pick(name)), ...args);
-      return api;
-    };
+    const api = {};
+    // getter, so the binding happens per access and the gate stays live
+    const define = (name, get) => Object.defineProperty(api, name, { get, enumerable: true });
+    const bind = (method, ...args) =>
+      this.#on && console[method] ? console[method].bind(console, ...args) : noop;
+
+    for (const name of Object.keys(METHODS)) {
+      define(name, () => bind(METHODS[name], ...this.#tag(pick(name))));
+    }
+
+    for (const name of NATIVE) {
+      define(name, () => bind(name));
+    }
 
     // opens a group, closed by groupEnd(). nesting handles the console itself
-    const group = (collapsed) => (label = '') => {
-      if (this.#on) console[collapsed ? 'groupCollapsed' : 'group'](...this.#tag(pick('log')), label);
-      return api;
-    };
+    define('group',          () => bind('group',          ...this.#tag(pick('log'))));
+    define('groupCollapsed', () => bind('groupCollapsed', ...this.#tag(pick('log'))));
+    define('groupEnd',       () => bind('groupEnd'));
 
-    const api = {
-      ...Object.fromEntries(Object.keys(METHODS).map((n) => [n, write(n)])),
-      group: group(false),
-      groupCollapsed: group(true),
-      groupEnd: () => (this.#on && console.groupEnd(), api),
-      // one-off color for a whole chain: logger.color('red').log(...)
-      color: (color) => this.#api(() => color),
-      // console.table ignores styling, so the prefix rides in a wrapping group
-      table: (data, columns) => {
-        if (!this.#on) return api;
-        if (!this.#prefix) return (console.table(data, columns), api);
-        console.group(...this.#tag(pick('log')));
-        console.table(data, columns);
-        console.groupEnd();
-        return api;
-      },
-    };
+    // one-off color for a whole call: logger.color('red').log(...)
+    api.color = (color) => this.#api(() => color);
 
     return api;
   }
 }
+
+// ---------------------------------------------------------------------------
+// alternative: chainable api -> logger.log('a').warn('b').groupEnd()
+//
+// tradeoff: every call goes through a wrapper defined in this file, so devtools
+// point at logger.js instead of the calling line. mitigate by adding logger.js to
+// the devtools ignore list (settings -> ignore list, or right click the filename
+// in the console), which makes the next frame up show as the origin.
+//
+// to switch: replace #api above with the version below, and in the constructor
+// swap the defineProperties call for:
+//   Object.assign(this, this.#api((name) => this.#colors[name]));
+//
+// #api(pick) {
+//   const write = (name) => (...args) => {
+//     if (this.#on) console[METHODS[name]](...this.#tag(pick(name)), ...args);
+//     return api;
+//   };
+//
+//   const forward = (name) => (...args) => {
+//     if (this.#on) console[name]?.(...args);
+//     return api;
+//   };
+//
+//   const group = (collapsed) => (label = '') => {
+//     if (this.#on) console[collapsed ? 'groupCollapsed' : 'group'](...this.#tag(pick('log')), label);
+//     return api;
+//   };
+//
+//   const api = {
+//     ...Object.fromEntries(Object.keys(METHODS).map((n) => [n, write(n)])),
+//     ...Object.fromEntries(NATIVE.map((n) => [n, forward(n)])),
+//     group: group(false),
+//     groupCollapsed: group(true),
+//     groupEnd: () => (this.#on && console.groupEnd(), api),
+//     color: (color) => this.#api(() => color),
+//   };
+//
+//   return api;
+// }
+// ---------------------------------------------------------------------------
