@@ -1,6 +1,6 @@
 # @pulgasari
 
-```md
+```txt
 @pulgasari/str
 @pulgasari/url
 ```
