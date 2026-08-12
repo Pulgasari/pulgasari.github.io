@@ -1,5 +1,9 @@
 # Service Worker
 
+## Links
+
+- <https://web.dev/articles/es-modules-in-sw?hl=de>
+
 ## ...
 
 Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des Browsers unter der jeweiligen Domain (Origin) abgelegt. Das hat direkte Konsequenzen für die Fragen:
