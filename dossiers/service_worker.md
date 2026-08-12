@@ -4,7 +4,7 @@
 
 Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des Browsers unter der jeweiligen Domain (Origin) abgelegt. Das hat direkte Konsequenzen für die Fragen:
 
-​### 1. Nimmst du den Registrierungs-Code raus, bleibt der Service Worker aktiv?
+### 1. Nimmst du den Registrierungs-Code raus, bleibt der Service Worker aktiv?
 
 ​Ja, er bleibt weiterhin voll aktiv und steuert die Seite.
 
@@ -31,7 +31,7 @@ if ('serviceWorker' in navigator) {
 
 ​Der Update-Zyklus läuft in 4 Phasen ab:
 
-​#### Phase A: Der Byte-Vergleich
+#### Phase A: Der Byte-Vergleich
 
 ​Sobald eine Seite geladen wird, lädt der Browser die `sw.js` vom Server herunter und vergleicht sie Byte für Byte mit dem aktuell installierten Service Worker.
 
@@ -43,9 +43,9 @@ Unterscheidet sich auch nur 1 Zeichen (oder z.B. eine Versionsnummer im Code), e
 
 Der alte Service Worker bleibt währenddessen aktiv und bedient weiterhin die laufende Seite! Der neue SW befindet sich im Zustand `waiting` (Wartestellung).
 
-​#### Phase C: Die Aktivierung (Das "Tab-Problem")
+#### Phase C: Die Aktivierung (Das "Tab-Problem")
 
-​Damit eine neue Service-Worker-Version laufende Seiten nicht durch unerwarteten Code-Tausch zerstört, wartet der Browser standardmäßig so lange, bis alle offenen Tabs dieser Domain geschlossen wurden. Erst beim nächsten Öffnen übernimmt die neue Version.
+Damit eine neue Service-Worker-Version laufende Seiten nicht durch unerwarteten Code-Tausch zerstört, wartet der Browser standardmäßig so lange, bis alle offenen Tabs dieser Domain geschlossen wurden. Erst beim nächsten Öffnen übernimmt die neue Version.
 
 #### ​Phase D: Erzwungenes Sofort-Update (Skip Waiting)
 ​Möchtest du, dass der neue Service Worker sofort ohne Tab-Schließen die Kontrolle übernimmt, nutzt du `skipWaiting()` und `clients.claim()`:
