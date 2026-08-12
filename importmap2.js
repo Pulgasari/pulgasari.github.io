@@ -29,7 +29,11 @@ const baseURLs = {
     "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
     "@aufbau/utils"           : "./js/index.js",
     '@aufbau/svg/'            : './svg/',
+    "@pulgasari/logger"       : "./logger.js",
+    "@pulgasari/random"       : "./random.js",
     "@pulgasari/str"          : "./str.js",
+    "@pulgasari/timing"       : "./timing.js",
+    "@pulgasari/url"          : "./url.js",
 
     '@aufbau'    : [{ builders: ['docs'] }, 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'runtime', 'store', 'stylesheet'],    
     '@bunker'    : ['cache', 'core', 'db', 'files', 'kit', 'storage'],
