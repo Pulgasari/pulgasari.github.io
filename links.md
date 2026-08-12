@@ -1,3 +1,4 @@
 # links
 
-- <usefoley.dev>
+- <https://usefoley.dev>
+- <https://morphicons.com>
