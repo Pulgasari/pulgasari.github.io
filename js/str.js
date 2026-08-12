@@ -1,6 +1,14 @@
 // str.js
 
 // Helper functions for word splitting and casing
+const slugify = (value) => String(value)
+  .replace(/ß/g, 'ss')
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-zA-Z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .toLowerCase();
+
 const upperFirst = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const toWords = (value) => String(value ?? '')
@@ -21,6 +29,7 @@ toCamelCase    = value => toWords(value).map((word, index) => index ? upperFirst
 toConstantCase = value => toWords(value).join('_').toUpperCase(),
 toKebabCase    = value => toWords(value).join('-'),
 toPascalCase   = value => toWords(value).map(upperFirst).join(''),
+toSlugCase     = value => slugify(value),
 toSnakeCase    = value => toWords(value).join('_'),
 toTitleCase    = value => toWords(value).map(upperFirst).join(' '),
 trim           = value => String(value ?? '').trim(),
@@ -40,6 +49,7 @@ const utils = {
   toConstantCase,
   toKebabCase,
   toPascalCase,
+  toSlugCase,
   toSnakeCase,
   toTitleCase,
   trim,
