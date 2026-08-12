@@ -31,16 +31,11 @@ const baseURLs = {
     '@aufbau/svg/'            : './svg/',
     "@pulgasari/str"          : "./str.js",
 
-    '@aufbau' : [
-      'cache', 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'runtime', 'store', 'stylesheet',
-      { builders: ['docs'] }, { plugins: ['client', 'vite', 'worker'] },
-    ],
+    '@aufbau'    : [{ builders: ['docs'] }, 'elements', 'filters', 'import', 'js', 'patterns',  'plugins', 'runtime', 'store', 'stylesheet'],    
     '@bunker'    : ['cache', 'core', 'db', 'files', 'kit', 'storage'],
     '@cosmonaut' : ['compiler', 'ebnf', 'layouter', 'lsd', 'parsers'],
     '@domina'    : ['core'],
     '@poo'       : ['compiler', 'hljs'],
-    //'@domina'    : { core },
-    //'@poo'       : { compiler, hljs },
   };
 
   const PRELOAD_CRITICAL = [
