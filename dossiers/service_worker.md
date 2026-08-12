@@ -8,7 +8,7 @@ Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des 
 
 ​Ja, er bleibt weiterhin voll aktiv und steuert die Seite.
 
-​Sobald der Browser einmal navigator.serviceWorker.register('/sw.js') ausgeführt hat, merkt sich die Browser-Engine die Registrierung für diese Domain unabhängig von deiner HTML- oder JS-Datei.
+​Sobald der Browser einmal `navigator.serviceWorker.register('/sw.js')` ausgeführt hat, merkt sich die Browser-Engine die Registrierung für diese Domain unabhängig von deiner HTML- oder JS-Datei.
 
 ​- Auch wenn du den Registrierungscode komplett aus deinem Client-JS entfernst, fängt der Service Worker bei jedem Aufruf der Seite weiterhin alle fetch-Events ab.
 
@@ -48,4 +48,32 @@ Der alte Service Worker bleibt währenddessen aktiv und bedient weiterhin die la
 ​Damit eine neue Service-Worker-Version laufende Seiten nicht durch unerwarteten Code-Tausch zerstört, wartet der Browser standardmäßig so lange, bis alle offenen Tabs dieser Domain geschlossen wurden. Erst beim nächsten Öffnen übernimmt die neue Version.
 
 #### ​Phase D: Erzwungenes Sofort-Update (Skip Waiting)
-​Möchtest du, dass der neue Service Worker sofort ohne Tab-Schließen die Kontrolle übernimmt, nutzt du skipWaiting() und clients.claim():
+​Möchtest du, dass der neue Service Worker sofort ohne Tab-Schließen die Kontrolle übernimmt, nutzt du `skipWaiting()` und `clients.claim()`:
+
+```javascript
+// sw.js (New Version)
+
+const CACHE_NAME = 'v2-cache';
+
+// 1. Install event: Force immediate takeover
+self.addEventListener('install', (event) => {
+  // Activate this new version immediately without waiting for tabs to close
+  self.skipWaiting();
+});
+
+// 2. Activate event: Clean up old caches
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
+      );
+    }).then(() => {
+      // Take control of all open client tabs immediately
+      return self.clients.claim();
+    })
+  );
+});
+```
