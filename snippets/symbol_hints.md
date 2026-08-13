@@ -175,3 +175,9 @@ addClasses('#my-btn', 'btn primary active');
 // Automatically converts '#my-btn' -> Element and 'btn primary active' -> ['btn', 'primary', 'active']
 
 ```
+
+Fazit
+​Genau das ist die Magie dahinter:
+​Du schreibst einmal den asShape(val, hint) Resolver.
+​Objekte steuern über [Symbol.for('domina.shape')](hint) selbst, wie sie sich bei welchem hint verhalten.
+​Deine Funktionen fordern nur noch asShape(input, 'hint') an – überfallartiges if/else-Gewitter für Typ-Prüfungen entfällt komplett.
