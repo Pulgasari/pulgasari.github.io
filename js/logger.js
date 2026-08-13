@@ -63,7 +63,7 @@ const rgb = (hex) => {
   return [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16)).join(';');
 };
 
-export default class Logger {
+export class Logger {
   #colors; #gated; #palette; #prefix;
 
   // `debugger` is a reserved word -> renamed while destructuring.
@@ -141,6 +141,8 @@ export default class Logger {
     return api;
   }
 }
+
+export default Logger;
 
 // ---------------------------------------------------------------------------
 // alternative: chainable api -> logger.log('a').warn('b').groupEnd()
