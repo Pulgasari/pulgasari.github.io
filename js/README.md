@@ -14,3 +14,7 @@ writers are getters returning a *bound* native console method,
 so devtools report the real call site instead of this file. 
 price: no chaining, every call returns undefined. 
 a chainable variant sits at the bottom of this file.
+
+---
+
+- `shapeshift` für casting stuff?
