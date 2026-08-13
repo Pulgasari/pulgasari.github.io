@@ -75,7 +75,6 @@ export class Logger {
     this.#palette = { ...COLORS, ...colors };
     this.#prefix  = prefix;
 
-
     // copy descriptors, not values: Object.assign would evaluate the getters once
     // and freeze both the gate and the bound arguments at construction time
     const api = this.#api((name) => this.#colors[name]);
@@ -118,17 +117,11 @@ export class Logger {
   #api(pick) {
     const api = {};
     // getter, so the binding happens per access and the gate stays live
-    const define = (name, get) => Object.defineProperty(api, name, { get, enumerable: true });
-    const bind = (method, ...args) =>
-      this.#on && console[method] ? console[method].bind(console, ...args) : noop;
+    const define = (name, get)       => Object.defineProperty(api, name, { get, enumerable: true });
+    const bind   = (method, ...args) => this.#on && console[method] ? console[method].bind(console, ...args) : noop;
 
-    for (const name of Object.keys(METHODS)) {
-      define(name, () => bind(METHODS[name], ...this.#tag(pick(name))));
-    }
-
-    for (const name of NATIVE) {
-      define(name, () => bind(name));
-    }
+    for (const name in METHODS) define(name, () => bind(METHODS[name], ...this.#tag(pick(name))));
+    for (const name of NATIVE)  define(name, () => bind(name));
 
     // opens a group, closed by groupEnd(). nesting handles the console itself
     define('group',          () => bind('group',          ...this.#tag(pick('log'))));
