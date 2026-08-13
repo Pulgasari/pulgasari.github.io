@@ -28,3 +28,21 @@ played in slow half-time, palm-muted low string pulsing on one or two notes, sto
 ```md
 blast beats, fast tempo, clean production, studio polish, triggered drums, reverb, melodic solos, clean vocals, high vocals, screaming, rasp, shrieks, pitched vocals, clear diction, vocal effects
 ```
+
+### v2.1
+
+```md
+live in a concrete rehearsal room, cheap cassette four-track, tape hiss and saturation, bass through a blown speaker cone, fuzzy and clipping, louder than the guitars, thin trebly guitars through a broken combo amp, buzzing, drums on two room mics, cracking snare, hollow cardboard toms, no gating no reverb, shouted into a beat-up mic that distorts, everything dry and in your face
+
+slow half-time, palm-muted low string pulsing on one or two notes, stop-start syncopation, kick locked to every riff accent, three-note riffs repeated with shifting rhythm, pinch harmonic squeals, abrupt drops from faster driving parts into a crawling bounce, snare roll into each drop, vocals in the lowest possible register, an octave under the riff, subsonic chest-deep growl, no rasp no scream, flat and monotone, throat-driven, almost closed-mouth, barely articulated, syllables mashing into one low rumble, muffled like through a wall, one blunt syllable per chug, whole room shouting in unison on hooks
+```
+
+#### exclude
+
+```md
+blast beats, fast tempo, grindcore, clean studio production, polished mix,
+triggered drums, compressed drums, reverb, delay, high vocals, screaming,
+shrieking, rasp, pig squeals, clean singing, melodic vocals, clear diction,
+autotune, guitar solos, melody, harmony, keyboards, synths, orchestral,
+acoustic guitar, modern metalcore, djent, bass-light mix, quantized timing
+```
