@@ -29,6 +29,7 @@ const baseURLs = {
     "@aufbau/kits/preact-htm" : "./kits/preact-htm.js",
     "@aufbau/utils"           : "./js/index.js",
     '@aufbau/svg/'            : './svg/',
+    "@pulgasari/is"           : "./is.js",
     "@pulgasari/logger"       : "./logger.js",
     "@pulgasari/random"       : "./random.js",
     "@pulgasari/str"          : "./str.js",
