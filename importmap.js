@@ -48,6 +48,7 @@ const map = { imports: {
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
 
+  "@pulgasari/is"     : "./js/is.js",
   "@pulgasari/logger" : "./js/logger.js",
   "@pulgasari/random" : "./js/random.js",
   "@pulgasari/str"    : "./js/str.js",
