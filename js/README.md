@@ -2,6 +2,7 @@
 
 ```txt
 @pulgasari/is
+@pulgasari/logger
 @pulgasari/str
 @pulgasari/url
 ```
