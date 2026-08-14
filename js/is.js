@@ -1,4 +1,4 @@
-// ====== is ======
+// predicates.js
 
 export const
 
@@ -7,7 +7,7 @@ isFn       = v => typeof v === 'function',
 isIterable = v => !isString(v) && isFn(v?.[Symbol.iterator]),
 isString   = v => typeof v === 'string',
 isNumber   = v => typeof v === 'number' && Number.isFinite(v),
-isNullish  = v => v == null,
+isNullish  = v => typeof v === 'undefined' || typeof v === 'null',
 
 isObject = v => v !== null && typeof v === 'object' && !isArray(v),
 
@@ -30,3 +30,26 @@ isMultiSelect = el => el?.tagName === 'SELECT' && el.multiple,
 
 // Werte
 isEmpty = v => v === '' || v === null || v === undefined;
+
+// is.js
+/*
+export *         from './predicates.js';
+import * as cond from './predicates.js';
+
+const upperFirst = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+function is (value, ...predicates) {
+  if (typeof value === 'undefined') return false;
+  
+  predicates.forEach (pred => {
+    const name   = 'is' + upperFirst(pred);
+    const result = cond.name(value);
+    if (!result) return false;
+  }
+  
+  return true;
+}
+*/
+
+
+
