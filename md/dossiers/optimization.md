@@ -550,8 +550,8 @@ Cache sofort ausliefern, im Hintergrund erneuern. Schnellste Antwort bei
 gleichzeitiger Aktualisierung — der Nutzer sieht die neue Version beim **nächsten**
 Aufruf.
 
-Das ist der Standardfall für fast alles im Kosmos. `@bunker/files` implementiert es
-vollständig (`bunker/files/index.js:147`) — inklusive des Teils, den Eigenbauten
+Das ist der Standardfall für fast alles im Kosmos. `@bunker/cache` implementiert es
+vollständig (`bunker/cache/index.js:147`) — inklusive des Teils, den Eigenbauten
 meist weglassen:
 
 ```javascript

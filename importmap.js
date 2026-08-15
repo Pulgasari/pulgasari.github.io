@@ -6,7 +6,7 @@ const createElement = (tag, props) => Object.assign(document.createElement(tag),
 
 const PRELOAD_CRITICAL = [
   '@bunker/core',
-  '@bunker/cache',
+  '@bunker/policy',
   '@domina/core',
   '@aufbau/elements',
   '@aufbau/kits',
@@ -38,8 +38,8 @@ const map = { imports: {
   "@bunker/cache"   : "./bunker/cache/index.js",
   "@bunker/core"    : "./bunker/core/index.js",
   "@bunker/db"      : "./bunker/db/index.js",
-  "@bunker/files"   : "./bunker/files/index.js",
   "@bunker/kit"     : "./bunker/kit/index.js",
+  "@bunker/policy"  : "./bunker/policy/index.js",
   "@bunker/storage" : "./bunker/storage/index.js",
 
   "@cosmonaut/compiler" : "./cosmonaut/packages/compiler/index.js",
