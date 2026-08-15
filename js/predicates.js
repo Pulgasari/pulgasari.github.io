@@ -5,7 +5,6 @@ import { and, not, or } from './is.js';
 // :::::: FACTORIES
 
 const
-
 isTypeOf  = type   => v => typeof v === type,
 isMatchOf = regexp => v => typeof v === 'string' && regexp.test(v),
 
@@ -26,7 +25,6 @@ const has = new Proxy({}, {
 // :::::: PRIMITIVES
 
 export const
-
 isString    = isTypeOf('string'),
 isBigInt    = isTypeOf('bigint'),
 isBoolean   = isTypeOf('boolean'),
@@ -36,11 +34,9 @@ isUndefined = v => v === undefined,
 isNull      = v => v === null,
 isNullish   = v => v === null || v === undefined,
 isDefined   = v => v !== null && v !== undefined,
-isPrimitive = v => v !== Object(v);
+isPrimitive = v => v !== Object(v),
 
 // :::::: NUMBERS
-
-export const
 
 isNan       = Number.isNaN,
 isInteger   = Number.isInteger,
@@ -55,11 +51,9 @@ isZero      = v => v === 0,
 
 isNumericString = v => isString(v) && v.trim() !== '' && !Number.isNaN(Number(v)),
 isNumeric       = or(isNumber, isNumericString),
-isYear          = v => (isNumber(v) || isNumericString(v)) && /^\d{4}$/.test(String(v));
+isYear          = v => (isNumber(v) || isNumericString(v)) && /^\d{4}$/.test(String(v)),
 
 // :::::: OBJECTS & STRUCTURES
-
-export const
 
 isArray  = Array.isArray,
 isObject = v => v !== null && typeof v === 'object' && !isArray(v),
@@ -81,16 +75,13 @@ isBuffer   = v => typeof Buffer !== 'undefined' && Buffer.isBuffer(v),
 isDate     = v => v instanceof Date && !Number.isNaN(v.getTime()),
 
 // numeric strings are rejected on purpose: '2024' is a year, not a date.
-isDateString = v => isString(v) && Number.isNaN(Number(v))
-  && (/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(v) || !Number.isNaN(Date.parse(v))),
+isDateString = v => isString(v) && Number.isNaN(Number(v)) && (/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(v) || !Number.isNaN(Date.parse(v))),      
 
 isIterable      = v => isFn(v?.[Symbol.iterator]),
 isAsyncIterable = v => isFn(v?.[Symbol.asyncIterator]),
-isCollection    = and(isIterable, not(isString));   // spreadable without falling apart into chars
+isCollection    = and(isIterable, not(isString)),   // spreadable without falling apart into chars
 
 // :::::: DOM & ENVIRONMENT
-
-export const
 
 isNode       = has.nodeType(),
 isElement    = has.nodeType(1),
@@ -104,22 +95,18 @@ isRealNodeList = v => Object.prototype.toString.call(v) === '[object NodeList]',
 isNodeList     = v => isRealNodeList(v) || (isArray(v) && v.every(isNode)),
 
 isInternalUrl = v => isString(v) && typeof window !== 'undefined' &&  v.startsWith(window.location.origin),
-isExternalUrl = v => isString(v) && typeof window !== 'undefined' && !v.startsWith(window.location.origin);
+isExternalUrl = v => isString(v) && typeof window !== 'undefined' && !v.startsWith(window.location.origin),
 
 // :::::: DOM SHAPES
-
-export const
 
 isEDO    = v => isObject(v) && !isElementish(v) && !!(v.tag || v.tagName),
 isHTML   = v => isString(v) && v.trim().startsWith('<'),
 isIdLike = v => isString(v) && v.charCodeAt(0) === 35 && !/[\s.]/.test(v),
 
 isCheckable   = has.type('checkbox', 'radio'),
-isMultiSelect = and(has.tagName('SELECT'), v => v.multiple === true);
+isMultiSelect = and(has.tagName('SELECT'), v => v.multiple === true),
 
 // :::::: EMPTINESS & LOGIC
-
-export const
 
 isBlank       = v => isNullish(v) || v === '',
 isEmptyString = and(isString, v => v.length === 0),
@@ -133,11 +120,9 @@ isEmpty  = or(isNullish, isEmptyString, isEmptyArray, isEmptyMap, isEmptySet, is
 isFilled = not(isEmpty),
 
 isFalsy  = v =>  !v,
-isTruthy = v => !!v;
+isTruthy = v => !!v,
 
 // :::::: FORMATS & PARSING
-
-export const
 
 isAlphaNumeric = isMatchOf(/^[a-z0-9]+$/i),
 isBase64       = isMatchOf(/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/),
@@ -146,11 +131,9 @@ isHexColor     = isMatchOf(/^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i),
 isUUID         = isMatchOf(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i),
 
 isJSON = v => { if (!isString(v)) return false; try { JSON.parse(v); return true; } catch { return false; } },
-isURL  = v => { if (!isString(v)) return false; try { new URL(v);    return true; } catch { return false; } };
+isURL  = v => { if (!isString(v)) return false; try { new URL(v);    return true; } catch { return false; } },    
 
 // :::::: STRING CASES
-
-export const
 
 // requires at least one cased character, so '123' is neither lower nor upper.
 isLowerCase = v => isString(v) && v === v.toLowerCase() && v !== v.toUpperCase(),
@@ -160,11 +143,9 @@ isCamelCase    = isMatchOf(/^[a-z][a-zA-Z0-9]*$/),
 isConstantCase = isMatchOf(/^[A-Z0-9]+(?:_[A-Z0-9]+)*$/),
 isKebabCase    = isMatchOf(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 isPascalCase   = isMatchOf(/^[A-Z][a-zA-Z0-9]*$/),
-isSnakeCase    = isMatchOf(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
+isSnakeCase    = isMatchOf(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
 
 // :::::: LISTS
-
-export const
 
 isEntriesList = v => isArray(v) && v.every(item => isArray(item) && item.length === 2),
 isObjectList  = v => isArray(v) && v.every(isObject),
