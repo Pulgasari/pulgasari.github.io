@@ -41,6 +41,8 @@ const map = { imports: {
   "@bunker/kit"     : "./bunker/kit/index.js",
   "@bunker/policy"  : "./bunker/policy/index.js",
   "@bunker/storage" : "./bunker/storage/index.js",
+  "@bunker/utils"   : "./bunker/utils/index.js",
+  "@bunker/utils/"  : "./bunker/utils/",
 
   "@cosmonaut/compiler" : "./cosmonaut/packages/compiler/index.js",
   "@cosmonaut/ebnf"     : "./cosmonaut/packages/ebnf/index.js",
