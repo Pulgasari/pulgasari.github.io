@@ -1,7 +1,4 @@
 // predicates.js
-// every predicate is total: never throws on null/undefined, never touches a
-// global at module level. dom checks are duck-typed, so the module loads and
-// answers false in node instead of binding to a missing constructor at import.
 
 import { and, not, or } from './is.js';
 
