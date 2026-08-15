@@ -1,55 +1,43 @@
-// predicates.js
-
-export const
-
-isArray    = Array.isArray,
-isFn       = v => typeof v === 'function',
-isIterable = v => !isString(v) && isFn(v?.[Symbol.iterator]),
-isString   = v => typeof v === 'string',
-isNumber   = v => typeof v === 'number' && Number.isFinite(v),
-isNullish  = v => typeof v === 'undefined' || typeof v === 'null',
-
-isObject = v => v !== null && typeof v === 'object' && !isArray(v),
-
-isNode       = v => typeof v?.nodeType === 'number',
-isElement    = v => v?.nodeType === 1,
-isDocument   = v => v?.nodeType === 9,
-isFragment   = v => v?.nodeType === 11,
-isElementish = v => v?.nodeType === 1 || v?.nodeType === 9 || v?.nodeType === 11,
-isWindow     = v => v != null && v === v.window,
-
-// DOM-Formen
-isEDO      = v => isObject(v) && !isElementish(v) && !!(v.tag || v.tagName),
-isHTML     = v => isString(v) && v.trim().startsWith('<'),
-isIdLike   = v => isString(v) && v.charCodeAt(0) === 35 && !/[\s.]/.test(v),
-isURL      = v => isString(v) && v.includes('://'),
-
-// Form-Controls
-isCheckable   = el => el?.type === 'checkbox' || el?.type === 'radio',
-isMultiSelect = el => el?.tagName === 'SELECT' && el.multiple,
-
-// Werte
-isEmpty = v => v === '' || v === null || v === undefined;
-
 // is.js
-/*
-export *         from './predicates.js';
-import * as cond from './predicates.js';
 
-const upperFirst = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+import * as preds from './predicates.js';
 
-function is (value, ...predicates) {
-  if (typeof value === 'undefined') return false;
-  
-  predicates.forEach (pred => {
-    const name   = 'is' + upperFirst(pred);
-    const result = cond.name(value);
-    if (!result) return false;
-  }
-  
-  return true;
-}
-*/
+const
+and = (...preds) => v => preds.every(p => p(v)),
+or  = (...preds) => v => preds.some(p => p(v)),
+not = pred       => v => !pred(v);
 
+// pattern matcher
+const testRule = (rule, value) => {
+  if (typeof rule === 'function') return rule(value);
+  if (typeof rule === 'boolean')  return rule;
+  if (Array.isArray(rule))        return rule.every(r => testRule(r, value));
+  return false;
+};
 
+const upperFirst = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+// module namespace objects have a null prototype, so a plain lookup
+// cannot hit inherited keys like 'constructor'.
+const resolve = p => {
+  if (typeof p === 'function') return p;
+
+  const fn = preds[p] ?? preds['is' + upperFirst(p)];
+  if (!fn) throw new TypeError(`unknown predicate: ${p}`);
+
+  return fn;
+};
+
+const
+// an empty list returns false everywhere, instead of the vacuous true
+// every() would give — a forgotten argument must not confirm anything.
+is    = (value, ...list) => list.length > 0 && list.every(p => !!resolve(p)(value)),     
+isNot = (value, ...list) => list.length > 0 && list.every(p =>  !resolve(p)(value)),
+isAny = (value, ...list) => list.some(p => !!resolve(p)(value));
+
+// :::::: EXPORTS
+
+export * from './predicates.js';
+export { and, or, not, testRule };
+export { is, isAny, isNot };
 
