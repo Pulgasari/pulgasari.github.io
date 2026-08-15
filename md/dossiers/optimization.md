@@ -107,7 +107,7 @@ Importmap:
 <link rel="modulepreload" href="@aufbau/js">
 
 <!-- RICHTIG: die aufgeloeste URL -->
-<link rel="modulepreload" href="https://pulgasari.github.io/aufbau/js/index.js">
+<link rel="modulepreload" href="https://code.pulgasari.dev/aufbau/js/index.js">
 ```
 
 Und schärfer: weicht die preloadete URL auch nur minimal von der ab, die der Importmap
@@ -436,10 +436,10 @@ Ein SW, der einen Kit importiert, zahlt diesen Preis dutzendfach pro Sitzung:
 
 ```javascript
 // TEUER: zieht das gesamte framework in jeden SW-start
-import { interceptFetch } from 'https://pulgasari.github.io/aufbau/kits/aufbau.js';
+import { interceptFetch } from 'https://code.pulgasari.dev/aufbau/kits/aufbau.js';
 
 // RICHTIG: nur was der worker braucht
-import { interceptFetch } from 'https://pulgasari.github.io/aufbau/plugins/worker/index.js';
+import { interceptFetch } from 'https://code.pulgasari.dev/aufbau/plugins/worker/index.js';
 ```
 
 Regel: **ein SW importiert das kleinstmögliche Modul, nie einen Kit.**
@@ -917,7 +917,7 @@ node test/graph.mjs --map importmap2.js            # anderen injector gegenpruef
 ```
 
 ```
-using pulgasari.github.io/importmap.js  (43 entries)
+using code.pulgasari.dev/importmap.js  (43 entries)
 
 ENTRY  aufbau/kits/preact-htm.js
 modules 104   bytes 341.0 KB   max depth 5
