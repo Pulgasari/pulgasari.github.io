@@ -1,19 +1,8 @@
 // is.js
 
+import { and, not, or, testRule } from './core.js';
 import * as preds from './predicates.js';
 
-const
-and = (...preds) => v => preds.every(p => p(v)),
-or  = (...preds) => v => preds.some(p => p(v)),
-not = pred       => v => !pred(v);
-
-// pattern matcher
-const testRule = (rule, value) => {
-  if (typeof rule === 'function') return rule(value);
-  if (typeof rule === 'boolean')  return rule;
-  if (Array.isArray(rule))        return rule.every(r => testRule(r, value));
-  return false;
-};
 
 const upperFirst = s => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -38,6 +27,6 @@ isAny = (value, ...list) => list.some(p => !!resolve(p)(value));
 // :::::: EXPORTS
 
 export * from './predicates.js';
-export { and, or, not, testRule };
+//export { and, or, not, testRule };
 export { is, isAny, isNot };
 
