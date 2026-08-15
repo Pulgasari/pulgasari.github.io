@@ -1,6 +1,6 @@
 // predicates.js
 
-import { and, not, or } from './is.js';
+import { and, not, or } from './core.js';
 
 // :::::: FACTORIES
 
