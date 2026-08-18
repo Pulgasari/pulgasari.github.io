@@ -135,7 +135,5 @@ export class Logger {
   }
 }
 
-export const createLogger = (...args) => new Logger (...args);
-
 export default Logger;
 
