@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dev.zugriff.ebooks",
+      "sha256_cert_fingerprints": [
+        "28:38:93:56:9C:97:0D:89:49:D2:55:C9:9F:9F:CC:50:B2:6A:F7:33:6D:5B:55:64:AE:10:10:C2:09:CE:7F:04"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dev.zugriff.notes",
+      "sha256_cert_fingerprints": [
+        "BB:5C:9C:B1:BA:D9:EF:7B:3D:13:FD:52:16:B2:48:8B:65:7F:66:6F:DE:F8:22:26:E6:FB:78:0A:66:7D:72:2D"
+      ]
+    }
+  }
+]
