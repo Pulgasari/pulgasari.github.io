@@ -1,3 +1,14 @@
+#
+
+```javascript
+const matchDisplayMode = value => window.matchMedia?.(`(display-mode: ${value})`)?.matches;      
+
+const isStandalone = () => isClient()
+                        && matchDisplayMode('standalone')
+                        || matchDisplayMode('window-controls-overlay')
+                        || window.navigator?.standalone === true;
+```
+
 # todo
 
 - [ ] `@aufbau/stylesheet` tunen
