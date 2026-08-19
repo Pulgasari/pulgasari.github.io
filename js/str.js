@@ -41,8 +41,10 @@ export const
 startsWith = (value, ...prefixes) => prefixes.some((prefix) => String(value ?? '').startsWith(prefix)),
   endsWith = (value, ...suffixes) => suffixes.some((suffix) => String(value ?? '').endsWith(suffix));
 
-const utils = {
+const methods = {
   capitalize,
+  endsWith,
+  startsWith,
   toLowerCase,
   toUpperCase,
   toCamelCase,
@@ -56,8 +58,6 @@ const utils = {
   trimEnd,
   trimStart,
   unquote,
-  startsWith,
-  endsWith
 };
 
 /**
@@ -65,23 +65,21 @@ const utils = {
  * and direct static str.method(val) execution.
  */
 export const str = Object.assign(
-  function str(val) {
-    const s = String(val ?? '');
+  function str (value) {
+    const string = String(value ?? '');
 
-    return new Proxy({}, {
-      get(_, prop) {
-        if (prop === 'toString' || prop === 'valueOf') {
-          return () => s;
-        }
-        if (prop in utils) {
-          return (...args) => utils[prop](s, ...args);
-        }
-        const nativeAttr = s[prop];
-        return typeof nativeAttr === 'function' ? nativeAttr.bind(s) : nativeAttr;
+    return new Proxy ({}, {
+      get (_, prop) {
+        if (prop === 'toString') return () => string;
+        if (prop === 'valueOf')  return () => string;
+        if (prop in methods)     return (...args) => methods[prop](string, ...args);
+        
+        const nativeAttribute = string[prop];
+        return typeof nativeAttribute === 'function' ? nativeAttribute.bind(string) : nativeAttribute;
       }
     });
   },
-  utils
+  methods
 );
 
 export default str;
