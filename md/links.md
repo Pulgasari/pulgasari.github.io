@@ -5,4 +5,6 @@
 
 ## misc
 - <https://morphicons.com>
+- https://skypack.dev
+- https://svgjs.dev
 - <https://usefoley.dev>
