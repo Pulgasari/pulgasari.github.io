@@ -39,6 +39,14 @@ const isStandalone = () => isClient()
 
 ## zugriff apps
 
+- userconfig-component schaffen, weil in irgendner form werden settings ja alle apps haben, die sich zwar tendenziell nur bzgl aspekten der optik-einstellungen inhaltlich überschneiden werden, aber
+
+### ebooks
+
+
+- festes app-menü unten:
+  - lib(rary)
+  - 
 - meta-data:
   - title
   - author
@@ -48,7 +56,7 @@ const isStandalone = () => isClient()
   - kategorie
   - tags
 
-### ebooks
+
 
 # notizen
 
