@@ -37,6 +37,19 @@ const isStandalone = () => isClient()
 - neues element: `<aufbau-modal>`
 - überlegung: so elemente wie toast oder modal brauchen ja meist (also kenn ichs von preact, svelte und co) so ne art ankerpunkt im dom, falls das bei webcomponents auch so ist, wäre vllt ne überlegung ob das quasi <aufbau-config> automatisch sein könnte?
 
+## zugriff apps
+
+- meta-data:
+  - title
+  - author
+  - jahr
+  - verlag
+  - serie/reihe
+  - kategorie
+  - tags
+
+### ebooks
+
 # notizen
 
 ```
