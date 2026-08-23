@@ -14,6 +14,11 @@ const isStandalone = () => isClient()
 - [ ] `@aufbau/stylesheet` tunen
 - [ ] optimistic ui stuff in aufbau
 
+## @bunker
+
+- [ ] `@bunker/memo`
+- [ ] `@bunker/opfs`
+
 ## cache + store
 
 - `@aufbau/store` erschaffen
