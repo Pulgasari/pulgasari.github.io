@@ -5,8 +5,9 @@ import { and, not, or } from './core.js';
 // :::::: FACTORIES
 
 const
-isTypeOf  = type   => v => typeof v === type,
-isMatchOf = regexp => v => typeof v === 'string' && regexp.test(v),
+isInstanceOf = constructor => v => v instanceof constructor,
+isMatchOf    = regexp      => v => typeof v === 'string' && regexp.test(v),
+isTypeOf     = type        => v => typeof v === type,
 
 // property probe. reads a missing prop as undefined, never throws.
 // with values: matches any of them. without: presence check.
@@ -25,10 +26,10 @@ const has = new Proxy({}, {
 // :::::: PRIMITIVES
 
 export const
-isString    = isTypeOf('string'),
 isBigInt    = isTypeOf('bigint'),
 isBoolean   = isTypeOf('boolean'),
 isFn        = isTypeOf('function'),
+isString    = isTypeOf('string'),
 isSymbol    = isTypeOf('symbol'),
 isUndefined = v => v === undefined,
 isNull      = v => v === null,
@@ -83,19 +84,19 @@ isCollection    = and(isIterable, not(isString)),   // spreadable without fallin
 
 // :::::: DOM & ENVIRONMENT
 
-isNode       = has.nodeType(),
-isElement    = has.nodeType(1),
 isDocument   = has.nodeType(9),
-isFragment   = has.nodeType(11),
+isElement    = has.nodeType(1),
 isElementish = has.nodeType(1, 9, 11),
+isFragment   = has.nodeType(11),
+isNode       = has.nodeType(),
 isWindow     = v => v != null && v === v.window,
 isCanvas     = and(isElement, has.tagName('CANVAS')),
 
 isRealNodeList = v => Object.prototype.toString.call(v) === '[object NodeList]',
 isNodeList     = v => isRealNodeList(v) || (isArray(v) && v.every(isNode)),
 
-isInternalUrl = v => isString(v) && typeof window !== 'undefined' &&  v.startsWith(window.location.origin),
 isExternalUrl = v => isString(v) && typeof window !== 'undefined' && !v.startsWith(window.location.origin),
+isInternalUrl = v => isString(v) && typeof window !== 'undefined' &&  v.startsWith(window.location.origin),
 
 // :::::: DOM SHAPES
 
@@ -109,11 +110,11 @@ isMultiSelect = and(has.tagName('SELECT'), v => v.multiple === true),
 // :::::: EMPTINESS & LOGIC
 
 isBlank       = v => isNullish(v) || v === '',
-isEmptyString = and(isString, v => v.length === 0),
-isEmptyArray  = and(isArray, v => v.length === 0),
-isEmptyMap    = and(isMap, v => v.size === 0),
-isEmptySet    = and(isSet, v => v.size === 0),
-isEmptyObject = and(isPlainObject, v => Object.keys(v).length === 0),
+isEmptyString = and (isString     , v => v.length === 0),
+isEmptyArray  = and (isArray      , v => v.length === 0),
+isEmptyMap    = and (isMap        , v => v.size   === 0),
+isEmptySet    = and (isSet        , v => v.size   === 0),
+isEmptyObject = and (isPlainObject, v => Object.keys(v).length === 0),
 
 // nullish counts as empty, 0 and false do not.
 isEmpty  = or(isNullish, isEmptyString, isEmptyArray, isEmptyMap, isEmptySet, isEmptyObject),
