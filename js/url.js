@@ -1,64 +1,9 @@
 // url.js
 
-import { isArray, isNullish, isString, isUrl } from './is.js';
-import { arrayfied, toSlug } from './util.js';
+
 
 // helper
 let _slug = v => arrayfied(v).flatMap( x => isArray(x) ? x.map(toSlug) : toSlug(x) );
-
-class Url {
-  constructor (input) {
-    this.instance = new URL( input?.toString() ?? window.location.href, window.location.origin );
-    this._initHandlers();
-  }
-
-  _initHandlers(){
-    //
-    let T = this, 
-        I = T.instance, 
-       PN = I.pathname,
-       SP = I.searchParams,
-        P = T.path,
-        S = P.segments,
-        Q = T.query;
-    // PATH
-    this.path = {
-      get segments()    { return PN.split('/').filter(Boolean); },
-      set segments(arr) { PN = `/${arr.join('/')}`; },
-      append   : (...a) => { S = [ ...S, ..._slug(a) ]; return P; },
-      prepend  : (...a) => { S = [ ..._slug(a), ...S ]; return P; },
-      add      : (...a) => (a.forEach( v => !P.has(v) && P.append(v) ), P),
-      remove   : (...a) => { S = S.filter( s => !a.map(toSlug).includes(s) ); return P; },
-      has      : v  => S.includes(toSlug(v)),
-      toArray  : () => S,
-      toString : () => PN,
-    };
-    // QUERY (proxyfied URL.searchParams)
-    this.query = new Proxy({
-      get      : k     => SP.get(k),
-      set      : (k,v) => { isNullish(v) ? SP.delete(k) : SP.set(k,v); return Q; },
-      clear    : ()    => { I.search = ''; return Q; },
-      delete   : k     => (SP.delete(k), Q),
-      toObject : ()    => Object.fromEntries(SP),
-      toString : ()    => I.search,
-    },{
-      get : (t,k)   => (k in t) ? t[k] : t.get(k),
-      set : (t,k,v) => (t.set(k,v), true)
-    });
-  }
-
-  get full() { return this.instance.href; }
-  clone()    { return new Url(this.full); }
-  toString() { return this.full; }
-};
-
-// EXPORT
-export let url = input => new Url(input);
-
-
-
-
-
 
 
 // url.js
@@ -70,15 +15,15 @@ export let url = input => new Url(input);
 //   u.query.set('page', null);     // -> removes ?page
 //   u.toString();                  // -> https://example.com/blog/my-post
 
-import { isNullish } from './is.js';
-import { arrayfied, toSlug } from './util.js';
+import { isArray, isNullish, isString, isSymbol, isUrl } from './is.js';
+import { arrayfied } from './util.js';
+import str from './str.js';
 
 /** Flattens mixed args (values, arrays of values) into a flat list of slugs. */
-const toSlugs = (values) => arrayfied(values).flat(Infinity).map(toSlug);
+const toSlugs = (values) => arrayfied(values).flat(Infinity).map(str.toSlugCase);
 
 /** Current document location, or undefined outside the browser. */
-const currentHref = () =>
-  typeof window === 'undefined' ? undefined : window.location.href;
+const currentHref = () => typeof window === 'undefined' ? undefined : window.location.href;
 
 /**
  * Path segment handling.
@@ -87,7 +32,7 @@ const currentHref = () =>
 class UrlPath {
   #url;
 
-  constructor(url) {
+  constructor (url) {
     this.#url = url;
   }
 
@@ -131,17 +76,9 @@ class UrlPath {
     return this;
   }
 
-  has(value) {
-    return this.segments.includes(toSlug(value));
-  }
-
-  toArray() {
-    return this.segments;
-  }
-
-  toString() {
-    return this.#url.pathname;
-  }
+  has (value) { return this.segments.includes(toSlug(value)); }
+  toArray  () { return this.segments; }
+  toString () { return this.#url.pathname; }
 }
 
 /**
@@ -172,7 +109,7 @@ const createQueryView = (url) => {
     },
 
     set(_target, key, value) {
-      if (typeof key === 'symbol') return false;
+      if (isSymbol(key)) return false;
 
       if (isNullish(value)) params().delete(key);
       else params().set(key, String(value));
@@ -180,7 +117,7 @@ const createQueryView = (url) => {
       return true;
     },
 
-    has: (_target, key) => typeof key !== 'symbol' && params().has(key),
+    has: (_target, key) => !isSymbol(key) && params().has(key),
 
     deleteProperty(_target, key) {
       params().delete(key);
@@ -190,7 +127,7 @@ const createQueryView = (url) => {
     ownKeys: () => [...new Set(params().keys())],
 
     getOwnPropertyDescriptor: (_target, key) =>
-      typeof key !== 'symbol' && params().has(key)
+      !isSymbol(key) && params().has(key)
         ? {
             value: params().get(key),
             writable: true,
@@ -210,32 +147,18 @@ class UrlQuery {
   #url;
   #values;
 
-  constructor(url) {
+  constructor (url) {
     this.#url = url;
   }
 
-  /** @returns {URLSearchParams} live params of the underlying URL */
-  get params() {
-    return this.#url.searchParams;
-  }
+  get params () { return this.#url.searchParams; } // live params of the underlying URL
+  get values () { return (this.#values ??= createQueryView(this.#url)); } // collision-free property view      
+  
+  has    (key) { return this.params.has(key); }
+  get    (key) { return this.params.get(key); }
+  getAll (key) { return this.params.getAll(key); } // all values of a repeated parameter      
 
-  /** @returns {Record<string, string>} collision-free property view */
-  get values() {
-    return (this.#values ??= createQueryView(this.#url));
-  }
-
-  get(key) {
-    return this.params.get(key);
-  }
-
-  /** @returns {string[]} all values of a repeated parameter */
-  getAll(key) {
-    return this.params.getAll(key);
-  }
-
-  has(key) {
-    return this.params.has(key);
-  }
+  
 
   /** Sets a parameter. A nullish value removes it. */
   set(key, value) {
@@ -281,39 +204,21 @@ class Url {
    * @param {string|URL} [base] base for relative inputs, defaults to the
    *        current document location
    */
-  constructor(input, base = currentHref()) {
+  constructor (input, base = currentHref()) {
     this.instance = new URL(input?.toString() ?? base, base);
-    this.path     = new UrlPath(this.instance);
-    this.query    = new UrlQuery(this.instance);
+    this.path     = new UrlPath  (this.instance);
+    this.query    = new UrlQuery (this.instance);
   }
 
-  get full() {
-    return this.instance.href;
-  }
+  get full   () { return this.instance.href; }
+  get hash   () { return this.instance.hash; }
+  get origin () { return this.instance.origin; }
 
-  set full(value) {
-    this.instance.href = new URL(value, this.instance).href;
-  }
+  set full (value) { this.instance.href = new URL(value, this.instance).href; }
+  set hash (value) { this.instance.hash = value; }
 
-  get origin() {
-    return this.instance.origin;
-  }
-
-  get hash() {
-    return this.instance.hash;
-  }
-
-  set hash (value) {
-    this.instance.hash = value;
-  }
-
-  clone() {
-    return new Url(this.full);
-  }
-
-  toString() {
-    return this.full;
-  }
+  clone    () { return new Url(this.full); }
+  toString () { return this.full; }
 }
 
 export { Url };
