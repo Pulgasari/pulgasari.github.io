@@ -22,6 +22,7 @@ Manrope
 Manufacturing Consent
 Montserrat
 Noto Sans
+Quicksand
 roboto condensed
 roboto flex
 roboto mono
