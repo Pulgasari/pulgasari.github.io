@@ -10,7 +10,9 @@ const isStandalone = () => isClient()
 ```
 
 ```md
+Alkatra
 Caveat
+Gluten
 Grenze
 Grenze Gotisch
 JetBrains Mono
@@ -24,6 +26,7 @@ roboto mono
 roboto serif
 roboto slab
 Rubik
+Sour Gummy
 Texturina
 
 -- not variable
