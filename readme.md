@@ -48,6 +48,12 @@ UnifrakturMaguntia
 - [ ] `@aufbau/stylesheet` tunen
 - [ ] optimistic ui stuff in aufbau
 
+## @aufbau/components
+
+```html
+<aufbau-fontpicker>
+```
+
 ## @bunker
 
 - [ ] `@bunker/memo`
