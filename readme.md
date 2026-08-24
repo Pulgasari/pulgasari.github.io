@@ -13,6 +13,7 @@ const isStandalone = () => isClient()
 Grenze
 Grenze Gotisch
 Manrope
+Manufacturing Consent
 Montserrat
 Noto Sans
 roboto condensed
@@ -23,6 +24,12 @@ roboto slab
 Rubik
 Texturina
 
+-- not variable
+Germania One
+Nova Cut
+Nova Flat
+Nova Oval
+Nova Round
 UnifrakturCook
 UnifrakturMaguntia
 ```
