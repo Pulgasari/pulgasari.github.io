@@ -9,6 +9,24 @@ const isStandalone = () => isClient()
                         || window.navigator?.standalone === true;
 ```
 
+```md
+Grenze
+Grenze Gotisch
+Manrope
+Montserrat
+Noto Sans
+roboto condensed
+roboto flex
+roboto mono
+roboto serif
+roboto slab
+Rubik
+Texturina
+
+UnifrakturCook
+UnifrakturMaguntia
+```
+
 # todo
 
 - [ ] `@aufbau/stylesheet` tunen
