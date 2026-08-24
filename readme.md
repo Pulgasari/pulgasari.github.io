@@ -10,8 +10,10 @@ const isStandalone = () => isClient()
 ```
 
 ```md
+Caveat
 Grenze
 Grenze Gotisch
+JetBrains Mono
 Manrope
 Manufacturing Consent
 Montserrat
