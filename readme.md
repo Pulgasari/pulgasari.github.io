@@ -14,6 +14,7 @@ Alkatra
 Caveat
 Geist Mono
 Gluten
+Google Sans Flex
 Grenze
 Grenze Gotisch
 JetBrains Mono
