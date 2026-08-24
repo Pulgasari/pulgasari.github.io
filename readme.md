@@ -12,10 +12,12 @@ const isStandalone = () => isClient()
 ```md
 Alkatra
 Caveat
+Geist Mono
 Gluten
 Grenze
 Grenze Gotisch
 JetBrains Mono
+Lexend
 Manrope
 Manufacturing Consent
 Montserrat
