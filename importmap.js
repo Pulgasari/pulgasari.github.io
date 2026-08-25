@@ -59,6 +59,7 @@ const map = { imports: {
   "@pulgasari/array"  : "./js/array.js",
   "@pulgasari/is"     : "./js/is.js",
   "@pulgasari/logger" : "./js/logger.js",
+  "@pulgasari/obj"    : "./js/obj.js",
   "@pulgasari/random" : "./js/random.js",
   "@pulgasari/str"    : "./js/str.js",
   "@pulgasari/timing" : "./js/timing.js",
