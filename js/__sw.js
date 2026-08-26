@@ -1,3 +1,7 @@
+/*
+https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9
+*/
+
 navigator.serviceWorker.register("/sw.js");
 
 // :::::: CLIENT SIDE (MAIN THREAD) ::::::::::::::::::::::::::::::::                               
@@ -9,8 +13,18 @@ const worker = {};
 worker.on          =              sw.addEventListener;
 worker.sendMessage = (message) => sw.controller.postMessage(message);
 
+/*
 // receive message from sw
-//worker.on('message',(message)=>{});
+worker.on('message',(message)=>{});
+
+//
+document.querySelector( '.fetch-content' ).addEventListener( 'click', () => {
+  window.caches.open( myCache )
+    .then( cache => cache.addAll( content ) )
+    .then( () => alert( 'content is now available offline' ) )
+    .catch( () => alert( 'oh noes! something went wrong' ) );
+});
+*/
 
 // :::::: SERVICE WORKER SIDE ::::::::::::::::::::::::::::::::::::::
 
