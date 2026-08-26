@@ -1,6 +1,8 @@
+navigator.serviceWorker.register("/sw.js");
+
 // :::::: CLIENT SIDE (MAIN THREAD) ::::::::::::::::::::::::::::::::                               
 
-const sw = navigator.serviceWorker.controller;
+const sw = navigator.serviceWorker;
 
 const worker = {};
 
