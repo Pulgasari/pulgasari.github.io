@@ -63,6 +63,26 @@ a service worker controlling a page can still intercept any network requests, in
 - if you pass your path like “/js/sw.js”, service worker just handle the requests for “/js” underneath path.
 - if you want to sw will handle all your requests, you should put it in root of your project.
 
+### 3 LifeCycle Of SW
+
+if you change your sw even with a code comment, browser will think it is a new service worker
+
+- **installing:** first time browser see a service-worker or an updated sw.
+- **waiting:** an old service worker exsist, your new one has to wait, until a user start navigaton event, then old one die and new one comes into play.
+- **active:** your sw is ready to use.
+
+you can only have 1 instance of sw at given time.
+
+#### client code
+
+```javascript
+var swReges = await navigator.serviceWoker.register("/sw.js",{})
+var SWState = swReges.installing | swReges.waiting | swReges.active;
+navigator.serviceWorker.addEventListener("controllerchange",function(){
+})
+// controllerchange event means a new sw take controll of the page.
+```
+
 ---
 
 # ...
