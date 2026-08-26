@@ -4,6 +4,14 @@
 
 - <https://web.dev/articles/es-modules-in-sw?hl=de>
 
+##
+
+### Web Worker
+- is special kind of *service worker* to do heavy Lifting jobs in the background, in its own separate thread.
+- is a js file running on its own thread dedicated to the tab that user opend,
+- you can have a *shared worker* which is a thread that run worker and shared it with multiple tabs of your web page.
+- with closing tab *web worker* get destroyed , but *service worker* still alive.
+
 ## ...
 
 Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des Browsers unter der jeweiligen Domain (Origin) abgelegt. Das hat direkte Konsequenzen für die Fragen:
