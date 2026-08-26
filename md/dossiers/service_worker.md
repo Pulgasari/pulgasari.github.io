@@ -2,7 +2,8 @@
 
 ## Links
 
-- <https://web.dev/articles/es-modules-in-sw?hl=de>
+- https://web.dev/articles/es-modules-in-sw?hl=de
+- https://dev.to/mvahedii/service-workers-deep-dive-what-actually-happens-in-the-browser-e1l
 
 ---
 
