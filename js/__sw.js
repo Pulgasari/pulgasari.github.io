@@ -58,7 +58,9 @@ on('install'  , onInstall);
 
 
 
-
+/*
+self.importScripts('foo.js')
+*/
 
 
 
