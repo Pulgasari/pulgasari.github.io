@@ -42,7 +42,9 @@ function cacheStaticFiles () {
 
 // ::: Event Handlers
 
-function onActivate (event) {}
+function onActivate (event) {
+  self.clients.claim();
+}
 
 function onInstall  (event) {
   // install instantly (no refresh needed)
