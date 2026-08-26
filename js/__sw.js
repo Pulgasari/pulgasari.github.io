@@ -45,6 +45,9 @@ function cacheStaticFiles () {
 function onActivate (event) {}
 
 function onInstall  (event) {
+  // install instantly (no refresh needed)
+  self.skipWaiting();
+  //
   event.waitUntil(cacheStaticFiles);
 }
 
