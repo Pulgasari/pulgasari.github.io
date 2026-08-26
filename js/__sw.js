@@ -12,4 +12,11 @@ worker.sendMessage = (message) => sw.controller.postMessage(message);
 
 // :::::: SERVICE WORKER SIDE ::::::::::::::::::::::::::::::::::::::
 
+const on = self.addEventListener;
+
+function onInstall  (event) {}
+function onActivate (event) {}
+
+on('activate' , onActivate);
+on('install'  , onInstall);
 
