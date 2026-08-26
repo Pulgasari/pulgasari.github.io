@@ -83,6 +83,32 @@ navigator.serviceWorker.addEventListener("controllerchange",function(){
 // controllerchange event means a new sw take controll of the page.
 ```
 
+#### sw code
+
+```javascript
+const version = 1;
+self.addEventListener('install', function onInstall(event){})
+self.addEventListener('activate', function onActivate(event){})
+```
+
+##### `skipWainting()`
+
+you can skip waiting phase using self.skipWaiting() on install event, or ask the user to refresh the page or show a pop to user and refresh the pageyour self.
+
+##### `waitUntil()`
+
+after browser run your sw code it will shut down your sw, the way you tell the browser as strong request is event.waitUntil() in activate phase which recives a promise, for example if user open your website and leave it right a way you dont want cache thing partially, with this your asking browser to give you a time to do your work in the background.
+
+##### `client.claim()`
+
+if you use skipWaiting and there are 3 open tabs of your website and user open a new tab with new sw, it doesnt mean we killed the old sw right a way, we have to tell to those 3 tabs a new service worker controlls you now, with adding await clinets.claim() in activate phase.
+
+### Communication To SW
+
+some reason to talk with sw
+
+sw dont have access to localstorage or cokies you can use navigator.isonLine in service work, but not the eventListner offline , online
+
 ---
 
 # ...
