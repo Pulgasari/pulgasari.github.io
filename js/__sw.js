@@ -3,14 +3,13 @@ https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9
 https://developer.chrome.com/docs/workbox
 */
 
-navigator.serviceWorker.register("/sw.js");
-
 // :::::: CLIENT SIDE (MAIN THREAD) ::::::::::::::::::::::::::::::::                               
 
 const sw = navigator.serviceWorker;
 
-const worker = {};
+sw.register('/sw.js');
 
+const worker = {};
 worker.on          =              sw.addEventListener;
 worker.sendMessage = (message) => sw.controller.postMessage(message);
 
@@ -32,7 +31,7 @@ document.querySelector( '.fetch-content' ).addEventListener( 'click', () => {
 // ::: Constants
 
 var version = '1';
-var cache   = 'my-chache-name-${version}'
+var CACHE_NAME   = 'my-chache-name-${version}'
 
 // ::: Cache
 
@@ -60,7 +59,7 @@ function isLocalURL (sth) {
 }
 
 function cacheStaticFiles () {
-  caches.open("app-shell-v1").then((cache) => {
+  caches.open(CACHE_NAME).then((cache) => {
     return cache.addAll(urlsToCache);
   });
 }
@@ -71,6 +70,16 @@ function onActivate (event) {
   self.clients.claim();
 }
 
+function onError (error) {
+
+}
+
+function onFetch (event) {
+  if (isLocalURL(event)) {
+    //event.respondWith(caches.match('other.jpg'));
+  }
+}
+
 function onInstall  (event) {
   // install instantly (no refresh needed)
   self.skipWaiting();
@@ -78,19 +87,17 @@ function onInstall  (event) {
   event.waitUntil(cacheStaticFiles);
 }
 
-function onFetch (event) {
-  if (isLocalURL(event)) {
-    //event.respondWith(caches.match('other.jpg'));
-  }
-};
+function onSync (event) {
+
+}
 
 // :::::: Event Listeners
 
-on('activate' , onActivate);
-on('fetch'    , onFetch);
-on('install'  , onInstall);
-
-
+on('activate'     , onActivate);
+on('error'        , onError);
+on('fetch'        , onFetch);
+on('install'      , onInstall);
+on('periodicsync' , onSync);
 
 /*
 self.importScripts('foo.js')
