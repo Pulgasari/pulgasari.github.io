@@ -5,6 +5,9 @@
 - https://web.dev/articles/es-modules-in-sw?hl=de
 - https://dev.to/mvahedii/service-workers-deep-dive-what-actually-happens-in-the-browser-e1l
 - https://gomakethings.com/articles/how-to-immediately-activate-a-service-worker-with-vanilla-js/
+- https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9
+- https://www.w3.org/TR/service-workers/#service-worker-concept
+- https://developer.chrome.com/docs/workbox
 
 ---
 
