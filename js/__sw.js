@@ -48,6 +48,7 @@ function onInstall  (event) {
   event.waitUntil(cacheStaticFiles);
 }
 
+// :::::: Event Listeners
 
 on('activate' , onActivate);
 on('install'  , onInstall);
