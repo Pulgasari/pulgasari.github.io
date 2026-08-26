@@ -1,18 +1,51 @@
-# Service Worker
+# Workers
 
 ## Links
 
 - <https://web.dev/articles/es-modules-in-sw?hl=de>
 
-##
+---
 
-### Web Worker
+# Web Worker
+
 - is special kind of *service worker* to do heavy Lifting jobs in the background, in its own separate thread.
 - is a js file running on its own thread dedicated to the tab that user opend,
 - you can have a *shared worker* which is a thread that run worker and shared it with multiple tabs of your web page.
 - with closing tab *web worker* get destroyed , but *service worker* still alive.
 
-## ...
+### create worker
+
+```javascript
+var worker = new Worker('path to your worker file')
+worker.addEventListener('message, function onMessage(event) {
+  console.log(event.data)
+});
+```
+
+### communication with web-worker
+
+#### from main thread to worker thread
+
+```javascript
+worker.postMessage('hello from main');
+```
+
+#### from worker thread to main thread
+
+```javascript
+self.onmessage = function onMessage(){
+  worker.postMessage('hello from worker')
+};
+```
+
+### stop web-worker
+```javascript
+worker.terminate();
+```
+
+---
+
+# ...
 
 Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des Browsers unter der jeweiligen Domain (Origin) abgelegt. Das hat direkte Konsequenzen für die Fragen:
 
