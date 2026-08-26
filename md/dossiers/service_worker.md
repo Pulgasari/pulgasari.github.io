@@ -56,7 +56,12 @@ the key thing to keep i mind is in web apps we are dealing with 2 servers. first
 
 if you are request an image from another server that server had to enable cors. By default, service worker will not intercept or cache any cross-origin traffic, like HTTP API requests or images loaded from a different domain.
 
-a good resource: https://serviceworker.rs
+## Register SW
+
+a service worker controlling a page can still intercept any network requests, including those for cross-origin assets. Scope limits which pages are controlled by a service worker, not which requests it can intercept.
+
+- if you pass your path like “/js/sw.js”, service worker just handle the requests for “/js” underneath path.
+- if you want to sw will handle all your requests, you should put it in root of your project.
 
 ---
 
