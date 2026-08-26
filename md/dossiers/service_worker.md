@@ -45,6 +45,21 @@ worker.terminate();
 
 ---
 
+# Service Worker
+
+the key thing to keep i mind is in web apps we are dealing with 2 servers. first one is the server or cdn that serve our static content like image/css/js and others, the second one is api server that we get data from it.
+
+- all the network request will funnel thorough service worker.
+- a type of JavaScript file that is run in the background by the browser
+- it is a proxy for your web app network.
+- able to intercept network requests, cache or retrieve resources from the cache
+
+if you are request an image from another server that server had to enable cors. By default, service worker will not intercept or cache any cross-origin traffic, like HTTP API requests or images loaded from a different domain.
+
+a good resource: https://serviceworker.rs
+
+---
+
 # ...
 
 Ein Service Worker wird nach der ersten Registrierung dauerhaft im Speicher des Browsers unter der jeweiligen Domain (Origin) abgelegt. Das hat direkte Konsequenzen für die Fragen:
