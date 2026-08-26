@@ -32,11 +32,27 @@ var urlsToCache = [
 
 const on = self.addEventListener;
 
-function onInstall  (event) {}
+// ::: Methods
+
+function cacheStaticFiles () {
+  caches.open("app-shell-v1").then((cache) => {
+    return cache.addAll(urlsToCache);
+  });
+}
+
+// ::: Event Handlers
+
 function onActivate (event) {}
+
+function onInstall  (event) {
+  event.waitUntil(cacheStaticFiles);
+}
+
 
 on('activate' , onActivate);
 on('install'  , onInstall);
+
+
 
 
 
