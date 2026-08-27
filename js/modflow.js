@@ -1,10 +1,10 @@
 // modflow.js
 
-class ModflowController {
+class Modflow {
   cache       = new Map;
   definitions = new Map;
 
-  define(config) {
+  define (config) {
     Object.entries(config).forEach(([name, options]) => {
       // normalize string input to object configuration
       const opts = typeof options === 'string' ? { url: options } : options;
@@ -92,7 +92,7 @@ class ModflowController {
 }
 
 // global init
-window.mod = new ModflowController.createProxy();
+window.mod = new Modflow.createProxy();
 
 /*
 // config definition at top-level
