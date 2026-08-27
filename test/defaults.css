@@ -1,4 +1,5 @@
-/*
+/* GOAL:
+
 tiny   = 0.25rem
 small  = 0.50rem
 mormal = 1.00rem
@@ -9,11 +10,25 @@ true  = normal = 1.00rem
 false = 0
 */
 
+/* construction */
+
 * {
     gap : var(--gap, 0);
   --gap : 0;
 }
 
+/* evtl. irgendwie via style queries konstruierbar ?
+
+@container style(--theme: dark) {
+  .box {
+    border: 1px solid #aaa;
+  }
+}
+
+*/
+
+
+/* usage */
 body {
   --gap: large;
 }
