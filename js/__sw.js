@@ -6,7 +6,9 @@
 
 const sw = navigator.serviceWorker;
 
-sw.register('/sw.js');
+sw.register('/sw.js');                      // classic
+sw.register('/sw.js', { type: 'classic' }); // classic
+sw.register('/sw.js', { type: 'module'  }); // module
 
 const worker = {};
 worker.on          =              sw.addEventListener;
