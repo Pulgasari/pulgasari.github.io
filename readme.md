@@ -109,8 +109,9 @@ UnifrakturMaguntia
 abschrift, anschein,
 durchblick,
 einband, erleuchtung,
+faulpelz,
 geleitwort,
-handbuch,
+handbuch, huckepack,
 leitbild, leitfaden,
 nachweis,
 quelltext,
@@ -118,7 +119,10 @@ regelwerk,
 schimmer, sinnbild, struktur,
 überblick, urbild, ursprung,
 wegweiser,
-zugriff
+```
+
+```
+phantom
 ```
 
 ```
