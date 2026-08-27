@@ -8,17 +8,20 @@ class Modflow {
     Object.entries(config).forEach(([name, options]) => {
       // normalize string input to object configuration
       const opts = typeof options === 'string' ? { url: options } : options;
-      const strategy = opts.strategy || (opts.delay ? 'delayed' : 'eager');
+      const flow = opts.flow ?? 'eager';
 
-      this.definitions.set(name, { ...opts, strategy });
+      this.definitions.set (name, { ...opts, flow });
 
       // handle background strategies
-      if (opts.delay) {
-        setTimeout(() => this.#load(name), opts.delay);
-      } else if (strategy === 'idle') {
-        requestIdleCallback?.(() => this.#load(name));
-        ??        setTimeout (() => this.#load(name), 200);
-      } else if (strategy === 'eager') {
+      if (typeof flow === 'number') {
+        setTimeout(() => this.#load(name), strategy);
+      } else if (flow === 'idle') {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => this.#load(name));
+        } else {
+          setTimeout(() => this.#load(name), 200);
+        }
+      } else if (flow === 'eager') {
         this.#load(name);
       }
 
@@ -92,16 +95,17 @@ class Modflow {
 }
 
 // global init
-window.mod = new Modflow.createProxy();
+window.mod = new Modflow().createProxy();
 
 /*
 // config definition at top-level
 mod.define({
-  moduleName1 : 'moduleName1',                                // eager load (default)
+  moduleName1 : '/moduleName1.js',                            // eager load (default)
   moduleName2 : { strategy: 'idle', url: '/moduleName2.js' }, // load on browser idle
-  moduleName3 : { delay: 5000,      url: '/moduleName3.js' }, // load after 5000ms
+  moduleName3 : { strategy: 5000,   url: '/moduleName3.js' }, // load after 5000ms delay
   moduleName4 : { strategy: 'lazy', url: '/moduleName4.js' }, // load on first usage
 });
+
 
 // accessing properties creates a proxy stub immediately
 const { doSth } = mod.blabla;
