@@ -37,3 +37,19 @@ section {
   --gap: true;
 }
 
+
+
+/* ANSATZ 1 :: Style Queries */
+
+* { gap: var(--computed-gap, 0); }
+
+@container style(--gap: tiny)   {*{ --computed-gap: 0.25rem; }}
+@container style(--gap: small)  {*{ --computed-gap: 0.50rem; }}
+@container style(--gap: normal) {*{ --computed-gap: 1.00rem; }}
+@container style(--gap: large)  {*{ --computed-gap: 2.00rem; }}
+@container style(--gap: huge)   {*{ --computed-gap: 4.00rem; }}
+
+@container style(--gap: true)  {*{ --computed-gap: 1.00rem; }}
+@container style(--gap: false) {*{ --computed-gap: 0; }}
+
+
