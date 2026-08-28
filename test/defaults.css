@@ -52,4 +52,77 @@ section {
 @container style(--gap: true)  {*{ --computed-gap: 1.00rem; }}
 @container style(--gap: false) {*{ --computed-gap: 0; }}
 
+/* ANSATZ 2 :: */
+
+* {
+  gap: if(
+    style(--gap: tiny)   : 0.25rem;
+    style(--gap: small)  : 0.50rem;
+    style(--gap: normal) or 
+    style(--gap: true)   : 1.00rem;
+    style(--gap: large)  : 2.00rem;
+    style(--gap: huge)   : 4.00rem;
+    else : 0
+  );
+}
+
+/* Usage works directly on the element */
+body {
+  --gap: large; /* Result: gap is 2.00rem on body */
+}
+
+section {
+  --gap: true;  /* Result: gap is 1.00rem on section */
+}
+
+
+
+
+
+
+:root {
+  --space-tiny   : 0.25rem;
+  --space-small  : 0.50rem;
+  --space-normal : 1.00rem;
+  --space-large  : 2.00rem;
+  --space-huge   : 4.00rem;
+}
+
+* {
+
+  gap: if(
+    style(--gap: tiny)   : var(--space-tiny);
+    style(--gap: small)  : var(--space-small);
+    style(--gap: normal) or 
+    style(--gap: true)   : var(--space-normal);
+    style(--gap: large)  : var(--space-large);
+    style(--gap: huge)   : var(--space-huge);
+    else : 0
+  );
+
+  margin: if(
+    style(--gap: tiny)   : var(--space-tiny);
+    style(--gap: small)  : var(--space-small);
+    style(--gap: normal) or 
+    style(--gap: true)   : var(--space-normal);
+    style(--gap: large)  : var(--space-large);
+    style(--gap: huge)   : var(--space-huge);
+    else : 0
+  );
+
+  padding: if(
+    style(--gap: tiny)   : var(--space-tiny);
+    style(--gap: small)  : var(--space-small);
+    style(--gap: normal) or 
+    style(--gap: true)   : var(--space-normal);
+    style(--gap: large)  : var(--space-large);
+    style(--gap: huge)   : var(--space-huge);
+    else : 0
+  );
+
+}
+
+
+
+    
 
