@@ -32,3 +32,50 @@ oder zusammengefasst
   ]
 }
 ```
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<appname>(?!www)[^.]+)\\.zugriff\\.dev"
+        }
+      ],
+      "destination": "/apps/:appname/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<appname>(?!www)[^.]+)\\.zugriff\\.dev"
+        }
+      ],
+      "destination": "/apps/:appname/:path*"
+    },
+    {
+      "source"      : "/:kind(apps2|tools2)(/)?",
+      "destination" : "/index.html?kind=:kind"
+    },
+    {
+      "source"      : "/:kind(apps|tools)(/)?",
+      "destination" : "/:kind.html"
+    },
+    {
+      "source"      :      "/:appname/",
+      "destination" : "/apps/:appname/index.html"
+    },
+    {
+      "source"      :      "/:appname",
+      "destination" : "/apps/:appname/index.html"
+    },
+    {
+      "source"      :      "/:appname/:path*",
+      "destination" : "/apps/:appname/:path*"
+    }
+  ]
+}
+```
