@@ -60,6 +60,7 @@ const map = { imports: {
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
 
   "@pulgasari/array"  : "./js/array.js",
+  "@pulgasari/arr"    : "./js/arr.js",
   "@pulgasari/is"     : "./js/is.js",
   "@pulgasari/logger" : "./js/logger.js",
   "@pulgasari/obj"    : "./js/obj.js",
