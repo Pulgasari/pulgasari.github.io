@@ -5,6 +5,7 @@
 - https://porkbun.com
 
 ## misc
+- https://ejs.co
 - https://morphicons.com
 - https://skypack.dev
 - https://svgjs.dev
