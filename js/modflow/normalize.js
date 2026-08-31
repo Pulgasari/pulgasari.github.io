@@ -61,10 +61,10 @@ export function normalizeDefinition(name, input) {
     flow,
 
     deps,
-    preload    : options.preload ?? false,
+    preload    : options.preload  ?? false,
     prefetch   : options.prefetch ?? false,
 
-    retry      : options.retry ?? 0,
+    retry      : options.retry      ?? 0,
     retryDelay : options.retryDelay ?? 250,
 
     timeout    : options.timeout ?? 0,
