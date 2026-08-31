@@ -1,0 +1,44 @@
+@property --my-color {
+  syntax        : "<color>";
+  initial-value : lch(77% 91 135);
+  inherits      : true;
+}
+
+@keyframes spin-360 { from { rotate: 0deg; } to { rotate: 360deg; } }
+@keyframes spin-720 { from { rotate: 0deg; } to { rotate: 720deg; } }
+
+@keyframes resize-w-50% { to { width: 50%; } }
+
+@keyframes repaint {
+  from,
+  to {
+    --my-color: lch(77% 91 135);
+  }
+
+  50% {
+    --my-color: lch(77% 93 165);
+  }
+}
+
+.blob {
+  background-color: var(--my-color);
+  animation: repaint 2s infinite;
+}
+
+/*
+[animate="spin"] { animation: spin 1s infinite; }
+
+
+dom.get('#sth').style.animation = 'spin 1s infinite';
+
+dom.get('#sth').animate = 'spin 1s infinite';
+
+dom.get('#sth').animate = {
+  keyframes : 'spin',
+  duration  : 1000,
+  infinite  : true,
+};
+*/
+
+dom.get('#sth').rotate('1turn')
+dom.get('#sth').scale('1.5');
