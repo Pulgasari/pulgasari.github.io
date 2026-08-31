@@ -1,5 +1,6 @@
 // Modflow.js
 
+import { createModuleProxy as createProxy } from './proxy.js';
 import { ModflowUnknownModuleError.} from './errors.js';
 import { normalizeDefinition } from './normalize.js';
 import { Scheduler } from './Scheduler.js';
