@@ -5,6 +5,46 @@ import { ModflowUnknownModuleError.} from './errors.js';
 import { normalizeDefinition } from './normalize.js';
 import { Scheduler } from './Scheduler.js';
 
+function normalizeModule(module) {
+
+  if (
+    module &&
+    typeof module === 'object' &&
+    'default' in module &&
+    Object.keys(module).length === 1
+  ) {
+    return module.default;
+  }
+
+  return module;
+}
+
+
+function withTimeout(
+  promise,
+  timeout,
+  name
+) {
+
+  return Promise.race([
+
+    promise,
+
+    new Promise((_, reject) => {
+
+      setTimeout(() => {
+
+        reject(
+          new Error(
+            `Module "${name}" exceeded load timeout of ${timeout}ms.`
+          )
+        );
+
+      }, timeout);
+    })
+  ]);
+}
+
 export class Modflow {
 
   definitions = new Map;
