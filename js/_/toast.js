@@ -1,0 +1,78 @@
+// Helper to extract text from string, Error instance, or object
+
+function extractErrorMessage (val) {
+  if (val instanceof Error) {
+    return val.message;
+  }
+  if (typeof val === 'object' && val !== null && 'message' in val && typeof val.message === 'string') {
+    return val.message;
+  }
+  if (typeof val === 'string') {
+    return val;
+  }
+  return String(val ?? '');
+}
+
+// toast('message')
+function resolveStringShape (input) {
+  if (typeof input === 'string') {
+    return { text: input, type: 'normal' };
+  }
+  return null;
+}
+
+// toast({ text: '...', type: 'success' })
+// toast({ text: '...', type: 'error' })
+// toast({ text: '...', type: 'info' })
+// toast({ text: '...', type: 'warn' })
+function resolveStandardShape (input) {
+  if (typeof input === 'object' && input !== null && 'text' in input) {
+    return {
+      text: input.text,
+      type: input.type || 'normal',
+    };
+  }
+  return null;
+}
+
+// toast({ success: '...' })
+// toast({ error })
+function resolveShorthandShape (input) {
+  if (typeof input === 'object' && input !== null && !('text' in input)) {
+    const types = ['success', 'error', 'info', 'warn', 'normal'];
+
+    for (const type of types) {
+      if (type in input) {
+        return {
+          text: extractErrorMessage(input[type]),
+          type,
+        };
+      }
+    }
+  }
+  return null;
+}
+
+const resolvers = [
+  resolveStringShape,
+  resolveStandardShape,
+  resolveShorthandShape,
+];
+
+// Low-level UI display trigger
+function showToast (config) {
+  console.log(`[${config.type.toUpperCase()}] ${config.text}`);
+}
+
+// Main toast function resolving each shape via independent resolvers
+export function toast(input) {
+  for (const resolve of resolvers) {
+    const config = resolve(input);
+    if (config) {
+      showToast(config);
+      return;
+    }
+  }
+
+  console.warn('Unhandled toast input shape:', input);
+}
