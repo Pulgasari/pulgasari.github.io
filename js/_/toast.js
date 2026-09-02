@@ -37,21 +37,22 @@ function resolveStandardShape (input) {
 
 // toast({ success: '...' })
 // toast({ error })
+// Resolves shorthand shapes dynamically: toast({ success: '...' }), toast({ customType: '...' }), or toast({ error })
 function resolveShorthandShape (input) {
   if (typeof input === 'object' && input !== null && !('text' in input)) {
-    const types = ['success', 'error', 'info', 'warn', 'normal'];
+    const keys = Object.keys(input);
 
-    for (const type of types) {
-      if (type in input) {
-        return {
-          text: extractErrorMessage(input[type]),
-          type,
-        };
-      }
+    if (keys.length > 0) {
+      const type = keys[0];
+      return {
+        text: extractErrorMessage(input[type]),
+        type,
+      };
     }
   }
   return null;
 }
+
 
 const resolvers = [
   resolveStringShape,
@@ -65,7 +66,7 @@ function showToast (config) {
 }
 
 // Main toast function resolving each shape via independent resolvers
-export function toast(input) {
+export function toast (input) {
   for (const resolve of resolvers) {
     const config = resolve(input);
     if (config) {
