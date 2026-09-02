@@ -77,3 +77,22 @@ export function toast (input) {
 
   console.warn('Unhandled toast input shape:', input);
 }
+
+/* :::::: USAGE
+
+// String input
+toast('Standard Nachricht');
+
+// Standard shape
+toast({ text: 'Erfolgreich gespeichert', type: 'success' });
+
+// Shorthand string
+toast({ success: 'Alles erledigt' });
+
+// Catch block with Error instance
+try {
+  throw new Error('Verbindung fehlgeschlagen');
+} catch (error) {
+  toast({ error });
+}
+*/
