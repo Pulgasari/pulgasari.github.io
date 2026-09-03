@@ -54,7 +54,9 @@ const map = { imports: {
   "@cosmonaut/layouter/" : "./cosmonaut/packages/layouter/",
   "@cosmonaut/compiler/" : "./cosmonaut/packages/compiler/",
 
-  "@domina/core" : "./domina/core/index.js",
+  "@domina/core"     : "./domina/core/index.js",
+  "@domina/methods/" : "./domina/core/methods/",
+  "@domina/observer" : "./domina/core/observer.js",
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
