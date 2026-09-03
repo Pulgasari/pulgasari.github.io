@@ -5,11 +5,11 @@
 const createElement = (tag, props) => Object.assign(document.createElement(tag), props);    
 
 const PRELOAD_CRITICAL = [
-  '@bunker/core',
-  '@bunker/policy',
-  '@domina/core',
-  '@aufbau/elements',
-  '@aufbau/kits',
+//  '@bunker/core',
+//  '@bunker/policy',
+//  '@domina/core',
+//  '@aufbau/elements',
+//  '@aufbau/kits',
 ];
 
 const map = { imports: {
