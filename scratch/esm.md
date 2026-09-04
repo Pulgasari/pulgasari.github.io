@@ -320,7 +320,12 @@ class App {
 
 ```javascript
 // usage
-await app.load('player')
+
+app.db     = await app.loadModuleByName('db');
+app.player = await app.loadModuleByName('player');
+
+app.db     = await app.loadModuleByPath('./db.js');
+app.player = await app.loadModuleByPath('./player.js');
 
 app.db     = await app.module.db;
 app.player = await app.module.player;
