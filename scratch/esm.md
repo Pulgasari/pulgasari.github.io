@@ -71,6 +71,29 @@ const components = await loadModules('/.shared/js/components', {
 });
 ```
 
+### loader withvariadic names
+
+```javascript
+export async function modules(basePath, ...names) {
+  const modules = await Promise.all(
+    names.map(async name => {
+      const mod = await import(`${basePath}/${name}.js`);
+      return [name, mod.default ?? mod];
+    })
+  );
+
+  return Object.fromEntries(modules);
+}
+```
+
+```javascript
+const {
+  Foo,
+  Bar,
+  Baz
+} = await modules('/foo', 'Foo', 'Bar', 'Baz');
+```
+
 ---
 
 # müllhalde
