@@ -6,6 +6,11 @@
 - [ ] create `aufbau/elements/AufbauSvg.js`
 - [ ] define default icons 
 
+## `domina`
+
+- [ ] create `domina/methods`
+- [ ] rename methods of name like `verbStylesheet` to `verbStyleSheet`
+
 ## `zugriff`
 
 - [ ] create `zugriff/apps/todo`
@@ -24,3 +29,5 @@
 - modes: `live`, `object`, `use`
 
 ## `zugriff/apps/todo`
+
+adoptStylesheet(css
