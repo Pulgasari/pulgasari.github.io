@@ -4,6 +4,7 @@
 
 - [ ] create `aufbau/elements/AufbauRoot.js`
 - [ ] create `aufbau/elements/AufbauSvg.js`
+- [ ] define default icons 
 
 ## `zugriff`
 
