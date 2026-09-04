@@ -6,7 +6,7 @@
 
 ## custom patterns
 
-###
+### proxy with `import()` on access
 
 ```javascript
 function moduleProxy(path) {
@@ -21,13 +21,14 @@ function moduleProxy(path) {
 usage:
 
 ```javascript
+// usage
 const components = moduleProxy('/.shared/js/components');
 
 const AppSettings = await components.AppSettings;
-const Icon = await components.Icon;
+const Icon        = await components.Icon;
 ```
 
-###
+### loader with `await`
 
 ```javascript
 export async function loadModules (path, names) {
@@ -47,17 +48,7 @@ export async function loadModules (path, names) {
 ```
 
 ```javascript
-const components = await loadModules('/.shared/js/components', {
-  AppSettings: 'AppSettings.js',
-  Icon: 'Icon.js',
-  InstallTip: 'InstallTip.js',
-  FileExplorer: 'FileExplorer.js'
-});
-```
-
-usage:
-
-```javascript
+// usage
 const {
   AppSettings,
   Icon,
@@ -69,6 +60,15 @@ const {
   'InstallTip',
   'FileExplorer'
 ]);
+```
+
+```javascript
+const components = await loadModules('/.shared/js/components', {
+  AppSettings: 'AppSettings.js',
+  Icon: 'Icon.js',
+  InstallTip: 'InstallTip.js',
+  FileExplorer: 'FileExplorer.js'
+});
 ```
 
 ###
