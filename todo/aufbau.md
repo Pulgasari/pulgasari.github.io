@@ -1,6 +1,12 @@
 # todo
 
+mindestens zu bearbeitende files:
+```
 aufbau/runtime/boot.js
+aufbau/runtime/gui.js
+aufbau/runtime/index.js
+
+```
 
 import * as client   from './client.js';
 import * as dom      from '@domina/core';
@@ -8,6 +14,7 @@ import * as webfonts from '@aufbau/webfonts';
 
 aufbau/filters
 aufbau/gestures
+aufbau/import
 aufbau/patterns
 aufbau/webfonts
 
