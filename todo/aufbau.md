@@ -1,11 +1,29 @@
 # todo
 
-mindestens zu bearbeitende files:
+mindestens zu bearbeiten:
+
 ```
 aufbau/runtime/boot.js
 aufbau/runtime/gui.js
 aufbau/runtime/index.js
+```
 
+packages:
+```
+aufbau/filters
+aufbau/gestures
+aufbau/import
+aufbau/patterns
+aufbau/webfonts
+```
+
+importmaps:
+```
+pulgasari.github.io/importmap.js
+zugriff/.shared/js/boot.js
+
+// ergänzungen
+'@aufbau/gestures/'
 ```
 
 import * as client   from './client.js';
