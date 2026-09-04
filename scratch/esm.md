@@ -94,6 +94,39 @@ const {
 } = await modules('/foo', 'Foo', 'Bar', 'Baz');
 ```
 
+### loader with ...
+
+```javascript
+const components = await modules('/.shared/js/components')(
+  'AppSettings',
+  'Icon',
+  'InstallTip',
+  'FileExplorer'
+);
+
+// or
+const {
+  AppSettings,
+  Icon,
+  InstallTip,
+  FileExplorer
+} = await components(
+  'AppSettings',
+  'Icon',
+  'InstallTip',
+  'FileExplorer'
+);
+```
+
+```javascript
+// could be used with everything
+const { foo, bar } = await modules('/js/utils')('foo', 'bar');
+
+const { Button, Dialog } = await modules('/js/ui')('Button', 'Dialog');
+
+const { User, Project } = await modules('/js/models')('User', 'Project');
+```
+
 ---
 
 # müllhalde
