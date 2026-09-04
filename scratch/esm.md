@@ -312,7 +312,7 @@ class App {
   loadModuleByName = (name) => import(this.url(`${name}.js`));
   loadModuleByPath = (path) => import(this.url(path));
 
-  get module = new Proxy({}, {
+  module = new Proxy({}, {
     get: (_, name) => this.loadModuleByName (name);
   });
 }
