@@ -31,3 +31,9 @@
 ## `zugriff/apps/todo`
 
 adoptStylesheet(css
+
+---
+
+# misc
+
+- in `aufbau/elements/AufbauIndex.js` wird `gestures` aus `aufbau/gestures` zwar lazy geloadet, aber abef sollte eigtl die API sein
