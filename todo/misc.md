@@ -37,3 +37,12 @@ adoptStylesheet(css
 # misc
 
 - in `aufbau/elements/AufbauIndex.js` wird `gestures` aus `aufbau/gestures` zwar lazy geloadet, aber abef sollte eigtl die API sein
+
+ich nannte classes an den elements um(evtl mal css-files kontrollieren):
+```
+
+.aufbau-progress-wrapper = .wrap
+> .progress-bar          = .bar
+> .progress-text         = .text
+
+```
