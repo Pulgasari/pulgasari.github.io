@@ -9,39 +9,6 @@ const isStandalone = () => isClient()
                         || window.navigator?.standalone === true;
 ```
 
-```md
-Alkatra
-Caveat
-Geist Mono
-Gluten
-Google Sans Flex
-Grenze
-Grenze Gotisch
-JetBrains Mono
-Lexend
-Manrope
-Manufacturing Consent
-Montserrat
-Noto Sans
-Quicksand
-roboto condensed
-roboto flex
-roboto mono
-roboto serif
-roboto slab
-Rubik
-Sour Gummy
-Texturina
-
--- not variable
-Germania One
-Nova Cut
-Nova Flat
-Nova Oval
-Nova Round
-UnifrakturCook
-UnifrakturMaguntia
-```
 
 # todo
 
@@ -106,11 +73,11 @@ UnifrakturMaguntia
 # notizen
 
 ```
-abschrift, anschein,
+abschrift, anblick, anschein,
 durchblick,
 einband, erleuchtung,
 faulpelz,
-geleitwort,
+geleitwort, gestalt,
 handbuch, huckepack,
 leitbild, leitfaden,
 nachweis,
@@ -119,6 +86,10 @@ regelwerk,
 schimmer, sinnbild, struktur,
 überblick, urbild, ursprung,
 wegweiser,
+```
+
+```
+androgyn
 ```
 
 ```
