@@ -12,4 +12,5 @@
 - https://morphicons.com
 - https://skypack.dev
 - https://svgjs.dev
+- https://tsrx.dev
 - https://usefoley.dev
