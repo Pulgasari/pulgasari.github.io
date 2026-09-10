@@ -60,6 +60,7 @@ const map = { imports: {
   "@domina/element"      : "./domina/packages/element/index.js",
   "@domina/element/lazy" : "./domina/packages/element/lazy.js",
   "@domina/fonts"        : "./domina/packages/fonts/index.js",
+  "@domina/form"         : "./domina/packages/form/index.js",
   "@domina/meta"         : "./domina/packages/meta/index.js",
   "@domina/methods"      : "./domina/packages/methods/index.js",
   "@domina/methods/"     : "./domina/packages/methods/",
