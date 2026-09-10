@@ -56,8 +56,16 @@ const map = { imports: {
 
   "@domina/core"     : "./domina/core/index.js",
   "@domina/core/"    : "./domina/core/",
-  "@domina/methods"  : "./domina/core/methods/index.js",
-  "@domina/methods/" : "./domina/core/methods/",
+
+  "@domina/element"      : "./domina/packages/element/index.js",
+  "@domina/element/lazy" : "./domina/packages/element/lazy.js",
+  "@domina/fonts"        : "./domina/packages/fonts/index.js",
+  "@domina/meta"         : "./domina/packages/meta/index.js",
+  "@domina/methods"      : "./domina/packages/methods/index.js",
+  "@domina/methods/"     : "./domina/packages/methods/",
+  "@domina/observer"     : "./domina/packages/observer/index.js",
+  "@domina/raf"          : "./domina/packages/raf/index.js",
+  "@domina/stylesheets"  : "./domina/packages/stylesheets/index.js",
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
