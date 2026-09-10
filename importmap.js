@@ -66,7 +66,7 @@ const map = { imports: {
   "@domina/methods/"     : "./domina/packages/methods/",
   "@domina/observer"     : "./domina/packages/observer/index.js",
   "@domina/raf"          : "./domina/packages/raf/index.js",
-  "@domina/stylesheets"  : "./domina/packages/stylesheets/index.js",
+  "@domina/stylesheet"   : "./domina/packages/stylesheets/index.js",
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
