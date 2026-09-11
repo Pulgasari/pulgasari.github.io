@@ -25,3 +25,6 @@
 @supports
 @view-transition
 ```
+
+## Links
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade
