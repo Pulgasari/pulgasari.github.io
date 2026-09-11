@@ -53,3 +53,5 @@
 ### Misc
 - https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
 - https://drafts.csswg.org/css-syntax/
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries
