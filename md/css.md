@@ -13,7 +13,7 @@
 @container
 @counter-style
 @font-face
-@font-feature-values
+@font-feature-values // plus @swash, @ornaments, @annotation, @stylistic, @styleset and @character-variant)
 @keyframes
 @layer
 @media
@@ -33,5 +33,15 @@
 
 ## Links
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Namespaces
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Conditional_rules
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Counter_styles
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transitions
+
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
