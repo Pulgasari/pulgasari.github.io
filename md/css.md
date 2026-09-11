@@ -26,5 +26,11 @@
 @view-transition
 ```
 
+```css
+@identifier (RULE) {}
+```
+
 ## Links
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Namespaces
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax
