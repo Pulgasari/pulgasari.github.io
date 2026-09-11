@@ -27,6 +27,7 @@
 ```
 
 ```css
+@identifier (RULE);
 @identifier (RULE) {}
 ```
 
