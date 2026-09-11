@@ -32,16 +32,23 @@
 ```
 
 ## Links
+
+### Guides
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Namespaces
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/At-rules
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Syntax
 
+### Guides
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Conditional_rules
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Counter_styles
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transitions
-
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+
+### Misc
+- https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
+- https://drafts.csswg.org/css-syntax/
