@@ -1,3 +1,4 @@
+// @ts-self-types="./url.d.ts"
 // @pulgasari/url
 //
 // thin, chainable wrapper around the native URL / URLSearchParams API.

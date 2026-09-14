@@ -1,3 +1,4 @@
+// @ts-self-types="./CanonicalMap.d.ts"
 // @pulgasari/obj/CanonicalMap
 
 import { toCamelCase, toConstantCase, toKebabCase, toPascalCase, toSlugCase, toSnakeCase } from '@pulgasari/str';

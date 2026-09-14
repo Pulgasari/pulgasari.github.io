@@ -1,3 +1,4 @@
+// @ts-self-types="./predicates.d.ts"
 // @pulgasari/is/predicates.js
 
 export const

@@ -1,3 +1,4 @@
+// @ts-self-types="./index.d.ts"
 // @pulgasari/logger
 
 const IS_NODE = !!globalThis.process?.versions?.node;

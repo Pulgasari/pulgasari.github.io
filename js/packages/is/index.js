@@ -1,3 +1,4 @@
+// @ts-self-types="./index.d.ts"
 // @pulgasari/is
 
 import * as preds from './predicates.js';

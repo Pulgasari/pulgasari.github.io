@@ -1,3 +1,4 @@
+// @ts-self-types="./index.d.ts"
 // @pulgasari/str
 
 // Helper functions for word splitting and casing
