@@ -1,0 +1,10 @@
+{
+  "workspace": [
+    "./is",
+    "./logger",
+    "./num",
+    "./obj",
+    "./str",
+    "./url"
+  ]
+}

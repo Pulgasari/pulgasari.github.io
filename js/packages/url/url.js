@@ -1,25 +1,19 @@
 // @pulgasari/url
-
-
-
-// helper
-let _slug = v => arrayfied(v).flatMap( x => isArray(x) ? x.map(toSlug) : toSlug(x) );
-
-
-// url.js
 //
-// Thin, chainable wrapper around the native URL / URLSearchParams API.
+// thin, chainable wrapper around the native URL / URLSearchParams API.
 //
 //   const u = url('/blog?page=2');
 //   u.path.append('My Post');      // -> /blog/my-post
 //   u.query.set('page', null);     // -> removes ?page
 //   u.toString();                  // -> https://example.com/blog/my-post
 
-import { isArray, isNullish, isString, isSymbol, isUrl } from './is.js';
-import { arrayfied } from './util.js';
-import str from './str.js';
+import { isNullish, isSymbol } from '@pulgasari/is';
+import str from '@pulgasari/str';
 
-/** Flattens mixed args (values, arrays of values) into a flat list of slugs. */
+// wraps a non-array value into a single-element array, leaves arrays untouched
+const arrayfied = (value) => Array.isArray(value) ? value : [value];
+
+/** flattens mixed args (values, arrays of values) into a flat list of slugs. */
 const toSlugs = (values) => arrayfied(values).flat(Infinity).map(str.toSlugCase);
 
 /** Current document location, or undefined outside the browser. */
@@ -76,7 +70,7 @@ class UrlPath {
     return this;
   }
 
-  has (value) { return this.segments.includes(toSlug(value)); }
+  has (value) { return this.segments.includes(str.toSlugCase(value)); }
   toArray  () { return this.segments; }
   toString () { return this.#url.pathname; }
 }

@@ -2,10 +2,7 @@
 
 import * as preds from './predicates.js';
 
-export const
-and = (...preds) => v => preds.every (p => p(v)),
-or  = (...preds) => v => preds.some  (p => p(v)),
-not = pred       => v => !pred(v);
+// and/or/not live in predicates.js and reach consumers via `export *` below.
 
 // pattern matcher
 export const testRule = (rule, value) => {
@@ -18,14 +15,22 @@ export const testRule = (rule, value) => {
 
 const upperFirst = s => s.charAt(0).toUpperCase() + s.slice(1);
 
+// resolved name -> predicate. keeps the hot path a single map hit instead of
+// re-running upperFirst and two namespace lookups on every is()/isAny()/isNot().
+const nameCache = new Map();
+
 // module namespace objects have a null prototype, so a plain lookup
 // cannot hit inherited keys like 'constructor'.
 const resolve = p => {
   if (typeof p === 'function') return p;
 
+  const cached = nameCache.get(p);
+  if (cached) return cached;
+
   const fn = preds[p] ?? preds['is' + upperFirst(p)];
   if (!fn) throw new TypeError(`unknown predicate: ${p}`);
 
+  nameCache.set(p, fn);
   return fn;
 };
 

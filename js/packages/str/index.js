@@ -22,7 +22,7 @@ const toWords = (value) => String(value ?? '')
 
 
 export const // Standalone exportable transform functions
-capitalize     = value => String(value ?? '').charAt(0).toUpperCase() + String(value ?? '').slice(1),
+capitalize     = value => { const s = String(value ?? ''); return s.charAt(0).toUpperCase() + s.slice(1); },
 toLowerCase    = value => String(value ?? '').toLowerCase(),
 toUpperCase    = value => String(value ?? '').toUpperCase(),
 toCamelCase    = value => toWords(value).map((word, index) => index ? upperFirst(word) : word).join(''),
