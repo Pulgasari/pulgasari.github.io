@@ -1,6 +1,9 @@
-// predicates.js
+// @pulgasari/is/predicates.js
 
-import { and, not, or } from './core.js';
+export const
+and = (...preds) => v => preds.every (p => p(v)),
+or  = (...preds) => v => preds.some  (p => p(v)),
+not = pred       => v => !pred(v);
 
 // :::::: FACTORIES
 
