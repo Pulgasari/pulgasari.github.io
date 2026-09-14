@@ -3,12 +3,12 @@
 import { toCamelCase, toConstantCase, toKebabCase, toPascalCase, toSlugCase, toSnakeCase } from '@pulgasari/str';
 
 const FORMS = {
-  camel    : str.toCamelCase,    // userProfileStatus
-  constant : str.toConstantCase, // USER_PROFILE_STATUS
-  kebab    : str.toKebabCase,    // user-profile-status
-  pascal   : str.toPascalCase,   // UserProfileStatus
-  slug     : str.toSlugCase,     // 
-  snake    : str.toSnakeCase,    // user_profile_status
+  camel    : toCamelCase,    // userProfileStatus
+  constant : toConstantCase, // USER_PROFILE_STATUS
+  kebab    : toKebabCase,    // user-profile-status
+  pascal   : toPascalCase,   // UserProfileStatus
+  slug     : toSlugCase,     // 
+  snake    : toSnakeCase,    // user_profile_status
 };
 
 const toConverter = (form) => typeof form === 'function' ? form : FORMS[form];
