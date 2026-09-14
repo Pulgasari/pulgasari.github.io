@@ -9,6 +9,7 @@
 
 ## misc
 - https://ejs.co
+- https://lemonadejs.com
 - https://morphicons.com
 - https://skypack.dev
 - https://svgjs.dev
