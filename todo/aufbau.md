@@ -2,6 +2,6 @@
 
 ## `@aufbau/components`
 
-### `<aufbau-gui>
+### `<aufbau-gui>`
 
-### `<aufbau-keyboard>
+### `<aufbau-keyboard>`
