@@ -2,5 +2,5 @@
 
 ## dock
 
-- [ ] option: how many rows
+- [ ] setting: how many rows
 - [ ] setting: wrap | adjust | sidescroll
