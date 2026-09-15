@@ -3,4 +3,4 @@
 ## dock
 
 - [ ] option: how many rows
-- ( ] setting: wrap | adjust | sidescroll
+- [ ] setting: wrap | adjust | sidescroll
