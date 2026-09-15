@@ -12,7 +12,12 @@ const PRELOAD_CRITICAL = [
 //  '@aufbau/kits',
 ];
 
+const P = 'https://esm.sh/jsr/@pulgasari/';
+const pulgasari = ['is', 'logger', 'str'];
+
 const map = { imports: {
+  "@aufbau/ass"             : "./aufbau/ass/index.js",
+  "@aufbau/ass/"            : "./aufbau/ass/",
   "@aufbau/builders/docs"   : "./aufbau/builders/docs/index.js",
   "@aufbau/builders/docs/"  : "./aufbau/builders/docs/",
   "@aufbau/elements"        : "./aufbau/elements/index.js",
@@ -21,12 +26,16 @@ const map = { imports: {
   "@aufbau/gestures"        : "./aufbau/gestures/index.js",
   "@aufbau/gestures/"       : "./aufbau/gestures/",
   "@aufbau/gestures/preact" : "./aufbau/gestures/adapters/preact.js",
+  "@aufbau/gui"             : "./aufbau/gestures/index.js",
+  "@aufbau/icons"           : "./aufbau/icons/index.js",
+  "@aufbau/icons/"          : "./aufbau/icons/",
   "@aufbau/import"          : "./aufbau/import/index.js",
-  "@aufbau/kits/preact-htm" : "./aufbau/kits/preact-htm.js",
+  //"@aufbau/kits/preact-htm" : "./aufbau/kits/preact-htm.js",
   "@aufbau/patterns"        : "./aufbau/patterns/index.js",
   "@aufbau/runtime"         : "./aufbau/runtime/index.js",
   "@aufbau/runtime/"        : "./aufbau/runtime/",
   "@aufbau/signals"         : "./aufbau/signals/index.js",
+  "@aufbau/store"           : "./aufbau/store/index.js",
   "@aufbau/stylescript"     : "./aufbau/stylescript/index.js",
   "@aufbau/stylescript/"    : "./aufbau/stylescript/",
   "@aufbau/stylesheet"      : "./aufbau/stylesheet/index.js",
@@ -76,13 +85,13 @@ const map = { imports: {
   "@pulgasari/canonicalmap" : "./js/canonicalmap.js",
   "@pulgasari/coerce"       : "./js/coerce.js",
   "@pulgasari/hash"         : "./js/hash.js",
-  "@pulgasari/is"           : "./js/is.js",
-  "@pulgasari/logger"       : "./js/logger.js",
+  "@pulgasari/is"           : P + 'is',
+  "@pulgasari/logger"       : P + 'logger',
   "@pulgasari/num"          : "./js/num.js",
   "@pulgasari/obj"          : "./js/obj.js",
   "@pulgasari/random"       : "./js/random.js",
   "@pulgasari/ready"        : "./js/_ready.js",
-  "@pulgasari/str"          : "./js/str.js",
+  "@pulgasari/str"          : P + 'str',
   "@pulgasari/timing"       : "./js/timing.js",
   "@pulgasari/url"          : "./js/url.js",
 
