@@ -85,6 +85,7 @@ const map = { imports: {
   "@pulgasari/canonicalmap" : "./js/canonicalmap.js",
   "@pulgasari/coerce"       : "./js/coerce.js",
   "@pulgasari/hash"         : "./js/hash.js",
+  "@pulgasari/htx"          : "./js-packages/htx/index.js",
   "@pulgasari/is"           : P + 'is',
   "@pulgasari/logger"       : P + 'logger',
   "@pulgasari/num"          : "./js/num.js",
