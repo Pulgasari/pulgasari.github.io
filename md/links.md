@@ -14,6 +14,7 @@
 - https://lemonadejs.com
 - https://lynxjs.org
 - https://morphicons.com
+- https://scriptc.dev
 - https://skypack.dev
 - https://svgjs.dev
 - https://tsrx.dev
