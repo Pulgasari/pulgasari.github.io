@@ -8,8 +8,11 @@
 - https://nitayneeman.com/blog/introducing-import-defer-in-ecmascript/
 
 ## misc
+- https://arrow-js.com
 - https://ejs.co
+- https://imba.io
 - https://lemonadejs.com
+- https://lynxjs.org
 - https://morphicons.com
 - https://skypack.dev
 - https://svgjs.dev
