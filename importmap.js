@@ -27,7 +27,7 @@ const map = { imports: {
   "@aufbau/gestures"        : "./aufbau/gestures/index.js",
   "@aufbau/gestures/"       : "./aufbau/gestures/",
   "@aufbau/gestures/preact" : "./aufbau/gestures/adapters/preact.js",
-  "@aufbau/gui"             : "./aufbau/gestures/index.js",
+  "@aufbau/gui"             : "./aufbau/gui/index.js",
   "@aufbau/icons"           : "./aufbau/icons/index.js",
   "@aufbau/icons/"          : "./aufbau/icons/",
   "@aufbau/import"          : "./aufbau/import/index.js",
