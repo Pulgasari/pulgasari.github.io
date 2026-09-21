@@ -16,6 +16,7 @@ const P = 'https://esm.sh/jsr/@pulgasari/';
 const pulgasari = ['is', 'logger', 'str'];
 
 const map = { imports: {
+  "@aufbau/api"             : "./aufbau/api/index.js",
   "@aufbau/ass"             : "./aufbau/ass/index.js",
   "@aufbau/ass/"            : "./aufbau/ass/",
   "@aufbau/builders/docs"   : "./aufbau/builders/docs/index.js",
