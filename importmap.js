@@ -77,6 +77,10 @@ const map = { imports: {
   "@domina/observer"     : "./domina/packages/observer/index.js",
   "@domina/raf"          : "./domina/packages/raf/index.js",
   "@domina/stylesheet"   : "./domina/packages/stylesheet/index.js",
+
+  "@htx/htx"    : "./htx/packages/htx/index.js",
+  "@htx/js"     : "./htx/packages/js/index.js",
+  "@htx/preact" : "./htx/packages/preact/index.js",
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
@@ -86,8 +90,6 @@ const map = { imports: {
   "@pulgasari/canonicalmap" : "./js/canonicalmap.js",
   "@pulgasari/coerce"       : "./js/coerce.js",
   "@pulgasari/hash"         : "./js/hash.js",
-  "@pulgasari/htx"          : "./js-packages/htx/index.js",
-  "@pulgasari/htx/"          : "./js-packages/htx/",
   "@pulgasari/is"           : P + 'is',
   "@pulgasari/logger"       : P + 'logger',
   "@pulgasari/num"          : "./js/num.js",
