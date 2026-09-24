@@ -10,6 +10,8 @@
 
 ### `<aufbau-keyboard>`
 
+### `<aufbau-notifications>`
+
 ---
 
 ## `@aufbau/elements`
