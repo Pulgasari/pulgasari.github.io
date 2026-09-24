@@ -22,4 +22,21 @@
 
 ### `<aufbau-value>`
 
+---
 
+## aufbau/elements/core
+
+### 1. bessere props und logging
+
+```
+#isMounted = false;
+#tag       = this.localName;
+#logger    = new Logger({ prefix: this.#tag });
+
+#error  = (...args) => this.#logger.error (...args);
+#info   = (...args) => this.#logger.info  (...args);
+#log    = (...args) => this.#logger.log   (...args);
+#warn   = (...args) => this.#logger.warn  (...args);
+```
+
+wobei vermutlich für jedes element ne neue instanz zu machen quatsch ist. aber vom grundprinzip dachte ich mir, dass man so besseres debugging zur verfügung stellen könnte.
