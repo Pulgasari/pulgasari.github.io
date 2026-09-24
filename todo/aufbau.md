@@ -16,10 +16,17 @@
 
 ## `@aufbau/elements`
 
+dropdown
+flyout
+popover
+sidescroll
+
 badge / chip
 card
+comment
 empty
-popover
+form
+
 timeline
 
 menu-actions
