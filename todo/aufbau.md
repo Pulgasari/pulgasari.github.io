@@ -16,6 +16,8 @@
 
 ## `@aufbau/elements`
 
+actionmenu
+
 ### `<aufbau-date>`
 
 ### `<aufbau-modal>`
@@ -48,3 +50,15 @@ wobei vermutlich für jedes element ne neue instanz zu machen quatsch ist. aber 
 ### `<aufbau-progress>`
 
 - könnte als look vllt noch `circle` bekommen
+
+## new elements
+
+- [ ] `aufbau-breadcrumbs` (oder `aufbau-crumbs`?)
+- [ ] `aufbau-menu`
+- [ ] `aufbau-menu-item`
+- [ ] `aufbau-modal` + interface
+
+und bei denen weiss ich nicht genau, ob die eigene elements oder lieber type/look sein sollten:
+
+- [ ] `aufbau-contextmenu` (oder teil von `aufbau-menu`) ?
+
