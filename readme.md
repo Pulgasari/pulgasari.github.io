@@ -9,6 +9,14 @@
 - https://github.com/pulgasari/skullface
 - https://github.com/pulgasari/zugriff
 
+---
+
+- https://github.com/pulgasari/classcade
+- https://github.com/pulgasari/dingsbums
+- https://github.com/pulgasari/modflow
+
+---
+
 ```
 fast-xml-parser
 xml2js
