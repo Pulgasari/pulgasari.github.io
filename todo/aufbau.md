@@ -19,23 +19,30 @@ https://blog.logrocket.com/ux-design/40-essential-ui-elements/
 ## `@aufbau/elements`
 
 ```
-dropdown
-flyout
-popover
-sidescroll
+aufbau-avatar
+aufbau-emoji
+aufbau-feedback
+aufbau-form
+aufbau-paginate
+aufbau-stepper
+aufbau-tabs
+aufbau-timeline
+aufbau-tooltip
 
-avatar
+aufbau-dropdown
+aufbau-flyout
+aufbau-popover
+aufbau-sidescroll
+
 badge / chip
 card
 charts
 comment
 empty
-form
 skeleton
-tooltip
+```
 
-
-
+```
 indicate-error
 indicate-loading
 indicate-success
@@ -53,15 +60,10 @@ menu-actions
 menu-bento
 menu-context
 
-pick-date
 pick-color
+pick-date
+pick-item
 pick-time
-
-aufbau-feedback
-aufbau-paginate
-aufbau-stepper
-aufbau-tabs
-aufbau-timeline
 ```
 
 text
