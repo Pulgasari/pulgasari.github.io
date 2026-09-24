@@ -23,12 +23,15 @@ flyout
 popover
 sidescroll
 
+avatar
 badge / chip
 card
 charts
 comment
 empty
 form
+skeleton
+tooltip
 
 
 
