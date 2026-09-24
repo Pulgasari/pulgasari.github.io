@@ -1,6 +1,0 @@
-{
-  "name": "@pulgasari/is",
-  "version": "1.0.1",
-  "license": "MIT",
-  "exports": "./index.js"
-}
