@@ -5,6 +5,7 @@
 - https://github.com/pulgasari/cosmonaut
 - https://github.com/pulgasari/domina
 - https://github.com/pulgasari/htx
+- https://github.com/pulgasari/js-packages
 - https://github.com/pulgasari/poo
 - https://github.com/pulgasari/skullface
 - https://github.com/pulgasari/zugriff
