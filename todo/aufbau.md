@@ -26,7 +26,7 @@
 
 ## aufbau/elements/core
 
-### 1. bessere props und logging
+### bessere props und logging
 
 ```js
 #isMounted = false;
@@ -41,6 +41,10 @@
 
 wobei vermutlich für jedes element ne neue instanz zu machen quatsch ist. aber vom grundprinzip dachte ich mir, dass man so besseres debugging zur verfügung stellen könnte.
 
-### input enhancements
+### `<aufbau-input>` enhancements
 
 `<aufbau-input>` sollte optional so icons/buttons mitbringen für: clear, copy, paste
+
+### `<aufbau-progress>`
+
+- könnte als look vllt noch `circle` bekommen
