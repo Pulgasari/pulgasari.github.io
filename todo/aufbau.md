@@ -28,7 +28,7 @@
 
 ### 1. bessere props und logging
 
-```
+```js
 #isMounted = false;
 #tag       = this.localName;
 #logger    = new Logger({ prefix: this.#tag });
