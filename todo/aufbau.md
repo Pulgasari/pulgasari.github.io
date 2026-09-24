@@ -23,25 +23,41 @@ sidescroll
 
 badge / chip
 card
+charts
 comment
 empty
 form
 
-timeline
+
 
 indicate-error
 indicate-loading
 indicate-success
 
+input-bool
+input-color
+input-date
+input-email
+input-number
+input-text
+input-time
+input-year
 
 menu-actions
 menu-bento
+menu-context
+
 pick-date
 pick-color
+pick-time
 
+aufbau-feedback
 aufbau-paginate
 aufbau-stepper
 aufbau-tabs
+aufbau-timeline
+
+text
 
 ### `<aufbau-date>`
 
