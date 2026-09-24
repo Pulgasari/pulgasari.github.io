@@ -40,3 +40,7 @@
 ```
 
 wobei vermutlich für jedes element ne neue instanz zu machen quatsch ist. aber vom grundprinzip dachte ich mir, dass man so besseres debugging zur verfügung stellen könnte.
+
+### input enhancements
+
+`<aufbau-input>` sollte optional so icons/buttons mitbringen für: clear, copy, paste
