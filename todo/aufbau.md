@@ -18,6 +18,7 @@ https://blog.logrocket.com/ux-design/40-essential-ui-elements/
 
 ## `@aufbau/elements`
 
+```
 dropdown
 flyout
 popover
@@ -61,6 +62,7 @@ aufbau-paginate
 aufbau-stepper
 aufbau-tabs
 aufbau-timeline
+```
 
 text
 
