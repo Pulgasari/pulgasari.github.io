@@ -99,8 +99,7 @@ makers / sitemakers
 systems
 ```
 
-https://skypack.dev
-https://svgjs.dev
+
 
 ---
 
