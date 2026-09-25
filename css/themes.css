@@ -261,3 +261,14 @@ html, body {
   color        : var(--fg);
   accent-color : var(--accent);
   }
+
+
+/* dynamic combined variant 1 *
+
+body {
+  /* 2. Dynamic fallbacks generated via Relative Color Syntax (OKLCH) */
+  /* Derives a dark background, crisp light text, and vibrant accent from any raw color input */
+  --accent : var(--theme);
+  --bg     : oklch(from var(--theme) 0.14 calc(c * 0.25) h);
+  --fg     : oklch(from var(--theme) 0.94 calc(c * 0.05) h);
+}
