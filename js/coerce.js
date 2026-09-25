@@ -2,7 +2,8 @@
 
 import { is, isArray, isBool, isFn, isNullish, isNumber } from '@pulgasari/is';
 
-const FALSY = new Set(['false', '0', 'no', 'off', 'null', 'undefined']);
+const FALSY    = new Set(['false', '0', 'no', 'off', 'null', 'undefined']);
+const isFalsyX = value => FALSY.has(String(value).trim().toLowerCase());
 
 const parseNumber = (value, fallback) => {
   const number = isNumber(value) ? value : parseFloat(value);
@@ -10,24 +11,24 @@ const parseNumber = (value, fallback) => {
 };
 
 const coerce = (value, type = String, fallback) => {
-  if (type === Boolean) return toBoolean(value, Boolean(fallback));
-  if (value == null)    return fallback;
-
-  if (type === Number) return parseNumber(value, fallback);
-  if (type === String) return String(value);
-  if (type === Date)   return toDate(value, fallback);
-  if (type === Object) return toJson(value, fallback);
+  if (isNullish(value)) return fallback;
+  
+  if (type === Boolean) return toBoolean   (value, Boolean(fallback));
+  if (type === Number)  return parseNumber (value, fallback);
+  if (type === String)  return String      (value);
+  if (type === Date)    return toDate      (value, fallback);
+  if (type === Object)  return toJson      (value, fallback);
 
   if (type === Array) {
-    const parsed = toJson(value, null);
+    const parsed = toJSON(value, null);
     if (isArray(parsed)) return parsed;
     return isString(value)
       ? value.split(',').map(part => part.trim()).filter(Boolean)
       : toArray(value);
   }
 
-  if (typeof type === 'function') {
-    try { return type(value) ?? fallback; }
+  if (isFn(type)) {
+    try   { return type(value) ?? fallback; }
     catch { return fallback; }
   }
 
@@ -35,19 +36,17 @@ const coerce = (value, type = String, fallback) => {
 };
 
 const toArray = (value) =>
-    isArray(value)                         ? value
-  : value == null                                ? []
-  : isString(value)                   ? [value]
-  : typeof value[Symbol.iterator] === 'function' ? Array.from(value)
+    isArray    (value) ? value
+  : isNullish  (value) ? []
+  : isString   (value) ? [value]
+  : isIterable (value) ? Array.from(value)
   : [value];
 
 const toBool = (value, fallback = false) => {
-  if (isBool('boolean')) return value;
-  if (value == null)     return fallback;
-  if (isNumber(value))   return value !== 0;
-  
-  return !FALSY.has(String(value).trim().toLowerCase());
-};
+  : isBool    (value) ? value
+  : isNullish (value) ? fallback
+  : isNumber  (value) ? value !== 0
+  : !isFalsyX (value);
 
 const toDate = (value, fallback = null) => {
   const date = value instanceof Date ? value : new Date(value);
@@ -60,6 +59,14 @@ const toJSON = (value, fallback) => {
   try   { return JSON.parse(value); }
   catch { return fallback; }
 };
+
+/* eigtl fehlen noch:
+toEntries
+toKeys
+toMap
+toSet
+toString
+*/
 
 // :::::: EXPORT
 
