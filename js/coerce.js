@@ -70,7 +70,9 @@ toString
 
 // :::::: EXPORT
 
-const toJson = toJSON;
+const 
+toBoolean = toBool,
+toJson    = toJSON;
 
 export {
   coerce,
