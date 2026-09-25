@@ -22,12 +22,12 @@ some  = fn => list => list.some  (fn),
 // :::::: ORDER & SHAPE
 // sort and reverse copy first, the native methods mutate in place
   
-drop    = count   => list => list.slice(count),
-join    = (separator = '') => (list) => list.join(separator),
-reverse = list    => [...list].reverse(),
-sort    = compare => list => [...list].sort(compare),
-take    = count   => list => list.slice(0, count),
-uniq    = list    => [...new Set(list)],
+drop    = count      => list => list.slice(count),
+join    = (sep = '') => list => list.join(sep),
+reverse =               list => [...list].reverse(),
+sort    = compare    => list => [...list].sort(compare),
+take    = count      => list => list.slice(0, count),
+uniq    =               list => [...new Set(list)],
 
 // :::::: SEQUENCE OPS (arrays AND strings)
 
