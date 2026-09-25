@@ -13,7 +13,7 @@ const parseNumber = (value, fallback) => {
 const coerce = (value, type = String, fallback) => {
   if (isNullish(value)) return fallback;
   
-  if (type === Boolean) return toBoolean   (value, Boolean(fallback));
+  if (type === Boolean) return toBool      (value, Boolean(fallback));
   if (type === Number)  return parseNumber (value, fallback);
   if (type === String)  return String      (value);
   if (type === Date)    return toDate      (value, fallback);
