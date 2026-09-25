@@ -1,5 +1,7 @@
 // timing.js
 
+import { isFn } from '@pulgassri/is';
+
 export const debounce = (callback, delay = 100) => {
   let timer = null;
 
@@ -12,27 +14,30 @@ export const debounce = (callback, delay = 100) => {
   return debounced;
 };
 
-/*
-  runs work once the browser is not busy — for anything that must happen but must
-  not compete with the critical path.
 
-  `deadline` is not optional in spirit: without it an idle callback on a busy page
-  can be postponed indefinitely, and work that never runs is worse than work that
-  runs late. safari has no requestIdleCallback at all, hence the fallback.
-*/
-export const idle = (callback, deadline = 2000) =>
-  typeof requestIdleCallback === 'function'
+export const 
+idle     = (fn, timeout = 2000) => requestIdleCallback?.(fn, { timeout }) ?? setTimeout(fn, 1),     
+interval = (fn, delay   = 1000) => (const id = setInterval (fn, delay), () => clearInterval (id)),         
+timeout  = (fn, delay      = 0) => (const id = setTimeout  (fn, delay), () => clearTimeout  (id)),
+sleep    = (duration    =    0) => new Promise (resolve => setTimeout(resolve, duration));
+
+
+export const 
+idle = (callback, deadline = 2000) =>
+  isFn(requestIdleCallback)
     ? requestIdleCallback(callback, { timeout: deadline })
-    : setTimeout(callback, 1);
+    : setTimeout(callback, 1),
 
-export const interval = (callback, delay = 1000) => {
-  const id = setInterval(callback, delay);
+interval = (fn, delay = 1000) => {
+  const id = setInterval(fn, delay);
   return () => clearInterval(id);
 };
 
-export const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+export const 
+nextFrame = () => new Promise (requestAnimationFrame);
 
-export const rafThrottle = (callback) => {
+export const
+rafThrottle = (callback) => {
   let frame   = null;
   let pending = null;
 
@@ -49,9 +54,9 @@ export const rafThrottle = (callback) => {
   return throttled;
 };
 
-export const sleep = (duration = 0) => new Promise(resolve => setTimeout(resolve, duration));
 
-export const throttle = (callback, delay = 100) => {
+export const 
+throttle = (callback, delay = 100) => {
   let last    = 0;
   let timer   = null;
   let pending = null;
@@ -75,7 +80,3 @@ export const throttle = (callback, delay = 100) => {
   return throttled;
 };
 
-export const timeout = (callback, delay = 0) => {
-  const id = setTimeout(callback, delay);
-  return () => clearTimeout(id);
-};
