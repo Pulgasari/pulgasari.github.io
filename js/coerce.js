@@ -1,6 +1,6 @@
 // @pulgasari/coerce
 
-import { is, isArray, isBool, isFn, isNullish, isNumber } from '@pulgasari/is';
+import { is, isArray, isBool, isFn, isIterable, isNullish, isNumber } from '@pulgasari/is';
 
 const FALSY    = new Set(['false', '0', 'no', 'off', 'null', 'undefined']);
 const isFalsyX = value => FALSY.has(String(value).trim().toLowerCase());
@@ -42,8 +42,8 @@ const toArray = (value) =>
   : isIterable (value) ? Array.from(value)
   : [value];
 
-const toBool = (value, fallback = false) => {
-  : isBool    (value) ? value
+const toBool = (value, fallback = false) =>
+    isBool    (value) ? value
   : isNullish (value) ? fallback
   : isNumber  (value) ? value !== 0
   : !isFalsyX (value);
