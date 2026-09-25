@@ -50,6 +50,7 @@ const map = { imports: {
   "@bunker/core"    : "./bunker/core/index.js",
   "@bunker/db"      : "./bunker/db/index.js",
   "@bunker/kit"     : "./bunker/kit/index.js",
+  "@bunker/opfs"    : "./bunker/opfs/index.js",
   "@bunker/policy"  : "./bunker/policy/index.js",
   "@bunker/storage" : "./bunker/storage/index.js",
   "@bunker/utils"   : "./bunker/utils/index.js",
