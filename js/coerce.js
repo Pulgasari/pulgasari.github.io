@@ -1,13 +1,15 @@
 // @pulgasari/coerce
 
+import { is, isArray, isBool, isFn, isNullish, isNumber } from '@pulgasari/is';
+
 const FALSY = new Set(['false', '0', 'no', 'off', 'null', 'undefined']);
 
 const parseNumber = (value, fallback) => {
-  const number = typeof value === 'number' ? value : parseFloat(value);
+  const number = isNumber(value) ? value : parseFloat(value);
   return Number.isFinite(number) ? number : fallback;
 };
 
-export const coerce = (value, type = String, fallback) => {
+const coerce = (value, type = String, fallback) => {
   if (type === Boolean) return toBoolean(value, Boolean(fallback));
   if (value == null)    return fallback;
 
@@ -18,8 +20,8 @@ export const coerce = (value, type = String, fallback) => {
 
   if (type === Array) {
     const parsed = toJson(value, null);
-    if (Array.isArray(parsed)) return parsed;
-    return typeof value === 'string'
+    if (isArray(parsed)) return parsed;
+    return isString(value)
       ? value.split(',').map(part => part.trim()).filter(Boolean)
       : toArray(value);
   }
@@ -32,27 +34,39 @@ export const coerce = (value, type = String, fallback) => {
   return value;
 };
 
-export const toArray = (value) =>
-    Array.isArray(value)                         ? value
+const toArray = (value) =>
+    isArray(value)                         ? value
   : value == null                                ? []
-  : typeof value === 'string'                    ? [value]
+  : isString(value)                   ? [value]
   : typeof value[Symbol.iterator] === 'function' ? Array.from(value)
   : [value];
 
-export const toBoolean = (value, fallback = false) => {
-  if (typeof value === 'boolean') return value;
-  if (value == null) return fallback;
-  if (typeof value === 'number') return value !== 0;
+const toBool = (value, fallback = false) => {
+  if (isBool('boolean')) return value;
+  if (value == null)     return fallback;
+  if (isNumber(value))   return value !== 0;
+  
   return !FALSY.has(String(value).trim().toLowerCase());
 };
 
-export const toDate = (value, fallback = null) => {
+const toDate = (value, fallback = null) => {
   const date = value instanceof Date ? value : new Date(value);
   return Number.isNaN(date.getTime()) ? fallback : date;
 };
 
-export const toJson = (value, fallback) => {
-  if (typeof value !== 'string') return value ?? fallback;
-  try { return JSON.parse(value); }
+const toJSON = (value, fallback) => {
+  if (!isString(value)) return value ?? fallback;
+  
+  try   { return JSON.parse(value); }
   catch { return fallback; }
+};
+
+// :::::: EXPORT
+
+export {
+  coerce,
+  toArray,
+  toBool,
+  toDate,
+  toJSON,
 };
