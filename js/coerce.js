@@ -70,10 +70,12 @@ toString
 
 // :::::: EXPORT
 
+const toJson = toJSON;
+
 export {
   coerce,
   toArray,
   toBool,
   toDate,
-  toJSON,
+  toJSON, toJson
 };
