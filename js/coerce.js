@@ -77,7 +77,7 @@ toJson    = toJSON;
 export {
   coerce,
   toArray,
-  toBool,
+  toBool, toBoolean,
   toDate,
   toJSON, toJson
 };
