@@ -153,3 +153,43 @@ und bei denen weiss ich nicht genau, ob die eigene elements oder lieber type/loo
 
 - [ ] `aufbau-contextmenu` (oder teil von `aufbau-menu`) ?
 
+---
+
+# `@aufbau/gestures`
+
+```js
+gestures(element, {
+  onTap        : gesture => select(gesture.target),
+  onSwipeLeft  : gesture => next(),
+  onSwipeRight : { minimumSpeed: 1, handler: gesture => previous() },
+});
+
+element.addEventListener('swipeleft', event => next());   // the same, as a dom event
+```
+
+```js
+import gestures from '@aufbau/gestures';
+
+gestures.apply(element, {
+  onTap        : gesture => select(gesture.target),
+  onSwipeLeft  : gesture => next(),
+  onSwipeRight : { minimumSpeed: 1, handler: gesture => previous() },
+});
+```
+
+```js
+//
+import '@aufbau/gestures/prototype.js';
+
+element.addGestureListener('swipeleft',  event => {});
+element.addGestureListener('swiperight', event => {});
+```
+
+```js
+//
+import { onSwipeLeft, onSwipeRight } from '@aufbau/gestures';
+
+onSwipeLeft  (element, handler);
+onSwipeRight (element, handler);
+```
+
