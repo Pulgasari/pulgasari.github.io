@@ -25,8 +25,16 @@ valhalla
 ```
 cosmo
 cosmonaut
+cunt
 kosmos
 nomad
+webster
+```
+
+```
+nomad
+phantom
+wallpapersfx
 ```
 
 ```
