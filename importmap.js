@@ -37,8 +37,6 @@ const map = { imports: {
   "@aufbau/store"           : "./aufbau/store/index.js",
   "@aufbau/stylescript"     : "./aufbau/stylescript/index.js",
   "@aufbau/stylescript/"    : "./aufbau/stylescript/",
-  "@aufbau/stylesheet"      : "./aufbau/stylesheet/index.js",
-  "@aufbau/stylesheet/"     : "./aufbau/stylesheet/",
   "@aufbau/svg/"            : "./aufbau/svg/",
   "@aufbau/webfonts"        : "./aufbau/webfonts/index.js",
   "@aufbau/webfonts/"       : "./aufbau/webfonts/",
