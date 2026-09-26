@@ -63,6 +63,7 @@ menu-context
 pick-color
 pick-country
 pick-date
+pick-emoji
 pick-font
 pick-icon
 pick-item
