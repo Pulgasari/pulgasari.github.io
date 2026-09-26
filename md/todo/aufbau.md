@@ -4,6 +4,24 @@ https://blog.logrocket.com/ux-design/40-essential-ui-elements/
 
 ---
 
+## `AufbauCore`
+
+```javascript
+class AudioPlaylist {
+  static container = 'audio-playlist';
+}
+```
+
+```javascript
+class AudioPlaylist {
+  static meta = {
+    '@container' : 'audio-playlist';
+  };
+}
+```
+
+---
+
 ## `@aufbau/components`
 
 ### `<aufbau-fontpicker>`
