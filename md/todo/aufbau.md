@@ -61,9 +61,14 @@ menu-bento
 menu-context
 
 pick-color
+pick-country
 pick-date
+pick-font
+pick-icon
 pick-item
+pick-language
 pick-time
+pick-year
 ```
 
 text
