@@ -14,6 +14,12 @@ class AudioPlaylist {
 
 ```javascript
 class AudioPlaylist {
+  static containerName = 'audio-playlist';
+}
+```
+
+```javascript
+class AudioPlaylist {
   static meta = {
     '@container' : 'audio-playlist';
   };
