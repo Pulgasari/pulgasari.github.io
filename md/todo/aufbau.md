@@ -43,6 +43,17 @@ skeleton
 ```
 
 ```
+audio-bandcamp
+audio-embed
+audio-player
+audio-playlist
+audio-song
+audio-release
+
+video-embed
+video-player
+video-youtube
+
 indicate-error
 indicate-loading
 indicate-success
