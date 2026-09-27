@@ -9,6 +9,7 @@
 
 ## misc
 - https://arrow-js.com
+- https://bastardica.mitpit.com
 - https://ejs.co
 - https://imba.io
 - https://lemonadejs.com
