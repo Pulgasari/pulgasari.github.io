@@ -21,6 +21,8 @@ const map = { imports: {
   "@aufbau/ass/"            : "./aufbau/ass/",
   "@aufbau/builders/docs"   : "./aufbau/builders/docs/index.js",
   "@aufbau/builders/docs/"  : "./aufbau/builders/docs/",
+  "@aufbau/devtools"        : "./aufbau/devtools/index.js",
+  "@aufbau/devtools/"       : "./aufbau/devtools/",
   "@aufbau/elements"        : "./aufbau/elements/index.js",
   "@aufbau/elements/"       : "./aufbau/elements/",
   "@aufbau/filters"         : "./aufbau/filters/index.js",
