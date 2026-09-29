@@ -54,10 +54,10 @@ console.log(doc);
 
 ```javascript
 // ::::::::: extended variant 2
-import { css, types } from '@aufbau/stylescript';
+import { css } from '@aufbau/stylescript';
 
-types.colorWithBenefits      = css`type(<color> | bg | fg | ink)`;
-types['color-with-benefits'] = css`type(<color> | bg | fg | ink)`;
+css.types['color-with-benefits'] = css`type(<color> | bg | fg | ink)`;
+css.types['color-with-benefits'] = ['<color>', 'bg', 'fg', 'ink'];
 
 let doc = '';
 doc += css`
