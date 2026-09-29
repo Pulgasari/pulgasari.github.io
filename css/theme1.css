@@ -1,0 +1,83 @@
+/* @aufbau/css/themes.css
+
+- supports as theme: presets
+- supports as theme: native css named colors
+- supports as theme: any css color value
+- compute to real colors (so they are readable from js and animatable) 
+
+1. usage in css:
+:root { --theme: zombie; }
+
+2. usage in html:
+<html data=theme='zombie'>
+<html style='--theme: zombie'>
+
+////// TODO:
+- enhance the preset aufbau themes
+- enhance the dynamic/pseudo themes
+- maybe gonna rename this to 'palette(s)' (and 'theme' becomes the sum of palette, shape, skins, etc.) ???    
+*/
+
+@property --theme      { syntax: "<color> | <custom-ident>"; inherits: true; initial-value: zombie; }
+@property --theme-mode { syntax: "auto | dark | light";      inherits: true; initial-value: auto;   }
+@property --bg         { syntax: "<color>";                  inherits: true; initial-value: #282a36; }
+@property --fg         { syntax: "<color>";                  inherits: true; initial-value: #f8f8f2; }
+@property --accent     { syntax: "<color>";                  inherits: true; initial-value: #ff79c6; }
+
+:root {
+  color-scheme: light dark;
+
+  --theme      : zombie;
+  --theme-mode : auto;
+
+  &[data-theme]      { --theme      : attr(data-theme      type("<color> | <custom-ident>"), zombie); }
+  &[data-theme-mode] { --theme-mode : attr(data-theme-mode type("auto | dark | light"),      auto);   }
+}
+
+@container style(--theme-mode: light) { body { color-scheme: light;      } }
+@container style(--theme-mode: dark)  { body { color-scheme: dark;       } }
+@container style(--theme-mode: auto)  { body { color-scheme: light dark; } }
+
+body {
+  --accent : var(--theme);
+
+  --bg: light-dark(
+    oklch(from var(--theme) 0.97 calc(c * 0.15) h),
+    oklch(from var(--theme) 0.14 calc(c * 0.25) h)
+  );
+
+  --fg: light-dark(
+    oklch(from var(--theme) 0.18 calc(c * 0.05) h),
+    oklch(from var(--theme) 0.94 calc(c * 0.05) h)
+  );
+}
+
+@container style(--theme: amethyst)  { body { --bg: #160f1f; --fg: #ece0f5; --accent: #a855f7; } }     
+@container style(--theme: beton)     { body { --bg: #3a3a3a; --fg: #dcdcdc; --accent: #9ad1d4; } }
+@container style(--theme: classic)   { body { --bg: #ffffff; --fg: #000000; --accent: #880088; } }
+@container style(--theme: desert)    { body { --bg: #e3cfa4; --fg: #3b2c17; --accent: #8a3a0f; } }
+@container style(--theme: dracula)   { body { --bg: #282a36; --fg: #f8f8f2; --accent: #ff79c6; } }
+@container style(--theme: flamingo)  { body { --bg: #2b1e25; --fg: #ffe9f1; --accent: #ff5c8a; } }
+@container style(--theme: hell)      { body { --bg: #ffffff; --fg: #101317; --accent: #0a66c2; } }
+@container style(--theme: kontrast)  { body { --bg: #000000; --fg: #ffffff; --accent: #ffff00; } }
+@container style(--theme: lavendel)  { body { --bg: #f3f0fa; --fg: #241c33; --accent: #6b3fd4; } }
+@container style(--theme: matrix)    { body { --bg: #0b0f0b; --fg: #c8f7c5; --accent: #39ff14; } }
+@container style(--theme: nightsky)  { body { --bg: #0b1a2e; --fg: #dbe4f0; --accent: #6ea8fe; } }
+@container style(--theme: oled)      { body { --bg: #000000; --fg: #e9e9e9; --accent: #00e5ff; } }
+@container style(--theme: papier)    { body { --bg: #efe9dd; --fg: #2b2622; --accent: #8f5d3a; } }
+@container style(--theme: parrot)    { body { --bg: #10241a; --fg: #f3f7e8; --accent: #ff4d2d; } }
+@container style(--theme: petrol)    { body { --bg: #08191a; --fg: #d5eceb; --accent: #0fb9ad; } }
+@container style(--theme: rubin)     { body { --bg: #1a0a0f; --fg: #f2dfe3; --accent: #f2295b; } }
+@container style(--theme: smaragd)   { body { --bg: #07160f; --fg: #dff3e6; --accent: #50c878; } }
+@container style(--theme: snowflake) { body { --bg: #e9f1f7; --fg: #16262f; --accent: #00697a; } }
+@container style(--theme: softblack) { body { --bg: #151515; --fg: #e6e6e6; --accent: #ffb86c; } }
+@container style(--theme: softwhite) { body { --bg: #f2f2ef; --fg: #1c1c1c; --accent: #c2255c; } }
+@container style(--theme: synthwave) { body { --bg: #241b3a; --fg: #ffe9fb; --accent: #f92aad; } }
+@container style(--theme: tinte)     { body { --bg: #0e0e1a; --fg: #dcd9f0; --accent: #8b7dff; } }
+@container style(--theme: zombie)    { body { --bg: #282a36; --fg: #f8f8f2; --accent: #ff79c6; } }          
+
+body {
+  background-color : var(--bg);
+  color            : var(--fg);
+  accent-color     : var(--accent);
+}
