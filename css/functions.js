@@ -1,12 +1,87 @@
-import { css, doc, type } from '@aufbau/stylescript';
+import { css } from '@aufbau/stylescript';
 
-function bla(strings, ...values) {
-  // Reconstruct the full string by combining parts and values
-  return strings.reduce((result, currentString, i) => {
-    const value = values[i] !== undefined ? values[i] : '';
-    return result + currentString + value;
+function bla (str) { return str[0]; }
+console.log(bla`hello world!`); // output: "hello world!"
+
+// Helper function to combine string fragments and interpolated values
+
+function css (strings, ...values) {
+  return strings.reduce((result, str, i) => {
+    return result + str + (values[i] ?? '');
   }, '');
 }
+
+const css = (str, ...vals) => str.reduce((r,s,i) => (r + s + (vals[i] ?? '')), '');
+
+
+// Define reusable sub-snippets
+const colorWithBenefits = css`type(<color> | bg | fg | ink)`;
+
+// Construct the main CSS string
+let doc = '';
+doc += css`
+  @function --resolve-color-argument(
+    --arg ${colorWithBenefits} : currentColor
+  ) returns <color> {
+    result: if(
+      style(--arg: bg)  : var(--color-bg);
+      style(--arg: fg)  : var(--color-fg);
+      style(--arg: ink) : var(--color-ink);
+      style(--arg: cc)  : currentColor;
+      else              : var(--arg);
+    );
+  }
+`;
+console.log(doc);
+
+// ::::::::: extended variant 1
+
+import { css } from '@aufbau/stylescript';
+
+css.types.colorWithBenefits      = css`type(<color> | bg | fg | ink)`;
+css.types['color-with-benefits'] = css`type(<color> | bg | fg | ink)`;
+
+let doc = '';
+doc += css`
+  @function --resolve-color-argument(
+    --arg <color-with-benefits> : currentColor
+  ) returns <color> {
+    result: if(
+      style(--arg: bg)  : var(--color-bg);
+      style(--arg: fg)  : var(--color-fg);
+      style(--arg: ink) : var(--color-ink);
+      style(--arg: cc)  : currentColor;
+      else              : var(--arg);
+    );
+  }
+`;
+console.log(doc);
+
+// ::::::::: extended variant 2
+
+import { css, types } from '@aufbau/stylescript';
+
+types.colorWithBenefits      = css`type(<color> | bg | fg | ink)`;
+types['color-with-benefits'] = css`type(<color> | bg | fg | ink)`;
+
+let doc = '';
+doc += css`
+  @function --resolve-color-argument(
+    --arg <color-with-benefits> : currentColor
+  ) returns <color> {
+    result: if(
+      style(--arg: bg)  : var(--color-bg);
+      style(--arg: fg)  : var(--color-fg);
+      style(--arg: ink) : var(--color-ink);
+      style(--arg: cc)  : currentColor;
+      else              : var(--arg);
+    );
+  }
+`;
+console.log(doc);
+
+
+
 
 const colorWithBenefits = css`type(<color> | bg | fg | ink)`;
 const colorWithBenefits = type`<color> | bg | fg | ink`;
