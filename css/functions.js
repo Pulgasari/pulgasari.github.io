@@ -81,6 +81,112 @@ doc += css`
 console.log(doc);
 
 
+// :::::: STYLESCRIPT ENTWURF ::::::
+
+const typeRegistry = {}; // shared internal dictionary for registered CSS types
+
+// Helper function to resolve JS values (strings, numbers, arrays, objects) into CSS
+function formatCssValue(value) {
+  if (value === null || value === undefined) return '';
+
+  if (Array.isArray(value)) {
+    return value.map(formatCssValue).join('\n');
+  }
+
+  if (typeof value === 'object') {
+    return Object.entries(value).map(toKebabCase).join('\n');
+  }
+
+  return String(value);
+}
+
+// Core tagged template function
+export function css(strings, ...values) {
+  // Combine template fragments with interpolated values
+  let output = strings.reduce((acc, str, i) => {
+    const interpolated = i < values.length ? formatCssValue(values[i]) : '';
+    return acc + str + interpolated;
+  }, '');
+
+  // Resolve registered custom types like <color-with-benefits> or <colorWithBenefits>
+  for (const [typeName, typeValue] of Object.entries(typeRegistry)) {
+    const regex = new RegExp(`<${typeName}>`, 'g');
+    output = output.replace(regex, typeValue);
+  }
+
+  return output.trim();
+}
+
+// Variant 1 support: Attach types directly to the css function instance
+css.types = typeRegistry;
+
+// Variant 2 support: Export types as an explicit named export
+export const types = typeRegistry;
+
+// :::::: END OF STYLESCRIPT ENTWURF ::::::
+
+
+
+// :::::: STYLESCRIPT ENTWURF 2 ::::::
+
+import shift           from '@pulgasari/shift';
+import { toKebabCase } from '@pulgasari/str';
+
+
+const types = {}; // shared internal dictionary for registered CSS types
+
+// resolve JS values (strings, numbers, arrays, objects) into CSS
+const format = shift ({
+  isNullish : '',
+  isArray   : (value) => value.map(format).join('\n'),
+  isObject  : (value) => Object.entries(value).map(toKebabCase).join('\n'),
+  fallback  : (value) => String(value),
+});
+
+// combine template fragments with interpolated values
+const interpolate = (strings, ...values) => {
+  return strings.reduce((acc, str, i) => {
+    const interpolated = i < values.length ? format(values[i]) : '';
+    return acc + str + interpolated;
+  }, '');
+};
+
+const process = (code) => {
+  code = processTypes (code);
+  return code;
+}
+
+// resolve registered custom types
+// like <color-with-benefits> or <colorWithBenefits>
+const processTypes = (code) => {
+  for (const key in types) {
+    const regex = new RegExp(`<${key}>`, 'g');
+    code = code.replace(regex, types[key]);
+  }
+  return code;
+}
+
+// core tagged template function
+function css (strings, ...values) {
+  let code;
+  code = interpolate (strings, ...values)|
+  code = process     (code);
+  return code.trim();
+}
+
+css.types = types;
+
+export { css, types };
+export { format, interpolate, process };
+export default css;
+
+// :::::: END OF STYLESCRIPT ENTWURF 2 ::::::
+
+
+
+
+
+
 
 
 const colorWithBenefits = css`type(<color> | bg | fg | ink)`;
