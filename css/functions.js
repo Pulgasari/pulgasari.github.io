@@ -1,5 +1,12 @@
 import { css, doc, type } from '@aufbau/stylescript';
 
+function bla(strings, ...values) {
+  // Reconstruct the full string by combining parts and values
+  return strings.reduce((result, currentString, i) => {
+    const value = values[i] !== undefined ? values[i] : '';
+    return result + currentString + value;
+  }, '');
+}
 
 const colorWithBenefits = css`type(<color> | bg | fg | ink)`;
 const colorWithBenefits = type`<color> | bg | fg | ink`;
