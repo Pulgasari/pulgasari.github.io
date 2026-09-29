@@ -1,0 +1,20 @@
+/* Define cascade layer priority from lowest to highest precedence */
+@layer tokens, reset, layout, shapes, themes, components, utilities;
+
+/* Import modules into their corresponding layers */
+@import url("tokens/variables.css") layer(tokens);
+@import url("base/reset.css") layer(reset);
+
+/* Layout options */
+@import url("layout/three-panels.css") layer(layout);
+@import url("layout/mobile-basic.css") layer(layout);
+
+/* Shape options */
+@import url("shapes/rounded.css") layer(shapes);
+@import url("shapes/flat.css") layer(shapes);
+
+/* Theme options */
+@import url("themes.css") layer(themes);
+
+/* Component scoped styles */
+@import url("components/card.css") layer(components);
