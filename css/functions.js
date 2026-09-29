@@ -1,3 +1,19 @@
+/* ideas
+aufbau-button {
+  background-color : transparent;
+  border-color     : currentcolor;
+
+  &[variant="ghost"]   { border-color: transparent; }
+  &[variant="primary"] { color: var(--color-ink); }
+
+  &[variant={
+     ghost   : { border-color: transparent; }
+     primary : { color: var(--color-ink); }
+  }]
+}
+
+*/
+
 import { css } from '@aufbau/stylescript';
 
 function bla (str) { return str[0]; }
