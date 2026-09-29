@@ -45,6 +45,17 @@ function css (strings, ...values) {
 
 css.types = types;
 
-export { css, types };
+// :::::: THE CLASS
+
+class StyleScript {
+  static css         = css;
+  static format      = format;
+  static interpolate = interpolate;
+  static process     = css;
+}
+
+// :::::: EXPORT
+
+export { StyleScript, css, types };
 export { format, interpolate, process };
-export default css;
+export default StyleScript;
