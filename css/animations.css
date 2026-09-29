@@ -1,0 +1,120 @@
+/* @aufbau/css/animations.css */
+
+[data-animate],
+.ani, .animation, .animate, .anima, .animus {
+  --atf: linear;
+  animation-direction       : var(--direction, normal);
+  animation-duration        : var(--duration, 1000ms);
+  animation-fill-mode       : both;
+  animation-iteration-count : var(--iterations, infinite);
+  animation-timing-function : var(--atf);
+  transform-origin          : var(--origin, center);
+}
+/* Richtung */
+.normal   { --direction: normal; }
+.reverse  { --direction: reverse; }
+.alt      { --direction: alternate; }
+.alt-r    { --direction: alternate-reverse; }
+/* Status */
+.play     { animation-play-state: running; }
+.pause    { animation-play-state: paused; }
+/* Iterationen */
+.once            { animation-iteration-count: 1; }
+.loop, .infinite { animation-iteration-count: infinite; }
+/* animation timing function */
+.linear { --atf: linear; }
+
+/*=============== ANIMATIONS ===============*/
+
+/* Keyframes */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.2; }
+}
+@keyframes bounce {
+  0%, 70%  { --atf: ease-out; }
+  35%      { --atf: ease-in; }
+  35%      { scale: 0.98; translate: 0 calc(-1 * var(--height, 12px)); }
+  70%      { scale: 1.02; translate: 0 0; }
+  0%, 100% { scale: 1.00; translate: 0 0; }
+}
+@keyframes flip {
+  0% {
+    rotate: 0turn;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    rotate: calc(var(--turns, 1) * 0.5turn);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    rotate: calc(var(--turns, 1) * 1turn);
+    animation-timing-function: ease-in;
+  }
+}
+@keyframes glitch { 50% { transform: skew(180deg); } }
+@keyframes jump {
+   0%, 100% { scale: 1 1;    translate: 0 0; }
+   10%      { scale: 1 0.9;  translate: 0 0; }
+   35%      { scale: 1 1;    translate: 0 calc(-1   * var(--height, 14px)); }
+   50%      { scale: 1 1;    translate: 0 calc(-1.1 * var(--height, 14px)); }
+   80%      { scale: 1 1.08; translate: 0 0; }
+  
+}
+@keyframes pulse {
+  0%, 100% { scale: var(--min, 0.8); }
+  50%      { scale: var(--max, 1.3); }
+}
+@keyframes shake {
+  0%, 100% { translate: 0 0; }
+  20%, 60% { translate:           var(--distance, 5px)  0; }
+  40%      { translate: calc(-1 * var(--distance, 5px)) 0; }
+}
+@keyframes spin      { to { rotate:  1turn; } }
+@keyframes spin-left { to { rotate: -1turn; } }
+@keyframes strobo {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+@keyframes vibrate {
+  0%, 100%      { translate:    0    0; }
+  10%, 50%      { translate: -2px -2px; }
+  20%, 60%, 90% { translate:  2px -2px; }
+  30%, 70%      { translate: -2px  2px; }
+  40%           { translate:  2px  2px; }
+  80%           { translate: -2px -2px; }
+}
+@keyframes whip {
+  0%, 100% { translate: 0; }
+  15%      { translate: calc( 1.2 * var(--d)) 0; }
+  35%      { translate: calc(-0.8 * var(--d)) 0; }
+  55%      { translate: calc( 0.4 * var(--d)) 0; }
+  75%      { translate: calc(-0.2 * var(--d)) 0; }
+}
+@keyframes wobble {
+  0%, 100% { rotate: 0deg; }
+  25%, 75% { rotate:           var(--angle, 25deg); }
+  50%      { rotate: calc(-1 * var(--angle, 25deg)); }
+}
+
+/* Apply */
+[data-animate="blink"],    .blink     { animation-name: blink;     --duration: var(--duration, 1000ms); }
+[data-animate="bounce"],   .bounce    { animation-name: bounce;    --duration: var(--duration,  800ms); }
+[data-animate="flip"],     .flip      { animation-name: flip;      --duration: var(--duration,  700ms); }
+[data-animate="glitch"],   .glitch    { animation-name: glitch;    --duration: var(--duration,  500ms); }
+[data-animate="jump"],     .jump      { animation-name: jump;      --duration: var(--duration,  700ms); }
+[data-animate="pulse"],    .pulse     { animation-name: pulse;     --duration: var(--duration, 1000ms); --atf: ease-in-out; }
+[data-animate="shake"],    .shake     { animation-name: shake;     --duration: var(--duration,  500ms); }
+[data-animate="spin"],     .spin      { animation-name: spin;      --duration: var(--duration, 1000ms); --atf: linear; }
+[data-animate="spinLeft"], .spin-left { animation-name: spin-left; --duration: var(--duration, 1000ms); --atf: linear; }
+[data-animate="strobo"],   .strobo    { animation-name: strobo;    --duration: var(--duration,  300ms); --atf: steps(2, end); }
+[data-animate="vibrate"],  .vibrate   { animation-name: vibrate;   --duration: var(--duration,  100ms); }
+[data-animate="whip"],     .whip      { animation-name: whip;      --duration: var(--duration,  600ms); --d: var(--distance,20px); }
+[data-animate="wobble"],   .wobble    { animation-name: wobble; }
+
+[data-animate][data-animate-atf] { --atf      : attr(data-animate-atf); }
+[data-animate][data-animate-dur] { --duration : attr(data-animate-dur ms); }
+
+/* Qualitäts-Empfehlungen (optional) */
+.opacity   { will-change: opacity;   }
+.transform { will-change: transform; }
