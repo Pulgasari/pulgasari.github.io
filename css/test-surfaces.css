@@ -1,3 +1,33 @@
+/* darker.css */
+#app-header { 
+  background-color : color-mix(in oklch var(--aufbau-bg) 80%,black);
+  color            : var(--aufbau-fg);
+}
+#app-footer {
+  background-color : color-mix(in oklch var(--aufbau-bg) 80%,black);
+  color            : var(--aufbau-fg);
+}
+
+/* inverted.css */
+#app-header { 
+  background-color : var(--aufbau-fg);
+  color            : var(--aufbau-bg);
+}
+#app-footer {
+  background-color : var(--aufbau-fg);
+  color            : var(--aufbau-bg);
+}
+
+/* none.css */
+#app-header { 
+  background-color : var(--aufbau-bg);
+  color            : var(--aufbau-fg);
+}
+#app-footer {
+  background-color : var(--aufbau-bg);
+  color            : var(--aufbau-fg);
+}
+
 
 /*
 @container style(--surface: darker) {
