@@ -27,6 +27,7 @@ function css (strings, ...values) {
   }, '');
 }
 
+// oder kurzschreibweise ^^xD
 const css = (str, ...vals) => str.reduce((r,s,i) => (r + s + (vals[i] ?? '')), '');
 
 
