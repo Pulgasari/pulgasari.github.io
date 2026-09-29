@@ -1,0 +1,119 @@
+/* @aufbau/css/gestalt.css */
+
+@property --bg { syntax: "<color> | <custom-ident> | <string>"; inherits: true; initial-value: red; }
+@property --fg { syntax: "<color> | <custom-ident> | <string>"; inherits: true; initial-value: yellow; }
+
+
+@function --darker(
+  --color  <color>      : currentColor, 
+  --amount <percentage> : 10%,
+  --mode                : oklch
+){
+  result: color-mix(in var(--mode), var(--color), black var(--amount));
+}
+
+@function --resolve-bg(){
+  result: if(
+    style(--bg: dark 10%) : --darker(var(--gestalt-bg), 10%);
+    style(--bg: dark 20%) : --darker(var(--gestalt-bg), 20%);
+    style(--bg: dark-30)  : --darker(var(--gestalt-bg), 30%);
+    else                  :          var(--gestalt-bg);
+  );
+}
+
+@function --resolve-fg(){
+  result: if(
+    style(--fg: dark) : blue);
+    style(--fg: dark 20%) : --darker(var(--gestalt-fg), 20%);
+    style(--fg: dark 90%) : --darker(var(--gestalt-fg), 90%);
+    style(--fg:'dark 30%'): --darker(var(--gestalt-fg), 30%);
+    style(--fg:'dark 80%'): --darker(var(--gestalt-fg), 80%);
+    else                  :          var(--gestalt-fg);
+  );
+}
+
+* {
+  background-color : --resolve-bg();
+  color            : --resolve-fg();
+}
+
+body {
+  /* come from theme/palette */
+  --gestalt-bg: red;
+  --gestalt-fg: yellow;
+  
+}
+
+button {
+  --bg: dark-30;
+  --fg: dark;
+  }
+
+
+:root {
+  color-scheme: light dark;
+
+  --theme      : zombie;
+  --theme-mode : auto;
+
+  &[data-theme]      { --theme      : attr(data-theme      type("<color> | <custom-ident>"), zombie); }
+  &[data-theme-mode] { --theme-mode : attr(data-theme-mode type("auto | dark | light"),      auto);   }
+}
+
+@container style(--bg: amethyst)  { body { --bg: #160f1f; --fg: #ece0f5; --accent: #a855f7; } }     
+
+body {
+  --bg: var(--gestalt-bg);
+  --fg: var(--gestalt-fg);
+}
+
+* {
+  background-color : var(--bg);
+  color            : var(--fg);
+  accent-color     : var(--accent);
+}
+
+
+@function --bg-dark(
+  --amount <percentage> : 10%,
+  --mode: oklch
+){
+  result: --darker(var(--bg), var(--amount), var(--mode));
+}
+
+
+
+
+
+
+@property --bg { syntax: "<color> | <custom-ident>"; inherits: true; initial-value: red; }
+@property --fg { syntax: "<color> | <custom-ident>"; inherits: true; initial-value: yellow; }
+
+
+@function --darker(
+  --color  <color>      : currentColor, 
+  --amount <percentage> : 10%,
+  --mode                : oklch
+){
+  result: color-mix(in var(--mode), var(--color), black var(--amount));
+}
+
+@function resolve-bg(){
+  result: if(
+    style(--bg: dark 10%) : --darker(var(--bg), 10%);
+    style(--bg: dark 20%) : --darker(var(--bg), 20%);
+    style(--bg: dark 30%) : --darker(var(--bg), 30%);
+    else                    : var(--bg);
+  );
+}
+
+* {
+  background-color : --resolve-bg();
+  color            : --resolve-fg();
+  accent-color     : var(--accent);
+}
+
+button {
+  --bg: dark 30%;
+  --fg: blue;
+}
