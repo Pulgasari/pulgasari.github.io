@@ -67,6 +67,9 @@ skeleton
 ```
 
 ```
+btn-copy
+btn-share
+
 audio-bandcamp
 audio-embed
 audio-player
@@ -78,34 +81,57 @@ video-embed
 video-player
 video-youtube
 
+embed-bandcamp
+embed-mastodon
+embed-soundcloud
+embed-spotify
+embed-youtube
+
 indicate-error
 indicate-loading
 indicate-success
 
 input-bool
+input-chips
 input-color
 input-date
 input-email
 input-number
+inout-password
+input-phone
+input-search
+input-slug
 input-text
 input-time
+input-url
 input-year
-
-pick-color
-pick-country
-pick-date
-pick-emoji
-pick-font
-pick-icon
-pick-item
-pick-language
-pick-time
-pick-year
 
 menu-actions
 menu-bento
 menu-context
+
+pick-color
+pick-country
+pick-currency
+pick-date
+pick-emoji
+pick-font
+pick-hotkey
+pick-icon
+pick-item
+pick-language
+pick-locale
+pick-time
+pick-timezone
+pick-unit
+pick-year
+
+view-json
+view-pdf
+view-zip
 ```
+
+was list-virtual?
 
 text
 
