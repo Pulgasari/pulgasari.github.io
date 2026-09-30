@@ -88,9 +88,13 @@
 ### js-api
 
 ```javascript
-import { doc } from '@aufbau/components';
+import { doc } from '@aufbau/elements';
 
-doc.defineComponent('write-css', 'write-code', { attr: { lang: 'css' } }); 
+// define a <write-css> element derived from <write-code>
+elements.define('write-css', 'write-code', { attr: { lang: 'css' } });
+
+// now it could be used directly in html or in htx or js
+const cssEditor = elements.create('write-css');
 ```
 
 basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
