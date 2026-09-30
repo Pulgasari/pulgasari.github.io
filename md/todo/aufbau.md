@@ -2,6 +2,27 @@
 
 ## aufbau/components
 
+- [ ] create `<app-config>`
+- [ ] create `<app-root>`
+- [ ] create `<app-panel>`
+- [ ] create `<app-slot>`
+- [ ] create `<app-view>`
+
+- [ ] create `<input-color>`
+- [ ] create `<input-country>`
+- [ ] create `<input-date>`
+- [ ] create `<input-email>`
+- [ ] create `<input-font>`
+- [ ] create `<input-password>`
+- [ ] create `<input-text>`
+
+- [ ] create `<write-code>`
+- [ ] create `<write-md>`
+- [ ] create `<write-text>`
+
+### dynamische components
+- prüfen inwiefern es möglich ist ad-hoc custom elements zu generieren bspw. für neue imputs
+
 ### `<aufbau-fontpicker>`
 
 basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
