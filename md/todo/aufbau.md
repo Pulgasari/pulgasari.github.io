@@ -22,6 +22,7 @@
 - [ ] create `<flow-popover>`
 
 ### input
+- [ ] create `<input-address>`
 - [ ] create `<input-bool>`
 - [ ] create `<input-chips>`
 - [ ] create `<input-color>`
