@@ -22,13 +22,29 @@
 - [ ] create `<flow-popover>`
 
 ### input
+- [ ] create `<input-bool>`
+- [ ] create `<input-chips>`
 - [ ] create `<input-color>`
 - [ ] create `<input-country>`
+- [ ] create `<input-currency>`
 - [ ] create `<input-date>`
 - [ ] create `<input-email>`
+- [ ] create `<input-emoji>`
 - [ ] create `<input-font>`
+- [ ] create `<input-hotkey>`
+- [ ] create `<input-language>`
+- [ ] create `<input-locale>`
+- [ ] create `<input-number>`
 - [ ] create `<input-password>`
+- [ ] create `<input-phone>`
+- [ ] create `<input-search>`
+- [ ] create `<input-slug>`
 - [ ] create `<input-text>`
+- [ ] create `<input-time>`
+- [ ] create `<input-timezone>`
+- [ ] create `<input-unit>`
+- [ ] create `<input-url>`
+- [ ] create `<input-year>`
 
 ### write
 - [ ] create `<write-code>`
