@@ -45,6 +45,7 @@
 - [ ] create `<input-country>`
 - [ ] create `<input-currency>`
 - [ ] create `<input-date>`
+- [ ] create `<input-datetime>`
 - [ ] create `<input-email>`
 - [ ] create `<input-emoji>`
 - [ ] create `<input-font>`
