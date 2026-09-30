@@ -1,3 +1,5 @@
+/* stylescript prototype 2 entwurf */
+
 import shift           from '@pulgasari/shift';
 import { toKebabCase } from '@pulgasari/str';
 
