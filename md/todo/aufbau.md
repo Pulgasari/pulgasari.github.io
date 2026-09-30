@@ -9,6 +9,18 @@
 - [ ] create `<app-slot>`
 - [ ] create `<app-view>`
 
+### embed
+- [ ] `<embed-bandcamp>`
+- [ ] `<embed-soundcloud>`
+- [ ] `<embed-spotify>`
+- [ ] `<embed-youtube>`
+
+### flow
+- [ ] create `<flow-dropdown>`
+- [ ] create `<flow-flyout>`
+- [ ] create `<flow-loop>`
+- [ ] create `<flow-popover>`
+
 ### input
 - [ ] create `<input-color>`
 - [ ] create `<input-country>`
