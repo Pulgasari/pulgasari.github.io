@@ -64,6 +64,9 @@
 - [ ] create `<input-url>`
 - [ ] create `<input-year>`
 
+### menu-floating
+- [ ] create `<menu-float>`
+
 ### svg
 - [ ] create `<svg-file>`
 - [ ] create `<svg-flag>`
@@ -83,6 +86,21 @@
 - [ ] create `<write-code>`
 - [ ] create `<write-md>`
 - [ ] create `<write-text>`
+
+---
+
+## menu-float
+
+floating-menü das an 9 positionen sitzen könnte
+1 : 'upper-left'
+2 : 'upper-center'
+3 : 'upper-right'
+
+```html
+<menu-float position='bottom center'
+```
+
+---
 
 ### dynamische components
 - prüfen inwiefern es möglich ist ad-hoc custom elements zu generieren bspw. für neue imputs
