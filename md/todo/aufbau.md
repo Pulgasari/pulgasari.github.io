@@ -71,6 +71,7 @@
 
 ### view
 - [ ] create `<view-epub>`
+- [ ] create `<view-font>`
 - [ ] create `<view-gif>`
 - [ ] create `<view-json>`
 - [ ] create `<view-pdf>`
@@ -84,7 +85,13 @@
 ### dynamische components
 - prüfen inwiefern es möglich ist ad-hoc custom elements zu generieren bspw. für neue imputs
 
-### `<aufbau-fontpicker>`
+### js-api
+
+```javascript
+import { doc } from '@aufbau/components';
+
+doc.defineComponent('write-css', 'write-code', { attr: { lang: 'css' } }); 
+```
 
 basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 
@@ -92,7 +99,7 @@ basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 <!-- aufbau handpicked/standard fonts -->
 <aufbau-fontpicker></aufbau-fontpicker>
 <aufbau-fontpicker type='monospace' scope='#some-element'></aufbau-fontpicker>
-<aufbau-fontpicker lib='aufbau'></aufbau-fontpicker>
+<input-font lib='aufbau'></aufbau-fontpicker>
 
 <!-- google fonts (using the sub-package)-->
 <aufbau-fontpicker lib='google' type='monospace'></aufbau-fontpicker>
