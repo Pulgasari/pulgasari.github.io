@@ -22,4 +22,6 @@ basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 
 - [ ] untersuchen ob/inwiefern die neuen css "custom functions" neue möglichkeiten das package evtl. um reine css-varianten zu erweitern
 
-## @aufbau/
+## @aufbau/gui
+
+- [ ] definition von "bereichen" durch array gedöns. also key + array = bereich
