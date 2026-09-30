@@ -2,12 +2,14 @@
 
 ## aufbau/components
 
+### app
 - [ ] create `<app-config>`
 - [ ] create `<app-root>`
 - [ ] create `<app-panel>`
 - [ ] create `<app-slot>`
 - [ ] create `<app-view>`
 
+### input
 - [ ] create `<input-color>`
 - [ ] create `<input-country>`
 - [ ] create `<input-date>`
@@ -16,6 +18,7 @@
 - [ ] create `<input-password>`
 - [ ] create `<input-text>`
 
+### write
 - [ ] create `<write-code>`
 - [ ] create `<write-md>`
 - [ ] create `<write-text>`
