@@ -3,6 +3,7 @@
 ## aufbau/components
 
 ### app
+- [ ] create `<app-area>`
 - [ ] create `<app-config>`
 - [ ] create `<app-root>`
 - [ ] create `<app-panel>`
