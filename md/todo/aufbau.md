@@ -9,11 +9,26 @@
 - [ ] create `<app-slot>`
 - [ ] create `<app-view>`
 
+### btn
+- [ ] create `<btn-copy>`
+- [ ] create `<btn-cut>`
+- [ ] create `<btn-share>`
+- [ ] create `<btn-paste>`
+
+### data
+- [ ] create `<data-chart>`
+- [ ] create `<data-sheet>`
+- [ ] create `<data-table>`
+
+### div
+- [ ] create `<div-x>`
+- [ ] create `<div-y>`
+
 ### embed
-- [ ] `<embed-bandcamp>`
-- [ ] `<embed-soundcloud>`
-- [ ] `<embed-spotify>`
-- [ ] `<embed-youtube>`
+- [ ] create `<embed-bandcamp>`
+- [ ] create `<embed-soundcloud>`
+- [ ] create `<embed-spotify>`
+- [ ] create `<embed-youtube>`
 
 ### flow
 - [ ] create `<flow-dropdown>`
@@ -46,6 +61,20 @@
 - [ ] create `<input-unit>`
 - [ ] create `<input-url>`
 - [ ] create `<input-year>`
+
+### svg
+- [ ] create `<svg-file>`
+- [ ] create `<svg-flag>`
+- [ ] create `<svg-icon>`
+- [ ] create `<svg-logo>`
+- [ ] create `<svg-sprite>`
+
+### view
+- [ ] create `<view-epub>`
+- [ ] create `<view-gif>`
+- [ ] create `<view-json>`
+- [ ] create `<view-pdf>`
+- [ ] create `<view-svg>`
 
 ### write
 - [ ] create `<write-code>`
