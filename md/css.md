@@ -47,6 +47,12 @@ rgb
 rgba
 ```
 
+### filter functions
+
+```css
+filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
+```
+
 ## Links
 
 ### Guides
