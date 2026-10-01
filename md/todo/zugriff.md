@@ -2,4 +2,10 @@
 
 ## apps/files
 
-- [ ] custom scripts
+- [ ] integrate feature: `foldertypes`
+- [ ] integrate feature: `taskmanager`
+- [ ] integrate feature: `userscripts`
+
+### scripts
+- [ ] auto-rename 
+- [ ] find-duplicates
