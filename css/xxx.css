@@ -1,5 +1,40 @@
 /* AOFG :: ApplikativeOberflächenGestaltung.js */
 
+@function --n-bool(--value type( true | false | on | off | 1 | 0 ) : off){
+  result: if(
+    style(--value: on)  : true;
+    style(--value: 1)   : true;
+    style(--value: off) : false;
+    style(--value: 0)   : false;
+    else                : var(--value);
+  );
+}
+
+@property --charset { inherit: false; initial-value: "utf8";  syntax: "<string>";  }        
+@property --dir     { inherit: false; initial-value: "ltr";   syntax: "ltr | rtl"; }        
+@property --locale  { inherit: false; initial-value: "de_DE"; syntax: "<string>";  }        
+
+:root {
+  /* a11y */
+  --a11y-contrast : off;
+  --a11y-motion   : off;
+  
+  /* document */
+  --charset : 'utf8';
+  --locale  : 'de_DE';
+  --dir     : 'ltr';
+
+  /* font */
+  --font-mono : 'JetBrains Mono';
+  --font-sans : 'Manrope';
+
+  /* gestalt */
+  --density  : compact;
+  --geometry : soft;
+  --palette  : zombie|
+  --skin     : andromeda;
+}
+
 * {
   gap: --space(var(--gap));
 }
