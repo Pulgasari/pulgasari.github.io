@@ -2,10 +2,11 @@
 
 ## apps/files
 
+- [ ] integrate feature: `commands`
 - [ ] integrate feature: `foldertypes`
-- [ ] integrate feature: `taskmanager`
-- [ ] integrate feature: `userscripts`
-- [ ] integrate feature: `remote storages`
+- [ ] integrate feature: `tasks`
+- [ ] integrate feature: `scripts`
+- [ ] integrate feature: `storages`
   - [ ] `(s)stp` 
   - [ ] `webdav` (gibts evtl schon in `/.shared`)
 
