@@ -185,6 +185,18 @@ ich denke wir sollten die machen:
 <app-root>
 ```
 
+mobile:
+- `aside-left`  lässt sich von links reinziehen und/oder extern/manuell togglen
+- `aside-right` lässt sich von rechts reinziehen und/oder extern/manuell togglen
+- `aside-bottom` lässt sich von unten reinziehen und/oder extern/manuell togglen
+- alle 3 haben auch oben rechts icons für `close` und (optional) `fullscreen` (bzw `expand`)
+
+desktop;
+- dementsprechend eher sidebar-like auf/zu und `expand` is dann 50% breite oder so
+- oder viellicht auch angebbar
+
+- floating
+- 
 
 
 
