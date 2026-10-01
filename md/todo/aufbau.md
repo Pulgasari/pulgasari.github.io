@@ -212,5 +212,4 @@ zur klarstellung:
 - ne area könnte auch mehrere slots haben
 - bin mir aber auch garnich so sicher obs explizite slots als elemente brauch?
 
-2. wir erstellen mal noch n skin namens `andromeda` (macht erstmal nich großartig was
-
+2. wir erstellen mal noch n skin namens `andromeda` (macht erstmal nich großartig was)
