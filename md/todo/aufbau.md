@@ -3,6 +3,8 @@
 ## aufbau/components + aufbau/elements
 - [ ] beide packages sollten als `@aufbau/elements` zusammengelegt werden
 - [ ] in den klassen der webcomponents wird teilweise `_` statt `#` als präfix für interne identifierr genutzt. sollte überall geändert werde, wo möglich.
+- [ ] überlegung: intern `htx` nutzen statt ner extra `html` function?
+- [ ] überlegung: intern `ass` aus `@aufbau/ass` oder `css` von stylescript nutzen für die sheets?
 
 ## aufbau/components
 
