@@ -144,12 +144,11 @@ basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 
 
 
-
 Jo das reicht erstmal, guck ich mir morgen genauer an.
 
-jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überlegt. Bin mir noch bei allem sicheg aber das bild fügt sich langsam.
+jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überlegt. Bin mir noch nich bei allem sicher aber das bild fügt sich langsam.
 
-ich denke wir sollten die machen:
+1. ich denke wir sollten die machen:
 
 ```
 <app-root> (wie gehabt)
@@ -179,9 +178,16 @@ ich denke wir sollten die machen:
     <app-view name='config'>...</app-view>
   </app-area>
 
-  <app-area name='aside-left'></app-area>
-  <app-area name='aside-right'></app-area>
-  <app-area name='aside-bottom'></app-area>
+  <app-area name='aside-left'>
+    <app-slot></app-slot>
+  </app-area>
+  <app-area name='aside-right'>
+    <app-slot></app-slot>
+  </app-area>
+  <app-area name='aside-bottom'>
+    <app-slot></app-slot>
+  </app-area>
+
   <app-area name='floating'></app-area> (??? siehe unten)
   <app-area name='modals'></app-area> (???)
   
@@ -200,7 +206,11 @@ desktop;
 
 - bei `floating` bin ich mir unsicher obs nich direkt eher ne component statt ne fläche sein sollte.
 - mit so 9 default ankerpunkten (oben-links bis unten-rechts) + richtung bei den eck-ankerpunkten
- 
 
+zur klarstellung:
+- was dann ne einzelne zugriff-app und überhaupt is ihr überlassen
+- ne area könnte auch mehrere slots haben
+- bin mir aber auch garnich so sicher obs explizite slots als elemente brauch?
 
+2. wir erstellen mal noch n skin namens `andromeda` (macht erstmal nich großartig was
 
