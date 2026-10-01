@@ -31,17 +31,70 @@
   /* gestalt */
   --density  : compact;
   --geometry : soft;
-  --palette  : zombie|
+  --palette  : zombie;
   --skin     : andromeda;
+}
+
+:root {
+  --reset
 }
 
 * {
   gap: --space(var(--gap));
 }
 
-div, main, section {
-  display        : flex;
-  flex-direction : column;
 
-  --gap: small;
+
+:root {
+  --reset      : true;
+  --reset-flow : true;
 }
+
+@container style(--reset: true) {
+  @container style(--reset-flow: true) {
+    div, main, section {
+      display        : flex;
+      flex-direction : column;
+      --gap: small;
+    }
+    div-x {
+      display        : flex;
+      flex-direction : row;
+      inline-size    : 100%;
+    }
+    div-y, main, section {
+      display         : flex;
+      flex-direction  : column;
+      inline-size     : 100%;
+      justify-content : safe center;
+    }
+  }
+}
+
+@container style(--reset: true) {
+  @container style(--reset-flow: true) {
+    button, div, dix-x, div-y, main, section { display: flex; --gap: small; inline-size: 100%; }
+            div,        div-y, main, section { flex-direction : column; }
+    button,      div-x                       { flex-direction : row; }
+                        div-y, main, section { justify-content : safe center; }
+  }
+  }
+
+@container style(--reset: true) {
+  @container style(--reset-flow: true) {
+    button, div, dix-x, div-y, main, section { display: flex; --gap: small; inline-size: 100%; }
+            div,        div-y, main, section { flex-direction : column; }
+    button,      div-x                       { flex-direction : row; }
+                        div-y, main, section { justify-content : safe center; }
+
+    button { flex-direction : row; }
+    div-x  { flex-direction : row; }
+
+    div     { flex-direction : column; }
+    div-y   { flex-direction : column; }
+    main    { flex-direction : column; }
+    section { flex-direction : column; }
+    }
+  }
+}
+
