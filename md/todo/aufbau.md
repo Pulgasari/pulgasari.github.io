@@ -140,34 +140,27 @@ basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 
 ## @aufbau/filters
 
-- [ ] untersuchen ob/inwiefern die neuen css "custom functions" neue möglichkeiten das package evtl. um reine css-varianten zu erweitern
+- [x] untersuchen ob/inwiefern die neuen css "custom functions" neue möglichkeiten das package evtl. um reine css-varianten zu erweitern
 
 ## @aufbau/gui
 
-- [ ] definition von "bereichen" durch array gedöns. also key + array = bereich
+- [x] definition von "bereichen" durch array gedöns. also key + array = bereich
 
+---
 
+# experiment
 
+ich will testweise ein interface schaffen wo folgendes miteinander gesynct ist, und man quasi auf allen ebenen des webdav auf den app-state zugreifen kann usw.
 
+1. in `app-root` ein prop `state`
+2. die keys darunter sind auch attribute am element und können geändert werden
+3. sie gibts im css als customprops von `app-root`
+4. falls machbar: in der url als queryparams
+5. im config-panel
 
+---
 
-Jo das reicht erstmal, guck ich mir morgen genauer an.
-
-jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überlegt. Bin mir noch nich bei allem sicher aber das bild fügt sich langsam.
-
-1. ich denke wir sollten die machen:
-
-```
-<app-root> (wie gehabt)
-<app-area> (führ ich gleich weiter aus)
-<app-view> (wie gehabt)
-<app-slot>
-<app-panel>
-<app-modal> 
-<app-config> (ist quasi was aktuell Settings war, aber finde config passender. Kann als modal, panel oder view gemounter werden.)
-```
-
-`<area>` is für mich quasi die große unterteilung einer app-ui und mit eindeutige name. Zb für `zugriff/files` würde ich jetzt sowas bauen wollen,wobei der grundrahmen schon mit "generell für zugriff" gedacht ist.
+# notiz
 
 ```html
 <app-root>
@@ -200,35 +193,3 @@ jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überl
   
 <app-root>
 ```
-
-mobile:
-- `aside-left`  lässt sich von links reinziehen und/oder extern/manuell togglen
-- `aside-right` lässt sich von rechts reinziehen und/oder extern/manuell togglen
-- `aside-bottom` lässt sich von unten reinziehen und/oder extern/manuell togglen
-- alle 3 haben auch oben rechts icons für `close` und (optional) `fullscreen` (bzw `expand`)
-
-desktop;
-- dementsprechend eher sidebar-like auf/zu und `expand` is dann 50% breite oder so
-- oder viellicht auch angebbar
-
-- bei `floating` bin ich mir unsicher obs nich direkt eher ne component statt ne fläche sein sollte.
-- mit so 9 default ankerpunkten (oben-links bis unten-rechts) + richtung bei den eck-ankerpunkten
-
-zur klarstellung:
-- was dann ne einzelne zugriff-app und überhaupt is ihr überlassen
-- ne area könnte auch mehrere slots haben
-- bin mir aber auch garnich so sicher obs explizite slots als elemente brauch?
-
-2. wir erstellen mal noch n skin namens `andromeda` (macht erstmal nich großartig was)
-
-
----
-
-# experiment
-
-ich will mal testweise ein interface schaffen wo folgemdes miteinander sync ist:
-1. in `app-root` ein prop `state`
-2. die keys darunter sind auch attribute am element und können geändert werden
-3. sie gibts im css als customprops von `app-root`
-4. falls machbar: in der url als queryparams
-5. im config-panel
