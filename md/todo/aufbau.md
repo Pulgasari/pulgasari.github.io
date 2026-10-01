@@ -150,15 +150,18 @@ Jo das reicht erstmal, guck ich mir morgen genauer an.
 jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überlegt. Bin mir noch bei allem sicheg aber das bild fügt sich langsam.
 
 ich denke wir sollten die machen:
+
+```
 <app-root> (wie gehabt)
 <app-area> (führ ich gleich weiter aus)
- <app-view> (wie gehabt)
+<app-view> (wie gehabt)
 <app-slot>
 <app-panel>
 <app-modal> 
 <app-config> (ist quasi was aktuell Settings war, aber finde config passender. Kann als modal, panel oder view gemounter werden.)
+```
 
-<area> is für mich quasi die große unterteilung einer app-ui und mit eindeutige name. Zb für `zugriff/files` würde ich jetzt sowas bauen wollen,wobei der grundrahmen schon mit "generell für zugriff" gedacht ist.
+`<area>` is für mich quasi die große unterteilung einer app-ui und mit eindeutige name. Zb für `zugriff/files` würde ich jetzt sowas bauen wollen,wobei der grundrahmen schon mit "generell für zugriff" gedacht ist.
 
 ```html
 <app-root>
@@ -179,8 +182,8 @@ ich denke wir sollten die machen:
   <app-area name='aside-left'></app-area>
   <app-area name='aside-right'></app-area>
   <app-area name='aside-bottom'></app-area>
-  <app-area name='floating'></app-area>
-  <app-area name='modals'></app-area>
+  <app-area name='floating'></app-area> (??? siehe unten)
+  <app-area name='modals'></app-area> (???)
   
 <app-root>
 ```
@@ -195,8 +198,9 @@ desktop;
 - dementsprechend eher sidebar-like auf/zu und `expand` is dann 50% breite oder so
 - oder viellicht auch angebbar
 
-- floating
-- 
+- bei `floating` bin ich mir unsicher obs nich direkt eher ne component statt ne fläche sein sollte.
+- mit so 9 default ankerpunkten (oben-links bis unten-rechts) + richtung bei den eck-ankerpunkten
+ 
 
 
 
