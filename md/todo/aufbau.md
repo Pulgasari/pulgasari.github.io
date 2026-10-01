@@ -1,5 +1,9 @@
 # aufbau
 
+## aufbau/components + aufbau/elements
+- [ ] beide packages sollten als `@aufbau/elements` zusammengelegt werden
+- [ ] in den klassen der webcomponents wird teilweise `_` statt `#` als präfix für interne identifierr genutzt. sollte überall geändert werde, wo möglich.
+
 ## aufbau/components
 
 ### app
