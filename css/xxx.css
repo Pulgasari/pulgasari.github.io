@@ -1,0 +1,11 @@
+
+* {
+  gap: --space(var(--gap));
+}
+
+div, main, section {
+  display        : flex;
+  flex-direction : column;
+
+  --gap: small;
+}
