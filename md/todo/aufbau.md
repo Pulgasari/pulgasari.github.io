@@ -138,3 +138,53 @@ basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
 ## @aufbau/gui
 
 - [ ] definition von "bereichen" durch array gedöns. also key + array = bereich
+
+
+
+
+
+
+
+Jo das reicht erstmal, guck ich mir morgen genauer an.
+
+jetzt nochmal zurück zu `aufbau` und `zugriff/apps/files`. Ich hab bissi überlegt. Bin mir noch bei allem sicheg aber das bild fügt sich langsam.
+
+ich denke wir sollten die machen:
+<app-root> (wie gehabt)
+<app-area> (führ ich gleich weiter aus)
+ <app-view> (wie gehabt)
+<app-slot>
+<app-panel>
+<app-modal> 
+<app-config> (ist quasi was aktuell Settings war, aber finde config passender. Kann als modal, panel oder view gemounter werden.)
+
+<area> is für mich quasi die große unterteilung einer app-ui und mit eindeutige name. Zb für `zugriff/files` würde ich jetzt sowas bauen wollen,wobei der grundrahmen schon mit "generell für zugriff" gedacht ist.
+
+```html
+<app-root>
+  <app-area name='main'>
+    <app-view name='dashboard'>
+      <search>...</search>
+    </app-view>
+    <app-view name='library'>
+      <header>...</header>
+      <crumbs>...</crumbs>
+      <main>...</main>
+      <search>...</search>
+    </app-view>
+    <app-view name='dashboard'>...</app-view>
+    <app-view name='config'>...</app-view>
+  </app-area>
+
+  <app-area name='aside-left'></app-area>
+  <app-area name='aside-right'></app-area>
+  <app-area name='aside-bottom'></app-area>
+  <app-area name='floating'></app-area>
+  <app-area name='modals'></app-area>
+  
+<app-root>
+```
+
+
+
+
