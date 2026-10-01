@@ -213,3 +213,15 @@ zur klarstellung:
 - bin mir aber auch garnich so sicher obs explizite slots als elemente brauch?
 
 2. wir erstellen mal noch n skin namens `andromeda` (macht erstmal nich großartig was)
+
+
+---
+
+# experiment
+
+ich will mal testweise ein interface schaffen wo folgemdes miteinander sync ist:
+1. in `app-root` ein prop `state`
+2. die keys darunter sind auch attribute am element und können geändert werden
+3. sie gibts im css als customprops von `app-root`
+4. falls machbar: in der url als queryparams
+5. im config-panel
