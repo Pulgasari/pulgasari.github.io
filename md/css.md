@@ -31,6 +31,22 @@
 @identifier (RULE) {}
 ```
 
+## function
+
+### color functions
+
+```css
+hsl
+hsla
+hwb
+lab
+lch
+oklab
+oklch
+rgb
+rgba
+```
+
 ## Links
 
 ### Guides
