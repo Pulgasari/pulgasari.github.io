@@ -103,7 +103,12 @@ resultiert in 2 werte aus range
 ```
 
 ```css
+input-cycle {
+  &::part(icon) {}
+}
+
 input-field {
+  &::part(icon)  {}
   &::part(input) {}
 }
 
@@ -126,6 +131,9 @@ input-toggle {
   &::part(thumb) {}
   &::part(track) {}
 }
+
+input-toggle[look="button"] {}
+input-toggle[look="checkbox"] {}
 ```
 
 ```css
