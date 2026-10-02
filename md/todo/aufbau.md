@@ -71,8 +71,14 @@
 - [ ] create `<input-url>`
 - [ ] create `<input-year>`
 
-### menu-floating
+### menu
+- [ ] create `<menu-actions>`
+- [ ] create `<menu-context>`
 - [ ] create `<menu-float>`
+
+### nav
+- [ ] create `<nav-crumbs>`
+- [ ] create `<nav-paginate>`
 
 ### svg
 - [ ] create `<svg-file>`
