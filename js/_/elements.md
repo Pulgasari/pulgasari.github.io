@@ -102,6 +102,18 @@ resultiert in 2 werte aus range
 <input-value type='year'>
 ```
 
+```html
+<input-cycle name='viewmode'>
+  <input-option type='string' value='grid'></input-option>
+  <input-option type='string' value='list'></input-option>
+</input-cycle>
+
+<input-choice name='viewmode'>
+  <input-option type='string' value='grid'></input-option>
+  <input-option type='string' value='list'></input-option>
+</input-choice>
+```
+
 ```css
 input-cycle {
   &::part(icon) {}
