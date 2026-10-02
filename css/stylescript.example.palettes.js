@@ -24,7 +24,7 @@ code += css`
     ${palettes.forEach(definePalette)}
 
     ${palettes.forEach(([key, entry) => css`
-      container style(--palette: ${key})  {
+      @container style(--palette: ${key}) {
         --color-bg  : ${entry.bg}; 
         --color-fg  : ${entry.fg}; 
         --color-ink : ${entry.ink};
