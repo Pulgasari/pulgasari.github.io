@@ -41,6 +41,7 @@ keine ahnung. Ich will jdf das ich im ergebnis solches markup habe:
 <input-range look='steppers'>
 
 <input-range type='date'>
+<input-range type='datetime'>
 <input-range type='number'>
 <input-range type='time'>
 <input-range type='year'>
@@ -55,6 +56,7 @@ keine ahnung. Ich will jdf das ich im ergebnis solches markup habe:
 
 <input-value type='color'>
 <input-value type='date'>
+<input-value type='datetime'>
 <input-value type='email'>
 <input-value type='language'>
 <input-value type='locale'>
@@ -75,4 +77,44 @@ resultiert in i wert aus range
 resultiert in 2 werte
 resultiert in 2 werte aus liste
 resultiert in 2 werte aus range
+```
+
+```html
+<input-value>
+
+<input-value look='field'>
+<input-value look='segments'>
+<input-value look='slider'>
+<input-value look='stepper'>
+
+<input-value type='color'>
+<input-value type='date'>
+<input-value type='datetime'>
+<input-value type='email'>
+<input-value type='language'>
+<input-value type='locale'>
+<input-value type='number'>
+<input-value type='password'>
+<input-value type='search'>
+<input-value type='time'>
+<input-value type='timezone'>
+<input-value type='url'>
+<input-value type='year'>
+```
+
+```css
+input-field {
+  &::part(input) {}
+}
+
+input-slider {
+  &::part(input) {}
+  &::part(thumb) {}
+  &::part(track) {}
+}
+
+input-stepper {
+  &::part(button) {}
+  &::part(input) {}
+}
 ```
