@@ -107,6 +107,10 @@ input-field {
   &::part(input) {}
 }
 
+input-segments {
+  &::part(segment) {}
+}
+
 input-slider {
   &::part(input) {}
   &::part(thumb) {}
@@ -116,6 +120,11 @@ input-slider {
 input-stepper {
   &::part(button) {}
   &::part(input) {}
+}
+
+input-toggle {
+  &::part(thumb) {}
+  &::part(track) {}
 }
 ```
 
