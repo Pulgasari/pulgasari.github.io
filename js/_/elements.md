@@ -118,3 +118,22 @@ input-stepper {
   &::part(input) {}
 }
 ```
+
+```css
+input-value {
+  &[look="field"] {
+    &::part(input) {}
+  }
+  
+  &[look="slider"] {
+    &::part(input) {}
+    &::part(thumb) {}
+    &::part(track) {}
+  }
+  
+  &[look="stepper"] {
+    &::part(button) {}
+    &::part(input) {}
+  }
+}
+```
