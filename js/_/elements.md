@@ -35,15 +35,24 @@ keine ahnung. Ich will jdf das ich im ergebnis solches markup habe:
 
 ```html
 <input-range>
-<input-range type='date'>
-<input-range type='number'>
-<input-range type='time'>
-<input-range type='year'>
+
 <input-range look='fields'>
 <input-range look='slider'>
 <input-range look='steppers'>
 
+<input-range type='date'>
+<input-range type='number'>
+<input-range type='time'>
+<input-range type='year'>
+```
+
+```html
 <input-value>
+
+<input-value look='field'>
+<input-value look='slider'>
+<input-value look='stepper'>
+
 <input-value type='color'>
 <input-value type='date'>
 <input-value type='email'>
