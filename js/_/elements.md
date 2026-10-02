@@ -8,7 +8,11 @@ und `input-chips` könnte vllt `input-by-chips` sein.
 
 und zu deiner frage bzgl entscheidungen:
 
-keine ahnung. Ich will jdf das ich im ergebnis solches markup habe:
+keine ahnung. Ich will jdf das ich im ergebnis:
+1. sauberes und nachvollziehbares markup habe
+2. wenn man es mit css später (um)stylen will, man keine macke bekommt
+
+aber irgendwie egal wie man es dreht und wendet, ich bekomms einfach nich ganz rund.
 
 ```html
 <input-number look='field'>
