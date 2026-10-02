@@ -67,4 +67,12 @@ keine ahnung. Ich will jdf das ich im ergebnis solches markup habe:
 <input-value type='year'>
 ```
 
+```md
+resultiert in 1 wert
+resultiert in 1 wert aus liste
+resultiert in i wert aus range
 
+resultiert in 2 werte
+resultiert in 2 werte aus liste
+resultiert in 2 werte aus range
+```
