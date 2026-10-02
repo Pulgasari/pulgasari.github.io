@@ -71,6 +71,14 @@
 - [ ] create `<input-url>`
 - [ ] create `<input-year>`
 
+### media
+- [ ] create `<media-epub>`
+- [ ] create `<media-font>`
+- [ ] create `<media-gif>`
+- [ ] create `<media-json>`
+- [ ] create `<media-pdf>`
+- [ ] create `<media-svg>`
+
 ### menu
 - [ ] create `<menu-actions>`
 - [ ] create `<menu-context>`
@@ -86,14 +94,6 @@
 - [ ] create `<svg-icon>`
 - [ ] create `<svg-logo>`
 - [ ] create `<svg-sprite>`
-
-### view
-- [ ] create `<view-epub>`
-- [ ] create `<view-font>`
-- [ ] create `<view-gif>`
-- [ ] create `<view-json>`
-- [ ] create `<view-pdf>`
-- [ ] create `<view-svg>`
 
 ### write
 - [ ] create `<write-code>`
