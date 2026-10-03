@@ -19,4 +19,5 @@
 - https://skypack.dev
 - https://svgjs.dev
 - https://tsrx.dev
+- https://docs.swmansion.com/TypeGPU/
 - https://usefoley.dev
