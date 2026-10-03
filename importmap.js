@@ -26,6 +26,8 @@ const map = { imports: {
   "@aufbau/components/htx"  : "./aufbau/components/adapters/htx.js",
   "@aufbau/devtools"        : "./aufbau/devtools/index.js",
   "@aufbau/devtools/"       : "./aufbau/devtools/",
+  "@aufbau/element"         : "./aufbau/element/index.js",
+  "@aufbau/element/"        : "./aufbau/element/",
   "@aufbau/elements"        : "./aufbau/elements/index.js",
   "@aufbau/elements/htx"    : "./aufbau/elements/adapters/htx.js",
   "@aufbau/elements/"       : "./aufbau/elements/",
