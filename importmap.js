@@ -99,6 +99,7 @@ const map = { imports: {
   "@pulgasari/obj"              : "./js-packages/obj/index.js",
   "@pulgasari/obj/CanonicalMap" : "./js-packages/obj/CanonicalMap.js",
   "@pulgasari/random"           : "./js-packages/random/index.js",
+  "@pulgasari/shift"            : "./js-packages/shift/index.js",
   "@pulgasari/str"              : P + 'str',
   "@pulgasari/timing"           : "./js-packages/timing/index.js",
   "@pulgasari/url"              : "./js-packages/url/index.js",
