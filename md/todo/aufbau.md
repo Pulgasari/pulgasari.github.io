@@ -17,11 +17,8 @@
 - [ ] create `<app-view>`
 
 ### btn
-- [ ] create `<btn-copy>`
-- [ ] create `<btn-cut>`
-- [ ] create `<btn-goback>`
-- [ ] create `<btn-share>`
-- [ ] create `<btn-paste>`
+- [ ] create `<btn-icon>`
+- [ ] create `<btn-tap>`
 
 ### data
 - [ ] create `<data-chart>`
@@ -87,6 +84,13 @@
 ### nav
 - [ ] create `<nav-crumbs>`
 - [ ] create `<nav-paginate>`
+
+### pop
+- [ ] create `<pop-menu>`
+- [ ] create `<pop-modal>`
+- [ ] create `<pop-prompt>`
+- [ ] create `<pop-tip>`
+- [ ] create `<pop-toast>`
 
 ### svg
 - [ ] create `<svg-file>`
