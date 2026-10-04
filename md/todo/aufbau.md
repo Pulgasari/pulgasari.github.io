@@ -1,12 +1,11 @@
 # aufbau
 
 ## aufbau/components + aufbau/elements
-- [ ] beide packages sollten als `@aufbau/elements` zusammengelegt werden
-- [ ] in den klassen der webcomponents wird teilweise `_` statt `#` als präfix für interne identifierr genutzt. sollte überall geändert werde, wo möglich.
+- [x] beide packages sollten als `@aufbau/elements` zusammengelegt werden
 - [ ] überlegung: intern `htx` nutzen statt ner extra `html` function?
-- [ ] überlegung: intern `ass` aus `@aufbau/ass` oder `css` von stylescript nutzen für die sheets?
+- [x] überlegung: intern `ass` aus `@aufbau/ass` oder `css` von stylescript nutzen für die sheets?
 
-## aufbau/components
+## aufbau/elements
 
 ### app
 - [ ] create `<app-area>`
@@ -18,10 +17,12 @@
 
 ### btn
 - [ ] create `<btn-icon>`
+- [ ] create `<btn-push>` (name nicht perfekt)
 - [ ] create `<btn-tap>`
 
 ### data
 - [ ] create `<data-chart>`
+- [ ] create `<data-form>`
 - [ ] create `<data-sheet>`
 - [ ] create `<data-table>`
 
@@ -34,12 +35,6 @@
 - [ ] create `<embed-soundcloud>`
 - [ ] create `<embed-spotify>`
 - [ ] create `<embed-youtube>`
-
-### flow
-- [ ] create `<flow-dropdown>`
-- [ ] create `<flow-flyout>`
-- [ ] create `<flow-loop>`
-- [ ] create `<flow-popover>`
 
 ### input
 - [ ] create `<input-address>`
@@ -83,11 +78,14 @@
 
 ### nav
 - [ ] create `<nav-crumbs>`
+- [ ] create `<nav-chars>`
 - [ ] create `<nav-paginate>`
+- [ ] create `<nav-toc>`
 
 ### pop
 - [ ] create `<pop-menu>`
 - [ ] create `<pop-modal>`
+- [ ] create `<pop-over>`
 - [ ] create `<pop-prompt>`
 - [ ] create `<pop-tip>`
 - [ ] create `<pop-toast>`
@@ -105,6 +103,19 @@
 - [ ] create `<write-text>`
 
 ---
+
+## data-form
+- [ ] action: export (json, html, xml, queryParams)
+- [ ] action: import (json, html, xml, queryParams)
+- [ ] action: clear
+- [ ] action: reset
+- [ ] action: save | auto-save on/off | persist on/off
+
+## input-chips
+- [ ] optional: normalize-fn
+- [ ] optional: validite-fn
+- [ ] optional: datalist (?)
+- [ ] optional: suggestions
 
 ## menu-float
 
