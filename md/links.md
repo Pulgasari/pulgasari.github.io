@@ -7,6 +7,9 @@
 ## javascript proposals
 - https://nitayneeman.com/blog/introducing-import-defer-in-ecmascript/
 
+##
+- [Awesome FP JavaScript](https://github.com/stoeffel/awesome-fp-js)
+
 ## misc
 - https://arrow-js.com
 - https://bastardica.mitpit.com
