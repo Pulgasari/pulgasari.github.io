@@ -17,3 +17,18 @@
   - [ ] `@htx/htx` = `htx/packages/core`
   - [ ] `@htx/js` = `htx/packages/js`
   - [ ] `@htx/preact` = `htx/packages/preact`
+
+## syntax ideas
+
+### span-shorthand
+
+```html
+<div>[bla] bla [bla]</div>
+
+<!-- compiles to: -->
+<div>
+  <span>bla</span>
+  bla
+  <span>bla</span>
+</div>
+```
