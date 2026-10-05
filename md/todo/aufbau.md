@@ -5,6 +5,18 @@
 - [ ] überlegung: intern `htx` nutzen statt ner extra `html` function?
 - [x] überlegung: intern `ass` aus `@aufbau/ass` oder `css` von stylescript nutzen für die sheets?
 
+---
+
+## @aufbau/bundler
+- [ ] evtl. besseren namen für das package finden
+- [ ] evtl. deno-kompatibel machen
+
+### statistik erweitern
+  - [ ] anzahl input-files gesamt + je fileExt
+  - [ ] anzahl output-files gesamt + je fileExt
+
+---
+
 ## aufbau/elements
 
 ### app
@@ -27,6 +39,7 @@
 - [ ] create `<data-table>`
 
 ### div
+- [ ] create `<div-grid>`
 - [ ] create `<div-x>`
 - [ ] create `<div-y>`
 
