@@ -159,7 +159,7 @@ floating-menü das an 9 positionen sitzen könnte
 ---
 
 ## @aufbau/svg
-- [ ] dieses package sollte mit `@aufbau/icons` zusammengelegt werden als '@aufbau/svg`
+- [ ] dieses package sollte mit `@aufbau/icons` zusammengelegt werden als `@aufbau/svg`
 - [ ] die files in `aufbau/svg/icons` sollten dann im `<svg-icon>` element unter dem präfix `aufbau` nutzbar sein
 - [ ] selbiges gilt für die files in `aufbau/svg/logos` als neues `<svg-logo>` element
 
