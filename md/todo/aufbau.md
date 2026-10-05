@@ -20,17 +20,18 @@
 ## aufbau/elements
 
 ### app
-- [ ] create `<app-area>`
+- [x] create `<app-area>`
 - [ ] create `<app-config>`
-- [ ] create `<app-root>`
-- [ ] create `<app-panel>`
+- [x] create `<app-root>`
+- [x] create `<app-panel>`
+- [ ] create `<app-section>` (??? noch unklar)
 - [ ] create `<app-slot>`
-- [ ] create `<app-view>`
+- [x] create `<app-view>`
 
 ### btn
-- [ ] create `<btn-icon>`
-- [ ] create `<btn-push>` (name nicht perfekt)
-- [ ] create `<btn-tap>`
+- [x] create `<btn-icon>`
+- [x] create `<btn-push>` (name nicht perfekt)
+- [x] create `<btn-tap>`
 
 ### data
 - [ ] create `<data-chart>`
@@ -39,15 +40,15 @@
 - [ ] create `<data-table>`
 
 ### div
-- [ ] create `<div-grid>`
+- [ ] create `<div-grid>` (noch unklar)
 - [ ] create `<div-x>`
 - [ ] create `<div-y>`
 
 ### embed
-- [ ] create `<embed-bandcamp>`
-- [ ] create `<embed-soundcloud>`
-- [ ] create `<embed-spotify>`
-- [ ] create `<embed-youtube>`
+- [x] create `<embed-bandcamp>`
+- [x] create `<embed-soundcloud>`
+- [x] create `<embed-spotify>`
+- [x] create `<embed-youtube>`
 
 ### input
 - [ ] create `<input-address>`
@@ -84,24 +85,24 @@
 - [ ] create `<media-pdf>`
 - [ ] create `<media-svg>`
 
-### menu
+### menu (alles noch unklar)
 - [ ] create `<menu-actions>`
 - [ ] create `<menu-context>`
 - [ ] create `<menu-float>`
 
 ### nav
-- [ ] create `<nav-crumbs>`
+- [x] create `<nav-crumbs>`
 - [ ] create `<nav-chars>`
 - [ ] create `<nav-paginate>`
-- [ ] create `<nav-toc>`
+- [x] create `<nav-toc>`
 
 ### pop
-- [ ] create `<pop-menu>`
-- [ ] create `<pop-modal>`
-- [ ] create `<pop-over>`
-- [ ] create `<pop-prompt>`
-- [ ] create `<pop-tip>`
-- [ ] create `<pop-toast>`
+- [x] create `<pop-menu>`
+- [x] create `<pop-modal>`
+- [x] create `<pop-over>`
+- [x] create `<pop-prompt>`
+- [x] create `<pop-tip>`
+- [x] create `<pop-toast>`
 
 ### svg
 - [ ] create `<svg-file>`
@@ -115,14 +116,18 @@
 - [ ] create `<write-md>`
 - [ ] create `<write-text>`
 
+### ???
+- headline element, evtl. smart bzgl hierarchie usw
+
 ---
 
 ## data-form
 - [ ] action: export (json, html, xml, queryParams)
 - [ ] action: import (json, html, xml, queryParams)
-- [ ] action: clear
-- [ ] action: reset
+- [x] action: clear
+- [x] action: reset
 - [ ] action: save | auto-save on/off | persist on/off
+- [ ] action: toggle-keyboard
 
 ## input-chips
 - [ ] optional: normalize-fn
