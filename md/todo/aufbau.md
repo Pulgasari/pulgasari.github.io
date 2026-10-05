@@ -148,54 +148,20 @@ floating-menü das an 9 positionen sitzen könnte
 
 ---
 
-### dynamische components
-- prüfen inwiefern es möglich ist ad-hoc custom elements zu generieren bspw. für neue imputs
-
-### js-api
-
-```javascript
-import { doc } from '@aufbau/elements';
-
-// define a <write-css> element derived from <write-code>
-elements.define('write-css', 'write-code', { attr: { lang: 'css' } });
-
-// now it could be used directly in html or in htx or js
-const cssEditor = elements.create('write-css');
-```
-
-basically ein `<aufbau-picker>` basierend auf `@aufbau/webfonts`
-
-```html
-<!-- aufbau handpicked/standard fonts -->
-<aufbau-fontpicker></aufbau-fontpicker>
-<aufbau-fontpicker type='monospace' scope='#some-element'></aufbau-fontpicker>
-<input-font lib='aufbau'></aufbau-fontpicker>
-
-<!-- google fonts (using the sub-package)-->
-<aufbau-fontpicker lib='google' type='monospace'></aufbau-fontpicker>
-```
-
-## @aufbau/elements
-
 ## @aufbau/filters
-
 - [x] untersuchen ob/inwiefern die neuen css "custom functions" neue möglichkeiten das package evtl. um reine css-varianten zu erweitern
 
-## @aufbau/gui
+---
 
+## @aufbau/gui
 - [x] definition von "bereichen" durch array gedöns. also key + array = bereich
 
 ---
 
-# experiment
-
-ich will testweise ein interface schaffen wo folgendes miteinander gesynct ist, und man quasi auf allen ebenen des webdav auf den app-state zugreifen kann usw.
-
-1. in `app-root` ein prop `state`
-2. die keys darunter sind auch attribute am element und können geändert werden
-3. sie gibts im css als customprops von `app-root`
-4. falls machbar: in der url als queryparams
-5. im config-panel
+## @aufbau/svg
+- [ ] dieses package sollte mit `@aufbau/icons` zusammengelegt werden als '@aufbau/svg`
+- [ ] die files in `aufbau/svg/icons` sollten dann im `<svg-icon>` element unter dem präfix `aufbau` nutzbar sein
+- [ ] selbiges gilt für die files in `aufbau/svg/logos` als neues `<svg-logo>` element
 
 ---
 
