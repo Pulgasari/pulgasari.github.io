@@ -32,3 +32,15 @@
   <span>bla</span>
 </div>
 ```
+
+---
+
+# htxx ::
+
+html```
+<script>
+  const aaa: xxx = true;
+  bbb: yyy = true;
+</script>
+
+```
