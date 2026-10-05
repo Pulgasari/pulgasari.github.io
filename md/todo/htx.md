@@ -25,11 +25,13 @@
 </div>
 ```
 
----
+## htxb :: htx-bundle
 
-# htxx ::
+## htxc :: htx-compiler
 
-html```
+## htxx ::
+
+```html
 <script>
   const aaa: xxx = true;
   bbb: yyy = true;
