@@ -17,7 +17,7 @@
 
 ---
 
-## aufbau/elements
+## @aufbau/elements
 
 ### app
 - [x] create `<app-area>`
