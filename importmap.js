@@ -80,9 +80,11 @@ const map = { imports: {
   "@domina/raf"          : "./domina/packages/raf/index.js",
   "@domina/stylesheet"   : "./domina/packages/stylesheet/index.js",
 
-  "@htx/htx"    : "./htx/packages/htx/index.js",
-  "@htx/js"     : "./htx/packages/js/index.js",
-  "@htx/preact" : "./htx/packages/preact/index.js",
+  "@htx/compiler" : "./htx/packages/compiler/index.js",
+  "@htx/elements" : "./htx/packages/elements/index.js",
+  "@htx/htx"      : "./htx/packages/htx/index.js",
+  "@htx/js"       : "./htx/packages/js/index.js",
+  "@htx/preact"   : "./htx/packages/preact/index.js",
   
   "@poo/compiler" : "./poo/js-packages/compiler/index.js",
   "@poo/hljs"     : "./poo/js-packages/hljs/index.js",
@@ -103,6 +105,7 @@ const map = { imports: {
   "@pulgasari/timing"           : "./js-packages/timing/index.js",
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
+  "acorn"            : "https://esm.sh/acorn@8",
   "htm"              : "https://esm.sh/htm@3.1.1",
   "preact"           : "https://esm.sh/preact@10.20.1",
   "preact/hooks"     : "https://esm.sh/preact@10.20.1/hooks",
