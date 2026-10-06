@@ -28,3 +28,5 @@
 
 https://nate.rip/gpuikit/#table
 https://github.com/iamnbutler/gpuikit
+
+https://developer.chrome.com/docs/web-platform/declarative-partial-updates?hl=de
