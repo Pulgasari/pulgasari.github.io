@@ -28,20 +28,6 @@ class AudioPlaylist {
 
 ---
 
-## `@aufbau/components`
-
-### `<aufbau-fontpicker>`
-
-### `<aufbau-gui>`
-
-### `<aufbau-keyboard>`
-
-### `<aufbau-notifications>`
-
----
-
-## `@aufbau/elements`
-
 ```
 aufbau-avatar
 aufbau-emoji
@@ -130,16 +116,6 @@ view-json
 view-pdf
 view-zip
 ```
-
-was list-virtual?
-
-text
-
-### `<aufbau-date>`
-
-### `<aufbau-modal>`
-
-### `<aufbau-value>`
 
 ---
 
