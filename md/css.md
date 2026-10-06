@@ -109,6 +109,9 @@ dvh dvw vh vw
 ### Guide: Values & Units
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length
 
+### Reference: SVG
+- https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/filter
+
 ### Misc
 - https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
 - https://drafts.csswg.org/css-syntax/
