@@ -2,7 +2,7 @@
 
 ## aufbau/components + aufbau/elements
 - [x] beide packages sollten als `@aufbau/elements` zusammengelegt werden
-- [ ] überlegung: intern `htx` nutzen statt ner extra `html` function?
+- [x] überlegung: intern `htx` nutzen statt ner extra `html` function?
 - [x] überlegung: intern `ass` aus `@aufbau/ass` oder `css` von stylescript nutzen für die sheets?
 
 ---
@@ -134,17 +134,6 @@
 - [ ] optional: validite-fn
 - [ ] optional: datalist (?)
 - [ ] optional: suggestions
-
-## menu-float
-
-floating-menü das an 9 positionen sitzen könnte
-1 : 'upper-left'
-2 : 'upper-center'
-3 : 'upper-right'
-
-```html
-<menu-float position='bottom center'
-```
 
 ---
 
