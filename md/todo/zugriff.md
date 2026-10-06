@@ -13,3 +13,7 @@
 ### scripts
 - [ ] auto-rename 
 - [ ] find-duplicates
+
+## `zugriff/apps/todo`
+
+adoptStylesheet(css
