@@ -12,8 +12,9 @@
 - [ ] evtl. deno-kompatibel machen
 
 ### statistik erweitern
-  - [ ] anzahl input-files gesamt + je fileExt
-  - [ ] anzahl output-files gesamt + je fileExt
+  - [x] anzahl input-files gesamt + je fileExt
+  - [x] anzahl output-files gesamt + je fileExt
+  - [x] gzip/brotli, bereiche, größte files, duplikate, zeit je schritt
 
 ---
 
@@ -21,7 +22,7 @@
 
 ### app
 - [x] create `<app-area>`
-- [ ] create `<app-config>`
+- [x] create `<app-config>`
 - [x] create `<app-root>`
 - [x] create `<app-panel>`
 - [ ] create `<app-section>` (??? noch unklar)
@@ -37,12 +38,12 @@
 - [ ] create `<data-chart>`
 - [ ] create `<data-form>`
 - [ ] create `<data-sheet>`
-- [ ] create `<data-table>`
+- [x] create `<data-table>`
 
 ### div
 - [ ] create `<div-grid>` (noch unklar)
-- [ ] create `<div-x>`
-- [ ] create `<div-y>`
+- [x] create `<div-x>`
+- [x] create `<div-y>`
 
 ### embed
 - [x] create `<embed-bandcamp>`
@@ -51,39 +52,39 @@
 - [x] create `<embed-youtube>`
 
 ### input
-- [ ] create `<input-address>`
-- [ ] create `<input-bool>`
-- [ ] create `<input-chips>`
-- [ ] create `<input-color>`
-- [ ] create `<input-country>`
-- [ ] create `<input-currency>`
-- [ ] create `<input-date>`
-- [ ] create `<input-datetime>`
-- [ ] create `<input-email>`
-- [ ] create `<input-emoji>`
-- [ ] create `<input-font>`
-- [ ] create `<input-hotkey>`
-- [ ] create `<input-language>`
-- [ ] create `<input-locale>`
-- [ ] create `<input-number>`
-- [ ] create `<input-password>`
-- [ ] create `<input-phone>`
-- [ ] create `<input-search>`
-- [ ] create `<input-slug>`
-- [ ] create `<input-text>`
-- [ ] create `<input-time>`
-- [ ] create `<input-timezone>`
-- [ ] create `<input-unit>`
-- [ ] create `<input-url>`
-- [ ] create `<input-year>`
+- [x] create `<input-address>`
+- [x] create `<input-bool>`
+- [x] create `<input-chips>`
+- [x] create `<input-color>`
+- [x] create `<input-country>`
+- [x] create `<input-currency>`
+- [x] create `<input-date>`
+- [x] create `<input-datetime>`
+- [x] create `<input-email>`
+- [x] create `<input-emoji>`
+- [x] create `<input-font>`
+- [x] create `<input-hotkey>`
+- [x] create `<input-language>`
+- [x] create `<input-locale>`
+- [x] create `<input-number>`
+- [x] create `<input-password>`
+- [x] create `<input-phone>`
+- [x] create `<input-search>`
+- [x] create `<input-slug>`
+- [x] create `<input-text>`
+- [x] create `<input-time>`
+- [x] create `<input-timezone>`
+- [x] create `<input-unit>`
+- [x] create `<input-url>`
+- [x] create `<input-year>`
 
 ### media
 - [ ] create `<media-epub>`
-- [ ] create `<media-font>`
-- [ ] create `<media-gif>`
-- [ ] create `<media-json>`
-- [ ] create `<media-pdf>`
-- [ ] create `<media-svg>`
+- [x] create `<media-font>`
+- [x] create `<media-gif>`
+- [x] create `<media-json>`
+- [x] create `<media-pdf>`
+- [x] create `<media-svg>`
 
 ### menu (alles noch unklar)
 - [ ] create `<menu-actions>`
@@ -92,8 +93,8 @@
 
 ### nav
 - [x] create `<nav-crumbs>`
-- [ ] create `<nav-chars>`
-- [ ] create `<nav-paginate>`
+- [x] create `<nav-chars>` (als `<nav-initials>`)
+- [x] create `<nav-paginate>`
 - [x] create `<nav-toc>`
 
 ### pop
@@ -105,16 +106,16 @@
 - [x] create `<pop-toast>`
 
 ### svg
-- [ ] create `<svg-file>`
-- [ ] create `<svg-flag>`
-- [ ] create `<svg-icon>`
-- [ ] create `<svg-logo>`
-- [ ] create `<svg-sprite>`
+- [x] create `<svg-file>`
+- [x] create `<svg-flag>`
+- [x] create `<svg-icon>`
+- [x] create `<svg-logo>`
+- [x] create `<svg-sprite>`
 
 ### write
-- [ ] create `<write-code>`
-- [ ] create `<write-md>`
-- [ ] create `<write-text>`
+- [x] create `<write-code>`
+- [x] create `<write-md>`
+- [x] create `<write-text>`
 
 ### ???
 - headline element, evtl. smart bzgl hierarchie usw
@@ -130,10 +131,10 @@
 - [ ] action: toggle-keyboard
 
 ## input-chips
-- [ ] optional: normalize-fn
-- [ ] optional: validite-fn
-- [ ] optional: datalist (?)
-- [ ] optional: suggestions
+- [x] optional: normalize-fn (`transform`)
+- [x] optional: validite-fn (`accept`, `pattern`)
+- [x] optional: datalist (?)
+- [x] optional: suggestions (`suggestions`, `suggest`)
 
 ---
 
