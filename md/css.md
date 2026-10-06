@@ -53,6 +53,28 @@ rgba
 filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
 ```
 
+### units
+
+```md
+<dimension>
+<integer>
+<number>
+<percentage>
+
+# dimension
+<angle>
+<length>
+<resolution>
+<time>
+```
+
+```md
+cm mm in pc pt px Q
+```
+- `em` is relative to the font size of this element, or the font size of the parent element when used for `font-size`.
+- `rem` is relative to the font size of the root element.
+- `vh` and `vw` are relative to the viewport's `height` and `width`, respectively
+
 ## Links
 
 ### Guides
@@ -71,6 +93,9 @@ filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transitions
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+
+### Guide: Values & Units
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length
 
 ### Misc
 - https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
