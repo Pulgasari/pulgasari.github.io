@@ -29,6 +29,8 @@ const map = { imports: {
   "@aufbau/elements/htx"    : "./aufbau/elements/adapters/htx.js",
   "@aufbau/elements/"       : "./aufbau/elements/",
   "@aufbau/filters"         : "./aufbau/filters/index.js",
+  "@aufbau/gestalt"         : "./aufbau/gestalt/index.js",
+  "@aufbau/gestalt/"        : "./aufbau/gestalt/",
   "@aufbau/gestures"        : "./aufbau/gestures/index.js",
   "@aufbau/gestures/"       : "./aufbau/gestures/",
   "@aufbau/gestures/preact" : "./aufbau/gestures/adapters/preact.js",
