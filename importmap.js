@@ -29,6 +29,7 @@ const map = { imports: {
   "@aufbau/elements/htx"    : "./aufbau/elements/adapters/htx.js",
   "@aufbau/elements/"       : "./aufbau/elements/",
   "@aufbau/filters"         : "./aufbau/filters/index.js",
+  "@aufbau/filters/"        : "./aufbau/filters/lib/",
   "@aufbau/gestalt"         : "./aufbau/gestalt/index.js",
   "@aufbau/gestalt/"        : "./aufbau/gestalt/",
   "@aufbau/gestures"        : "./aufbau/gestures/index.js",
@@ -36,8 +37,8 @@ const map = { imports: {
   "@aufbau/gestures/preact" : "./aufbau/gestures/adapters/preact.js",
   "@aufbau/gui"             : "./aufbau/gui/index.js",
   "@aufbau/import"          : "./aufbau/import/index.js",
-  //"@aufbau/kits/preact-htm" : "./aufbau/kits/preact-htm.js",
   "@aufbau/patterns"        : "./aufbau/patterns/index.js",
+  "@aufbau/patterns/"       : "./aufbau/patterns/lib/",
   "@aufbau/signals"         : "./aufbau/signals/index.js",
   "@aufbau/store"           : "./aufbau/store/index.js",
   "@aufbau/stylescript"     : "./aufbau/stylescript/index.js",
@@ -66,9 +67,6 @@ const map = { imports: {
   "@cosmonaut/parsers/"  : "./cosmonaut/packages/parsers/",
   "@cosmonaut/layouter/" : "./cosmonaut/packages/layouter/",
   "@cosmonaut/compiler/" : "./cosmonaut/packages/compiler/",
-
-  "@domina/core"     : "./domina/core/index.js",
-  "@domina/core/"    : "./domina/core/",
 
   "@domina/element"      : "./domina/packages/element/index.js",
   "@domina/element/lazy" : "./domina/packages/element/lazy.js",
