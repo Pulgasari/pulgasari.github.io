@@ -1,0 +1,87 @@
+/* darker.css */
+#app-header { 
+  background-color : color-mix(in oklch var(--aufbau-bg) 80%,black);
+  color            : var(--aufbau-fg);
+}
+#app-footer {
+  background-color : color-mix(in oklch var(--aufbau-bg) 80%,black);
+  color            : var(--aufbau-fg);
+}
+
+/* inverted.css */
+#app-header { 
+  background-color : var(--aufbau-fg);
+  color            : var(--aufbau-bg);
+}
+#app-footer {
+  background-color : var(--aufbau-fg);
+  color            : var(--aufbau-bg);
+}
+
+/* none.css */
+#app-header { 
+  background-color : var(--aufbau-bg);
+  color            : var(--aufbau-fg);
+}
+#app-footer {
+  background-color : var(--aufbau-bg);
+  color            : var(--aufbau-fg);
+}
+
+
+/*
+@container style(--surface: darker) {
+  background-color : color-mix(in oklch, var(--bg), black 20%);
+  color            : var(--fg);
+}
+
+@container style(--surface: inverted) {
+  background-color : var(--bg);
+  color            : var(--fg);
+}
+
+@container style(--surface: none) {
+  background-color : var(--bg);
+  color            : var(--fg);
+}
+*/
+
+* {
+  --surface: none;
+  
+  --surface-bg: if(
+    style(--surface: darker)   : color-mix(in oklch, var(--bg), black 20%);
+    style(--surface: inverted) : var(--fg);
+    style(--surface: none)     : var(--bg);
+    else                       : transparent;
+  );
+
+  --surface-fg: if(
+    style(--surface: darker)   : var(--fg);
+    style(--surface: inverted) : var(--bg);
+    style(--surface: none)     : var(--fg);
+    else                       : var(--fg);
+  );
+
+  background-color : if( style(--surface): var(--surface-bg); else: var(--bg); );       
+  color            : if( style(--surface): var(--surface-fg); else: var(--fg); );
+}
+
+/* ========== USAGE EXAMPLE ==========================
+
+body {
+  --bg: red;
+  --fg: yellow;
+}
+
+header { --surface: darker; }
+footer { --surface: darker; }
+main   { --surface: none;   }
+
+main > section:nth-child(odd) { --surface: darker-10; }
+
+button       { --bg: black; --fg: white; }
+button:hover { --surface: inverted; }
+
+================================================== */
+

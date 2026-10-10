@@ -1,0 +1,133 @@
+@import url('./reset.css');
+@import url('./default.css');
+/*@import url('./themes/oled.css');*/
+
+/*
+pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+blockquote { border-left: 4px solid #ccc; margin: 0; padding-left: 1rem; color: #666; }
+*/
+
+/* Colors */
+
+[data-theme="none"],
+[data-theme="light"] {
+  --bg : white;
+  --fg : black;
+}
+[data-theme="dark"] {
+  --bg : #252525;
+  --fg : #CCCCCC;
+}
+[data-theme="oled"] {
+  --bg : black;
+  --fg : white;
+}
+
+html {
+  --mix5  : color-mix(in oklch, var(--bg) 90%, var(--fg) 10%);
+  --mix10 : color-mix(in oklch, var(--bg) 90%, var(--fg) 10%);
+  --mix25 : color-mix(in oklch, var(--bg) 75%, var(--fg) 25%);
+  --mix50 : color-mix(in oklch, var(--bg) 50%, var(--fg) 50%);
+  background-color: black;
+  --accent: red;
+}
+body {
+  background-color : var(--bg);
+  color            : var(--fg);
+}
+a {
+  color: var(--fg);
+}
+
+#config {
+  background-color : var(--accent, var(--fg));
+  color            : var(--bg);
+  margin           : calc( -1 * var(--gap));
+  margin-bottom    : 0;
+  padding          : var(--gap);
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  min-height: 100%;
+}
+body {
+  flex: 1 1 auto;
+  /* min-height: 100%; */
+  /*--font : "Rubik", sans-serif;*/
+  --gap  : 1rem;
+  display: flex; flex-direction: column;
+  gap         : var(--gap, 1rem);
+  padding     : var(--gap, 1rem);
+  justify-content: center;
+}
+
+pre[class*="language-"] {
+  border-radius: 8px;
+  margin: 1.5em 0;
+}
+
+
+
+*  { border-style: solid; border-color: var(--fg); border-width: 0; }
+h1 { border-bottom-width: 5px; padding-bottom: var(--gap); }
+h2:not(h1 + h2):not(:first-child) {
+  border-top-color: var(--mix25);
+  border-top-width: 2px;
+  padding-top: var(--gap);
+}
+
+#made { text-align: center; }
+
+/* Code (inline) */
+:not(pre) > code {
+  background-color : var(--mix5);
+  font-size        : 0.8em;
+  padding          : 0.1em;
+}
+
+pre > code {
+  font-size        : 0.75em;
+}
+
+blockquote {
+  --border     : 5px solid var(--accent, var(--mix25));
+  border-left  : var(--border);
+  border-right : var(--border);
+  color        : var(--mix50);
+  font-size    : var(--small);
+  font-style   : italic;
+  padding      : 0 0.5rem;
+}
+
+
+/* Typography */
+
+body {
+  --small : 0.80rem;
+  
+  font-family          : var(--font);
+  font-optical-sizing  : auto;
+  font-size            : calc( var(--font-size, 15) * 1px);
+  font-synthesis-style : auto;
+  line-height          : var(--line-height, 1);
+  text-rendering       : auto;
+}
+
+a {
+  font-weight               : bold;
+  text-decoration           : underline var(--accent, var(--mix25));
+  text-decoration-thickness : 0.1em;
+  text-underline-position   : auto;
+}
+
+p {
+  hyphens      : var(--hyphens, auto);
+  text-align   : var(--text-align, left);
+  text-indent  : 1em;
+  text-justify : auto;
+/*text-wrap    : var(--text-wrap, pretty);*/
+    }

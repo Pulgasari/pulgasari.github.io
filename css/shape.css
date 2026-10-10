@@ -1,0 +1,19 @@
+
+
+@property --shape  { syntax: "<custom-ident>"; inherits: true; initial-value: sharp; }
+
+:root {
+  --shape: sharp;
+}
+
+@container style(--shape: circle)  { body { --radius: 50%; --ratio: 1/1; } }     
+@container style(--shape: square)  { body { --radius: 0;   --ratio: 1/1; } }
+@container style(--shape: rounded) { body { --radius: 1rem; } }
+@container style(--shape: sharp)   { body { --radius: 0;    } }
+
+.circle   { --shape: circle;  }
+.rounded  { --shape: rounded; }
+.sharp    { --shape: sharp;   }
+.square   { --shape: square;  }
+
+@layer shapes {}

@@ -42,3 +42,57 @@ dom.get('#sth').animate = {
 
 dom.get('#sth').rotate('1turn')
 dom.get('#sth').scale('1.5');
+
+
+/* @aufbau/css/keyframes.css */
+
+/* ==== another package ??? ====
+@aufbau/animate
+@aufbau/animate/animations
+@aufbau/animate/keyframes
+@aufbau/animate/motions
+@aufbau/animate/transitions
+============================= */
+
+@keyframes rotate-in-center {
+    0% { opacity: 0; transform: rotate(-360deg); }
+  100% { opacity: 1; transform: rotate(0);       }
+}
+
+@keyframes slide-in-leftwards   { from { translate:  100%; } to { translate:     0; } }
+@keyframes slide-in-rightwards  { from { translate: -100%; } to { translate:     0; } }
+@keyframes slide-out-leftwards  { from { translate:     0; } to { translate: -100%; } }
+@keyframes slide-out-rightwards { from { translate:     0; } to { translate:  100%; } }
+
+/* @patterns */
+
+/* Seamless 20px pattern tile slide animations */
+@keyframes aufbau-pattern-slide {
+  from { background-position:  0    0;   }
+  to   { background-position: 20px 20px; }
+}
+
+@keyframes aufbau-pattern-slide-x {
+  from { background-position:  0   0; }
+  to   { background-position: 20px 0; }
+}
+
+@keyframes aufbau-pattern-slide-y {
+  from { background-position: 0  0;   }
+  to   { background-position: 0 20px; }
+}
+
+/* Opacity pulse animation for background patterns */
+@keyframes aufbau-pattern-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/*
+
+@keyframes slideIn     { from { transform: translateX(-110%); } to { transform: translateX(    0); } }
+@keyframes slideOut    { from { transform: translateX(    0); } to { transform: translateX(-110%); } }
+@keyframes slideInRTL  { from { transform: translateX(+110%); } to { transform: translateX(    0); } }
+@keyframes slideOutRTL { from { transform: translateX(    0); } to { transform: translateX(+110%); } }
+
+*/

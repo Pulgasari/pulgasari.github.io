@@ -1,0 +1,61 @@
+/*
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/type
+
+Quotes:
+
+"Note: The @property at-rule syntax descriptor value uses the same <syntax>
+to define the permitted data types for registered custom properties, 
+however, this always takes the form of a string." 
+*/
+
+/*
+examples:
+
+shorthands:
+  cc   :: currentColor  ->  --color(cc)   --color(darker(cc))
+  bg   :: --color-bg    ->  --color(bg)   --color(darker(bg))
+  fg   :: --color-fg    ->  --color(fg)   --color(darker(fg))
+  ink  :: --color-ink   ->  --color(ink)  --color(darker(ink))
+*/
+@function --color(
+  --arg type(<color> | bg | fg | ink | cc) : cc
+) returns <color> {
+  result: if(
+    style(--arg: bg)  : var(--color-bg);
+    style(--arg: fg)  : var(--color-fg);
+    style(--arg: ink) : var(--color-ink);
+    style(--arg: cc)  : currentColor;
+    else              : var(--arg);
+  );
+}
+
+
+:root {
+  --syntax-density  : "compact | normal | comfortable | touch";
+  --syntax-geometry : "sharp | soft | round | pill";
+
+  /*
+  --type-density  : type(compact | normal | comfortable | touch);
+  --type-geometry : type(sharp | soft | round | pill);
+  */
+}
+
+
+@function --type(
+  --ident <custom-ident>,
+){
+  result: if(
+    style(--ident: density)  : var(--type-density);
+    style(--ident: geometry) : var(--type-geometry);
+  );
+}
+
+
+
+
+
+@property --density  { inherits: true; initial-value: normal;     syntax: var(--type-density); }
+@property --geometry { inherits: true; initial-value: soft;       syntax: --type(geometry); }
+@property --palette  { inherits: true; initial-value: zombie;     syntax: "<color> | <custom-ident>"; }
+@property --scheme   { inherits: true; initial-value: auto;       syntax: "auto | light | dark"; }
+@property --skin     { inherits: true; initial-value: monochrome; syntax: "<custom-ident>"; }

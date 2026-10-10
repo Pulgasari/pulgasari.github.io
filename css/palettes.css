@@ -1,0 +1,64 @@
+@property --palette      { syntax: "<color> | <custom-ident>"; inherits: true; initial-value: zombie; }
+@property --palette-mode { syntax: "auto | dark | light";      inherits: true; initial-value: auto;   }
+
+@property --bg           { syntax: "<color>";                  inherits: true; initial-value: #282a36; }
+@property --fg           { syntax: "<color>";                  inherits: true; initial-value: #f8f8f2; }
+@property --accent       { syntax: "<color>";                  inherits: true; initial-value: #ff79c6; }
+
+:root {
+  color-scheme: light dark;
+
+  --palette      : zombie;
+  --palette-mode : auto;
+
+  &[data-palette]      { --palette      : attr(data-palette      type("<color> | <custom-ident>"), zombie); }
+  &[data-palette-mode] { --palette-mode : attr(data-palette-mode type("auto | dark | light"),      auto);   }
+}
+
+@container style(--palette-mode: light) { body { color-scheme: light;      } }
+@container style(--palette-mode: dark)  { body { color-scheme: dark;       } }
+@container style(--palette-mode: auto)  { body { color-scheme: light dark; } }
+
+body {
+  --accent : var(--theme);
+
+  --bg: light-dark(
+    oklch(from var(--theme) 0.97 calc(c * 0.15) h),
+    oklch(from var(--theme) 0.14 calc(c * 0.25) h)
+  );
+
+  --fg: light-dark(
+    oklch(from var(--theme) 0.18 calc(c * 0.05) h),
+    oklch(from var(--theme) 0.94 calc(c * 0.05) h)
+  );
+}
+
+@container style(--palette: amethyst)  { body { --bg: #160f1f; --fg: #ece0f5; --accent: #a855f7; } }     
+@container style(--palette: beton)     { body { --bg: #3a3a3a; --fg: #dcdcdc; --accent: #9ad1d4; } }
+@container style(--palette: classic)   { body { --bg: #ffffff; --fg: #000000; --accent: #880088; } }
+@container style(--palette: desert)    { body { --bg: #e3cfa4; --fg: #3b2c17; --accent: #8a3a0f; } }
+@container style(--palette: dracula)   { body { --bg: #282a36; --fg: #f8f8f2; --accent: #ff79c6; } }
+@container style(--palette: flamingo)  { body { --bg: #2b1e25; --fg: #ffe9f1; --accent: #ff5c8a; } }
+@container style(--palette: hell)      { body { --bg: #ffffff; --fg: #101317; --accent: #0a66c2; } }
+@container style(--palette: kontrast)  { body { --bg: #000000; --fg: #ffffff; --accent: #ffff00; } }
+@container style(--palette: lavendel)  { body { --bg: #f3f0fa; --fg: #241c33; --accent: #6b3fd4; } }
+@container style(--palette: matrix)    { body { --bg: #0b0f0b; --fg: #c8f7c5; --accent: #39ff14; } }
+@container style(--palette: nightsky)  { body { --bg: #0b1a2e; --fg: #dbe4f0; --accent: #6ea8fe; } }
+@container style(--palette: oled)      { body { --bg: #000000; --fg: #e9e9e9; --accent: #00e5ff; } }
+@container style(--palette: papier)    { body { --bg: #efe9dd; --fg: #2b2622; --accent: #8f5d3a; } }
+@container style(--palette: parrot)    { body { --bg: #10241a; --fg: #f3f7e8; --accent: #ff4d2d; } }
+@container style(--palette: petrol)    { body { --bg: #08191a; --fg: #d5eceb; --accent: #0fb9ad; } }
+@container style(--palette: rubin)     { body { --bg: #1a0a0f; --fg: #f2dfe3; --accent: #f2295b; } }
+@container style(--palette: smaragd)   { body { --bg: #07160f; --fg: #dff3e6; --accent: #50c878; } }
+@container style(--palette: snowflake) { body { --bg: #e9f1f7; --fg: #16262f; --accent: #00697a; } }
+@container style(--palette: softblack) { body { --bg: #151515; --fg: #e6e6e6; --accent: #ffb86c; } }
+@container style(--palette: softwhite) { body { --bg: #f2f2ef; --fg: #1c1c1c; --accent: #c2255c; } }
+@container style(--palette: synthwave) { body { --bg: #241b3a; --fg: #ffe9fb; --accent: #f92aad; } }
+@container style(--palette: tinte)     { body { --bg: #0e0e1a; --fg: #dcd9f0; --accent: #8b7dff; } }
+@container style(--palette: zombie)    { body { --bg: #282a36; --fg: #f8f8f2; --accent: #ff79c6; } }          
+
+body {
+  background-color : var(--bg);
+  color            : var(--fg);
+  accent-color     : var(--accent);
+  }

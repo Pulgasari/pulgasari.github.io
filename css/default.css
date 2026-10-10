@@ -1,0 +1,65 @@
+/* @aufbau/css/default.css */
+
+:root {
+  interpolate-size     : allow-keywords;
+  transition-behaviour : allow-discrete; /* or * ??? */
+}
+
+button {
+  cursor          : pointer; 
+  display         : inline-flex;
+  flex-direction  : row;
+  align-items     : center;
+  justify-content : center;
+}
+img {
+  /*display: inline-block;*/
+  max-width      : 100%;
+  object-fit     : cover;
+  vertical-align : bottom
+}
+p { 
+  hyphens    : auto;
+  text-align : justify; 
+}
+svg {
+  max-width : 100%;
+}
+
+
+/*--------- FIX: that weird mobile browser glitch ---------*/
+.mobilefix {
+     inline-size: 100%;      /* statt 100vw */
+      block-size: 100vh;     /* alter Fallback */
+  min-block-size: 100svh;    /* sicher mit sichtbarer Leiste */
+  max-block-size: 100lvh;    /* wenn Leiste weg ist */
+  overflow: clip;            /* meist besser als hidden */
+  /*display: flex;
+  flex-direction: column-reverse;*/
+} /* 1st: fallback */
+@supports (height: 100dvh) {
+  .mobilefix {
+        block-size: 100dvh;
+    min-block-size: 100dvh;
+    max-block-size: 100dvh;
+  }
+} /* 2nd: modern appproach */
+.mobilefix { overflow: hidden; }
+/*.workspace { min-block-size: 0; }*/
+/*---------------------------------------------------------*/
+
+.hidden { display: none; }
+
+.flex.column.center.xy {
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
+  justify-content : center;
+}
+
+.flex {
+  display: flex;
+  
+  &.column { flex-direction: column; }
+  &.row    { flex-direction: row;    }
+  }
