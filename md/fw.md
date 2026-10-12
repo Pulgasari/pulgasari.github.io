@@ -13,10 +13,25 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 - funktioniert in plain js-files
 - funktioniert in eigenen files (inkl. erweiterter syntax)
 
-## builtins
-- commands
-- gestures
-- hotkeys
+## use
+
+```md
+@aufbau/commands
+@aufbau/filters
+@aufbau/gestures
+@aufbau/gui
+@aufbau/hotkeys
+@aufbau/import
+@aufbau/patterns
+@aufbau/signals
+@aufbau/webfonts
+@domina/prototype
+@htx/js
+
+# from @aufbau/elements
+<rat-app>
+<rat-view>
+```
 
 # stuff
 
