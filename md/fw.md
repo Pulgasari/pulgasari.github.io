@@ -26,7 +26,7 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 @if (app.commands) {
   @for (cmd of app.commands) {
     <li onclick=${cmd.exec}>
-      cmd.name
+      ${cmd.name}
     </li>
   }
 } @else {
@@ -48,7 +48,7 @@ l
 @{if (app.commands):}
   @{for (cmd of app.commands):}
     <li onclick=${cmd.exec}>
-      cmd.name
+      ${cmd.name}
     </li>
   @{:for}
 @{:else:}
