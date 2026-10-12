@@ -17,7 +17,7 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 
 ```js
 const CommandsListItem = cmd => html`
-  <li onclick={cmd.exec}>{cmd.name}</li>
+  <li onclick=${cmd.exec}>${cmd.name}</li>
 `;
 
 const CommandsList = $ => html`
