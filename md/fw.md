@@ -1,5 +1,7 @@
 Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig in sehr ähnlicher Form baue, direkt parat zu haben usw.
 
+# features
+
 - reusable components
 - mit auto-import
 - app singleton
@@ -10,6 +12,25 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 - router
 - funktioniert in plain js-files
 - funktioniert in eigenen files (inkl. erweiterter syntax)
+
+## builtins
+- commands
+- gestures
+- hotkeys
+
+# stuff
+
+```js
+import { createApp } from '@rat/app';
+
+const app = createApp();
+```
+
+```js
+app.commands
+app.hotkeys
+app.router
+```
 
 # syntax
 
@@ -349,4 +370,14 @@ export function autoImport(components) {
     }
   });
 }
+```
+
+# rat.config.js
+
+```js
+export default {
+  build: {
+
+  }
+};
 ```
