@@ -39,6 +39,7 @@ app.router
 ```js
 const CommandsListItem = cmd => html`
   <li onclick=${cmd.exec}>${cmd.name}</li>
+  <li rat:command=${cmd.name}>${cmd.name}</li>
 `;
 
 const CommandsList = $ => html`
