@@ -8,6 +8,37 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 - mit reactive stores für Map (aber anderer name), Set (name: List) und Tree (quasi nested objekte)
 - signals
 - router
+- funktioniert in plain js-files
+- funktioniert in eigenen files (inkl. erweiterter syntax)
+
+# syntax
+
+## vanilla
+
+## extended
+
+```html
+<script>
+  items = app.commands;
+</script>
+
+<data-list>
+@{if (app.commands):}
+  @{for (cmd of app.commands):}
+    <li onclick=${cmd.exec}>
+      cmd.name
+    </li>
+  @{:for}
+@{:else:}
+  <div class='empty'>nothing here ...</div>
+@{:else}
+</data-list>
+
+<style>
+
+</style>
+```
+
 
 ```js
 // ==========================================
