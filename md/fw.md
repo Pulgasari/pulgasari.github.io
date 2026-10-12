@@ -23,6 +23,28 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 </script>
 
 <data-list>
+@if (app.commands) {
+  @for (cmd of app.commands) {
+    <li onclick=${cmd.exec}>
+      cmd.name
+    </li>
+  }
+} @else {
+  <div class='empty'>nothing here ...</div>
+}
+</data-list>
+
+<style>
+l
+</style>
+```
+
+```html
+<script>
+  items = app.commands;
+</script>
+
+<data-list>
 @{if (app.commands):}
   @{for (cmd of app.commands):}
     <li onclick=${cmd.exec}>
