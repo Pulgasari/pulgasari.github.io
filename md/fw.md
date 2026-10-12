@@ -25,6 +25,13 @@ const CommandsList = $ => html`
     ${app.commands.map(CommandsListItem)}
   </data-list>
 `;
+
+const Empty = $ => html`
+  <div class='empty'>nothing here ...</div>
+`;
+
+export const default = () => app.commands ? CommandsList : Empty;
+}
 ```
 
 ## extended
