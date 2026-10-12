@@ -32,6 +32,20 @@ app.hotkeys
 app.router
 ```
 
+# commands
+
+die `commands` dienen als eingebauter mechanismus aktionen innerhalb der app dx-freundlich zu steuern.
+
+jedes registrierte command kann überall dort wo für gewöhnlich event-handler-funktionen angegen werden als einfacher string referenziert werden.
+
+```js
+element.on('click', 'toggleSidebar');
+```
+
+```html
+<button onClick='toggleSidebar' />
+```
+
 # syntax
 
 ## vanilla
