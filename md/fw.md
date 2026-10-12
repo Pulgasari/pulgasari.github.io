@@ -15,7 +15,22 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 
 ## vanilla
 
+```js
+const CommandsListItem = cmd => html`
+  <li onclick={cmd.exec}>{cmd.name}</li>
+`;
+
+const CommandsList = $ => html`
+  <data-list>
+    ${app.commands.map(CommandsListItem)}
+  </data-list>
+`;
+```
+
 ## extended
+- `.rat` und `.rat.js` files
+- man kann `{...}` statt `${...}` schreiben
+- js-sugar wie pipe-operator funktioniert überall
 
 ```html
 <script></script>
