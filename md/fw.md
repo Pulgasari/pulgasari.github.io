@@ -18,9 +18,20 @@ Ich will mir n kleines JS-Framework bauen, um die Muster, die ich mir ständig i
 ## extended
 
 ```html
-<script>
-  items = app.commands;
-</script>
+<script></script>
+
+<data-list>
+switch (app.commands) {
+  true  : loop as cmd : <li onclick={cmd.exec}>{cmd.name}</li>
+  false : <div class='empty'>nothing here ...</div>
+}
+</data-list>
+
+<style></style>
+```
+
+```html
+<script></script>
 
 <data-list>
 if (app.commands) loop as cmd:
@@ -30,9 +41,7 @@ if (app.commands) loop as cmd:
 else: <div class='empty'>nothing here ...</div>
 </data-list>
 
-<style>
-
-</style>
+<style></style>
 ```
 
 ```html
