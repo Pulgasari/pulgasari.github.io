@@ -455,3 +455,18 @@ app.commands.register('toggleSidebar', ({ source }) => {
 // Programmatic execution (e.g., from keybindings, websockets, or timers)
 app.commands.exec('toggleSidebar');
 ```
+
+```js
+// Custom HTML template literal tag function
+function html (strings, ...values) {
+  // Combine template strings and interpolations
+  const rawHtml = strings.reduce((acc, str, i) => acc + str + (values[i] ?? ''), '');
+
+  // Transform cmd="toggleSidebar" -> commandfor="app-root" command="--toggle-sidebar"
+  const processedHtml = rawHtml.replace(/\bcmd=["']([^"']+)["']/g, (_, cmdName) => {
+    return `commandfor="app-root" command="${toDashed(cmdName)}"`;
+  });
+
+  return processedHtml;
+}
+```
