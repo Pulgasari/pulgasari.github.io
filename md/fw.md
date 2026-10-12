@@ -396,3 +396,62 @@ export default {
   }
 };
 ```
+
+# commands
+
+```js
+class CommandRegistry {
+  #commands = new Map();
+
+  constructor(rootElement = document) {
+    // Listen for native HTML command events globally
+    rootElement.addEventListener('command', (event) => {
+      const cleanName = toUndashed(event.command);
+
+      // If the command is registered in JS, execute it
+      if (this.#commands.has(cleanName)) {
+        this.exec(cleanName, { event, source: event.source });
+      }
+    });
+  }
+
+  register(name, handler) {
+    this.#commands.set(toUndashed(name), handler);
+    return this;
+  }
+
+  exec(name, ...args) {
+    const handler = this.#commands.get(toUndashed(name));
+    if (!handler) {
+      console.warn(`[app.commands] Unknown command: "${name}"`);
+      return;
+    }
+    return handler(...args);
+  }
+}
+
+// Global Singleton
+window.app = {
+  commands: new CommandRegistry()
+};
+```
+
+```html
+<div id="app">
+  <!-- Target is the app root or any parent element -->
+  <button commandfor="app" command="--toggle-sidebar">
+    Toggle Sidebar
+  </button>
+</div>
+```
+
+```js
+// Register handler
+app.commands.register('toggleSidebar', ({ source }) => {
+  document.body.classList.toggle('sidebar-open');
+  console.log('Sidebar toggled by:', source);
+});
+
+// Programmatic execution (e.g., from keybindings, websockets, or timers)
+app.commands.exec('toggleSidebar');
+```
