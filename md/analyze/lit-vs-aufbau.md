@@ -615,3 +615,21 @@ Light-DOM-Elemente brauchen nur Schritt 2. Weil `render()` heute schon einen Str
 6. **16.10:** SSR und Hydration, wenn rat oder zugriff es brauchen.
 
 Nach Schritt 3 hätte `@aufbau/element` alles, was Lit im Kern ausmacht, und behielte alles, worin es heute schon vorn liegt.
+
+---
+
+# die weisen worte des vorsitzenden
+
+sehr hilfreiche analyse, gut gemacht!
+
+an sich stimme ich *einem* großen grundsätzlichen umbau zu, jedoch hängt da noch bisschen mehr dran zu bedenken. hierzu erstmal ein paar gedanken meinerseits, die zu reflektieren sind, danach können wir ernsthaft neues konzept erstellen.
+
+(1) wieso sollte das `html` in `@aufbau/element` nicht schlichtweg `htx` sein? spricht da irgendwas kategorisch dagegen?
+
+(2) `htx` selbst is ja im kern *mein html-syntax*.
+
+(3) darüberhinaus könnte `htx` ja noch einen renderer bekommen, der das wie von dir beschrieben rendert: template strings statisch, löcher, dies das usw.
+
+(4) `@htx/js` könnte dann doch auch leisten, was bisher nur in/als `@htx/preact` geht.
+
+
