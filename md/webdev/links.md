@@ -4,11 +4,14 @@
 - https://all-inkl.com
 - https://porkbun.com
 
-## javascript proposals
+## proposals: javascript 
 - https://nitayneeman.com/blog/introducing-import-defer-in-ecmascript/
 
-## Awesome Collections
+## collections: awesome 
 - [Awesome FP JavaScript](https://github.com/stoeffel/awesome-fp-js)
+
+## collections: you don't need ...
+- https://github.com/you-dont-need/you-dont-need-lodash-underscore
 
 ## misc
 - https://arrow-js.com
