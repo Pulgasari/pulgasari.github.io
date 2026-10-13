@@ -1,9 +1,3 @@
-# todo @ aufbau
-
-https://blog.logrocket.com/ux-design/40-essential-ui-elements/
-
----
-
 ## `AufbauCore`
 
 ```javascript
@@ -134,74 +128,6 @@ view-zip
 #warn   = (...args) => this.#logger.warn  (...args);
 ```
 
-wobei vermutlich für jedes element ne neue instanz zu machen quatsch ist. aber vom grundprinzip dachte ich mir, dass man so besseres debugging zur verfügung stellen könnte.
-
-### `<aufbau-input>` enhancements
-
-`<aufbau-input>` sollte optional so icons/buttons mitbringen für: clear, copy, paste
-
 ### `<aufbau-progress>`
+- add look: `circle`
 
-- könnte als look vllt noch `circle` bekommen
-
-## new elements
-
-- [ ] `aufbau-breadcrumbs` (oder `aufbau-crumbs`?)
-- [ ] `aufbau-menu`
-- [ ] `aufbau-menu-item`
-- [ ] `aufbau-modal` + interface
-
-und bei denen weiss ich nicht genau, ob die eigene elements oder lieber type/look sein sollten:
-
-- [ ] `aufbau-contextmenu` (oder teil von `aufbau-menu`) ?
-
----
-
-# `@aufbau/gestures`
-
-```js
-gestures(element, {
-  onTap        : gesture => select(gesture.target),
-  onSwipeLeft  : gesture => next(),
-  onSwipeRight : { minimumSpeed: 1, handler: gesture => previous() },
-});
-
-element.addEventListener('swipeleft', event => next());   // the same, as a dom event
-```
-
-```js
-import gestures from '@aufbau/gestures';
-
-gestures.apply(element, {
-  onTap        : gesture => select(gesture.target),
-  onSwipeLeft  : gesture => next(),
-  onSwipeRight : { minimumSpeed: 1, handler: gesture => previous() },
-});
-```
-
-```js
-//
-import '@aufbau/gestures/prototype.js';
-
-element.addGestureListener('swipeleft',  event => {});
-element.addGestureListener('swiperight', event => {});
-```
-
-```js
-//
-import { onSwipeLeft, onSwipeRight } from '@aufbau/gestures';
-
-onSwipeLeft  (element, handler);
-onSwipeRight (element, handler);
-```
-
-## `aufbau/elements`
-
-- [ ] create `aufbau/elements/AufbauRoot.js`
-- [ ] create `aufbau/elements/AufbauSvg.js`
-- [ ] define default icons
-
-## `aufbau/elements/AufbauSvg.js`
-
-- lädt/embedded svg-files oder svg-code in diverse modi
-- modes: `live`, `object`, `use`
