@@ -57,9 +57,11 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [ ] riot
 - [ ] RxJS
 - [ ] SolidJS
+- [ ] StyleX
 - [ ] Svelte
 - [ ] Tailwind
 - [x] TSRX
 - [ ] TypeScript
 - [ ] Underscore
+- [ ] UnoCSS
 - [ ] Vue
