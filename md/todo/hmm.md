@@ -68,4 +68,5 @@ store
 str
 stylescript
 url
+workers (brigade)
 ```
