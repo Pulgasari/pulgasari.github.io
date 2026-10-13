@@ -18,27 +18,18 @@ wegweiser,
 androgyn
 andronaut
 blitz
-phantom
-valhalla
-```
-
-```
 cosmo
 cosmonaut
 cunt
 kosmos
 nomad
+partisan
+phantom
+valhalla
 webster
 ```
 
 ```
-nomad
-phantom
-wallpapersfx
-```
-
-```
-esmx
 modcraft
 modflow
 modgate
@@ -47,5 +38,4 @@ modline
 modpack
 modpipe
 modwire
-phantom
 ```
