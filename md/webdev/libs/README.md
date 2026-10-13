@@ -37,14 +37,19 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [x] jQuery
 - [x] Lit
 - [ ] LiveScript
+- [ ] lodash
 - [x] Lynx JS
 - [ ] MobX
+- [ ] PostCSS
 - [ ] Preact
+- [ ] Ramda
 - [ ] React
 - [ ] ReScript
 - [ ] RxJS
 - [ ] SolidJS
 - [ ] Svelte
+- [ ] Tailwind
 - [x] TSRX
 - [ ] TypeScript
+- [ ] Underscore
 - [ ] Vue
