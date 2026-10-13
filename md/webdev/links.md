@@ -34,3 +34,5 @@ https://nate.rip/gpuikit/#table
 https://github.com/iamnbutler/gpuikit
 
 https://developer.chrome.com/docs/web-platform/declarative-partial-updates?hl=de
+
+https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
