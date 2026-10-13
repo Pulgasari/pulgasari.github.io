@@ -144,4 +144,4 @@ Knockout ist ein Vorfahre von fast allem, was rat tut. Der Vergleich zeigt, wof�
 | `.extend({ rateLimit: 300 })` | offen | ein Extender ist ein Modifier am Signal; denkbar als `$query.debounce(300)` in `@rat/types` |
 | `$index` als Observable | `$loop.index` (d-15) | Knockout hatte genau dieses Problem gelöst: ein Index, der nach einem Umsortieren stimmt |
 
-Für aufbau: `data-bind` ist dieselbe Grundidee wie Attribute als Zustand, nur in die andere Richtung (Markup liest JavaScript statt JavaScript liest Markup). Knockouts `foreach` mit Differenz statt Neuaufbau ist genau das, was `innerHTML`-Rendering fehlt (siehe [lit-vs-aufbau.md](lit-vs-aufbau.md#165-rendern-ohne-neuaufbau)).
+Für aufbau: `data-bind` ist dieselbe Grundidee wie Attribute als Zustand, nur in die andere Richtung (Markup liest JavaScript statt JavaScript liest Markup). Knockouts `foreach` mit Differenz statt Neuaufbau ist genau das, was `innerHTML`-Rendering fehlt (siehe [lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md#165-rendern-ohne-neuaufbau)).

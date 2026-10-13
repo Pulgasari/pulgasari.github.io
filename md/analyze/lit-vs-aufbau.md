@@ -7,7 +7,7 @@ Verglichen wird:
 - **Lit 3:** `@lit/reactive-element` 2.1 (Properties, Update-Zyklus), `lit-html` 3.3 (Templates), `LitElement` (verbindet beides). Geprüft am npm-Paket.
 - **aufbau:** `@aufbau/element` (`AufbauElement`, `Selection`, `withControl`, `withSource`, `lib/{schema,styles,config,skin,persist}.js`) und das String-Template aus `@aufbau/elements/lib/html.js`. Stand `aufbau` main.
 
-Profil von Lit allein: [lit.md](lit.md).
+Profil von Lit allein: [lit.md](../webdev/libs/lit.md).
 
 - [1. Kurzfassung](#1-kurzfassung)
 - [2. Aufbau der beiden Basisklassen](#2-aufbau-der-beiden-basisklassen)
