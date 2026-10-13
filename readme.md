@@ -7,6 +7,7 @@
 - https://github.com/pulgasari/htx
 - https://github.com/pulgasari/js-packages
 - https://github.com/pulgasari/poo
+- https://github.com/pulgasari/rat
 - https://github.com/pulgasari/skullface
 - https://github.com/pulgasari/zugriff
 
