@@ -11,3 +11,59 @@ außerdem:
 
 außerdem:
 - `@htx/compiler` geht im aktuellen ansatz wohl eher in `@rat` mit auf
+
+
+---
+
+```md
+# @aufbau
+@aufbau/commands
+@aufbau/elements
+@aufbau/gestures
+@aufbau/gui
+@aufbau/hotkeys
+
+# @bunker
+@bunker/cache
+@bunker/core
+@bunker/db
+@bunker/opfs
+@bunker/policy
+@bunker/storage
+@bunker/utils
+
+# @domina
+@domina/element
+@domina/observer
+@domina/prototype
+
+# @gestalt
+@gestalt/filters
+@gestalt/patterns
+@gestalt/webfonts
+
+# @htx
+@htx/htx
+@htx/syntax
+@htx/vdom
+
+# @rat
+@rat/compiler
+@rat/runtime
+@rat/std
+@rat/syntax
+@rat/types
+
+# ???
+bundler
+devtools
+logger
+import
+is
+parsers
+signals
+store
+str
+stylescript
+url
+```
