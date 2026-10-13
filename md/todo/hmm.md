@@ -38,6 +38,7 @@ außerdem:
 @domina/prototype
 
 # @gestalt
+@gestalt/engine
 @gestalt/filters
 @gestalt/patterns
 @gestalt/webfonts
