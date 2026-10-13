@@ -44,7 +44,13 @@ Grundlage ist jeweils der Quellcode des aktuellen npm-Pakets (Oktober 2026), nic
 | fertiges Verhalten | 6 Bundles mit Tastatur | nein | nein | nein (mit Spring-Libs) | Drag, Resize, Drop, Snap, Inertia | nein |
 | Größe (gz) | 5,4 kb Kern, 9,9 kb mit Bundles | 7,4 kb | 3,7 kb | 9,2 kb | 29,5 kb | 2,4 kb |
 
-Das Ergebnis vorweg: **`@aufbau/gestures` ist im Kern auf dem Stand von @use-gesture und konzeptionell weiter als Hammer.js.** Es hat das sauberste Session-Modell der Gruppe, als einzige Bibliothek Gesten als echte DOM-Ereignisse mit Delegation, den Trackpad-Pfad und Bundles mit Tastatur-Gegenstück. TheFinger spielt in einer anderen Liga: ein kleines, junges Touch-Werkzeug mit eigenen Ideen (Doppeltippen-und-Ziehen, richtungsabhängiges Scroll-Verhindern), aber ohne Maus, ohne Stift und ohne `touchcancel`. Die Lücken von aufbau liegen in der Robustheit über Elementgrenzen hinweg, in der Performance der Bundles und in der Laufzeit-Steuerung (Abschnitt 17).
+Das Ergebnis vorweg: 
+
+**`@aufbau/gestures` ist im Kern auf dem Stand von @use-gesture und konzeptionell weiter als Hammer.js.** Es hat das sauberste Session-Modell der Gruppe, als einzige Bibliothek Gesten als echte DOM-Ereignisse mit Delegation, den Trackpad-Pfad und Bundles mit Tastatur-Gegenstück. 
+
+**TheFinger** spielt in einer anderen Liga: ein kleines, junges Touch-Werkzeug mit eigenen Ideen (Doppeltippen-und-Ziehen, richtungsabhängiges Scroll-Verhindern), aber ohne Maus, ohne Stift und ohne `touchcancel`. 
+
+Die Lücken von `@aufbau/gestures` liegen in der Robustheit über Elementgrenzen hinweg, in der Performance der Bundles und in der Laufzeit-Steuerung (Abschnitt 17).
 
 ---
 
