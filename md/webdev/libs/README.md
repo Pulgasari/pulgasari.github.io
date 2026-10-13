@@ -39,6 +39,7 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [ ] LiveScript
 - [ ] lodash
 - [x] Lynx JS
+- [ ] MDX
 - [ ] MobX
 - [ ] PostCSS
 - [ ] Preact
