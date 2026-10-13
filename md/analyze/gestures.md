@@ -1,6 +1,11 @@
 # `@aufbau/gestures` im Vergleich
 
-`@aufbau/gestures` 2.0 gegen die beiden Bibliotheken, nach denen gefragt war, **Hammer.js** und **TheFinger**, und gegen die drei, die in diesem Feld heute tatsächlich den Ton angeben: **@use-gesture** (Gesten als Zustandsstrom), **interact.js** (Ziehen, Skalieren, Ablegen) und **TinyGesture** (die kleinste gepflegte Alternative). Am Rand: ZingTouch, AlloyFinger, SortableJS und das, was die Plattform inzwischen selbst kann.
+`@aufbau/gestures` 2.0 gegen die beiden Bibliotheken, nach denen gefragt war, **Hammer.js** und **TheFinger**, und gegen die drei, die in diesem Feld heute tatsächlich den Ton angeben:
+- **@use-gesture** (Gesten als Zustandsstrom)
+- **interact.js** (Ziehen, Skalieren, Ablegen)
+- **TinyGesture** (die kleinste gepflegte Alternative)
+
+Am Rand: ZingTouch, AlloyFinger, SortableJS und das, was die Plattform inzwischen selbst kann.
 
 Grundlage ist jeweils der Quellcode des aktuellen npm-Pakets (Oktober 2026), nicht die Doku. Größen: minifiziert und gzip, mit esbuild gemessen.
 
