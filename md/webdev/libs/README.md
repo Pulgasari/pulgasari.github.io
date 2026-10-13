@@ -21,4 +21,5 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - **Statisch vs. live:** [ArrowJS](arrowjs.md) (`() =>` macht live), [Lit](lit.md) (statische Template-Teile einmal geparst) und rat (`{…}` wird vom Compiler zu `() =>`) lösen dasselbe Problem auf verschiedenen Ebenen.
 - **Kontrollfluss im Markup:** [TSRX](tsrx.md) und rat haben fast dieselbe `@if`/`@for`-Syntax, [EJS](ejs.md) zeigt, warum: `<% } %>` wird unlesbar.
 - **Verhalten über Attribute:** [htmx](htmx.md), [_hyperscript](hyperscript.md), jQuery-Plugins ([jQuery](jquery.md)) und die Behaviors von rat.
+- **Web Components bauen:** [Lit](lit.md) und `@aufbau/element` im direkten Vergleich: [lit-vs-aufbau.md](lit-vs-aufbau.md).
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Schemas in `@rat/types`.
