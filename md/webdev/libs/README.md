@@ -27,6 +27,7 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [ ] AlpineJS
 - [ ] Angular
 - [x] ArrowJS
+- [ ] Astro
 - [ ] CoffeScript
 - [x] EJS
 - [x] Elm
@@ -34,7 +35,9 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [x] Fresh
 - [ ] HTM
 - [x] htmx
+- [ ] Inferno JS
 - [x] jQuery
+- [ ] knockout
 - [x] Lit
 - [ ] LiveScript
 - [ ] lodash
@@ -46,6 +49,7 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - [ ] Ramda
 - [ ] React
 - [ ] ReScript
+- [ ] riot
 - [ ] RxJS
 - [ ] SolidJS
 - [ ] Svelte
