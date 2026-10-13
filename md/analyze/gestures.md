@@ -571,3 +571,7 @@ TheFingers `visualize` ist eine gute Idee, schlecht umgesetzt: Ein Overlay, das 
 3. **17.5 + 17.10:** `composed` und der Anschluss an `@aufbau/element`, weil die Elemente das Paket schon nutzen.
 4. **17.4 + 17.7:** Laufzeit-Steuerung und die offenen Fragen entscheiden.
 5. **17.6, 17.8, 17.9:** neue Gesten, Bundles, Werkzeuge.
+
+---
+
+double-tap-and-drag, two-finger-tap und die Simulation.
