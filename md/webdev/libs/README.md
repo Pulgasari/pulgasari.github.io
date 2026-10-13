@@ -23,3 +23,47 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - **Verhalten über Attribute:** [htmx](htmx.md), [_hyperscript](hyperscript.md), jQuery-Plugins ([jQuery](jquery.md)) und die Behaviors von rat.
 - **Web Components bauen:** [Lit](lit.md) und `@aufbau/element` im direkten Vergleich: [lit-vs-aufbau.md](lit-vs-aufbau.md).
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Schemas in `@rat/types`.
+
+---
+
+## todo
+- [ ] die spalten in der übersichtstabelle oben sollten sein: name/link, was, seit/bis, größe, build
+
+### zu erstellen:
+- [ ] AlpineJS
+- [ ] Angular
+- [x] ArrowJS
+- [ ] Astro
+- [ ] CoffeScript
+- [x] EJS
+- [x] Elm
+- [ ] Express
+- [x] Fresh
+- [ ] HTM
+- [x] htmx
+- [ ] Inferno JS
+- [x] jQuery
+- [ ] knockout
+- [x] Lit
+- [ ] LiveScript
+- [ ] lodash
+- [x] Lynx JS
+- [ ] MarkoJS
+- [ ] MDX
+- [ ] MobX
+- [ ] PostCSS
+- [ ] Preact
+- [ ] Ramda
+- [ ] React
+- [ ] ReScript
+- [ ] riot
+- [ ] RxJS
+- [ ] SolidJS
+- [ ] StyleX
+- [ ] Svelte
+- [ ] Tailwind
+- [x] TSRX
+- [ ] TypeScript
+- [ ] Underscore
+- [ ] UnoCSS
+- [ ] Vue
