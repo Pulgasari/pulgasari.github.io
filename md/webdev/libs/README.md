@@ -23,7 +23,12 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - **Verhalten über Attribute:** [htmx](htmx.md), [_hyperscript](hyperscript.md), jQuery-Plugins ([jQuery](jquery.md)) und die Behaviors von rat.
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Schemas in `@rat/types`.
 
+---
+
 ## todo
+- [ ] die spalten in der übersichtstabelle oben sollten sein: name/link, was, seit/bis, größe, build
+
+### zu erstellen:
 - [ ] AlpineJS
 - [ ] Angular
 - [x] ArrowJS
