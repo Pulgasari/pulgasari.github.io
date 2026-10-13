@@ -106,6 +106,15 @@ const map = { imports: {
   "@pulgasari/timing"           : "./js-packages/timing/index.js",
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
+  "@rat/compiler" : "./rat/packages/compiler/index.js",
+  "@rat/runtime"  : "./rat/packages/runtime/index.js",
+
+  "@rat/syntax"            : "./rat/packages/syntax/spec.js",
+  "@rat/syntax/"           : "./rat/packages/syntax/",
+  "@rat/syntax/codemirror" : "./rat/packages/syntax/targets/codemirror.js",
+  "@rat/syntax/hljs"       : "./rat/packages/syntax/targets/hljs.js",
+  "@rat/syntax/monaco"     : "./rat/packages/syntax/targets/monaco.js",
+
   "acorn"            : "https://esm.sh/acorn@8",
   "htm"              : "https://esm.sh/htm@3.1.1",
   "preact"           : "https://esm.sh/preact@10.20.1",
