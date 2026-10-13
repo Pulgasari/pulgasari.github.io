@@ -4,6 +4,7 @@ Googles kleine Bibliothek (rund 5 kb) zum Schreiben von Web Components, Nachfolg
 
 - Website: https://lit.dev
 - Build: keiner nötig (Decorators sind optional und brauchen einen)
+- Vergleich mit `@aufbau/element`: [lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md)
 
 ## Das Problem, das Lit löst
 
