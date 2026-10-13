@@ -9,6 +9,9 @@ Am Rand: ZingTouch, AlloyFinger, SortableJS und das, was die Plattform inzwische
 
 Grundlage ist jeweils der Quellcode des aktuellen npm-Pakets (Oktober 2026), nicht die Doku. Größen: minifiziert und gzip, mit esbuild gemessen.
 
+---
+
+## Inhalt
 - [1. Kurzfassung](#1-kurzfassung)
 - [2. Die Kandidaten](#2-die-kandidaten)
 - [3. Eingabemodell: Pointer, Touch, Maus](#3-eingabemodell-pointer-touch-maus)
