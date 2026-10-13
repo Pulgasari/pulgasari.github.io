@@ -65,7 +65,7 @@ Die Lücken von `@aufbau/gestures` liegen in der Robustheit über Elementgrenzen
 
 ### TheFinger
 
-Von Oleksii Segodin (nordskill), erschienen im Juni 2025, ISC-Lizenz, Website [thefinger.dev](#https://thefinger.dev). Eine einzelne Klasse mit rund 900 Zeilen auf **Touch Events**, ohne Abhängigkeiten. Bringt zwei Gesten mit, die sonst kaum jemand hat (`two-finger-tap`, `double-tap-and-drag`) und eine Testumgebung, die Fingerbewegungen über künstliche `TouchEvent`s simuliert.
+Von Oleksii Segodin (nordskill), erschienen im Juni 2025, ISC-Lizenz, Website [thefinger.dev](https://thefinger.dev). Eine einzelne Klasse mit rund 900 Zeilen auf **Touch Events**, ohne Abhängigkeiten. Bringt zwei Gesten mit, die sonst kaum jemand hat (`two-finger-tap`, `double-tap-and-drag`) und eine Testumgebung, die Fingerbewegungen über künstliche `TouchEvent`s simuliert.
 
 ### @use-gesture
 
