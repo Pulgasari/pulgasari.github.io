@@ -22,3 +22,29 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 - **Kontrollfluss im Markup:** [TSRX](tsrx.md) und rat haben fast dieselbe `@if`/`@for`-Syntax, [EJS](ejs.md) zeigt, warum: `<% } %>` wird unlesbar.
 - **Verhalten über Attribute:** [htmx](htmx.md), [_hyperscript](hyperscript.md), jQuery-Plugins ([jQuery](jquery.md)) und die Behaviors von rat.
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Schemas in `@rat/types`.
+
+## todo
+- [ ] AlpineJS
+- [ ] Angular
+- [x] ArrowJS
+- [ ] CoffeScript
+- [x] EJS
+- [x] Elm
+- [ ] Express
+- [x] Fresh
+- [ ] HTM
+- [x] htmx
+- [x] jQuery
+- [x] Lit
+- [ ] LiveScript
+- [x] Lynx JS
+- [ ] MobX
+- [ ] Preact
+- [ ] React
+- [ ] ReScript
+- [ ] RxJS
+- [ ] SolidJS
+- [ ] Svelte
+- [x] TSRX
+- [ ] TypeScript
+- [ ] Vue
