@@ -17,11 +17,16 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [Lynx](lynxjs.md) | native UI mit Web-Technik | 2025– | – (eigene Engine) | ja (Rspeedy) |
 | [Marko](marko.md) | HTML-Obermenge mit Compiler | 2014– | bis 12,5 kb (Runtime, pro App gekürzt) | ja |
 | [MDX](mdx.md) | Markdown mit JSX | 2018– | – (Compiler, Ausgabe ist eine Komponente) | ja, oder `evaluate()` |
+| [MobX](mobx.md) | reaktiver Zustand, direkte Mutation | 2015– | 15,6 kb, typisch 12,0 kb | nein |
+| [PostCSS](postcss.md) | CSS-Syntaxbaum mit Plugins | 2013– | – (Build; im Browser 18,7 kb) | ja |
+| [Ramda](ramda.md) | funktionale Hilfsfunktionen, gecurried | 2014– | 16,0 kb alles, typisch 3,6 kb | nein |
 | [RxJS](rxjs.md) | Ereignisströme | 2012– (RxJS 5: 2016) | 7,6 kb typisch, 18,5 kb alles | nein |
 | [StyleX](stylex.md) | atomares CSS aus JS-Objekten | 2023– | 1,7 kb Runtime, CSS statisch | ja |
+| [Tailwind CSS](tailwind.md) | Utility-CSS-Framework | 2017– | – (CSS aus dem Build; Browser-Skript 73,5 kb) | ja |
 | [TSRX](tsrx.md) | Nachfolger von JSX | 2026– | – (Compiler, Runtime je Ziel) | ja |
+| [UnoCSS](unocss.md) | Engine für Utility-CSS, Regeln statt Vokabular | 2021– | Laufzeit 9,8 kb Kern, bis 58 kb mit Presets | ja, oder Laufzeit im Browser |
 
-Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. RxJS „typisch" sind zehn häufige Operatoren und Subjects. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
+Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`). „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
 
 ## Querverbindungen
 
@@ -34,6 +39,10 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - **Aufräumen über `AbortSignal`:** RxJS 9, Markos `$signal`, `fetch`, `addEventListener` und aufbaus `Selection` nutzen dasselbe Plattform-Objekt.
 - **Server rendert HTML:** [Express](express.md) mit [EJS](ejs.md) (Strings), [Fresh](fresh.md) (Islands), [Marko](marko.md) (Streaming, nur interaktiver Code im Browser).
 - **Styles ohne Konflikte:** [StyleX](stylex.md) (eine Klasse pro Eigenschaft), aufbau (Cascade Layers), rat (`@scope`), [Lit](lit.md) (Shadow DOM).
+- **Utility-CSS:** [Tailwind](tailwind.md) (festes Vokabular, Konfiguration in CSS), [UnoCSS](unocss.md) (nur Regeln, auch im Browser), [StyleX](stylex.md) (atomar aus JS-Objekten). Tailwind 4 und aufbau setzen beide auf Cascade Layers.
+- **CSS verarbeiten:** [PostCSS](postcss.md) als gemeinsames Fundament, Lightning CSS als schnellere Alternative (in Tailwind 4), rats `<style>`-Pipeline mit `@scope` und `lang`.
+- **Mutation oder Neuzuweisung:** [MobX](mobx.md) beobachtet direkte Änderungen tief, [Ramda](ramda.md) verändert nie, rat erlaubt heute nur Neuzuweisung (d-23).
+- **Pipelines:** [Ramda](ramda.md) (gecurried, Daten zuletzt) passt ohne Platzhalter auf rats `|>`; [RxJS](rxjs.md) dasselbe für Ströme. Begriffe in [fp.md](../fp.md).
 - **Markdown als Quelle:** [MDX](mdx.md) compiliert Markdown zu Komponenten, aufbaus `withSource` rendert ihn neben der Quelle.
 - **Web Components bauen:** [Lit](lit.md) und `@aufbau/element` im direkten Vergleich: [lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md).
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Schemas in `@rat/types`.
@@ -64,10 +73,10 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [x] Lynx JS
 - [x] MarkoJS
 - [x] MDX
-- [ ] MobX
-- [ ] PostCSS
+- [x] MobX
+- [x] PostCSS
 - [ ] Preact
-- [ ] Ramda
+- [x] Ramda
 - [ ] React
 - [ ] ReScript
 - [ ] riot
@@ -75,9 +84,9 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [ ] SolidJS
 - [x] StyleX
 - [ ] Svelte
-- [ ] Tailwind
+- [x] Tailwind
 - [x] TSRX
 - [ ] TypeScript
 - [ ] Underscore
-- [ ] UnoCSS
+- [x] UnoCSS
 - [ ] Vue
