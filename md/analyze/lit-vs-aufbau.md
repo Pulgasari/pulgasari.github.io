@@ -888,3 +888,15 @@ Notiert: 16.11 kommt ins Konzept, 16.12 gehen wir einzeln durch, wenn es so weit
 ## Nächster Schritt
 
 Wenn du die drei Entscheidungen aus 1.8 triffst, schreibe ich das Konzept in zwei Teilen: **`@htx/dom`** (der Renderer, mit Parts, Live-Bindungen und Kontrollfluss-Helfern) und **`@aufbau/element` 3** (Properties aus dem Schema, gesammelte Updates mit geänderten Namen, `getAttr`-Cache, htx als Renderer, Fehler-State, Controller, Manifest).
+
+---
+
+# anmerkungen
+
+## 1. HTX (zu `1.1` bis `1.8`)
+
+bei `1.3` und `1.4` bin ich bisschen verwirrt und kapier nich wieso das "nicht als h-adapter gebaut werden kann". bzw. ich versteh den tenor als "iwie problematisch" überhaupt nich bzw. erscheint mir regelrecht tautologisch: irgendwas ist da noch nicht so, wie es sein müsste, aber damit es so wäre, müsste es anders werden. ja, und? wo problem?
+
+ich sagte ja eingangs: im ersten schritt ist `htx` syntax. wie da was dann in welchem kontext dann konzipiert ist, damit diese syntax dann nutzbar ist mit irgendwelche tools, is doch ne frage der implementierung. oder anders ausgedrückt: dann provided `@htx` halt zwei/mehrere builder (oder was auch immer): vdom-style. lit-style.
+
+
