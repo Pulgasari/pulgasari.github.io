@@ -574,4 +574,23 @@ TheFingers `visualize` ist eine gute Idee, schlecht umgesetzt: Ein Overlay, das 
 
 ---
 
-double-tap-and-drag, two-finger-tap und die Simulation.
+# Anmerkung:
+
+Danke für die Analyse.
+
+Grundsätzlich bin ich einverstanden mit deinem Umbau-Vorschlag außer bzgl. Punkt 17.10: Hier sollte `@aufbau/gestures` n Adapter bereitstellen, um das zB bei `htx` oder `@aufbau/elements` das "Kennen" einklinken zu können. Und `RAT` klinkts halt out-of-the-box ein.
+
+Und so Gesten wie "double tap and drag" oder "two finger tap" sollten wir unbedingt beherrschen.
+
+zu den offenen Fragen:
+- swipe-richtung: ja
+- long-press und contextmenu auf android: ja
+- strg + mausrad als pinch: ja
+- tap mit warten auf doubletap: ich glaub für endgültige lösung brauchts da iwie 2 formen. wo doubletap aktiv is, muss ja gewartet werden, denn da will man eigtl net die nornale aktion triggern. dort wo doubletap nicht aktiv ist, brauchs kein warten.
+
+weitere gesten, usw.:
+- double tap drag
+- two finger tap
+- pressure, tilt, twist
+
+naja, ansonsten kannste gern 1 bis 5 bauen.
