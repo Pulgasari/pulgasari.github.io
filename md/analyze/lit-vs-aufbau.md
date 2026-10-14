@@ -624,27 +624,30 @@ sehr hilfreiche analyse, gut gemacht!
 
 an sich stimme ich *einem* großen grundsätzlichen umbau zu, jedoch hängt da noch bisschen mehr dran zu bedenken. hierzu erstmal ein paar gedanken meinerseits, die zu reflektieren sind, danach können wir ernsthaft neues konzept erstellen.
 
-## htx
+## 1. htx
 
-(1) wieso sollte das `html` in `@aufbau/element` nicht schlichtweg `htx` sein? spricht da irgendwas kategorisch dagegen?
+(1.1) wieso sollte das `html` in `@aufbau/element` nicht schlichtweg `htx` sein? spricht da irgendwas kategorisch dagegen?
 
-(2) `htx` selbst is ja im kern *mein html-syntax*, ddr sich aus der praxis heraus entwickelt hat und ähnlicher form hier und dort, und in diesem fall vorallem hier, mindestens teilweise wieder gebaut wird.
+(1.2) `htx` selbst is ja im kern *mein html-syntax*, ddr sich aus der praxis heraus entwickelt hat und ähnlicher form hier und dort, und in diesem fall vorallem hier, mindestens teilweise wieder gebaut wird.
 
-(3) darüberhinaus könnte `htx` ja noch einen renderer bekommen, der das wie von dir beschrieben rendert: template strings statisch, löcher, dies das usw.
+(1.3) darüberhinaus könnte `htx` ja noch einen renderer bekommen, der das wie von dir beschrieben rendert: template strings statisch, löcher, dies das usw.
 
-(4) `@htx/js` könnte dann doch auch leisten, was bisher nur in/als `@htx/preact` geht. und funktioniert dann im prinzip doch standalone? 
+(1.4) `@htx/js` könnte dann doch auch leisten, was bisher nur in/als `@htx/preact` geht. und funktioniert dann im prinzip doch standalone? (oder man kann nen renderer koppeln? oder quasi beides?)
 
-(5) obendrein könnte es trotzdem noch `@htx/vdom` und `@htx/preact` geben htx mit preact usw. nutzen zu können.
+(1.5) obendrein könnte es trotzdem noch `@htx/vdom` und `@htx/preact` geben htx mit preact usw. nutzen zu können.
 
-(6) `@aufbau/element(s)` nutzt dann htx für `html`, hat so nice syntax + renderer, und is diesbzgl. nice wie lit?
+(1.6) `@aufbau/element(s)` nutzt dann htx für `html`, hat so nice syntax + renderer, und is diesbzgl. nice wie lit?
 
-(7) RAT nutzt dann "bloß" erstmal in erster linie ebenfalls `htx`.
+(1.7) RAT nutzt dann "bloß" erstmal in erster linie ebenfalls `htx`.
 - klinkt sich jedoch iwie durch mechanismus ein und erweitert in `html` innerhalb von nested template strings mit seinem zeug wie pipe-operator usw.
 - in vollen `.rat` files macht der rat-compiler halt noch sein anderes zeug wie html-direktiven, `{...}` statt `${...}` usw., aber das findet ja quasi drumherum bzw vor htx statt?
 
-(8) das erscheint mir alles als sauber und nachvollziehbar.
+(1.8) das erscheint mir alles als sauber und nachvollziehbar.
 
+## 2. @aufbau/elements
 
+(2.1) ich bin einverstanden mit deinen punkten/vorschlägen: `16.1`, 
+`16.2`, `16.3`, `16.4`
 
-
+(2.2) bzgl. deinem punkt `16.5` siehe hier meine punkte `1.1` bis `1.8`
 
