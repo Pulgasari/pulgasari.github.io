@@ -58,7 +58,7 @@ function init ({ typescript: ts }) {
 module.exports = init;
 ```
 
-`templateAt` sucht im Syntaxbaum von TypeScript den `TaggedTemplateExpression`, dessen Tag `html` oder `htx` heißt und den Cursor enthält. Die statischen Teile des Templates sind genau das, was `program()` aus `@htx/htx` liest. Das Plugin parst sie mit demselben Parser wie zur Laufzeit, und Parser und Prüfung können nicht auseinanderlaufen.
+`templateAt` sucht im Syntaxbaum von TypeScript den `TaggedTemplateExpression`, dessen Tag `html` oder `htx` heißt und den Cursor enthält. Die statischen Teile des Templates sind genau das, was `program()` aus `@htx/htx` liest. Der Laufzeit-Parser (`build()`) kennt aber weder Positionen noch Fehler, er ist auf Tempo gebaut und schluckt, was er nicht versteht. `@htx/analyzer` hat deshalb einen eigenen Scanner nach denselben Regeln, der Offsets behält und nach einem Fehler weiterliest. Eine Änderung an der htx-Syntax muss in beiden landen.
 
 Weil das Plugin im TypeScript-Server läuft, sieht es **alles, was TypeScript sieht**: den Typ jedes `${…}`, die Imports, wo `html` herkommt.
 
@@ -125,10 +125,12 @@ Der Template-Teil (Tags, Attribute, Manifest, Shorthand-Tags) sollte deshalb als
 
 ## Reihenfolge
 
-| Schritt | Ergebnis |
-|---|---|
-| `@htx/analyzer`: Template finden, mit `program()` parsen, Fehler mit Positionen | Grundlage für Plugin und rat-Server |
-| `@htx/ts-plugin` mit Diagnostics | Syntaxfehler in Templates in jedem Editor |
-| Manifest einlesen (`custom-elements.json` aus `@aufbau/elements`) | Completion und Hover für alle aufbau-Elemente |
-| Shorthand-Tags aus `html.define` | Completion, Definition, Argumentprüfung |
-| Hole-Typen über den Type Checker | Event-, Ref-, Property-Prüfung |
+| Schritt | Ergebnis | Stand |
+|---|---|---|
+| `@htx/analyzer`: Template scannen, Fehler mit Positionen | Grundlage für Plugin und rat-Server | gebaut (`htx/packages/analyzer`) |
+| `@htx/ts-plugin` mit Diagnostics | Syntaxfehler in Templates in jedem Editor | gebaut (`htx/packages/ts-plugin`), dazu Completion, Hover, Definition |
+| Manifest einlesen (`custom-elements.json` aus `@aufbau/elements`) | Completion und Hover für alle aufbau-Elemente | gebaut: `@aufbau/elements` liefert die Datei mit und nennt sie in `package.json` (`customElements`), das Plugin findet sie in allen Abhängigkeiten |
+| Shorthand-Tags aus `html.define` | Completion, Definition, Argumentprüfung | gebaut: `define`-Aufrufe und `createHTX(…, { tags })` werden über den Type Checker statisch ausgewertet, auch `html.define(elements)` mit Namespace-Import |
+| Hole-Typen über den Type Checker | Event-, Ref-, Property-Prüfung | gebaut: Event, Ref, Spread, Tag, Aufzählungswerte |
+
+Noch offen: Klassen aus dem Projekt-CSS im Selektor, `.htx`-Dateien (`@htx/compiler`) als eigene Sprache, Monaco.

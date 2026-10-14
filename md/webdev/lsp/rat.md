@@ -214,8 +214,8 @@ packages/language-server/
 
 | Schritt | Aufwand | Ergebnis |
 |---|---|---|
-| Server mit Diagnostics aus `compileAsync()` (Stufe 1) | klein | Fehler beim Tippen in jedem LSP-Editor |
-| VS-Code- und Zed-Anbindung | klein | installierbar |
+| Server mit Diagnostics aus `compileAsync()` (Stufe 1) | klein | Fehler beim Tippen in jedem LSP-Editor. **Gebaut:** `rat/packages/language-server` |
+| VS-Code- und Zed-Anbindung | klein | installierbar. **Gebaut:** `rat/packages/vscode`, Rust-Crate in `rat/packages/syntax/zed` |
 | Parser: Fehlertoleranz und End-Positionen | mittel | Voraussetzung für alles Weitere |
 | Struktur und rat-Completion (Stufe 2) | mittel | Outline, Folding, Snippets, Signale hervorgehoben |
 | Mapping aus dem Compiler, TypeScript über Volar (Stufe 3) | mittel bis groß | volle JS-Unterstützung in Holes und Scripts |
