@@ -912,3 +912,9 @@ wo der sitzen soll,ist vermutlich gar nicht so entscheidend, solang er nur enkop
 2. ja
 3. bin mir unsicher
 
+## 2.
+
+So ne Controller-Logik wirkt grundsätzlich sauber. Aber wie würde das dann generell statt "withControl" aussehen?
+
+Vllt machen wir erstmal den Rest und das dann nehmen wir uns das nochmal sorgfältig vor?
+
