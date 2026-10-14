@@ -6,11 +6,22 @@ Hier sind die wichtigsten FP-Grundbegriffe und Vokabeln, geordnet nach ihren typ
 
 
 ### 1. Daten-Transformation & Iteration
-- `map`: Wandelt jedes Element einer Struktur 1:1 um (A \to B).
-- `filter`: Behält nur die Elemente, für die ein Prädikat true ergibt.
-- `flatMap` (auch `chain` / `bind`): Transformiert ein Element und flacht das Ergebnis ab (verhindert ungewollte Verschachtelungen wie [[1], [2]]).
- * `traverse` / `walk`: Wandert durch eine verschachtelte Baum- oder Listenstruktur und wendet auf jedem Knoten eine Aktion/einen Effekt an.
- * `each` / `forEach`: Geht eine Struktur durch, um Seiteneffekte auszuführen (wird meist nur am "Rand" einer FP-Pipeline genutzt, da kein Wert zurückgegeben wird).
+
+#### `map`
+Wandelt jedes Element einer Struktur 1:1 um (A \to B).
+
+#### `filter`
+Behält nur die Elemente, für die ein Prädikat true ergibt.
+
+#### `flatMap` 
+(auch `chain` | `bind`): 
+Transformiert ein Element und flacht das Ergebnis ab (verhindert ungewollte Verschachtelungen wie `[[1], [2]]`).
+
+#### `traverse` | `walk`: 
+Wandert durch eine verschachtelte Baum- oder Listenstruktur und wendet auf jedem Knoten eine Aktion/einen Effekt an.
+
+#### `each` | `forEach`
+Geht eine Struktur durch, um Seiteneffekte auszuführen (wird meist nur am "Rand" einer FP-Pipeline genutzt, da kein Wert zurückgegeben wird).
 
 ### 2. Akkumulation & Kombination
 - `fold` / `reduce`: Faltet eine Struktur Element für Element zu einem einzelnen Gesamtwert zusammen.
