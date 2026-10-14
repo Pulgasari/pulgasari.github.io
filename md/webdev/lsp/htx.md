@@ -2,7 +2,7 @@
 
 Übersicht: [README.md](README.md) · rat: [rat.md](rat.md)
 
-htx lebt in **normalem JavaScript**: ``html`<div.card>${title}</div>` `` in einer `.js`-Datei. Es gibt keine eigene Dateiendung, die ein Editor einem eigenen Server zuordnen könnte. Die Datei gehört dem JavaScript-Server, und der ist in praktisch jedem Editor der TypeScript-Server.
+htx lebt in **normalem JavaScript**: ``html`<div.card>${title}</div>` `` oder ``htx`<div.card>${title}</div>` `` in einer `.js`-Datei. Es gibt keine eigene Dateiendung, die ein Editor einem eigenen Server zuordnen könnte. Die Datei gehört dem JavaScript-Server, und der ist in praktisch jedem Editor der TypeScript-Server.
 
 ## Drei Wege, und warum der dritte passt
 
