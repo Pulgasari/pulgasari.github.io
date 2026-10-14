@@ -895,8 +895,14 @@ Wenn du die drei Entscheidungen aus 1.8 triffst, schreibe ich das Konzept in zwe
 
 ## 1. HTX (zu `1.1` bis `1.8`)
 
-bei `1.3` und `1.4` bin ich bisschen verwirrt und kapier nich wieso das "nicht als h-adapter gebaut werden kann". bzw. ich versteh den tenor als "iwie problematisch" überhaupt nich bzw. erscheint mir regelrecht tautologisch: irgendwas ist da noch nicht so, wie es sein müsste, aber damit es so wäre, müsste es anders werden. ja, und? wo problem?
+### 1.
 
-ich sagte ja eingangs: im ersten schritt ist `htx` syntax. wie da was dann in welchem kontext dann konzipiert ist, damit diese syntax dann nutzbar ist mit irgendwelche tools, is doch ne frage der implementierung. oder anders ausgedrückt: dann provided `@htx` halt zwei/mehrere builder (oder was auch immer): vdom-style. lit-style.
+bei `1.3` bis `1.5` bin ich bisschen verwirrt und kapier nich wieso das "nicht als h-adapter gebaut werden kann". bzw. ich versteh den tenor als "iwie problematisch" überhaupt nich bzw. erscheint mir regelrecht tautologisch: irgendwas ist da noch nicht so, wie es sein müsste, aber damit es so wäre, müsste es anders werden. ja, und? wo problem?
 
+ich sagte ja eingangs: im ersten schritt ist `htx` syntax. wie da was dann in welchem kontext dann konzipiert ist, damit diese syntax dann nutzbar ist mit irgendwelche tools, is doch ne frage der implementierung. oder anders ausgedrückt: dann provided `@htx` halt zwei/mehrere builder (oder was auch immer): für vdom/h/preact/usw. für lit-artig/aufbau-element/usw.
 
+da muss sich doch für das bisherige "preact + htx" im ergebnis überhaupt nichts ändern. oder zumindest erschliesst sich mir null wieso es so sein sollte.
+
+### 2. renderer für htx
+
+wo der sitzen soll,ist vermutlich gar nicht so entscheidend, solang er nur enkoppelt (also sein eigenes ding ist) als eigenes package. aber wenn ich im namen `@htx/dom` werde ich prinzipiell hellhörig und vermute fast, dass das eigtl. zu `@domina` gehört, vllt als `@domina/render`.
