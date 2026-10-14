@@ -662,3 +662,229 @@ an sich stimme ich *einem* großen grundsätzlichen umbau zu, jedoch hängt da n
 (2.7) gute idee bzgl. `16.11`
 
 (2.8) bzgl. den kleineren punkten in `16.12` gucken wir dann nochmal konkret
+
+---
+
+# antworten
+
+Zu deinen Punkten, in derselben Nummerierung. Grundlage für den htx-Teil ist der Code in `htx/packages` (main).
+
+## zu 1. htx
+
+### 1.1 htx als `html` in `@aufbau/element`
+
+Kategorisch spricht nichts dagegen, im Gegenteil: htx ist dein Markup, es ist klein (Kern 2,3 kb gz) und bringt Dinge mit, die aufbau heute nur als String-Template hat. Drei Dinge ändern sich aber, und die muss man wollen:
+
+| | heute (`elements/lib/html.js`) | mit htx |
+|---|---|---|
+| Ergebnis von `render()` | String, verglichen und per `innerHTML` gesetzt | Knoten oder ein Template-Ergebnis, nie ein String |
+| Escaping | `html` escaped Werte, `raw()` umgeht es | entfällt: Werte werden nie geparst, nur `!html` parst ausdrücklich |
+| Neu rendern | String-Vergleich, bei Änderung Neuaufbau | hängt vom Renderer ab (siehe 1.3) |
+
+Der entscheidende Punkt: **`@htx/js` ist heute ein Builder, kein Renderer** (steht so in seiner README). Jeder Aufruf baut neue Knoten. Würde `render()` bei jedem `update()` `htx` aufrufen und die Knoten einsetzen, wäre das sogar schlechter als heute, weil der String-Vergleich wegfällt, der unnötige Neuaufbauten verhindert. htx als `html` für aufbau lohnt sich deshalb erst **zusammen mit dem Renderer aus 1.3**. Die Reihenfolge ist also: erst der htx-Renderer, dann `@aufbau/element` darauf umstellen.
+
+Was aufbau mit htx zusätzlich bekommt: Tag-Selektoren (`<div.card#main>`), Prop-Gruppen, gemergte `class`/`style` (Array, Objekt, String) und vor allem **Shorthand-Tags**, die ziemlich genau auf `@aufbau/elements` passen (das README-Beispiel ist schon `<$icon 'bx:search' />` → `<aufbau-icon>`). Ein `html.define()` mit allen aufbau-Elementen würde `<input-color 'red' />` mit Positionswerten möglich machen.
+
+### 1.2 htx als deine Markup-Syntax
+
+Einverstanden. Das ist auch der Grund, warum es sich lohnt, htx zum gemeinsamen Nenner von aufbau, rat und zugriff zu machen, statt drei ähnliche Template-Dialekte zu pflegen.
+
+### 1.3 Ein Renderer für htx
+
+Geht, und htx hat die wichtigste Vorarbeit schon: `build(statics)` zerlegt ein Template genau einmal in ein Programm und cached es pro Template-Literal (`cache.get(statics)`). In diesem Programm ist für jede Stelle markiert, ob sie statisch ist oder aus einem `${…}` kommt (`built[i]` ist dann der Index ins `fields`-Array). Genau diese Information braucht ein Lit-artiger Renderer.
+
+Was er tut:
+
+```
+first render of a template
+  built program  →  <template> with markers at the dynamic places  →  clone
+                 →  a list of parts: text, attribute, property, event, spread, child
+
+every later render with the same template
+  for each part: new value === old value ? nothing : write only this part
+```
+
+Was dabei htx-spezifisch zu lösen ist:
+
+| htx-Feature | im Renderer |
+|---|---|
+| Tag-Selektoren, Prop-Gruppen | kein Problem, beides passiert schon beim Bauen |
+| Shorthand-Tags, Positionswerte | beim Bauen auflösbar, solange der Tag statisch ist |
+| gemergte `class`/`style` | ein dynamischer `class`-Teil muss mit den statischen Klassen des Elements zusammengeführt werden, nicht sie ersetzen |
+| `<${Component}>` | ein Teil, der bei anderem Typ den Teilbaum austauscht |
+| Funktionskomponenten | rendern ihr eigenes Template als verschachtelte Instanz |
+| `...${spread}` | ein Teil, der alte Props entfernt und neue setzt |
+| `!html` | ein Teil, der `innerHTML` nur bei Änderung schreibt |
+| Arrays als Kinder | ein Listen-Teil, mit Schlüssel (`repeat`/`each`) für Umsortieren |
+
+Wichtig: Ein solcher Renderer kann **nicht** als `h`-Adapter gebaut werden. Ein `h` bekommt bei jedem Aufruf fertige Werte und weiß nicht mehr, welche davon statisch waren. Der Renderer ist ein zweiter Abnehmer von `build()` (das der Kern schon exportiert), neben `evaluate()`.
+
+### 1.4 `@htx/js` standalone
+
+Ja. Es gäbe dann zwei Arten, htx im Browser ohne Preact zu nutzen:
+
+```js
+import { html, render } from '@htx/js';
+
+const nodes = html`<p>${text}</p>`;                    // builder: one-shot nodes, as today
+render(document.body, () => html`<p>${text}</p>`);     // renderer: parts, patched on every call
+```
+
+Offen ist nur die API-Form, weil `html` heute sofort Knoten liefert. Zwei Möglichkeiten:
+
+- **a)** `html` liefert künftig ein leichtes Template-Ergebnis (Strings plus Werte, wie bei Lit), das erst `render()` oder ein Einfügen in Knoten verwandelt. Sauber, aber eine Änderung am Verhalten.
+- **b)** Builder und Renderer bleiben getrennt: `@htx/js` baut wie bisher, ein neues `@htx/dom` (oder `@htx/js/render`) rendert. Kein Bruch, zwei Einstiege.
+
+Ich würde b) nehmen: Der Builder ist für Einmal-Markup (Toasts, Dialoge, Markdown) genau richtig, und nichts Bestehendes bricht.
+
+Zur Frage "Renderer koppeln": Die Kopplung über `createHTX(h, Fragment)` bleibt für die `h`-Adapter. Der Parts-Renderer koppelt sich eine Ebene tiefer an `build()`. Beides nebeneinander geht.
+
+### 1.5 `@htx/vdom`, `@htx/preact`
+
+Ja, die bleiben `h`-Adapter. Damit hätte htx zwei Familien:
+
+| Familie | koppelt an | Pakete |
+|---|---|---|
+| `h`-Adapter | `createHTX(h, Fragment)` | `@htx/preact`, `@htx/vdom`, `@htx/js` (Builder), ein `@htx/string` für Server-Rendering (siehe 2.6) |
+| Renderer | `build()` | `@htx/dom` (Parts, wie Lit) |
+
+### 1.6 `@aufbau/element` mit htx
+
+Ja, und dann:
+
+- `render()` darf dynamische Werte enthalten, ohne dass Knoten verloren gehen. Die Trennung `render()`/`sync()` bleibt nützlich (Canvas, Fremdbibliotheken), ist aber keine Pflicht mehr.
+- Fokus, Eingaben und Listener an inneren Knoten überleben Updates.
+- `Selection`, delegierte Events, `part()` und `$name` bleiben wie sie sind; sie funktionieren mit stabilen Knoten sogar besser.
+- Das ist 16.5 in der Variante b, nur mit htx statt mit dem bisherigen String-Tag.
+
+### 1.7 rat auf htx
+
+Das passt besser zusammen, als es auf den ersten Blick aussieht, mit einer Präzisierung: Das "Einklinken" passiert **zur Compile-Zeit, nicht zur Laufzeit**. htx sieht nie ein `|>` oder ein `@if`; der rat-Compiler übersetzt vorher.
+
+```
+.rat / .rat.js
+   │  rat compiler: {…} → ${…}, @if/@for → helpers, |> and .. inside holes, $x → signals
+   ▼
+htx template with holes
+   │  @htx/dom: statics parsed once, parts for the holes
+   ▼
+DOM
+```
+
+Damit das trägt, braucht der htx-Renderer zwei kleine Dinge:
+
+1. **Eine Funktion in einem Loch ist eine Live-Bindung.** Bei `${() => $count}` legt der Renderer einen Effekt für genau diesen Teil an, statt den Wert einmal zu setzen. Das ist die ArrowJS-Regel ("ein Wert wird einmal gerendert, eine Funktion bleibt live"), und rats Compiler erzeugt ohnehin `() => expr` für jedes `{expr}`. Welche Signal-Bibliothek dahintersteht, bleibt austauschbar: Der Renderer bekommt nur eine `effect`-Funktion übergeben.
+2. **Kontrollfluss als Helfer.** `@if` wird zu `${when(() => cond, () => html`…`, () => html`…`)}`, `@for` zu `${each(() => list, key, item => html`…`)}`. Das sind die Gegenstücke zu Lits `when` und `repeat`.
+
+Folgen für rat:
+
+- `@rat/runtime` schrumpft auf Signals plus diese Helfer; die eigene DOM-Schicht (`el`, `svg`, `insert` …) übernimmt `@htx/dom`.
+- Das geplante `dom:clone`-Target (statische Teile einmal parsen, dann klonen) bekommt rat damit geschenkt, weil der Renderer genau das tut.
+- rats htx-Syntax im Compiler (Tag-Selektoren, Prop-Gruppen, `class:`) entfällt dort, weil htx sie selbst versteht.
+- Eine Sache gibt rat dabei auf: Heute weiß der rat-Compiler zur Compile-Zeit alles über das Markup und kann eigenen, sehr direkten Code erzeugen. Mit htx dazwischen entscheidet der Renderer zur Laufzeit (beim ersten Rendern). Das kostet einmal pro Template etwas Parsezeit, ist aber genau das, was Lit seit Jahren schnell genug macht.
+
+### 1.8 Zusammengefasst
+
+Das Bild ist stimmig: **htx als gemeinsame Markup-Schicht, ein Parts-Renderer als neuer Teil von htx, aufbau und rat als dessen Nutzer.** Bevor wir das Konzept schreiben, sind drei Dinge zu entscheiden:
+
+1. API-Form des Renderers: neues Paket `@htx/dom` neben dem Builder (Empfehlung) oder `html` mit verändertem Verhalten.
+2. Ob Funktionen in Löchern immer live sind (dann braucht jeder Nutzer eine `effect`-Funktion) oder nur, wenn eine übergeben wurde (sonst einmal aufgerufen). Empfehlung: nur mit übergebener `effect`-Funktion, damit `@htx/dom` ohne Signals funktioniert.
+3. Wo die Kontrollfluss-Helfer leben (`@htx/dom`, `@rat/runtime` oder beide).
+
+## zu 2. @aufbau/element
+
+### 2.1 bis 2.3
+
+Notiert: 16.1 bis 16.4 und 16.7 sind angenommen, 16.5 geht in die htx-Lösung über.
+
+### 2.4 Controller, genauer
+
+Es geht um wiederverwendbares **Verhalten mit Lebenszyklus**, das man an ein Element hängt, ohne dass das Element davon erben muss.
+
+Ein Beispiel: Ein Element soll auf schmalen Bildschirmen anders rendern. Heute schreibt man das in jedes Element, das es braucht:
+
+```js
+class NavBar extends AufbauElement {
+  onConnected () {
+    this._query = matchMedia('(width < 600px)');
+    this._onChange = () => this.update();
+    this._query.addEventListener('change', this._onChange);
+  }
+  onDisconnected () { this._query.removeEventListener('change', this._onChange); }
+  render () { return this._query.matches ? '…compact…' : '…full…'; }
+}
+```
+
+Dasselbe für `data-table`, `app-area` und `dash-board`: dreimal derselbe Code, dreimal die Gefahr, das Abmelden zu vergessen. Mit einem Controller:
+
+```js
+class MediaQuery {
+  constructor (host, query) { this.host = host; this.list = matchMedia(query); host.addController(this); }
+  get matches () { return this.list.matches; }
+  connected () { this.host.on(this.list, 'change', () => this.host.update()); }   // removed on disconnect by the host's signal
+}
+
+class NavBar extends AufbauElement {
+  narrow = new MediaQuery(this, '(width < 600px)');
+  render () { return this.narrow.matches ? '…compact…' : '…full…'; }
+}
+```
+
+Der Unterschied zu Mixins (`withControl`, `withSource`):
+
+| | Mixin | Controller |
+|---|---|---|
+| Beziehung | das Element **ist** etwas (ein Control) | das Element **hat** etwas (eine Media Query) |
+| mehrfach | nein (`withResize(withResize(…))` geht nicht) | ja: zwei Media Queries, zwei Observer |
+| Konfiguration | über statische Felder der Klasse | pro Instanz im Konstruktor |
+| Namenskonflikte | Methoden zweier Mixins können sich überschreiben | jeder Controller ist ein eigenes Objekt |
+| Kandidaten | Formular-Control, Quelle-und-Ausgabe | Media Query, Resize, Sichtbarkeit (Lazy Loading), Tastenkürzel, Laden über `src`, Gesten, Persistenz |
+
+Der Controller hängt sich nur in die Hooks ein, die das Element ohnehin hat (`connected`, `disconnected`, vor und nach `update`). Weil aufbau mit `signal` und `track()` das Aufräumen schon gelöst hat, ist die Basis dafür rund 20 Zeilen in `AufbauElement`: eine Liste von Controllern und je ein Aufruf in `connectedCallback`, `release()` und `update()`. Auch `@aufbau/gestures` wäre als Controller natürlich: `swipe = new Gestures(this, { onSwipeLeft: … })`.
+
+### 2.5 `static { … }`
+
+Gemeint sind wohl Static Initialization Blocks (ES2022): ein Block in der Klasse, der genau einmal läuft, wenn die Klasse definiert wird.
+
+```js
+class NavBar extends AufbauElement {
+  static attr = { compact: Boolean };
+  static { this.init(); }   // runs once at class definition: define <nav-bar>
+}
+```
+
+Was sich damit machen lässt:
+
+- **Selbstregistrierung:** `static { this.init(); }` statt `NavBar.init()` unter der Klasse. Rein kosmetisch, aber es hält Definition und Registrierung zusammen.
+- **Klassenweite Vorbereitung:** Schema auflösen, Styles als Sheet bauen, Part-Getter anlegen, einmal pro Klasse statt beim ersten Verbinden.
+- **Controller deklarieren:** `static { this.use(MediaQuery, '(width < 600px)', 'narrow'); }` könnte registrieren, dass jede Instanz einen solchen Controller unter `narrow` bekommt. Das ist die deklarative Form von 2.4, passend zu `static attr` und `static styles`.
+
+Zwei Dinge, die man dabei wissen muss:
+
+- Ein Static Block läuft nur für die Klasse, in der er steht. Ein Block in `AufbauElement` läuft nicht für `NavBar`. Jede konkrete Klasse braucht ihren eigenen Block (oder die Basis erledigt die Arbeit lazy beim ersten `connectedCallback`, wie heute bei Schema und Styles).
+- Selbstregistrierung ist ein Seiteneffekt beim Import. Für den Autoloader ist das egal (er importiert ohnehin nur, wenn das Element gebraucht wird), aber ein Element lässt sich dann nicht mehr importieren, ohne es zu definieren (etwa um davon abzuleiten oder es unter anderem Namen zu registrieren). Ein Mittelweg: `static { this.init(); }` nur in den Dateien unter `webcomponents/`, nicht in Basisklassen.
+
+### 2.6 SSR, aus PHP-Sicht
+
+Mit PHP hast du immer SSR gemacht, nur heißt es dort nicht so: Der Server baut HTML als String und schickt es; der Browser zeigt es sofort an. Das "problematische Ding" entsteht erst, wenn dieselbe Oberfläche **auch** im Browser von JavaScript gebaut wird:
+
+1. Der Server muss dasselbe JavaScript ausführen, um dasselbe HTML zu erzeugen (also Node, Deno oder Bun statt PHP).
+2. Der Browser bekommt das fertige HTML, lädt danach das JavaScript und muss es an das vorhandene HTML **anschließen**, statt es neu zu bauen: Listener anhängen, Zustand übernehmen. Das heißt **Hydration**.
+3. Weicht das Ergebnis im Browser vom Server-HTML ab (andere Uhrzeit, zufällige IDs, Daten nur im Browser), passen die beiden nicht zusammen. Das sind die berüchtigten "hydration mismatches".
+4. Der Zustand muss vom Server zum Browser kommen (serialisiert ins HTML), sonst rechnet der Browser alles nochmal.
+
+Für aufbau sieht es entspannter aus als für React und Co.:
+
+- **Light-DOM-Elemente** liefern in `render()` schon heute einen String. Dieselbe Funktion kann ein Server aufrufen, wie ein PHP-Template. Beim Upgrade im Browser müsste das Element nur erkennen, dass das Markup schon da ist, und den ersten Neuaufbau überspringen.
+- **Shadow-DOM-Elemente** brauchen das HTML-Feature Declarative Shadow DOM (`<template shadowrootmode="open">` im Server-HTML), das inzwischen alle Browser können.
+- Mit htx wäre ein `@htx/string`-Adapter (ein `h`, das Strings statt Knoten baut) die Server-Hälfte, und `@htx/dom` müsste vorhandene Knoten übernehmen können, statt neue zu klonen.
+
+Gebraucht wird das für Seiten, die vor dem JavaScript sichtbar sein sollen (Inhaltsseiten, SEO, langsame Verbindungen). Für Apps wie zugriff, die ohnehin JavaScript brauchen, ist es nachrangig. Empfehlung: jetzt nicht bauen, aber darauf achten, dass `render()` rein bleibt (keine Seiteneffekte, kein Zugriff auf `window` beim Rendern), damit es später möglich ist.
+
+### 2.7 und 2.8
+
+Notiert: 16.11 kommt ins Konzept, 16.12 gehen wir einzeln durch, wenn es so weit ist.
+
+## Nächster Schritt
+
+Wenn du die drei Entscheidungen aus 1.8 triffst, schreibe ich das Konzept in zwei Teilen: **`@htx/dom`** (der Renderer, mit Parts, Live-Bindungen und Kontrollfluss-Helfern) und **`@aufbau/element` 3** (Properties aus dem Schema, gesammelte Updates mit geänderten Namen, `getAttr`-Cache, htx als Renderer, Fehler-State, Controller, Manifest).
