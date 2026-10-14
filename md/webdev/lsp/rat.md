@@ -220,7 +220,7 @@ packages/language-server/
 | Struktur und rat-Completion (Stufe 2) | mittel | Outline, Folding, Snippets, Signale hervorgehoben. **Gebaut**, dazu Rename, Referenzen und Highlights für Signale |
 | Mapping aus dem Compiler, TypeScript über Volar (Stufe 3) | mittel bis groß | volle JS-Unterstützung in Holes und Scripts. **Erste Form gebaut**, ohne Mapping (siehe unten) |
 | CSS-Service und Manifest (Stufe 4) | klein bis mittel | Elemente und Styles mit Doku. **Gebaut:** CSS über `vscode-css-languageservice`, Elemente über `@htx/analyzer` |
-| Umbauen (Stufe 5) | je Feature | Komfort |
+| Umbauen (Stufe 5) | je Feature | Komfort. **Gebaut:** `@if={x}` in einen Block umschreiben, unbekanntes `$name` deklarieren, nächstliegender Wert bei falschem Wert, `@if`/`@for` zwischen Klammern und Einzeiler. Offen: Komponente extrahieren, Formatter |
 
 Die ersten zwei Schritte sind an einem Tag zu haben und decken den größten Nutzen ab. Ab Schritt 3 lohnt sich Volar, weil Positionsumrechnung über mehrere eingebettete Sprachen sonst den größten Teil des Codes ausmacht.
 
@@ -237,6 +237,12 @@ Weil die Offsets gleich bleiben, antworten beide Dienste in den Koordinaten der 
 
 Die Elemente laufen über `@htx/analyzer`: Scripts, Styles, Holes und Blockköpfe werden aus dem Markup herausgeschnitten, der Rest ist ein htx-Template. Vom Analyzer bleiben nur die inhaltlichen Befunde (unbekannte Attribute, falsche Werte, unbekannte Tags), die Syntax prüft der rat-Parser.
 
-Grenzen dieser Form, für die erst die Compiler-Ausgabe mit Source Map hilft: das Item einer `@for`-Schleife ist für TypeScript `any`, Props von Komponenten sind unbekannt, Imports von `.rat`-Dateien lösen nicht auf, und der Rat-Zucker (`|>`, `..`, `#`) ist für TypeScript ein Syntaxfehler (Diagnostics von TypeScript sind deshalb aus).
+Drei Kniffe holen aus dieser Form mehr heraus, ohne Offsets zu verschieben:
+
+- **Schleifen:** Ein `@for` wird im JS-Text zur Schleife um seinen Körper, geschrieben dort, wo `@for (` und zwei Zeichen Einrückung standen: `@for (todo of $todos) { … }` → `for(let todo of $todos){ … }`. Das Item hat damit im Körper seinen Typ (`todo.` bietet `id`, `title`, `done` an).
+- **Imports von `.rat`:** Eine `.rat` antwortet als `name.rat.js`, und genau dort sucht TypeScript bei `import Card from './card.rat'`. Geschlossene `.rat`-Dateien liest der Server dafür von der Platte; jeder JS-Text endet mit einem Default-Export.
+- **Komponenten-Tags:** `<Card>` steht im JS-Text als Anweisung `;Card;`, Hover und Definition auf dem Tag führen so zum Import.
+
+Grenzen, für die erst die Compiler-Ausgabe mit Source Map hilft: die Typen von Props, der Index einer `@for`-Schleife, und der Rat-Zucker (`|>`, `..`, `#`) ist für TypeScript ein Syntaxfehler (Diagnostics von TypeScript sind deshalb aus).
 
 Weiter: [htx.md](htx.md)

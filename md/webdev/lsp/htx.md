@@ -133,4 +133,6 @@ Der Template-Teil (Tags, Attribute, Manifest, Shorthand-Tags) sollte deshalb als
 | Shorthand-Tags aus `html.define` | Completion, Definition, Argumentprüfung | gebaut: `define`-Aufrufe und `createHTX(…, { tags })` werden über den Type Checker statisch ausgewertet, auch `html.define(elements)` mit Namespace-Import |
 | Hole-Typen über den Type Checker | Event-, Ref-, Property-Prüfung | gebaut: Event, Ref, Spread, Tag, Aufzählungswerte |
 
-Noch offen: Klassen aus dem Projekt-CSS im Selektor, `.htx`-Dateien (`@htx/compiler`) als eigene Sprache, Monaco.
+Dazu gebaut: Klassen aus dem Projekt-CSS (jede `.css` außer `node_modules`, `dist`, `build`) nach einem `.` im Selektor (`<div.card.|`) und in `class="…"`.
+
+Noch offen: `.htx`-Dateien (`@htx/compiler`) als eigene Sprache, Monaco.
