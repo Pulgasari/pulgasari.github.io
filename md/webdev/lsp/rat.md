@@ -216,12 +216,27 @@ packages/language-server/
 |---|---|---|
 | Server mit Diagnostics aus `compileAsync()` (Stufe 1) | klein | Fehler beim Tippen in jedem LSP-Editor. **Gebaut:** `rat/packages/language-server` |
 | VS-Code- und Zed-Anbindung | klein | installierbar. **Gebaut:** `rat/packages/vscode`, Rust-Crate in `rat/packages/syntax/zed` |
-| Parser: Fehlertoleranz und End-Positionen | mittel | Voraussetzung für alles Weitere |
-| Struktur und rat-Completion (Stufe 2) | mittel | Outline, Folding, Snippets, Signale hervorgehoben |
-| Mapping aus dem Compiler, TypeScript über Volar (Stufe 3) | mittel bis groß | volle JS-Unterstützung in Holes und Scripts |
-| CSS-Service und Manifest (Stufe 4) | klein bis mittel | Elemente und Styles mit Doku |
+| Parser: Fehlertoleranz und End-Positionen | mittel | Voraussetzung für alles Weitere. **Gebaut:** `parse(…, { tolerant: true })`, Start und Ende an jedem Knoten |
+| Struktur und rat-Completion (Stufe 2) | mittel | Outline, Folding, Snippets, Signale hervorgehoben. **Gebaut**, dazu Rename, Referenzen und Highlights für Signale |
+| Mapping aus dem Compiler, TypeScript über Volar (Stufe 3) | mittel bis groß | volle JS-Unterstützung in Holes und Scripts. **Erste Form gebaut**, ohne Mapping (siehe unten) |
+| CSS-Service und Manifest (Stufe 4) | klein bis mittel | Elemente und Styles mit Doku. **Gebaut:** CSS über `vscode-css-languageservice`, Elemente über `@htx/analyzer` |
 | Umbauen (Stufe 5) | je Feature | Komfort |
 
 Die ersten zwei Schritte sind an einem Tag zu haben und decken den größten Nutzen ab. Ab Schritt 3 lohnt sich Volar, weil Positionsumrechnung über mehrere eingebettete Sprachen sonst den größten Teil des Codes ausmacht.
+
+### Stand: Texte statt Mappings
+
+Gebaut ist ein Weg, der die Positionsumrechnung ganz umgeht. Aus jeder Datei entstehen zwei virtuelle Texte, die **jeden Offset behalten**: Was nicht CSS (bzw. JS) ist, wird zu Leerzeichen, Zeilenumbrüche bleiben.
+
+| Text | Inhalt | wer ihn liest |
+|---|---|---|
+| CSS | nur die `<style>`-Blöcke an ihrer Stelle | `vscode-css-languageservice` |
+| JS | Scripts wie geschrieben, jeder Ausdruck im Markup als Anweisung: `{$x}` wird zu `;$x;`, `@if (a)` zu `;(a);`; in `.rat.js` wird ein Markup-Template zum Aufruf `html( a, b, )` | der TypeScript Language Service |
+
+Weil die Offsets gleich bleiben, antworten beide Dienste in den Koordinaten der `.rat`-Datei. Ein `$signal` ist im JS-Text eine normale Variable, genau so, wie es im rat-Quelltext gelesen wird: `$todos.filter` bietet die Array-Methoden an.
+
+Die Elemente laufen über `@htx/analyzer`: Scripts, Styles, Holes und Blockköpfe werden aus dem Markup herausgeschnitten, der Rest ist ein htx-Template. Vom Analyzer bleiben nur die inhaltlichen Befunde (unbekannte Attribute, falsche Werte, unbekannte Tags), die Syntax prüft der rat-Parser.
+
+Grenzen dieser Form, für die erst die Compiler-Ausgabe mit Source Map hilft: das Item einer `@for`-Schleife ist für TypeScript `any`, Props von Komponenten sind unbekannt, Imports von `.rat`-Dateien lösen nicht auf, und der Rat-Zucker (`|>`, `..`, `#`) ist für TypeScript ein Syntaxfehler (Diagnostics von TypeScript sind deshalb aus).
 
 Weiter: [htx.md](htx.md)
