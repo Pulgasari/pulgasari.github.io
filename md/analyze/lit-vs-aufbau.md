@@ -618,7 +618,7 @@ Nach Schritt 3 hätte `@aufbau/element` alles, was Lit im Kern ausmacht, und beh
 
 ---
 
-# die weisen worte des vorsitzenden
+# anmerkungen
 
 sehr hilfreiche analyse, gut gemacht!
 
@@ -651,3 +651,14 @@ an sich stimme ich *einem* großen grundsätzlichen umbau zu, jedoch hängt da n
 
 (2.2) bzgl. deinem punkt `16.5` siehe hier meine punkte `1.1` bis `1.8`
 
+(2.3) dein `16.7`: klingt vernünftig
+
+(2.4) deinen punkt `16.8` kapier ich nich ganz worauf du genau hinauswillst. bitte nochmal genauer ausführen.
+
+(2.5) hier war bisher schon mal angedacht dieses `static {...}` beim erstaufruf/-init/-load (irgendsowas jdf.) der klasse zu nutzrn um dort evtl derartige connections direkt zu ermöglichen. aber wurde noch nicht ausgearbeitet.
+
+(2.6) bzgl. `16.10` hab ich ehrlich gesagt kp, weil ich derartig js und "ssr" noch nie gemacht habe und nur ständig iwo am.rande mitbekomme dass so voll das problematische ding sei. (ich komm ursprünglich von php. :D)
+
+(2.7) gute idee bzgl. `16.11`
+
+(2.8) bzgl. den kleineren punkten in `16.12` gucken wir dann nochmal konkret
