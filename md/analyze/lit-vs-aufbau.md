@@ -905,4 +905,10 @@ da muss sich doch für das bisherige "preact + htx" im ergebnis überhaupt nicht
 
 ### 2. renderer für htx
 
-wo der sitzen soll,ist vermutlich gar nicht so entscheidend, solang er nur enkoppelt (also sein eigenes ding ist) als eigenes package. aber wenn ich im namen `@htx/dom` werde ich prinzipiell hellhörig und vermute fast, dass das eigtl. zu `@domina` gehört, vllt als `@domina/render`.
+wo der sitzen soll,ist vermutlich gar nicht so entscheidend, solang er nur enkoppelt (also sein eigenes ding ist) als eigenes package. aber wenn ich im namen `@htx/dom` lese, werde ich prinzipiell hellhörig und vermute fast, dass das eigtl. zu `@domina` gehört, vllt als `@domina/render`.
+
+### 3. entscheidungen
+1. mich dünkt `@domina/render` wäre richtige ort.
+2. ja
+3. bin mir unsicher
+
