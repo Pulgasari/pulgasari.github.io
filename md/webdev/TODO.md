@@ -1,9 +1,9 @@
 # todo
 
-- [ ] generic(s)
-- [ ] middleware
+- [x] generic(s)
+- [x] middleware
 - [x] protokoll
-- [ ] server
+- [x] server
 
 ## `/langs`
 - [x] Dart
