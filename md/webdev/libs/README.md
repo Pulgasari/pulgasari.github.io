@@ -57,6 +57,7 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [ ] Angular
 - [x] ArrowJS
 - [ ] Astro
+- [ ] BackboneJS
 - [ ] CoffeScript
 - [x] EJS
 - [x] Elm
@@ -90,3 +91,5 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [ ] Underscore
 - [x] UnoCSS
 - [ ] Vue
+
+
