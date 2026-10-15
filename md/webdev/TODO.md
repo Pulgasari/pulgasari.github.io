@@ -12,15 +12,16 @@
 - [x] Lua
 
 ## `/libs`
-- [ ] alien-signals
+- [x] alien-signals
 - [ ] AlpineJS
 - [ ] Angular
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
+
 - [ ] Cycle.js
-- [ ] datastar
+- [x] Datastar
 - [ ] D3
 - [x] EJS
 - [ ] Eleventy
@@ -30,8 +31,10 @@
 - [x] Fresh
 - [ ] Hotwire
 - [ ] HTM
-- [ ] htmz
+
 - [x] htmx
+- [x] htmz
+- [x] Hyperapp
 - [ ] Hyperapp
 - [ ] Immer
 - [ ] Inferno JS
@@ -44,9 +47,11 @@
 - [x] MarkoJS
 - [x] MDX
 - [x] MobX
-- [ ] morphdom / idiomorph
+- [x] morphdom / idiomorph
+
+
 - [ ] MooTools
-- [ ] Open Props
+- [x] Open Props
 - [x] PostCSS
 - [ ] Preact
 - [ ] Qwik
@@ -66,11 +71,15 @@
 - [ ] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
-- [ ] Valibot
+
+
+
+
+- [x] Valibot
 - [ ] Vite
 - [ ] Vue
 - [ ] YUI
 - [ ] XState
-- [ ] zod
+- [x] zod
 - [ ] Zustand
 

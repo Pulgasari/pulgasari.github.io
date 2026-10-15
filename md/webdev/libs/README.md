@@ -4,15 +4,19 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 
 | | Was | Seit / bis | Größe | Build |
 |---|---|---|---|---|
+| [alien-signals](alien-signals.md) | Signal-Kern, Push-Pull | 2024– | 1,9 kb | nein |
 | [ArrowJS](arrowjs.md) | reaktive UI-Runtime | 2021– | 7,7 kb | nein |
 | [Astro](astro.md) | Framework für Inhaltsseiten mit Islands | 2021– | – (Server/Build; Island-Runtime 1,9 kb) | ja (Vite) |
 | [Backbone.js](backbone.md) | Models, Collections, Views, Router | 2010–, in Wartung | 8,6 kb, mit Underscore 17,6 kb | nein |
 | [CoffeeScript](coffeescript.md) | Sprache, compiliert zu JavaScript | 2009–, ruht seit 2022 | – (Browser-Compiler 101,5 kb) | ja, oder Compiler im Browser |
+| [Datastar](datastar.md) | Signals im Markup, Server-Patches über SSE | 2023– (1.0: 2026) | 13,0 kb, Kern 4,7 kb | nein |
 | [EJS](ejs.md) | Template-Sprache | 2011– | 8,0 kb (Browser-Build) | nein |
 | [Elm](elm.md) | funktionale Sprache für Web-Apps | 2012–, ruht seit 2019 | – | ja |
 | [Express](express.md) | Web-Framework für Node | 2010– | – (Server) | nein |
 | [Fresh](fresh.md) | Deno-Web-Framework | 2022– | – (Server, Islands mit Preact) | ja (Vite) |
 | [htmx](htmx.md) | HTML-Erweiterung für Requests | 2020– (intercooler.js 2013) | 18,4 kb | nein |
+| [htmz](htmz.md) | Fragment-Swaps über einen Iframe | 2024–, fertig | 166 Byte (inline) | nein |
+| [Hyperapp](hyperapp.md) | Elm-Architektur mit Virtual DOM | 2017–, ruht seit 2022 | 1,7 kb | nein |
 | [_hyperscript](hyperscript.md) | Skriptsprache im Attribut | 2020– | 45,5 kb | nein |
 | [jQuery](jquery.md) | DOM-Bibliothek | 2006– | 28,0 kb | nein |
 | [Knockout](knockout.md) | MVVM mit Observables | 2010–, 3.x in Wartung, TKO seit 2026 | 25,8 kb | nein |
@@ -21,6 +25,8 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [Marko](marko.md) | HTML-Obermenge mit Compiler | 2014– | bis 12,5 kb (Runtime, pro App gekürzt) | ja |
 | [MDX](mdx.md) | Markdown mit JSX | 2018– | – (Compiler, Ausgabe ist eine Komponente) | ja, oder `evaluate()` |
 | [MobX](mobx.md) | reaktiver Zustand, direkte Mutation | 2015– | 15,6 kb, typisch 12,0 kb | nein |
+| [morphdom / idiomorph](morphdom.md) | DOM-Morphing | 2015– / 2022– | 2,2 kb / 3,7 kb | nein |
+| [Open Props](open-props.md) | Design-Tokens als Custom Properties | 2021– | 7,5 kb CSS alles, mit JIT nur Benutztes | nein, JIT mit PostCSS |
 | [PostCSS](postcss.md) | CSS-Syntaxbaum mit Plugins | 2013– | – (Build; im Browser 18,7 kb) | ja |
 | [Ramda](ramda.md) | funktionale Hilfsfunktionen, gecurried | 2014– | 16,0 kb alles, typisch 3,6 kb | nein |
 | [RxJS](rxjs.md) | Ereignisströme | 2012– (RxJS 5: 2016) | 7,6 kb typisch, 18,5 kb alles | nein |
@@ -28,8 +34,10 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [Tailwind CSS](tailwind.md) | Utility-CSS-Framework | 2017– | – (CSS aus dem Build; Browser-Skript 73,5 kb) | ja |
 | [TSRX](tsrx.md) | Nachfolger von JSX | 2026– | – (Compiler, Runtime je Ziel) | ja |
 | [UnoCSS](unocss.md) | Engine für Utility-CSS, Regeln statt Vokabular | 2021– | Laufzeit 9,8 kb Kern, bis 58 kb mit Presets | ja, oder Laufzeit im Browser |
+| [Valibot](valibot.md) | Schemas und Validierung, modular | 2023– | 14,9 kb alles, typisch 1,6 kb | nein |
+| [Zod](zod.md) | Schemas und Validierung | 2020– | 25,6 kb typisch, `zod/mini` 5,8 kb | nein |
 
-Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`). „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
+Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`), Zod und Valibot ein Objekt-Schema mit vier Feldern (`import * as z`; `import { z }` zieht die Locales mit, 90 kb). Datastar aus dem Repository (`bundles/datastar.js`, v1.0.4), weil npm nur eine alte Beta hat; Open Props ist CSS, gzip der `.min.css`. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
 
 ## Querverbindungen
 
@@ -52,6 +60,12 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - **Lazy laden:** Astros `client:visible`/`client:idle` ([Astro](astro.md)) und rats `lazy:visible` (Idee 2.13).
 - **Web Components bauen:** [Lit](lit.md) und `@aufbau/element` im direkten Vergleich: [lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md).
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Content Collections ([Astro](astro.md)), `validate`/`parse` ([Backbone](backbone.md)), Schemas in `@rat/types`.
+- **Morphing statt `innerHTML`:** [morphdom / idiomorph](morphdom.md) als Bibliothek, eingebaut in [Datastar](datastar.md), Turbo 8 und Phoenix LiveView; [htmz](htmz.md) und htmx ersetzen ohne. `@domina/render` und rat brauchen es nicht, weil sie nur Löcher schreiben.
+- **Fragmente vom Server:** [htmx](htmx.md) (Attribute), [htmz](htmz.md) (Iframe und `target`, 166 Byte), [Datastar](datastar.md) (SSE-Strom mit Element- und Signal-Patches).
+- **Signal-Kerne:** [alien-signals](alien-signals.md) (Vue 3.6, Datastar), Preact Signals (`@aufbau/signals`), `@rat/runtime/signals.js`; Vergleich der Datenstrukturen in alien-signals.md.
+- **Schemas als Werte:** [Zod](zod.md) (Methoden, Klassen), [Valibot](valibot.md) (Funktionen, Pipe), Standard Schema als gemeinsame Schnittstelle; d-14 a in rat, `types.js` in `@aufbau/store`.
+- **Handler als Daten:** `[Action, payload]` in [Hyperapp](hyperapp.md), Kommandos mit Argument in rat (d-16), Effekte als Daten bei [Elm](elm.md).
+- **Tokens oder Funktionen:** [Open Props](open-props.md) legt jeden Wert als Variable ab, `@aufbau/css` rechnet sie mit `@function` aus wenigen Grund-Tokens, [Tailwind](tailwind.md) macht sie zu Klassen.
 
 ## Aufbau eines Steckbriefs
 
