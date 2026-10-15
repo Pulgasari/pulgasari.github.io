@@ -71,6 +71,7 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [x] Fresh
 - [ ] HTM
 - [x] htmx
+- [ ] Immer
 - [ ] Inferno JS
 - [x] jQuery
 - [x] knockout
@@ -97,5 +98,6 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - [ ] Underscore
 - [x] UnoCSS
 - [ ] Vue
+- [ ] Zustand
 
 
