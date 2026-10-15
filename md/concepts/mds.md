@@ -124,6 +124,18 @@ Heading 2
 - An empty ATX heading (`#`) is allowed.
 - Heading ids are not part of CommonMark; see [23](#23-attributes-and-heading-ids).
 
+```md
+# h1
+## h2
+###### h6
+
+## closing hashes are optional ##
+#no space: not a heading
+
+## multiple
+lines ##
+```
+
 ---
 
 ## 4. Thematic break
