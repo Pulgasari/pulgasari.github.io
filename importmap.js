@@ -71,6 +71,7 @@ const map = { imports: {
   "@cosmonaut/layouter/" : "./cosmonaut/packages/layouter/",
   "@cosmonaut/compiler/" : "./cosmonaut/packages/compiler/",
 
+  "@domina/chain"        : "./domina/packages/chain/index.js",
   "@domina/element"      : "./domina/packages/element/index.js",
   "@domina/element/lazy" : "./domina/packages/element/lazy.js",
   "@domina/fonts"        : "./domina/packages/fonts/index.js",
@@ -79,6 +80,7 @@ const map = { imports: {
   "@domina/methods"      : "./domina/packages/methods/index.js",
   "@domina/methods/"     : "./domina/packages/methods/",
   "@domina/observer"     : "./domina/packages/observer/index.js",
+  "@domina/proxy"        : "./domina/packages/proxy/index.js",
   "@domina/raf"          : "./domina/packages/raf/index.js",
   "@domina/render"       : "./domina/packages/render/index.js",
   "@domina/stylesheet"   : "./domina/packages/stylesheet/index.js",
