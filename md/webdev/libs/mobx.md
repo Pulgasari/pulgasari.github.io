@@ -92,7 +92,7 @@ fetchUser = flow(function* (id) {
 });
 ```
 
-Ein Generator statt `async`, weil MobX nach jedem `yield` wieder in eine Action einsteigen kann. Mit `async` müsste jede Änderung nach einem `await` in `runInAction` stehen.
+Ein Generator statt `async`, weil MobX nach jedem `yield` wieder in eine Action einsteigen kann. Mit `async` müsste jede Änderung nach einem `await` in `runInAction` stehen. Ausführlich im [Deep Dive](#flow-actions-über-await-hinweg-zu-6).
 
 ### 7. Anbindung an UIs
 
@@ -102,7 +102,7 @@ import { observer } from 'mobx-react-lite';
 const Counter = observer(() => <button onClick={() => store.count++}>{store.count}</button>);
 ```
 
-`observer` macht das Rendern selbst zu einer Reaktion: Die Komponente rendert neu, wenn sich etwas ändert, das sie beim letzten Rendern gelesen hat, und nur dann. Keine Selektoren, keine `useMemo`-Listen. Bindings gibt es für React, Vue, Angular, Lit (`@adobe/lit-mobx`) und andere.
+`observer` macht das Rendern selbst zu einer Reaktion: Die Komponente rendert neu, wenn sich etwas ändert, das sie beim letzten Rendern gelesen hat, und nur dann. Keine Selektoren, keine `useMemo`-Listen. Bindings gibt es für React, Vue, Angular, Lit (`@adobe/lit-mobx`) und andere. Ausführlich im [Deep Dive](#observer-rendern-als-reaktion-zu-7).
 
 ### 8. MobX 7: was sich geändert hat
 
@@ -132,3 +132,177 @@ MobX ist ein Abhängigkeitsgraph aus drei Knotentypen: **Observables** (Quellen)
 - **`reaction(watch, effect)`** ist eine nützliche Form für rat: ein Effekt, der nur auf ausdrücklich genannte Quellen hört und im Effekt selbst nichts abonniert. Heute verfolgt jeder rat-Effekt alles, was er liest.
 - **`when(() => cond)` als Promise** ist klein und oft gebraucht ("warte, bis geladen"). Ein Kandidat für `@rat/runtime`.
 - **Actions als Transaktionen** entsprechen `batch()` in rats Runtime. MobX' Strict Mode (Schreiben nur in Actions) wäre eine Dev-Warnung, die rat aus dem Compiler heraus geben könnte.
+
+## Deep Dive
+
+### `flow`: Actions über `await` hinweg (zu 6)
+
+**Das Problem.** Eine Action bündelt alle Änderungen, die *synchron* in ihr passieren. Bei einer `async`-Funktion endet das am ersten `await`: Was danach kommt, läuft in einem neuen Microtask, und MobX kann nicht wissen, dass dieser Code zur Action gehört. JavaScript gibt einer Bibliothek keinen Weg, einen Kontext über `await` hinweg mitzunehmen.
+
+```js
+class UserStore {
+  user    = null;
+  loading = false;
+  error   = null;
+
+  constructor () { makeAutoObservable(this); }
+
+  async load (id) {                  // action, but only up to the first await
+    this.loading = true;
+    try {
+      const user = await api.user(id);
+      this.user    = user;           // outside of any action
+      this.loading = false;          // second notification
+    } catch (error) {
+      this.error = error;            // outside of any action
+    }
+  }
+}
+```
+
+Folgen: Im Strict Mode warnt MobX bei jeder Zeile nach dem `await`. Und ohne Action ist jede Zuweisung eine eigene Transaktion, Reaktionen laufen also nach `this.user = user` einmal mit `loading === true` und dann ein zweites Mal. Ein UI zeigt kurz den Nutzer *und* den Ladekreisel.
+
+**Der Ausweg ohne `flow`** ist `runInAction` nach jedem `await`:
+
+```js
+const user = await api.user(id);
+runInAction(() => { this.user = user; this.loading = false; });
+```
+
+Das funktioniert, aber jede Stelle nach einem `await` muss daran denken.
+
+**Was `flow` macht.** Ein Generator hält an jedem `yield` an und gibt die Kontrolle an den Aufrufer zurück. `flow` ist dieser Aufrufer: Er treibt den Generator selbst voran und kann deshalb jeden Abschnitt zwischen zwei `yield` in eine eigene Action packen.
+
+```js
+class UserStore {
+  …
+  load = flow(function* (id) {       // with makeAutoObservable, a generator method becomes a flow on its own
+    this.loading = true;             // action 1
+    try {
+      this.user = yield api.user(id);   // yield ends action 1, the result starts action 2
+    } catch (error) {
+      this.error = error;            // rejections are thrown in at the yield
+    } finally {
+      this.loading = false;          // still action 2
+    }
+  });
+}
+```
+
+Vereinfacht arbeitet `flow` so:
+
+```js
+function flow (generatorFn) {
+  return function (...args) {
+    const gen = generatorFn.apply(this, args);
+    return new Promise((resolve, reject) => {
+      const step = (method, input) => {
+        let result;
+        try { result = action(() => gen[method](input))(); }   // every step is one action
+        catch (error) { return reject(error); }
+        if (result.done) return resolve(result.value);
+        Promise.resolve(result.value).then(
+          value => step('next', value),
+          error => step('throw', error),
+        );
+      };
+      step('next');
+    });
+  };
+}
+```
+
+Aus dem Aufruf `gen.next(value)` wird das Ergebnis des `yield`, aus `gen.throw(error)` eine Exception an genau dieser Stelle. `try`/`catch`/`finally` im Generator funktionieren deshalb wie bei `async`.
+
+**Was `flow` zusätzlich kann:**
+
+- **Abbrechen.** Das zurückgegebene Promise hat eine Methode `cancel()`. Sie ruft `gen.return()`, der Generator springt in seine `finally`-Blöcke (dort lässt sich aufräumen, etwa `loading` zurücksetzen), und das Promise wird mit `FLOW_CANCELLED` abgelehnt. Typisch: eine Suche, bei der jede neue Eingabe den vorigen Flow abbricht.
+- **Namen im Debugging.** Jeder Schritt ist eine benannte Action (`load - runid: 3 - yield 1` …), im `spy` und in den DevTools sichtbar.
+
+**Kosten.** Generatoren statt `async` sind ungewohnt, und TypeScript kann den Typ von `yield`-Ergebnissen nicht ableiten (`const user = yield api.user(id)` ist `any`). MobX bietet dafür `flowResult()` am Aufruf und `yield*`-Tricks, aber es bleibt Reibung. Viele Projekte nehmen deshalb `async` mit `runInAction`.
+
+**Langfristig:** Das TC39-Proposal **AsyncContext** würde genau den fehlenden Kontext über `await` hinweg liefern. Eine Bibliothek könnte dann eine Action über `await` tragen, ohne Generator.
+
+**Für rat.** Dasselbe Problem hat jeder Event-Handler mit mehreren Schreibzugriffen: In rats Runtime ist jede Zuweisung an ein Signal eine eigene kleine Transaktion, `batch()` muss man selbst aufrufen. Anders als MobX hat rat aber einen Compiler, der den Code sieht. Er könnte tun, was `flow` zur Laufzeit tut, nur ohne Generatoren:
+
+```js
+// source
+on:click={async () => {
+  $loading = true;
+  $user    = await api.user(id);
+  $loading = false;
+}}
+
+// output
+async () => {
+  $$.batch(() => { loading.value = true; });
+  const _a = await api.user(id);
+  $$.batch(() => { user.value = _a; loading.value = false; });
+}
+```
+
+Jeder Abschnitt zwischen zwei `await` wird ein `batch`. Für synchrone Handler ist das trivial (der ganze Rumpf in einem `batch`), für `async` braucht es eine Umschreibung am `await` wie oben. Ein `await` mitten in einem Ausdruck (`$x = f(await g())`) muss dabei herausgezogen werden. Das ist dieselbe Arbeit wie in einer Regenerator-Transformation, aber auf einen Fall beschränkt.
+
+### `observer`: Rendern als Reaktion (zu 7)
+
+**Das Grundprinzip.** Die Komponente ist eine Funktion, die beim Rendern Observables liest. Läuft das Rendern innerhalb einer MobX-**Reaction**, weiß MobX danach genau, welche Werte diese Komponente benutzt hat. Ändert sich einer, wird die Komponente neu gerendert, und sonst nie. Mit der Low-Level-API von MobX lässt sich das in wenigen Zeilen selbst bauen, ganz ohne React:
+
+```js
+import { Reaction } from 'mobx';
+
+function mount (element, render) {
+  const reaction = new Reaction('mount', () => run());      // called when a dependency changes
+  const run      = () => reaction.track(() => { element.innerHTML = render(); });
+  run();
+  return () => reaction.dispose();
+}
+
+const stop = mount(document.querySelector('#count'), () => `${todos.open.length} offen`);
+```
+
+`reaction.track(fn)` führt `fn` aus und merkt sich jeden Lesezugriff. Ändert sich eine der gelesenen Quellen, ruft MobX (nach der Action) die Funktion aus dem Konstruktor auf: Die Reaction ist *invalidiert*. Sie rechnet nicht selbst neu, sie meldet nur. Wann und wie neu gerendert wird, entscheidet die Anbindung.
+
+**Was `mobx-react-lite` daraus macht:**
+
+1. `observer(Component)` umhüllt die Funktion. Pro Instanz entsteht eine Reaction, gehalten in einem Ref.
+2. Jedes Rendern läuft in `reaction.track(() => Component(props))`, die Abhängigkeiten werden dabei jedes Mal neu erfasst. Ein Wert, der nur in einem `if`-Zweig gelesen wird, ist nur abonniert, solange der Zweig läuft.
+3. Die Invalidierung erhöht einen Zähler, den React über `useSyncExternalStore` abonniert hat. React plant das Rendern dann selbst, nach seinen eigenen Regeln (Batching, Concurrent Rendering).
+4. Zusätzlich ist die Komponente in `React.memo` gehüllt: Ein Elternteil, das neu rendert, rendert sie nur mit, wenn sich ihre Props geändert haben. Updates kommen fast immer direkt über die Reaction.
+5. Beim Unmount wird die Reaction beendet. Für Komponenten, die React rendert, aber nie einhängt (Strict Mode, abgebrochenes Concurrent Rendering), räumt eine `FinalizationRegistry` auf, sonst blieben Abonnements ohne Besitzer zurück.
+
+**Die Granularität ist die Komponente.** Ändert sich `todo.done`, rendert jede Komponente neu, die `todo.done` gelesen hat, komplett. Deshalb die wichtigste Regel der MobX-Doku:
+
+```js
+// coarse: TodoList reads every todo.title, one change renders the whole list
+const TodoList = observer(({ todos }) => (
+  <ul>{todos.items.map(todo => <li key={todo.id}>{todo.title}</li>)}</ul>
+));
+
+// fine: TodoList reads only the array, each TodoItem reads only its own todo
+const TodoItem = observer(({ todo }) => <li>{todo.title}</li>);
+const TodoList = observer(({ todos }) => (
+  <ul>{todos.items.map(todo => <TodoItem key={todo.id} todo={todo} />)}</ul>
+));
+```
+
+*Dereference values late:* Observables möglichst spät lesen, also Objekte weiterreichen statt Werte, und kleine `observer`-Komponenten bauen.
+
+**Die typischen Fallen:**
+
+- **Lesen außerhalb des Renderns wird nicht verfolgt.** Ein Callback, der später `store.count` liest, oder eine Kind-Komponente *ohne* `observer` (etwa die Zeile einer fremden Tabellen-Bibliothek, die `row.title` liest) liegen außerhalb der Reaction. Abhilfe: `<Observer>{() => …}</Observer>` als lokale Reaction im JSX, oder die Daten vorher mit `toJS` zu normalen Objekten machen.
+- **Destructuring zu früh.** `const { title } = todo` im Elternteil liest den Wert dort, nicht im Kind; das Elternteil wird dadurch zur abhängigen Komponente.
+- **Lokaler Zustand.** `useState` mit einem Observable funktioniert, gedacht ist `useLocalObservable(() => ({ … }))`, das ein Observable einmal pro Instanz anlegt.
+
+**Andere Anbindungen** folgen demselben Muster: `@adobe/lit-mobx` (`MobxLitElement`) lässt Lits `update()` in einer Reaction laufen und ruft bei Invalidierung `requestUpdate()`; `mobx-vue-lite` macht dasselbe mit Vues Scheduler.
+
+**Für rat.** Hier liegt der eigentliche Unterschied zwischen MobX und Signals im Stil von rat. Bei `observer` ist die Reaction die *Komponente*: Eine Änderung führt zum Neurendern der Funktion und zu einem Vergleich (bei React über den Virtual DOM). Bei rat ist die Reaktion das *Loch*: `{todo.title}` wird zu einem eigenen kleinen Effekt, der genau einen Textknoten schreibt. Die Regel „kleine `observer`-Komponenten bauen“ erledigt rats Compiler für jedes `{…}`, ohne dass jemand darüber nachdenken muss. Die Fallen oben gibt es entsprechend in abgeschwächter Form: Ein Lesezugriff in einem Callback ist auch in rat nicht verfolgt, und Destructuring eines Signals (`const { title } = $todo`) liest einmal.
+
+**Für aufbau.** `@aufbau/element` hat mit `render()`/`sync()` und `invalidate()` schon alles, was eine `observer`-Anbindung braucht, nur noch nicht die Verbindung. Heute registriert ein Element Abonnements von Hand und meldet sie über `this.track(stop)` zum Aufräumen an. Eine Mixin-Variante nach dem Vorbild von `lit-mobx` würde `sync()` in einem Effekt aus `@aufbau/store/reactive` (oder `@aufbau/signals`) ausführen und bei einer Änderung `invalidate()` aufrufen:
+
+```js
+class StatusBar extends withReactive(AufbauElement) {
+  sync () { this.$count.text(`${ui.open} offen`); }   // ui.open read here, so a change of it updates the element
+}
+```
+
+Dann wäre jedes Store-Feld, das in `sync()` gelesen wird, automatisch abonniert, und das Element würde mit seinem eigenen Microtask-Batching (`static batch`) aktualisiert. Die Granularität wäre wie bei MobX das Element, was für Custom Elements die natürliche Einheit ist.

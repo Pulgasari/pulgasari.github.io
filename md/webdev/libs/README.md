@@ -53,6 +53,27 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - **Web Components bauen:** [Lit](lit.md) und `@aufbau/element` im direkten Vergleich: [lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md).
 - **Daten an der Grenze prüfen:** Decoder ([Elm](elm.md)), Island-Serialisierung ([Fresh](fresh.md)), Content Collections ([Astro](astro.md)), `validate`/`parse` ([Backbone](backbone.md)), Schemas in `@rat/types`.
 
+## Aufbau eines Steckbriefs
+
+Jeder Steckbrief hat dieselbe Gliederung, in dieser Reihenfolge:
+
+1. **`# Name`**, darunter ein Absatz: was es ist, von wem, seit wann, aktueller Stand (Version, Monat und Jahr, ob aktiv oder ruhend).
+2. **Eckdaten** als Liste: Website, Repository, je nach Fall Laufzeit, Abhängigkeiten, Build.
+3. **`## Das Problem, das X löst`** (bei Frameworks auch `## Worum es geht`): die Lage vor X und was X daran ändert.
+4. **`## Kernkonzepte`**: nummeriert (`### 1. …`), jedes Konzept mit kurzem Code und Erklärung. Breite vor Tiefe: hier soll klar werden, *was* X kann.
+5. **`## Wie es intern arbeitet`**: der Mechanismus darunter, in wenigen Absätzen.
+6. **`## Stärken und Schwächen`**: zwei Punkte, **Stark** und **Schwach**.
+7. **`## Für rat und aufbau`**: was davon übertragbar ist, was nicht und warum, als Liste oder Vergleichstabelle. Bezüge auf Entscheidungen (`d-xx`) und Ideen in rat, auf Pakete in aufbau und auf andere Steckbriefe.
+8. **`## Deep Dive`** (optional, auf Anfrage): einzelne Kernkonzepte oder Punkte aus 7 im Detail. Jeder Abschnitt nennt im Titel, worauf er sich bezieht (`### flow: … (zu 6)`), und an der Stelle oben steht ein Link hierher. Immer der letzte Abschnitt.
+
+Konventionen:
+
+- Fließtext auf Deutsch, Kommentare im Code englisch und klein geschrieben.
+- Fakten gegen die aktuelle Quelle prüfen (npm-Paket, Release-Notes), nicht aus dem Gedächtnis.
+- Größen wie in der Tabelle oben messen und dort eintragen.
+- Ideen für rat und aufbau, die es noch nicht gibt, sind als Skizze erkennbar („könnte“, „Vorschlag“) und prüfen vorher, ob Namen oder Mechanismen dort schon existieren.
+- Ein neuer Steckbrief bekommt eine Zeile in der Tabelle, wenn es passt Einträge unter Querverbindungen, und ein Häkchen in der Todo-Liste.
+
 ---
 
 ## todo
