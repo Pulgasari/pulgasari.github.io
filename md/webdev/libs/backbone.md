@@ -132,10 +132,110 @@ Backbone ist der Stand vor der Reaktivität: Es meldet Änderungen, aber niemand
 |---|---|---|
 | `model.set('done', true)` → `change:done` | `$done = true` | Backbone meldet pro Attribut, rat weiß über den Lesezugriff, wer betroffen ist; kein `render` von Hand. tiefe Änderungen wie `$todo.done = true` erlaubt rat heute nicht (d-23), Backbone umgeht das mit `set` |
 | `listenTo` / `stopListening` | `AbortSignal` | dieselbe Idee: Abonnements gehören dem Hörer und werden gemeinsam gelöst. aufbaus `Selection` und rats Behaviors (`destroy`) machen das heute, `AbortSignal` ist die Plattform-Form davon |
-| `events: { 'click input': 'toggle' }` | `on:click={…}` am Element | Backbone braucht Selektoren, weil das Template ein String ist; rat kennt das Element zur Compile-Zeit |
-| `render()` mit `innerHTML` | `{…}`-Löcher | genau das Problem, das aufbaus `innerHTML`-Rendering hat ([lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md#165-rendern-ohne-neuaufbau)) |
+| `events: { 'click input': 'toggle' }` | `on:click={…}` in rat, `Selection.on` in `@aufbau/element` | Backbone braucht Selektoren, weil das Template ein String ist; rat kennt das Element zur Compile-Zeit. aufbau: ausführlich unten |
+| `render()` mit `innerHTML` | `{…}`-Löcher in rat, `html` in `@aufbau/element` | beide schreiben nur die geänderten Stellen, Fokus und Eingaben bleiben. ein `render()`, das in aufbau einen String liefert, verhält sich noch wie Backbone ([lit-vs-aufbau.md](../../analyze/lit-vs-aufbau.md#165-rendern-ohne-neuaufbau)) |
 | `Collection` mit `comparator`, Index nach `id` | `$List` aus `@rat/types` (d-23) | eine sortierte Liste mit Index ist ein Kandidat für eine `$List`-Variante mit Schlüssel |
 | `validate` / `parse` | Schemas in `@rat/types` | Prüfen und Umformen an der Grenze zum Server, wie die Decoder in [Elm](elm.md) |
-| `Backbone.sync` als einziger Ausgang | `@aufbau/store` | ein austauschbarer Persistenz-Adapter (REST, Local Storage, IndexedDB) ist eine gute Form für einen Store |
+| `Backbone.sync` als einziger Ausgang | `persist` in `@aufbau/store` | ausführlich unten |
 
-Der `events`-Hash ist außerdem ein gutes Vorbild für Komponenten ohne Compiler: Event-Delegation an der Wurzel, deklariert als Daten, gelöst über einen Namensraum. Für `@aufbau/element` wäre das die build-freie Variante von `on:click`.
+### `Backbone.sync` und `@aufbau/store`
+
+**Was `sync` bei Backbone ist.** Jedes Model und jede Collection kennt nur drei Verben, die irgendwo hinaus gehen: `fetch`, `save` und `destroy`. Alle drei rufen dieselbe Funktion:
+
+```js
+Backbone.sync = function (method, model, options) { … };
+// method: 'create' | 'read' | 'update' | 'patch' | 'delete'
+// model:  the model or collection
+// options: success, error, wait, patch, parse …
+```
+
+Die Standard-Implementierung macht daraus einen Ajax-Request (`create` → `POST url`, `update` → `PUT url/id` …). Ersetzt man sie, ändert sich für die App nichts: Ein Plugin wie `Backbone.localStorage` setzt pro Collection ein eigenes `sync`, und dieselben Models speichern dann lokal statt beim Server. Das ist die Stärke: eine einzige, schmale Naht zwischen Daten und Transport.
+
+Dahinter steckt mehr als ein Adapter. `sync` hat einen **Rückweg**, und der ist der interessante Teil:
+
+- **Die Antwort fließt zurück.** Nach `save` geht die Antwort des Servers durch `parse` und dann in `set`. Felder, die nur der Server kennt (`id`, `createdAt`, normalisierte Werte), landen so automatisch im Model.
+- **`cid` und `id`.** Ein neues Model hat sofort eine Client-ID (`c1`, `c2` …), aber noch keine `id`. `isNew()` ist wahr, solange die `id` fehlt, und entscheidet, ob `save` ein `create` oder ein `update` wird. Die Collection findet das Model über beide Schlüssel, auch während der Server noch rechnet.
+- **Optimistisch oder abwartend.** `model.save(attrs)` setzt die Werte sofort und schickt sie danach. `model.save(attrs, { wait: true })` setzt sie erst, wenn der Server zugestimmt hat. Dasselbe bei `collection.create` und `model.destroy`.
+- **Der Request als Ereignis.** Ein Model feuert `request` beim Start, `sync` bei Erfolg und `error` bei Fehlschlag. Ein Lade-Indikator hört einfach darauf.
+
+**Was `@aufbau/store` heute hat.** Mit `persist` gibt es dort schon dieselbe Naht: ein `Storage`, ein Name oder ein beliebiges `{ get, set, subscribe? }`, pro Schlüssel (`${key}:${leaf}`), `get` darf ein Promise liefern, `await store.ready` wartet auf die Hydration. Für das, wofür der Store gebaut ist, ist das richtig: Der Store hält **App-Zustand** (Theme, Ansicht, Zoom), er ist die Quelle der Wahrheit, und `set` ist Feuern-und-Vergessen.
+
+Backbone löst ein anderes Problem: **Ressourcen**, deren Quelle der Wahrheit woanders liegt (ein Server, eine IndexedDB, ein anderes Gerät). Was dem Store dafür fehlt, sind genau die vier Punkte oben: Einträge mit eigener Identität statt einer Liste von Werten, eine Antwort, die zurück in den Store fließt, die Wahl zwischen optimistisch und abwartend, und ein sichtbarer Status pro Vorgang.
+
+**Wie das im Store aussehen könnte** (Skizze, nichts davon existiert): ein eigener Typ für Sammlungen mit Schlüssel und ein Adapter mit CRUD-Methoden statt `get`/`set`.
+
+```js
+const rest = url => ({
+  read   : ()            => fetch(url).then(r => r.json()),
+  create : item          => fetch(url, { method: 'POST', body: JSON.stringify(item) }).then(r => r.json()),
+  update : (id, changes) => fetch(`${url}/${id}`, { method: 'PATCH', body: JSON.stringify(changes) }).then(r => r.json()),
+  delete : id            => fetch(`${url}/${id}`, { method: 'DELETE' }),
+});
+
+const app = store({
+  todos : { type: 'collection', key: 'id', resource: rest('/todos') },
+});
+
+await app.load('todos');                              // read, replaces the entries
+app.add('todos', { title: 'Brot' });                  // at once with a temporary key, then create
+app.patch('todos', 7, { done: true }, { wait: true }); // only after the reply
+app.remove('todos', 7);                               // optimistic, restored on error
+app.status('todos');                                  // 'idle' | 'pending' | 'error', reactive like any key
+```
+
+- `add` legt den Eintrag sofort mit einem temporären Schlüssel an (Backbones `cid`), die Antwort von `create` ersetzt ihn samt der echten `id`. Ein `toNode` oder eine Liste, die auf den Eintrag zeigt, bleibt dabei stabil.
+- Optimistische Änderungen merken sich den alten Wert und spielen ihn bei einem Fehler zurück. Backbone macht genau das **nicht** von selbst, das ist eine seiner Lücken.
+- Die Verben geben ein Promise zurück, der Wert im Store bleibt trotzdem synchron lesbar.
+- Derselbe Adapter für IndexedDB oder einen Worker hat dieselben vier Methoden; der Store weiß nicht, wohin es geht.
+
+Zwei Namen kollidieren dabei mit dem, was der Store schon hat: `sync` heißt dort heute „Schlüssel an eine CSS-Variable oder ein Attribut binden" (bei Backbone: Persistenz), und `delete(k)` löscht einen Schlüssel. Deshalb oben `resource`, `load` und `remove`.
+
+### Der `events`-Hash und `@aufbau/element`
+
+**Wie Backbone ihn umsetzt.** Beim Erzeugen der View (und bei jedem `setElement`) läuft `delegateEvents`:
+
+1. Jeder Schlüssel wird mit `/^(\S+)\s*(.*)$/` in Ereignis und Selektor zerlegt: `'keyup .edit'` → `keyup` und `.edit`, `'dblclick'` → `dblclick` ohne Selektor (gilt für `el` selbst).
+2. Der Wert ist eine Funktion oder ein **Methodenname** als String, der auf der View nachgeschlagen und an sie gebunden wird.
+3. Pro Eintrag gibt es **einen** Listener auf `el`, über jQuery mit Selektor: `this.$el.on('keyup.delegateEvents' + cid, '.edit', handler)`. Ein Klick irgendwo im Inneren steigt zu `el` auf, jQuery prüft, ob das Ziel (oder ein Vorfahre bis `el`) auf den Selektor passt.
+4. `undelegateEvents` entfernt alles über den Namensraum `.delegateEvents<cid>`, ohne Referenzen auf die Handler.
+
+Daraus ergeben sich die drei Eigenschaften, um die es geht:
+
+- **Überlebt das Rendern.** `render` ersetzt mit `innerHTML` alle Kinder, aber der Listener sitzt auf `el`, das bleibt. Kein erneutes Binden nach jedem Render.
+- **Ein Listener pro Ereignistyp** statt einer pro Element: Eine Liste mit 500 Einträgen kostet einen Listener.
+- **Deklariert als Daten.** Wer die View liest, sieht alle Interaktionen an einer Stelle; eine Unterklasse kann den Hash übernehmen und erweitern.
+
+Die Schwächen gehören zum Bild: Ein vertippter Methodenname wird von Backbone **stillschweigend übersprungen**, Selektoren brechen still, wenn sich das Template ändert, und Ereignisse, die nicht aufsteigen (`focus`, `blur`), funktionieren nur, weil jQuery sie auf `focusin`/`focusout` umbiegt.
+
+**Was `@aufbau/element` heute hat.** Die Mechanik ist schon da, und vollständiger als bei Backbone: Eine Selection aus einem Selektor ist *live*, ihr Listener sitzt auf den Bäumen (Shadow Root und Host), prüft zum Ereigniszeitpunkt über `composedPath()`, ob das Ziel dazugehört, hört auf nicht aufsteigende Ereignisse in der Capture-Phase und endet mit dem `AbortSignal` des Elements beim Trennen.
+
+```js
+onConnected () {
+  this.on('click', 'input[type=checkbox]', this.toggle);
+  this.on('dblclick', 'label', this.edit);
+  this.on('keydown', '.edit', this.onKey);
+}
+```
+
+Was fehlt, ist nur die Form: Das ist imperativ, in einem Hook, und damit Code statt Daten. Der Vorschlag ist, Backbones Hash als statisches Feld daneben zu stellen:
+
+```js
+class TodoItem extends AufbauElement {
+  static listen = {
+    'click input[type=checkbox]' : 'toggle',
+    'dblclick label'             : 'edit',
+    'keydown .edit'              : 'onKey',
+    'pointerenter'               : 'preview',   // no selector: the host itself
+  };
+
+  toggle (event, node) { … }
+}
+```
+
+Die Basisklasse liest das Feld beim Verbinden und ruft für jeden Eintrag `this.on(type, selector, this[name])`; das sind wenige Zeilen, weil `Selection.on(types, selector, handler)` schon existiert. Was man dabei anders machen sollte als Backbone:
+
+- **Ein fehlender Methodenname ist ein Fehler**, beim `init()` der Klasse, nicht erst beim Klick.
+- **Vererbung zusammenführen:** die Hashes der Klassenkette werden gemischt, eine Unterklasse überschreibt einzelne Einträge statt alle.
+- **Name:** `static events` ist in aufbau schon belegt, dort beschreibt es die Ereignisse, die das Element **auslöst** (für `custom-elements.json`). `static listen` beschreibt die, auf die es **hört**. Beides zusammen wäre im Manifest und in `@aufbau/devtools` als Daten sichtbar, ohne Code zu analysieren, genau wie `attr` und `parts` heute.
+
+Für rat ist der Hash nicht nötig: Der Compiler kennt jedes Element und bindet `on:click={…}` direkt. Er ist die Form für das, was ohne Compiler auskommen muss. Und er wäre eine mögliche Ausgabe, falls rat einmal Custom Elements auf Basis von `@aufbau/element` erzeugt: Ereignisse innerhalb von `@for`-Listen würden dann über einen Listener am Host statt über einen pro Eintrag laufen.
