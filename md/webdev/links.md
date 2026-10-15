@@ -27,6 +27,7 @@
 - https://scriptc.dev
 - https://skypack.dev
 - https://svgjs.dev
+- https://upm.sh/
 - https://tsrx.dev
 - https://docs.swmansion.com/TypeGPU/
 - https://usefoley.dev
