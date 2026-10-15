@@ -134,6 +134,9 @@ Heading 2
 
 ## multiple
 lines ##
+
+## multiple
+## lines
 ```
 
 ---
