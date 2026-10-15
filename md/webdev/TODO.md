@@ -50,6 +50,7 @@
 - [ ] Underscore
 - [x] UnoCSS
 - [ ] Vue
+- [ ] zod
 - [ ] Zustand
 
 
