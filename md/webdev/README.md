@@ -1,20 +1,38 @@
 # md/webdev
 
+## langs
+[Dart](./langs/dart.md) ·
+[Lua](./langs/lua.md)
+
+## libs
+[Astro](./libs/astro.md) ·
+[Express](./libs/express.md) ·
+[htmx](./libs/htmx.md)
+
+---
+
+# todo
+
 ## `/begriffe`
 - [ ] middleware
 - [ ] protokoll
 - [ ] server
 
+## `/langs`
+- [x] Dart
+- [ ] Haskell
+- [x] Lua
+
 ## `/libs`
 - [ ] AlpineJS
 - [ ] Angular
 - [x] ArrowJS
-- [x] [Astro](./libs/astro.md)
+- [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
 - [x] EJS
 - [x] Elm
-- [x] [Express](./libs/express.md)
+- [x] Express
 - [x] Fresh
 - [ ] HTM
 - [x] htmx
