@@ -1,6 +1,4 @@
-# MDS
-
-Draft. Starts as a complete reference of Markdown as it is today: CommonMark, GitHub Flavored Markdown and the common extensions. It gets edited down and changed until what remains is the MDS syntax.
+# MDS :: markdown-sucks
 
 **Origin tags**
 
