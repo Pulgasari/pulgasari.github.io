@@ -6,6 +6,7 @@
 - [x] server
 
 ## `/langs`
+- [ ] [Bend](https://bend-lang.com/)
 - [x] Dart
 - [ ] Haskell
 - [x] Lua
@@ -18,15 +19,23 @@
 - [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
+
+- [ ] Cycle.js
 - [x] Datastar
+- [ ] D3
 - [x] EJS
+- [ ] Eleventy
 - [x] Elm
+- [ ] esbuild
 - [x] Express
 - [x] Fresh
+- [ ] Hotwire
 - [ ] HTM
+
 - [x] htmx
 - [x] htmz
 - [x] Hyperapp
+- [ ] Hyperapp
 - [ ] Immer
 - [ ] Inferno JS
 - [x] jQuery
@@ -39,10 +48,16 @@
 - [x] MDX
 - [x] MobX
 - [x] morphdom / idiomorph
+
+
+- [ ] MooTools
 - [x] Open Props
 - [x] PostCSS
 - [ ] Preact
+- [ ] Qwik
+- [ ] Ractive.js
 - [x] Ramda
+- [ ] RE:DOM
 - [ ] React
 - [ ] ReScript
 - [ ] riot
@@ -51,13 +66,20 @@
 - [x] StyleX
 - [ ] Svelte
 - [x] Tailwind
+- [ ] TanStack
 - [x] TSRX
 - [ ] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
+
+
+
+
 - [x] Valibot
+- [ ] Vite
 - [ ] Vue
+- [ ] YUI
+- [ ] XState
 - [x] zod
 - [ ] Zustand
-
 
