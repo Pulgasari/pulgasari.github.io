@@ -5,7 +5,8 @@
 - https://porkbun.com
 
 ## proposals: javascript 
-- https://nitayneeman.com/blog/introducing-import-defer-in-ecmascript/
+- [composites](https://github.com/tc39/proposal-composites)
+- [import defer](https://nitayneeman.com/blog/introducing-import-defer-in-ecmascript/)
 
 ## collections: awesome 
 - [Awesome FP JavaScript](https://github.com/stoeffel/awesome-fp-js)
