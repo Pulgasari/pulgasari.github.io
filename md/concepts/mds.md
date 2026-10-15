@@ -910,8 +910,10 @@ What the rules above produce in practice. Raw material for changes.
 
 ---
 
+[full reference][label]
+[collapsed][]
+[shortcut]
+
 [label]: https://example.com "optional title"
-
 [collapsed]: https://example.com
-
 [shortcut]: <https://example.com/with space>
