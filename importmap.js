@@ -80,6 +80,7 @@ const map = { imports: {
   "@domina/methods"      : "./domina/packages/methods/index.js",
   "@domina/methods/"     : "./domina/packages/methods/",
   "@domina/observer"     : "./domina/packages/observer/index.js",
+  "@domina/proxy"        : "./domina/packages/proxy/index.js",
   "@domina/raf"          : "./domina/packages/raf/index.js",
   "@domina/render"       : "./domina/packages/render/index.js",
   "@domina/stylesheet"   : "./domina/packages/stylesheet/index.js",
