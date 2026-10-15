@@ -11,18 +11,27 @@
 - [x] Lua
 
 ## `/libs`
+- [ ] alien-signals
 - [ ] AlpineJS
 - [ ] Angular
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
+- [ ] Cycle.js
+- [ ] datastar
+- [ ] D3
 - [x] EJS
+- [ ] Eleventy
 - [x] Elm
+- [ ] esbuild
 - [x] Express
 - [x] Fresh
+- [ ] Hotwire
 - [ ] HTM
+- [ ] htmz
 - [x] htmx
+- [ ] Hyperapp
 - [ ] Immer
 - [ ] Inferno JS
 - [x] jQuery
@@ -34,9 +43,15 @@
 - [x] MarkoJS
 - [x] MDX
 - [x] MobX
+- [ ] morphdom / idiomorph
+- [ ] MooTools
+- [ ] Open Props
 - [x] PostCSS
 - [ ] Preact
+- [ ] Qwik
+- [ ] Ractive.js
 - [x] Ramda
+- [ ] RE:DOM
 - [ ] React
 - [ ] ReScript
 - [ ] riot
@@ -45,12 +60,16 @@
 - [x] StyleX
 - [ ] Svelte
 - [x] Tailwind
+- [ ] TanStack
 - [x] TSRX
 - [ ] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
+- [ ] Valibot
+- [ ] Vite
 - [ ] Vue
+- [ ] YUI
+- [ ] XState
 - [ ] zod
 - [ ] Zustand
-
 
