@@ -6,6 +6,7 @@
 - [x] server
 
 ## `/langs`
+- [ ] [Bend](https://bend-lang.com/)
 - [x] Dart
 - [ ] Haskell
 - [x] Lua
