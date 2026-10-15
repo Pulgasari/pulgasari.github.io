@@ -92,6 +92,7 @@ Konventionen:
 - [x] Fresh
 - [ ] HTM
 - [x] htmx
+- [ ] Immer
 - [ ] Inferno JS
 - [x] jQuery
 - [x] knockout
@@ -118,5 +119,6 @@ Konventionen:
 - [ ] Underscore
 - [x] UnoCSS
 - [ ] Vue
+- [ ] Zustand
 
 
