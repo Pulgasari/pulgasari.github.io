@@ -2,7 +2,7 @@
 
 - [ ] generic(s)
 - [ ] middleware
-- [ ] protokoll
+- [x] protokoll
 - [ ] server
 
 ## `/langs`
