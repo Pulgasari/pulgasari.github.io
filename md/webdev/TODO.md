@@ -1,6 +1,7 @@
 # todo
 
 ## `/begriffe`
+- [ ] generic(s)
 - [ ] middleware
 - [ ] protokoll
 - [ ] server
