@@ -906,3 +906,12 @@ What the rules above produce in practice. Raw material for changes.
 - **`$`** for math clashes with currency in prose.
 - **Escaping a backtick in a code span** needs a longer delimiter, not a backslash.
 - **Link reference labels are case-insensitive**, first definition wins, no warning on duplicates.
+
+
+---
+
+[label]: https://example.com "optional title"
+
+[collapsed]: https://example.com
+
+[shortcut]: <https://example.com/with space>
