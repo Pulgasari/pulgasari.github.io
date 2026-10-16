@@ -14,7 +14,7 @@ const User = v.object({
 // in typescript: type User = v.InferOutput<typeof User>
 ```
 
-dumme form. is quasi:
+Scheint.im Prinzip nur eine andere Form zu sowas:
 
 ```js
 const User = v.object({
@@ -37,3 +37,33 @@ const Port = v.pipe(
   v.maxValue(65535),
 );
 ```
+
+## `match` von ArkType
+
+```js
+import { match } from 'arktype';
+
+const describe = match
+  .case({ type: "'user'", name: 'string' }, user => `user ${user.name}`)
+  .case('string', text => text)
+  .default(() => 'other');
+
+describe({ type: 'user', name: 'ada' });   // 'user ada'
+describe(4);                               // 'other'
+
+const label = match({ string: s => `str ${s}`, number: n => `num ${n}`, default: 'assert' });
+```
+
+Scheint nur ne andere Form für mein Konstrukt zu sein:
+  
+```js
+import { shift } from '@pulgasari/shift';
+
+const describe = shift ({
+  isUser   : (user) => `user ${user.bame)`,
+  isString : (x) => x,
+  fallback : ()  => 'other',
+});
+```
+
+
