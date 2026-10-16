@@ -6,6 +6,7 @@
 
 ## libs
 [alien-signals](./libs/alien-signals.md) ·
+[ArkType](./libs/arktype.md) ·
 [ArrowJS](./libs/arrowjs.md) ·
 [Astro](./libs/astro.md) ·
 [Backbone.js](./libs/backbone.md) ·

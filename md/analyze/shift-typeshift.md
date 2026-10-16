@@ -80,7 +80,7 @@ Hier hast du, ohne es so zu nennen, ein vollständiges **Laufzeit-Typsystem** ge
 
 Intersection und Negation haben übrigens weder Zod noch Valibot in dieser Form; das kommt aus der Mengen-Sicht und ist eine Stärke.
 
-Das nächste existierende Gegenstück ist **ArkType** (David Blass, seit 2023, Mitautor von Standard Schema): ebenfalls Typen als Strings in TypeScript-ähnlicher Syntax (`type({ name: 'string', age: 'number >= 0' })`), geparst und zu schnellen Prüfungen compiliert. typeshift ist dieselbe Idee, unabhängig entstanden.
+Das nächste existierende Gegenstück ist **[ArkType](../webdev/libs/arktype.md)** (David Blass, seit 2022, Mitautor von Standard Schema): ebenfalls Typen als Strings in TypeScript-ähnlicher Syntax (`type({ name: 'string', age: 'number >= 0' })`), geparst und zu schnellen Prüfungen compiliert. typeshift ist dieselbe Idee, unabhängig entstanden.
 
 ### wie es intern arbeitet, in den Begriffen
 

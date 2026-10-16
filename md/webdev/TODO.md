@@ -15,6 +15,7 @@
 - [x] alien-signals
 - [ ] AlpineJS
 - [ ] Angular
+- [x] ArkType
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
