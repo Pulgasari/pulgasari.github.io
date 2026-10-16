@@ -11,7 +11,7 @@ quelltext,
 regelwerk,
 schimmer, sinnbild, struktur,
 überblick, urbild, ursprung,
-wegweiser,
+wegweiser, wesen,
 ```
 
 ```
