@@ -167,8 +167,14 @@ Drei Pakete, die je ein Stück derselben Sache abdecken. Wege, sie zusammenzufü
 
 Beim Lesen aufgefallen, unabhängig von der Einordnung:
 
-- **`typeshift/index.js` lädt nicht:** `function namesOf` ist zweimal auf oberster Ebene deklariert. In einem ES-Modul ist das ein Syntaxfehler (`Identifier 'namesOf' has already been declared`), das ganze Paket bricht beim Import ab. Eine der beiden Versionen muss weg (die zweite, ohne Array-Allokation, ist die bessere).
-- **`typeshift/compile.js` lädt ebenfalls nicht:** `compile2` enthält `return switch (…) {`, und `switch` ist in JavaScript keine Expression. Dazu `node.options.map(compile(resolve).some(…)` mit fehlender Klammer. Als Entwurf auskommentieren oder löschen.
-- **`compile.js`, Tuple:** zwei `return`-Anweisungen hintereinander, die zweite (ohne `slice`, die bessere) wird nie erreicht. Die erste löschen.
 - **`shift(target, cases)` in der offenen Form** baut die Prädikat-Liste bei jedem Aufruf neu, also in Funktionen wie `valueOf(target)` aus dem README bei jedem einzelnen Wert. Die geschlossene Form `shift(cases)` baut sie einmal; für heiße Pfade sollte das README die empfehlen.
 - **Reihenfolge über Objekt-Schlüssel:** Beide Pakete verlassen sich darauf, dass `Object.entries` die Schreibreihenfolge liefert. Das gilt, außer für Schlüssel, die wie ganze Zahlen aussehen (die kommen zuerst); das typeshift-README erwähnt es bereits. Ein Array von Paaren (`shift([[isString, …], …])`) wäre die Form ohne diese Falle.
+
+---
+
+Anmerkungen:
+
+`shift` und `typeshift` waren nur Entwürfe werden noch nicht wirklich benutzt. Ich glaube nur shift an ein paar einzelnen Stellen. Die müssen also nicht überleben bzw. können in einer vernünftigen neuen Form aufgehen.
+
+Aktiv nutzen tue ich nur `@pulgasari/is`. In Libs dann meist inlined in nachgebauter Mini-Variante.
+
