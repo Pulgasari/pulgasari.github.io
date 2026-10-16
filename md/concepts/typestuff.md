@@ -89,6 +89,13 @@ bzw. innerhalb einer `.rat`-file:
   pred user = ...;
 </script>
 
+@fragment user:
+<div>
+  <span class='username'>this.username</span>
+  <span class='email'>this.email</span>
+</div>
+
+
 @switch (sth)
   @case user: @fragment
   @case
