@@ -69,4 +69,28 @@ const describe = shift ({
 });
 ```
 
+##
+
+neu konzipiert könnte daraus werden:
+
+hier sind `pred` und `case` dasselbe, ich weiss bloß nicht, welche bezeichnung besser wäre.
+
+```js
+import { pred, switch } from `@rat/runtime`;
+
+pred.create('user', ...);
+
+```
+
+bzw. innerhalb einer `.rat`-file:
+
+```js
+<script>
+  pred user = ...;
+</script>
+
+@switch (sth)
+  @case user: @fragment
+  @case
+```
 
