@@ -5,6 +5,7 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | | Was | Seit / bis | Größe | Build |
 |---|---|---|---|---|
 | [alien-signals](alien-signals.md) | Signal-Kern, Push-Pull | 2024– | 1,9 kb | nein |
+| [ArkType](arktype.md) | Schemas als TypeScript-ähnliche Strings | 2022– | 46,2 kb typisch, nicht tree-shakable | nein |
 | [ArrowJS](arrowjs.md) | reaktive UI-Runtime | 2021– | 7,7 kb | nein |
 | [Astro](astro.md) | Framework für Inhaltsseiten mit Islands | 2021– | – (Server/Build; Island-Runtime 1,9 kb) | ja (Vite) |
 | [Backbone.js](backbone.md) | Models, Collections, Views, Router | 2010–, in Wartung | 8,6 kb, mit Underscore 17,6 kb | nein |
@@ -37,7 +38,7 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [Valibot](valibot.md) | Schemas und Validierung, modular | 2023– | 14,9 kb alles, typisch 1,6 kb | nein |
 | [Zod](zod.md) | Schemas und Validierung | 2020– | 25,6 kb typisch, `zod/mini` 5,8 kb | nein |
 
-Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`), Zod und Valibot ein Objekt-Schema mit vier Feldern (`import * as z`; `import { z }` zieht die Locales mit, 90 kb). Datastar aus dem Repository (`bundles/datastar.js`, v1.0.4), weil npm nur eine alte Beta hat; Open Props ist CSS, gzip der `.min.css`. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
+Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`), Zod, Valibot und ArkType ein Objekt-Schema mit drei bis vier Feldern (`import * as z`; `import { z }` zieht die Locales mit, 90 kb). Datastar aus dem Repository (`bundles/datastar.js`, v1.0.4), weil npm nur eine alte Beta hat; Open Props ist CSS, gzip der `.min.css`. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
 
 ## Querverbindungen
 
@@ -63,7 +64,7 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - **Morphing statt `innerHTML`:** [morphdom / idiomorph](morphdom.md) als Bibliothek, eingebaut in [Datastar](datastar.md), Turbo 8 und Phoenix LiveView; [htmz](htmz.md) und htmx ersetzen ohne. `@domina/render` und rat brauchen es nicht, weil sie nur Löcher schreiben.
 - **Fragmente vom Server:** [htmx](htmx.md) (Attribute), [htmz](htmz.md) (Iframe und `target`, 166 Byte), [Datastar](datastar.md) (SSE-Strom mit Element- und Signal-Patches).
 - **Signal-Kerne:** [alien-signals](alien-signals.md) (Vue 3.6, Datastar), Preact Signals (`@aufbau/signals`), `@rat/runtime/signals.js`; Vergleich der Datenstrukturen in alien-signals.md.
-- **Schemas als Werte:** [Zod](zod.md) (Methoden, Klassen), [Valibot](valibot.md) (Funktionen, Pipe), Standard Schema als gemeinsame Schnittstelle; d-14 a in rat, `types.js` in `@aufbau/store`.
+- **Schemas als Werte:** [Zod](zod.md) (Methoden, Klassen), [Valibot](valibot.md) (Funktionen, Pipe), [ArkType](arktype.md) (Strings, Mengenlogik; nächste Verwandte von `@pulgasari/typeshift`), Standard Schema als gemeinsame Schnittstelle; d-14 a in rat, `types.js` in `@aufbau/store`.
 - **Handler als Daten:** `[Action, payload]` in [Hyperapp](hyperapp.md), Kommandos mit Argument in rat (d-16), Effekte als Daten bei [Elm](elm.md).
 - **Tokens oder Funktionen:** [Open Props](open-props.md) legt jeden Wert als Variable ab, `@aufbau/css` rechnet sie mit `@function` aus wenigen Grund-Tokens, [Tailwind](tailwind.md) macht sie zu Klassen.
 
