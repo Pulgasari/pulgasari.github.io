@@ -25,6 +25,8 @@ const User = v.object({
 });
 ```
 
+## valibot, example 2
+
 ```js
 const Port = v.pipe(
   v.string(),
