@@ -13,7 +13,7 @@
 
 ## `/libs`
 - [x] alien-signals
-- [ ] AlpineJS
+- [x] AlpineJS
 - [ ] Angular
 - [x] ArkType
 - [x] ArrowJS
@@ -30,11 +30,11 @@
 - [x] Express
 - [x] Fresh
 - [ ] Hotwire
-- [ ] htm
+- [x] htm
 - [x] htmx
 - [x] htmz
 - [x] Hyperapp
-- [ ] Immer
+- [x] Immer
 - [ ] Inferno JS
 - [x] jQuery
 - [x] knockout
@@ -49,7 +49,7 @@
 - [ ] MooTools
 - [x] Open Props
 - [x] PostCSS
-- [ ] Preact
+- [x] Preact
 - [ ] Qwik
 - [ ] Ractive.js
 - [x] Ramda
@@ -58,13 +58,13 @@
 - [ ] ReScript
 - [ ] riot
 - [x] RxJS
-- [ ] SolidJS
+- [x] SolidJS
 - [x] StyleX
-- [ ] Svelte
+- [x] Svelte
 - [x] Tailwind
 - [ ] TanStack
 - [x] TSRX
-- [ ] TypeScript
+- [x] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
 - [x] Valibot
