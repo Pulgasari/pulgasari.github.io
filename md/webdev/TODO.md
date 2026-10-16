@@ -20,7 +20,6 @@
 - [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
-
 - [ ] Cycle.js
 - [x] Datastar
 - [ ] D3
@@ -31,12 +30,10 @@
 - [x] Express
 - [x] Fresh
 - [ ] Hotwire
-- [ ] HTM
-
+- [ ] htm
 - [x] htmx
 - [x] htmz
 - [x] Hyperapp
-- [ ] Hyperapp
 - [ ] Immer
 - [ ] Inferno JS
 - [x] jQuery
@@ -49,8 +46,6 @@
 - [x] MDX
 - [x] MobX
 - [x] morphdom / idiomorph
-
-
 - [ ] MooTools
 - [x] Open Props
 - [x] PostCSS
@@ -72,10 +67,6 @@
 - [ ] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
-
-
-
-
 - [x] Valibot
 - [ ] Vite
 - [ ] Vue
