@@ -18,10 +18,10 @@ dumme form. is quasi:
 
 ```js
 const User = v.object({
-  age   : v.optional(v.pipe(Number, v.isInteger(), v.hasValueMin(0))),
-  email : pipe(String, v.isEmail),
-  name  : pipe(String, v.isNonEmpty('name is required')),
-  role  : v.optional(Choic%(['admin', 'user']), 'user'),
+  age   : v.optional(pipe(Number, isInteger, hasValueMin(0))),
+  email : pipe(String, isEmail),
+  name  : pipe(String, isNonEmpty('name is required')),
+  role  : v.optional(Choice(['admin', 'user']), 'user'),
 });
 ```
 
