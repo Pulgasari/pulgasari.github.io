@@ -45,10 +45,16 @@ modwire
 ung
 
     baum
-F   folge          = pipe
-K   kette          = array (?)
+F   folge          =  pipe
+K   kette          =  array (?)
     reihe
+    wandler        =  codec (?)
 Z   zeichen        =  char
 ZK  zeichenkette   =  string (
     zweig
+
+    angleicher     =  normalizer
+    erzeuger       =  generator
+    umwandler      =  transformer
+    vergleicher    =  comparizer (cheker)
 ```
