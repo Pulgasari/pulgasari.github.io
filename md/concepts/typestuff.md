@@ -57,12 +57,15 @@ const label = match({ string: s => `str ${s}`, number: n => `num ${n}`, default:
 Scheint nur ne andere Form für mein Konstrukt zu sein:
   
 ```js
+import { isString } from '@pulgasari/is';
 import { shift } from '@pulgasari/shift';
+
+const isUser = ...;
 
 const describe = shift ({
   isUser   : (user) => `user ${user.bame)`,
-  isString : (x) => x,
-  fallback : ()  => 'other',
+  isString : (x)    => x,
+  fallback : ()     => 'other',
 });
 ```
 
