@@ -43,4 +43,12 @@ modwire
 
 ```
 ung
+
+    baum
+F   folge          = pipe
+K   kette          = array (?)
+    reihe
+Z   zeichen        =  char
+ZK  zeichenkette   =  string (
+    zweig
 ```
