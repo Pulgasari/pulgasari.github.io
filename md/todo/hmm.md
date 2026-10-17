@@ -17,11 +17,9 @@ außerdem:
 
 ```md
 # @aufbau
-@aufbau/commands
 @aufbau/elements
 @aufbau/gestures
 @aufbau/gui
-@aufbau/hotkeys
 
 # @bunker
 @bunker/cache
@@ -33,9 +31,12 @@ außerdem:
 @bunker/utils
 
 # @domina
+@domina/chain
+@domina/devtools
 @domina/element
 @domina/observer
-@domina/prototype
+@domina/prototypes
+@domina/render
 
 # @gestalt
 @gestalt/engine
@@ -45,28 +46,36 @@ außerdem:
 
 # @htx
 @htx/htx
+@htx/js
 @htx/syntax
 @htx/vdom
 
 # @rat
+@rat/app
+@rat/commands
 @rat/compiler
+@rat/hotkeys
+@rat/import
+@rat/router
 @rat/runtime
+@rat/signals
 @rat/std
 @rat/syntax
 @rat/types
 
 # ???
 bundler
-devtools
 logger
-import
 is
 parsers
-router
-signals
 store
 str
 stylescript
 url
 workers (brigade)
 ```
+
+
+
+
+
