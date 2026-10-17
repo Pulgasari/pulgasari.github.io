@@ -1092,7 +1092,7 @@ Voraussetzung für Deep-Imports aus [Kapitel 3](#3-barrel-dateien--fehlendes-tre
 `PRELOAD_CRITICAL` (Zeile 47) führt allerdings weder `@aufbau/js` (den 57-Modul-Boden)
 noch `@aufbau/stylesheet`.
 
-**Fünf Seiten hängen am Legacy-Importmap** `aufbau/importmap.js`, dem `@aufbau/filters`
+**Fünf Seiten hängen am Legacy-Importmap** `aufbau/importmap.js`, dem `@gestalt/filters`
 und `@pulgasari/str` fehlen: `domina/docs`, `aufbau/patterns`, `aufbau/svg`,
 `aufbau/test`, `aufbau/webfonts`. `domina/docs/index.html` lädt darüber
 `@aufbau/builders/docs`, das in Zeile 3 den Kit importiert — und damit beide fehlenden

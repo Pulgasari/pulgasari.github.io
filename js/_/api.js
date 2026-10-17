@@ -3,7 +3,7 @@
 import { deepMerge } from '@pulgasari/obj';
 //import { shift }     from '@pulgasari/shapeshift';
   
-import { CSS_PATH, gestalt } from '@aufbau/gestalt';
+import { CSS_PATH, gestalt } from '@gestalt/core';
 
 // :::::: LAZY ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -16,10 +16,10 @@ const modules = {
   config   : once(() => import('@aufbau/element')),
   domina   : name    => import(`@domina/methods/${name}.js`).then(module => module[name] ?? module.default),
   elements : once(() => import('@aufbau/elements')),
-  filters  : once(() => import('@aufbau/filters')),
+  filters  : once(() => import('@gestalt/filters')),
   icons    : once(() => import('@aufbau/svg/aliases.js')),
-  patterns : once(() => import('@aufbau/patterns')),
-  webfonts : once(() => import('@aufbau/webfonts')),
+  patterns : once(() => import('@gestalt/patterns')),
+  webfonts : once(() => import('@gestalt/webfonts')),
 //$load    : (name)  => modules[name]().then(module => module.data),
 };
 

@@ -138,7 +138,7 @@
 
 ---
 
-## @aufbau/filters
+## @gestalt/filters
 - [x] untersuchen ob/inwiefern die neuen css "custom functions" neue möglichkeiten das package evtl. um reine css-varianten zu erweitern
 
 ---

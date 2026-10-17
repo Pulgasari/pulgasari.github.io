@@ -1,6 +1,6 @@
 # CSS-Funktionen für filters und patterns
 
-Frage: Eröffnen die neuen CSS-Funktionen (`@function`, `if()`, typisiertes `attr()`, registrierte Properties) Wege, `@aufbau/filters` und `@aufbau/patterns` um reine CSS-Varianten zu erweitern?
+Frage: Eröffnen die neuen CSS-Funktionen (`@function`, `if()`, typisiertes `attr()`, registrierte Properties) Wege, `@gestalt/filters` und `@gestalt/patterns` um reine CSS-Varianten zu erweitern?
 
 Stand: Chrome 141, im Browser getestet. Keine Entscheidung, sondern die Grundlage zum Nachdenken.
 
