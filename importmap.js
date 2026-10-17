@@ -16,15 +16,12 @@ const P = 'https://esm.sh/jsr/@pulgasari/';
 const pulgasari = ['is', 'logger', 'str'];
 
 const map = { imports: {
-  "@aufbau/api"             : "./aufbau/api/index.js",
   "@aufbau/ass"             : "./aufbau/ass/index.js",
   "@aufbau/ass/"            : "./aufbau/ass/",
   "@aufbau/builders/docs"   : "./aufbau/builders/docs/index.js",
   "@aufbau/builders/docs/"  : "./aufbau/builders/docs/",
   "@aufbau/devtools"        : "./aufbau/devtools/index.js",
   "@aufbau/devtools/"       : "./aufbau/devtools/",
-  "@aufbau/element"         : "./aufbau/element/index.js",
-  "@aufbau/element/"        : "./aufbau/element/",
   "@aufbau/elements"        : "./aufbau/elements/index.js",
   "@aufbau/elements/htx"    : "./aufbau/elements/adapters/htx.js",
   "@aufbau/elements/"       : "./aufbau/elements/",
@@ -39,7 +36,6 @@ const map = { imports: {
   "@aufbau/gestures/preact" : "./aufbau/gestures/adapters/preact.js",
   "@aufbau/gestures/simulate" : "./aufbau/gestures/simulate.js",
   "@aufbau/gui"             : "./aufbau/gui/index.js",
-  "@aufbau/import"          : "./aufbau/import/index.js",
   "@aufbau/patterns"        : "./aufbau/patterns/index.js",
   "@aufbau/patterns/"       : "./aufbau/patterns/lib/",
   "@aufbau/signals"         : "./aufbau/signals/index.js",
@@ -73,7 +69,7 @@ const map = { imports: {
 
   "@domina/chain"               : "./domina/packages/chain/index.js",
   "@domina/element"             : "./domina/packages/element/index.js",
-  "@domina/element/lazy"        : "./domina/packages/element/lazy.js",
+  "@domina/element/"            : "./domina/packages/element/",
   "@domina/fonts"               : "./domina/packages/fonts/index.js",
   "@domina/forms"               : "./domina/packages/forms/index.js",
   "@domina/meta"                : "./domina/packages/meta/index.js",
@@ -113,8 +109,14 @@ const map = { imports: {
   "@pulgasari/timing"           : "./js-packages/timing/index.js",
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
+  "@rat/app"      : "./rat/packages/app/index.js",
+  "@rat/commands" : "./rat/packages/commands/index.js",
   "@rat/compiler" : "./rat/packages/compiler/index.js",
+  "@rat/hotkeys"  : "./rat/packages/hotkeys/index.js",
+  "@rat/import"   : "./rat/packages/import/index.js",
   "@rat/runtime"  : "./rat/packages/runtime/index.js",
+  "@rat/signals"  : "./rat/packages/signals/index.js",
+  "@rat/types"    : "./rat/packages/types/index.js",
 
   "@rat/syntax"            : "./rat/packages/syntax/spec.js",
   "@rat/syntax/"           : "./rat/packages/syntax/",
