@@ -9,7 +9,8 @@
     body {
       --color-bg: #111;
       --color-fg: white;
-      
+    }
+    body, #bg {
       background : var(--color-bg) url('./assets/pulgasari_80.webp') center / cover no-repeat;
       color      : var(--color-fg);
 
@@ -19,22 +20,27 @@
       margin: 0;
       place-items: center;
     }
-	h1 { text-transform: uppercase; }
+  	h1 { text-transform: uppercase; }
   </style>
 </head>
 <body>
-  
-<h1>pulgasari</h1>
 
+  <div id='bg'>
+    <h1>pulgasari</h1>
+  </div>
+  
 <script type="module">
+	import * as filters from '@gestalt/filters';
+  import getStyleToken from '@domina/methods/getStyleToken.js';
+  /*
     const [filters, { default: getStyleToken }] = await Promise.all([
       import('@gestalt/filters'),
       import('@domina/methods/getStyleToken.js'),
     ]);
-
-    const bg = getStyleToken('color-bg', 'body') || '#000000';
-    const fg = getStyleToken('color-fg', 'body') || 'white';
-    filters.apply('body', 'glitch-live', { animate: true, speed: '2s' });
+  */
+  const bg = getStyleToken('color-bg', 'body') || '#000000';
+  const fg = getStyleToken('color-fg', 'body') || 'white';
+  filters.apply('body', 'glitch-live', { animate: true, speed: '2s' });
 </script>
 
 </body>
