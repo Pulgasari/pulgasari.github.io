@@ -4,20 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PULGASARI</title>
+	<script src='./importmap.js'></script>
   <style>
     body {
-      margin: 0;
-      height: 100dvh;
+      --color-bg: #111;
+      --color-fg: white;
+      
+      background : var(--color-bg) url('./assets/pulgasari_80.webp') center / cover no-repeat;
+      color      : var(--color-fg);
+
       display: grid;
-      place-items: center; /* Centering on X and Y axis */
-      background: #111 url('./assets/pulgasari_80.webp') center / cover no-repeat;
-      color: white;
       font-family: system-ui, sans-serif;
+      height: 100dvh;
+      margin: 0;
+      place-items: center;
     }
 	h1 { text-transform: uppercase; }
   </style>
 </head>
 <body>
-  <h1>pulgasari</h1>
+  
+<h1>pulgasari</h1>
+
+<script type="module">
+    const [filters, { default: getStyleToken }] = await Promise.all([
+      import('@gestalt/filters'),
+      import('@domina/methods/getStyleToken.js'),
+    ]);
+
+    const bg = getStyleToken('color-bg', 'body') || '#000000';
+    const fg = getStyleToken('color-fg', 'body') || 'white';
+    filters.apply('body', 'glitch-live', { animate: true, speed: '2s' });
+</script>
+
 </body>
 </html>
