@@ -21,18 +21,23 @@
       place-items: center;
       width: stretch;
     }
-  	h1 { text-transform: uppercase; }
+  	h1 {
+      padding: 2rem;
+      text-transform: uppercase;
+      z-index: 200;
+    }
     #bg {
       filter: brightness(50%) grayscale(100%);
-      padding: 2rem;
+      z-index: 100;
+      position: absolute;
+      inset: 0;
     }
   </style>
 </head>
 <body>
 
-  <div id='bg'>
-    <h1>pulgasari</h1>
-  </div>
+  <div id='bg'></div>
+  <h1>pulgasari</h1>
   
 <script type="module">
 	import * as filters from '@gestalt/filters';
