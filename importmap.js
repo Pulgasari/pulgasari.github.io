@@ -115,6 +115,7 @@ const map = { imports: {
   "@rat/compiler" : "./rat/packages/compiler/index.js",
   "@rat/hotkeys"  : "./rat/packages/hotkeys/index.js",
   "@rat/import"   : "./rat/packages/import/index.js",
+  "@rat/router"   : "./rat/packages/router/index.js",
   "@rat/runtime"  : "./rat/packages/runtime/index.js",
   "@rat/signals"  : "./rat/packages/signals/index.js",
   "@rat/types"    : "./rat/packages/types/index.js",
