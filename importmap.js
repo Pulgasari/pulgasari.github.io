@@ -111,6 +111,7 @@ const map = { imports: {
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
   "@rat/app"      : "./rat/packages/app/index.js",
+  "@rat/app/shell": "./rat/packages/app/elements/rat-app2.js",
   "@rat/commands" : "./rat/packages/commands/index.js",
   "@rat/compiler" : "./rat/packages/compiler/index.js",
   "@rat/hotkeys"  : "./rat/packages/hotkeys/index.js",
