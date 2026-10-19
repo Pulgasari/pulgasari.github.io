@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pulgasari</title>
-  <link rel="stylesheet" href="./index.aufbau.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script src="./importmap.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PULGASARI</title>
+  <link rel='stylesheet' href='https://code.pulgasari.dev/gestalt/packages/css/aufbau.css' />
+  <link rel='stylesheet' href='https://code.pulgasari.dev/gestalt/packages/css/gestalt.css' />
+  <script src='./importmap.js'></script>
+  <style>
+    body {
+      --color-bg: #111;
+      --color-fg: white;
+    }
+    body, #bg {
+      background : var(--color-bg) url('./assets/pulgasari_80.webp') center / cover no-repeat;
+      color      : var(--color-fg);
+
+      display: grid;
+      font-family: system-ui, sans-serif;
+      height: 100dvh;
+      margin: 0;
+      place-items: center;
+      width: stretch;
+    }
+  	#app {
+      padding: 2rem;
+      text-transform: uppercase;
+      z-index: 200;
+    }
+    #bg {
+      filter: brightness(25%) grayscale(100%);
+      z-index: 100;
+      position: absolute;
+      inset: 0;
+    }
+  </style>
 </head>
+<body>
 
-<body class="mobilefix">
-	<div id='app'></div>
-
-
-
-  <main>
-	  https://code.pulgasari.dev/aufbau/
-	  https://code.pulgasari.dev/classcade/
-	  https://code.pulgasari.dev/cosmonaut/
-	  https://code.pulgasari.dev/dingsbums/
-	  https://code.pulgasari.dev/domina/
-	  https://code.pulgasari.dev/poo/
-	  https://code.pulgasari.dev/skullface/
-	  https://code.pulgasari.dev/zugriff/
-  </main>
-
-  <script type="module">
-    import aufbau, { html, preact } from '@aufbau/kits/preact-htm';
-	  window.html = html; aufbau.init();
-	  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-      navigator.serviceWorker
-      .register(new URL('./sw.js', import.meta.url))
-      .catch(err => console.error('[SW Error]:', err));
-	  }
-  </script>
+  <div id='bg'></div>
+	<div id='app' layout='landing'>
+    <nav></nav>
+    <h1>pulgasari</h1>
+    <nav>
+      <a href='https://aufbau.dev'>aufbau</a>
+    </nav>
+  </div>
+  
+<script type="module">
+	import * as filters from '@gestalt/filters';
+  import getStyleToken from '@domina/methods/getStyleToken.js';
+  /*
+    const [filters, { default: getStyleToken }] = await Promise.all([
+      import('@gestalt/filters'),
+      import('@domina/methods/getStyleToken.js'),
+    ]);
+  */
+  const bg = getStyleToken('color-bg', 'body') || '#000000';
+  const fg = getStyleToken('color-fg', 'body') || 'white';
+  filters.apply('body', 'glitch-live', { animate: true, speed: '2s' });
+</script>
 
 </body>
 </html>
