@@ -1,8 +1,8 @@
 
-import setAttr       from '@domina/methods/setAttr.js';
+import setAttr       from '@domina/verbs/setAttr.js';
 
-import getStyleToken from '@domina/methods/getStyleToken.js';
-import setStyleToken from '@domina/methods/setStyleToken.js';
+import getStyleToken from '@domina/verbs/getStyleToken.js';
+import setStyleToken from '@domina/verbs/setStyleToken.js';
 
 class AufbauElement {
   getToken  (name)        { return getStyleToken  (name, this); }

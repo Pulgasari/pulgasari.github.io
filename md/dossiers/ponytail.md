@@ -174,5 +174,5 @@ Vorteil: wirkt in jeder Umgebung, in der die `CLAUDE.md`-Kette geladen wird, auc
 
 ### Wofür es sich lohnt
 
-- `/ponytail-review` vor einem Merge und `/ponytail-audit` einmal über ein Paket (etwa `@bunker` oder `@domina/methods`): Die Prompts sind gut gebaut (erst den Fluss verstehen, jeder Befund braucht einen konkreten Fall) und lassen sich auch ohne Plugin als Vorlage für eigene Reviews lesen.
+- `/ponytail-review` vor einem Merge und `/ponytail-audit` einmal über ein Paket (etwa `@bunker` oder `@domina/verbs`): Die Prompts sind gut gebaut (erst den Fluss verstehen, jeder Befund braucht einen konkreten Fall) und lassen sich auch ohne Plugin als Vorlage für eigene Reviews lesen.
 - Als Gegengewicht beim Konzipieren: `lite` nennt die kleinere Variante, ohne den Bau zu verweigern. Passt zu „viel ausprobieren“, ohne dass der Agent jede Idee auf das Minimum zusammenstreicht.

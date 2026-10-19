@@ -49,11 +49,11 @@
   
 <script type="module">
 	import * as filters from '@gestalt/filters';
-  import getStyleToken from '@domina/methods/getStyleToken.js';
+  import getStyleToken from '@domina/verbs/getStyleToken.js';
   /*
     const [filters, { default: getStyleToken }] = await Promise.all([
       import('@gestalt/filters'),
-      import('@domina/methods/getStyleToken.js'),
+      import('@domina/verbs/getStyleToken.js'),
     ]);
   */
   const bg = getStyleToken('color-bg', 'body') || '#000000';
