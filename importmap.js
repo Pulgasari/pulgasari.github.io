@@ -68,12 +68,6 @@ const map = { imports: {
   "@domina/prototypes/observer" : "./domina/packages/prototypes/observer.js",
   "@domina/proxy"               : "./domina/packages/proxy/index.js",
   "@domina/render"              : "./domina/packages/render/index.js",
-  
-  //"@domina/fonts"               : "./domina/packages/fonts/index.js",
-  //"@domina/forms"               : "./domina/packages/forms/index.js",
-  //"@domina/meta"                : "./domina/packages/meta/index.js",
-  "@domina/raf"                 : "./domina/packages/raf/index.js",
-  "@domina/sheets"              : "./domina/packages/sheets/index.js",
 
   "@gestalt/core"            : "./gestalt/packages/core/index.js",
   "@gestalt/core/"           : "./gestalt/packages/core/",
