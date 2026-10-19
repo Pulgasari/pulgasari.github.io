@@ -59,6 +59,7 @@ const map = { imports: {
   "@cosmonaut/compiler/" : "./cosmonaut/packages/compiler/",
 
   "@domina/chain"               : "./domina/packages/chain/index.js",
+  "@domina/dom"                 : "./domina/packages/dom/index.js",
   "@domina/element"             : "./domina/packages/element/index.js",
   "@domina/element/"            : "./domina/packages/element/",
   "@domina/observer"            : "./domina/packages/observer/index.js",
