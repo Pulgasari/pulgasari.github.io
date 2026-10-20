@@ -52,3 +52,28 @@ const compute = function calculate (x, y) {
 
 console.log(a);
 ```
+
+#### IIFE (immediately invoked function expression)
+```js
+const a = (function (x, y) {
+  return x + y;
+})(2, 8);
+
+console.log(a);
+```
+
+### arrow function
+```js
+const compute = (x, y) => { return x + y; }
+const compute = (x, y) => x + y;
+
+const a = compute (4, 5);
+console.log(a);
+```
+
+- are shorter, it's easier or faster to write such functions
+- don't have `this`
+
+
+
+
