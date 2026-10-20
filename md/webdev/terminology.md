@@ -32,6 +32,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] bootstrap
 - [ ] bundle
 - [ ] build
+- [ ] cache
 - [ ] callback
 - [ ] charset
 - [ ] cli
@@ -55,6 +56,8 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] hook
 - [ ] invoking
 - [ ] library
+- [ ] memoization
+- [ ] memory
 - [ ] method
 - [ ] namespace
 - [ ] object
