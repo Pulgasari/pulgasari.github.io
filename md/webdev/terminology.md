@@ -27,6 +27,7 @@ definitions of terms or introductions into concepts in webdev context.
 
 # todo
 - [ ] a11y
+- [ ] algorithm
 - [ ] api
 - [ ] blob
 - [ ] bootstrap
@@ -46,6 +47,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] database
 - [ ] decoding
 - [ ] directive
+- [ ] domain
 - [ ] encoding
 - [ ] escaping
 - [ ] environment
@@ -70,6 +72,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] plugin
 - [ ] query
 - [ ] reactivity
+- [ ] redirect
 - [ ] registry
 - [ ] request
 - [ ] rest
