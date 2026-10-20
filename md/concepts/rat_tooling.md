@@ -1,6 +1,6 @@
 # RAT :: Tooling-Briefing
 
-Wie das Tooling für RAT aussehen kann: welche Werkzeuge und Mechanismen es im JavaScript-Ökosystem gibt, was davon RAT nutzen kann, was RAT selbst bereitstellen muss, und welche Wege es für Browser und lokale Umgebungen gibt. Geschrieben für jemanden mit PHP- und FTP-Hintergrund. Begriffe werden daher ausführlich erklärt, und die Lib-Dev-Themen bekommen einen eigenen Teil.
+Wie das Tooling für RAT aussehen kann: welche Werkzeuge und Mechanismen es im JavaScript-Ökosystem gibt, was davon RAT nutzen kann, was RAT selbst bereitstellen muss, und welche Wege es für Browser und lokale Umgebungen gibt. Geschrieben für jemanden, der aus PHP ohne Framework kommt (einzelne Libs, selbstgebautes Tooling, FTP). Begriffe werden daher ausführlich erklärt, und die Lib-Dev-Themen bekommen einen eigenen Teil.
 
 Ergänzt [esbuild.md](../webdev/libs/esbuild.md) und [vite.md](../webdev/libs/vite.md). Bezieht sich auf den Stand von `rat` im Oktober 2026 (`@rat/compiler` v0, `@rat/runtime` v0, Playground, `@rat/syntax`).
 
@@ -111,22 +111,39 @@ RAT hat eine eigene Sprache (`.rat`). Ein Browser versteht sie nicht, also muss 
 
 ### Übersetzungstabelle
 
-| PHP-Welt | JS-Welt | Anmerkung |
-|---|---|---|
-| `php` (CLI) | `node`, `deno`, `bun` | JS außerhalb des Browsers ausführen |
-| Composer | npm, pnpm, yarn, bun, deno | Paketmanager |
-| Packagist | npm Registry, JSR | Paket-Verzeichnisse |
-| `composer.json` | `package.json`, `deno.json`, `jsr.json` | Manifest |
-| `composer.lock` | `package-lock.json`, `pnpm-lock.yaml`, `bun.lock`, `deno.lock` | exakte Versionen |
-| `vendor/` | `node_modules/` | installierte Pakete |
-| PSR-4-Autoloading | Modulauflösung (`exports`, Import Maps) | wie ein Name zu einer Datei wird |
-| `include`/`require` | `import` | aber statisch analysierbar und asynchron geladen |
-| Twig/Blade-Kompilierung in den Cache | Compiler (`.rat` → `.js`) | Blade kompiliert Templates auch zu PHP, nur eben zur Laufzeit auf dem Server |
-| `php artisan` | eigenes CLI (`rat …`) | Projektaufgaben |
-| FTP-Upload | `git push` + Pages, oder CI-Deploy | |
-| Server-Cache leeren | Cache-Busting über Dateinamen-Hashes, Service-Worker-Update | |
+Ausgangspunkt ist PHP ohne Framework: einzelne Libs per Hand heruntergeladen und per `require` eingebunden, Tooling rundherum selbst gebaut.
 
-Die Parallele zu **Blade/Twig/Latte** trägt weit: Diese Template-Engines kompilieren ihre Syntax auch zu PHP und cachen das Ergebnis. Der einzige Unterschied ist der Ort: Sie tun es auf dem Server beim ersten Aufruf. RAT kann dasselbe im Browser (Service Worker als „Server im Browser“) oder vorab beim Build tun.
+| Selbstgebautes PHP | JS-Welt | Anmerkung |
+|---|---|---|
+| `php datei.php` auf der Kommandozeile | `node`, `deno`, `bun` | JS außerhalb des Browsers ausführen |
+| Lib-ZIP herunterladen, in einen `lib/`-Ordner entpacken | **Paketmanager**: npm, pnpm, yarn, bun, deno | erledigt Download, Ablage und Abhängigkeiten der Lib automatisch |
+| Projektseite oder GitHub der Lib | **Registry**: npm Registry, JSR | zentrales Verzeichnis, aus dem der Paketmanager lädt |
+| Notiz, welche Lib in welcher Version im Projekt steckt | **Manifest**: `package.json`, `deno.json`, `jsr.json` | maschinenlesbare Liste der Abhängigkeiten plus Metadaten der eigenen Lib |
+| „genau diese ZIP-Version liegt bei mir“ | **Lockfile**: `package-lock.json`, `bun.lock`, `deno.lock` | exakte Versionen aller Abhängigkeiten, auch der indirekten |
+| `lib/`-Ordner | `node_modules/` | installierte Pakete; wird nicht committet, sondern aus Manifest und Lockfile wiederhergestellt |
+| `require __DIR__ . '/lib/latte/latte.php'` | `import { x } from 'latte'` | der Name statt eines Pfades; eine Regel bestimmt, welche Datei gemeint ist ([5](#5-module-und-auflösung-der-kern-von-allem)) |
+| eigener Autoloader (`spl_autoload_register`) | Modulauflösung: Import Maps, `exports`, Loader-Hooks | wie ein Name zu einer Datei wird |
+| **Latte standalone mit Temp-Verzeichnis** | **Compiler** (`.rat` → `.js`) plus Cache | siehe unten |
+| eigenes `tools.php` mit Funktionen für Projektaufgaben | eigenes CLI (`rat …`) | |
+| FTP-Upload | `git push` + Pages, oder CI-Deploy | |
+| Cache-Ordner leeren | Cache-Busting über Dateinamen-Hashes, Service-Worker-Update | |
+
+Die Parallele zu **Latte** trägt weit. Latte standalone (`new Latte\Engine`, `setTempDirectory()`) kompiliert eine `.latte`-Datei beim ersten Aufruf zu einer PHP-Klasse, legt sie im Temp-Ordner ab und nutzt danach nur noch diese Datei, bis sich die Vorlage ändert. RAT macht dasselbe mit `.rat` → `.js`. Offen ist nur der Ort:
+- im Browser (Service Worker als „Server im Browser“, mit Cache als Temp-Ordner);
+- vorab auf dem eigenen Rechner;
+- in einer GitHub Action.
+
+`@for … @else` in RAT stammt ja schon aus Latte (`{foreach}…{else}`).
+
+### Selbstgebautes Tooling ist hier kein Nachteil
+
+Die großen JS-Apparate (Vite-Projekte mit Dutzenden Plugins, Framework-Starter, Monorepo-Werkzeuge) sind genauso überfordernd wie ein Symfony-Setup und für RAT zum größten Teil unnötig. Dein bestehendes Setup ist im Kern schon die JS-Variante deines PHP-Stils:
+
+- **eine Import Map statt Paketmanager:** Namen werden direkt auf Dateien oder esm.sh-URLs abgebildet, kein `node_modules`, kein Installationsschritt;
+- **GitHub Pages statt FTP:** Push und fertig;
+- **eigene kleine Werkzeuge:** `importmap.js`, `sw.js` und das Build-Script von `@rat/syntax`.
+
+Dieses Briefing behält diese Linie: Es empfiehlt kleine, eigene Werkzeuge mit wenigen oder keinen Abhängigkeiten (eigenes CLI, eigener Dev-Server, Service Worker) und nennt die großen Werkzeuge vor allem dort, wo *andere* RAT nutzen wollen (Vite-Plugin) oder wo sie Arbeit abnehmen, die man nicht selbst machen sollte (esbuild für Bundling und Minifizierung). Paketmanager und Registries werden erst relevant, wenn RAT-Pakete veröffentlicht oder Werkzeuge wie Vite eingebunden werden.
 
 ---
 
