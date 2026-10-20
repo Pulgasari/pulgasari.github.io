@@ -14,7 +14,7 @@ const lazy     = (load, name)  => async (...args) => (await load())[name](...arg
 
 const modules = {
   config   : once(() => import('@aufbau/element')),
-  domina   : name    => import(`@domina/methods/${name}.js`).then(module => module[name] ?? module.default),
+  domina   : name    => import(`@domina/verbs/${name}.js`).then(module => module[name] ?? module.default),
   elements : once(() => import('@aufbau/elements')),
   filters  : once(() => import('@gestalt/filters')),
   icons    : once(() => import('@aufbau/svg/aliases.js')),
