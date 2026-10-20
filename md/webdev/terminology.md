@@ -42,6 +42,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] cold start
 - [ ] compiler
 - [ ] compiletime
+- [ ] complexity
 - [ ] computation
 - [ ] constraint
 - [ ] database
@@ -60,6 +61,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] hoisting
 - [ ] hook
 - [ ] invoking
+- [ ] k.i.s.s.
 - [ ] library
 - [ ] memoization
 - [ ] memory
