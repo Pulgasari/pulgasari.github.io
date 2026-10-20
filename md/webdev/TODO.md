@@ -14,28 +14,28 @@
 ## `/libs`
 - [x] alien-signals
 - [x] AlpineJS
-- [ ] Angular
+- [x] Angular
 - [x] ArkType
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
 - [x] CoffeScript
-- [ ] Cycle.js
+- [x] Cycle.js
 - [x] Datastar
-- [ ] D3
+- [x] D3
 - [x] EJS
-- [ ] Eleventy
+- [x] Eleventy
 - [x] Elm
-- [ ] esbuild
+- [x] esbuild
 - [x] Express
 - [x] Fresh
-- [ ] Hotwire
+- [x] Hotwire
 - [x] htm
 - [x] htmx
 - [x] htmz
 - [x] Hyperapp
 - [x] Immer
-- [ ] Inferno JS
+- [x] Inferno JS
 - [x] jQuery
 - [x] knockout
 - [x] Lit
@@ -46,32 +46,35 @@
 - [x] MDX
 - [x] MobX
 - [x] morphdom / idiomorph
-- [ ] MooTools
+- [x] MooTools
 - [x] Open Props
 - [x] PostCSS
 - [x] Preact
-- [ ] Qwik
-- [ ] Ractive.js
+- [x] Qwik
+- [x] Ractive.js
 - [x] Ramda
-- [ ] RE:DOM
+- [x] RE:DOM
 - [ ] React
 - [ ] ReScript
-- [ ] riot
+- [x] riot
 - [x] RxJS
 - [x] SolidJS
 - [x] StyleX
 - [x] Svelte
 - [x] Tailwind
-- [ ] TanStack
+- [x] TanStack
 - [x] TSRX
 - [x] TypeScript
 - [ ] Underscore
 - [x] UnoCSS
 - [x] Valibot
-- [ ] Vite
+- [x] Vite
 - [ ] Vue
 - [ ] YUI
-- [ ] XState
+- [x] XState
 - [x] zod
 - [ ] Zustand
 
+## misc
+- [ ] GraphQL
+- [ ] Standard Schema
