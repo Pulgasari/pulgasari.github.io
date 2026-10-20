@@ -26,22 +26,31 @@ definitions of terms or introductions into concepts in webdev context.
 - that stuff you end up remembering to make it make sense
 
 # todo
+- [ ] a11y
 - [ ] api
+- [ ] blob
 - [ ] bootstrap
 - [ ] bundle
 - [ ] build
+- [ ] charset
 - [ ] cli
 - [ ] codec
 - [ ] coding
 - [ ] compiler
-- [ ] decoding
+- [ ] compiletime
 - [ ] database
+- [ ] decoding
+- [ ] directive
 - [ ] encoding
 - [ ] escaping
 - [ ] environment
 - [ ] expression
 - [ ] framework
 - [ ] function
+- [ ] functional programming
+- [ ] hoisting
+- [ ] hook
+- [ ] invoking
 - [ ] library
 - [ ] method
 - [ ] namespace
@@ -50,10 +59,20 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] plugin
 - [ ] reactivity
 - [ ] registry
+- [ ] request
 - [ ] rest
 - [ ] router
+- [ ] runtime
 - [ ] schema
+- [ ] script
 - [ ] server
+- [ ] specification
+- [ ] ssr
+- [ ] stream
+- [ ] symlink
+- [ ] template
+- [ ] toolkit
 - [ ] type
+- [ ] unicode
 - [ ] value
 - [ ] web
