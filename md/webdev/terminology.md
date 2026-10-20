@@ -68,6 +68,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] parser
 - [ ] performance
 - [ ] plugin
+- [ ] query
 - [ ] reactivity
 - [ ] registry
 - [ ] request
@@ -78,6 +79,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] script
 - [ ] server
 - [ ] side effect
+- [ ] socket
 - [ ] specification
 - [ ] ssr
 - [ ] stream
