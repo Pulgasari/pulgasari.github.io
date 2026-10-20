@@ -2,7 +2,7 @@
 
 Wie das Tooling für RAT aussehen kann: welche Werkzeuge und Mechanismen es im JavaScript-Ökosystem gibt, was davon RAT nutzen kann, was RAT selbst bereitstellen muss, und welche Wege es für Browser und lokale Umgebungen gibt. 
 
-Geschrieben für ehem. PHP-Fanboys ohne Framework kommt (einzelne Libs, selbstgebautes Tooling, FTP). Begriffe werden daher ausführlich erklärt, und die Lib-Dev-Themen bekommen einen eigenen Teil.
+Geschrieben für ehem. PHP-Fanboys ohne Framework (einzelne Libs, selbstgebautes Tooling, FTP). Begriffe werden daher ausführlich erklärt, und die Lib-Dev-Themen bekommen einen eigenen Teil.
 
 Ergänzt [esbuild.md](../webdev/libs/esbuild.md) und [vite.md](../webdev/libs/vite.md). Bezieht sich auf den Stand von `rat` im Oktober 2026 (`@rat/compiler` v0, `@rat/runtime` v0, Playground, `@rat/syntax`).
 
