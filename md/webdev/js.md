@@ -74,6 +74,12 @@ console.log(a);
 - are shorter, it's easier or faster to write such functions
 - don't have `this`
 
-
+### functions are objects
+```js
+const person = { name: 'Rudi', age: 77 };
+function displayName () { return this.name; }
+const a = displayName.call(person);
+console.log(a); // Rudi
+```
 
 
