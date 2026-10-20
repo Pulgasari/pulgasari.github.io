@@ -62,6 +62,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] memoization
 - [ ] memory
 - [ ] method
+- [ ] middleware
 - [ ] namespace
 - [ ] object
 - [ ] parser
