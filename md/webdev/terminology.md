@@ -32,6 +32,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] bootstrap
 - [ ] bundle
 - [ ] build
+- [ ] callback
 - [ ] charset
 - [ ] cli
 - [ ] codec
