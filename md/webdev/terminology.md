@@ -38,8 +38,11 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] cli
 - [ ] codec
 - [ ] coding
+- [ ] cold start
 - [ ] compiler
 - [ ] compiletime
+- [ ] computation
+- [ ] constraint
 - [ ] database
 - [ ] decoding
 - [ ] directive
@@ -62,6 +65,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] namespace
 - [ ] object
 - [ ] parser
+- [ ] performance
 - [ ] plugin
 - [ ] reactivity
 - [ ] registry
@@ -72,6 +76,7 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] schema
 - [ ] script
 - [ ] server
+- [ ] side effect
 - [ ] specification
 - [ ] ssr
 - [ ] stream
