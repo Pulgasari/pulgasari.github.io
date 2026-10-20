@@ -49,6 +49,8 @@ definitions of terms or introductions into concepts in webdev context.
 - [ ] framework
 - [ ] function
 - [ ] functional programming
+- [ ] head
+- [ ] headless
 - [ ] hoisting
 - [ ] hook
 - [ ] invoking
