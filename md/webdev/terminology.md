@@ -44,7 +44,7 @@ character set: which characters exist and which number each one gets. today that
 command line interface: a program used by typing commands and flags in a terminal (`git commit -m "…"`), as opposed to a gui. scriptable, composable through pipes, and the usual way tooling is driven (`npm`, `vite`, `deno`).
 
 ## codec
-coder plus decoder: a pair that turns data into another representation and back. audio and video codecs (opus, av1) compress, a json codec turns objects into text and back. the important property is the round trip: decode(encode(x)) gives x again (or close enough, for lossy codecs).
+coder plus decoder: a pair that turns data into another representation and back. audio and video codecs (opus, av1) compress, a json codec turns objects into text and back. the important property is the round trip: decode(encode(x)) gives x again (or close enough, for lossy codecs). see [codecs.md](codecs.md).
 
 ## coding
 writing source code. also short for [encoding](#encoding) in some contexts (base64 coding, character coding).
@@ -190,7 +190,7 @@ an answer that sends the client somewhere else: http `301` (moved for good, cach
 a central list where things are registered by name and looked up later: `customElements.define()` registers an element, npm is a registry of packages, a command registry maps names to functions. it decouples who provides something from who uses it.
 
 ## request
-a message from a client asking a server for something: in http a method (`GET`, `POST` …), a url, headers and maybe a body. the server sends a response with a status, headers and a body. see [server.md](server.md), [protocols.md](protocols.md).
+a message from a client asking a server for something: in http a method (`GET`, `POST` …), a url, headers and maybe a body. the server sends a response with a status, headers and a body. see [server.md](server.md).
 
 ## rest
 representational state transfer: a style for web [apis](#api) where urls name resources (`/users/42`) and http methods say what to do with them (`GET` reads, `PUT` replaces, `DELETE` removes), stateless, with standard status codes. most "rest apis" are just json over http that follow part of it.
