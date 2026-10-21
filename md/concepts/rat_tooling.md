@@ -232,7 +232,7 @@ Ein „bare specifier“ (`@rat/runtime`, `acorn`) ist kein Pfad. Jede Umgebung 
 | Nutzung in Node | direkt | `npx jsr add @scope/pkg` (über npm-Kompatibilitätsschicht) |
 | Im Browser | über CDN | über CDN (`esm.sh/jsr/@scope/pkg`) |
 
-Du nutzt JSR bereits für `@pulgasari/*`. Für `@rat/*` ist JSR naheliegend, weil es JS-Quellen mit `index.d.ts` direkt akzeptiert und Dokumentation erzeugt. Der Scope `@rat` müsste auf JSR frei sein; sonst unter `@pulgasari/rat-*`, oder ein eigener Scope.
+Du nutzt JSR bereits für `@pulgasari/*`. Für `@rat/*` ist JSR naheliegend, weil es JS-Quellen mit `index.d.ts` direkt akzeptiert und Dokumentation erzeugt. Der Scope `@rat` ist auf JSR bereits gesichert.
 
 **Doppelt veröffentlichen** (npm und JSR) ist üblich, wenn Werkzeuge wie Vite-Plugins npm-Pakete erwarten. Ein Vite-Plugin wird von Vite-Nutzern per `npm i -D` installiert; das geht auch aus JSR, ist aber ungewohnt.
 
