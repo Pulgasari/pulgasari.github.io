@@ -76,6 +76,8 @@ const map = { imports: {
   "@gestalt/filters/"        : "./gestalt/packages/filters/lib/",
   "@gestalt/patterns"        : "./gestalt/packages/patterns/index.js",
   "@gestalt/patterns/"       : "./gestalt/packages/patterns/lib/",
+  "@gestalt/shorthands"         : "./gestalt/packages/shorthands/index.js",
+  "@gestalt/shorthands/element" : "./gestalt/packages/shorthands/element.js",
   "@gestalt/webfonts"        : "./gestalt/packages/webfonts/index.js",
   "@gestalt/webfonts/"       : "./gestalt/packages/webfonts/",
   "@gestalt/webfonts/google" : "./gestalt/packages/webfonts/google.js",
