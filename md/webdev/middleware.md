@@ -2,7 +2,7 @@
 
 **Middleware** ist Code, der *zwischen* zwei Seiten sitzt und alles sieht, was durchläuft: meist zwischen einer eingehenden Anfrage und dem Code, der sie eigentlich beantwortet. Jede Middleware kann die Anfrage ansehen, verändern, selbst beantworten oder an die nächste weiterreichen.
 
-Weiterführend: [server.md](server.md) (wo Middleware läuft), [protocols.md](protocols.md) (warum `(request, next)` ein kleines Protokoll ist).
+Weiterführend: [server.md](server.md) (wo Middleware läuft), [protocols.md](types/protocols.md) (warum `(request, next)` ein kleines Protokoll ist).
 
 ---
 

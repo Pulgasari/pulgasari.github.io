@@ -6,7 +6,7 @@ JavaScript mit statischen Typen: Variablen, Parameter und Rückgaben bekommen Ty
 - Repository: https://github.com/microsoft/TypeScript (7.x: https://github.com/microsoft/typescript-go)
 - Build: ja (`tsc`, oder esbuild, Vite, Bun, Deno, Node, die Typen nur entfernen)
 
-Grundlagen zu Typen allgemein, statisch gegen Laufzeit, und warum Schemas etwas anderes leisten: [types_and_schemas.md](../types_and_schemas.md).
+Grundlagen zu Typen allgemein, statisch gegen Laufzeit, und warum Schemas etwas anderes leisten: [types_and_schemas.md](../types/types_and_schemas.md).
 
 ## Das Problem, das TypeScript löst
 
@@ -63,7 +63,7 @@ type Getters<T>  = { [K in keyof T as `get${Capitalize<K & string>}`]: () => T[K
 type Unwrap<T>   = T extends Promise<infer U> ? U : T;   // conditional type
 ```
 
-Generics machen Typen zu Funktionen über Typen ([generics.md](../generics.md)). Darüber hinaus kann man mit Typen *rechnen*: Schlüssel durchlaufen, Strings zusammensetzen, Bedingungen auswerten. Diese Typ-Sprache ist so mächtig, dass Bibliotheken wie [Zod](zod.md) und [ArkType](arktype.md) damit ihre Schemas in statische Typen übersetzen; ArkType parst sogar Strings auf Typ-Ebene.
+Generics machen Typen zu Funktionen über Typen ([generics.md](../types/generics.md)). Darüber hinaus kann man mit Typen *rechnen*: Schlüssel durchlaufen, Strings zusammensetzen, Bedingungen auswerten. Diese Typ-Sprache ist so mächtig, dass Bibliotheken wie [Zod](zod.md) und [ArkType](arktype.md) damit ihre Schemas in statische Typen übersetzen; ArkType parst sogar Strings auf Typ-Ebene.
 
 ### 5. Typen ohne TypeScript-Dateien
 

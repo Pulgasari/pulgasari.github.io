@@ -2,7 +2,7 @@
 
 Ein **Server** ist ein Programm, das wartet, bis jemand etwas von ihm will, und dann antwortet. Wer fragt, ist der **Client**. Das Wort meint zweierlei, und das verwirrt oft: das *Programm*, das antwortet, und die *Maschine*, auf der es läuft.
 
-Weiterführend: [protocols.md](protocols.md) (wie Client und Server sich verstehen), [middleware.md](middleware.md) (was zwischen Anfrage und Antwort passiert).
+Weiterführend: [protocols.md](types/protocols.md) (wie Client und Server sich verstehen), [middleware.md](middleware.md) (was zwischen Anfrage und Antwort passiert).
 
 ---
 
@@ -16,7 +16,7 @@ client                                server
 ```
 
 1. Der Server **lauscht** auf einem Port (80 für HTTP, 443 für HTTPS, beim Entwickeln oft 3000, 5173 oder 8000).
-2. Ein Client **verbindet** sich und schickt eine Anfrage in einem gemeinsamen [Protokoll](protocols.md), im Web HTTP.
+2. Ein Client **verbindet** sich und schickt eine Anfrage in einem gemeinsamen [Protokoll](types/protocols.md), im Web HTTP.
 3. Der Server **antwortet**: eine Datei, ein berechnetes HTML, JSON, ein Fehler.
 4. Er wartet auf die nächste Anfrage, meist viele gleichzeitig.
 

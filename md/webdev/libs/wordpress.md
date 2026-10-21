@@ -4,7 +4,7 @@ WordPress betrachtet aus Sicht von Webdev und Lib-Design: wie das Datenmodell au
 
 Stand: WordPress 7.1 (August 2026).
 
-Weiterführend: [middleware.md](middleware.md) (Hooks als Pipeline), [protocols.md](protocols.md), [server.md](server.md).
+Weiterführend: [middleware.md](../middleware.md) (Hooks als Pipeline), [protocols.md](../types/protocols.md), [server.md](../server.md).
 
 ---
 
