@@ -1,7 +1,9 @@
 # md/webdev
 
 ## langs
+[Bend](./langs/bend.md) ·
 [Dart](./langs/dart.md) ·
+[Haskell](./langs/haskell.md) ·
 [Lua](./langs/lua.md)
 
 ## libs
@@ -26,6 +28,8 @@
 [jQuery](./libs/jquery.md) ·
 [Knockout](./libs/knockout.md) ·
 [Lit](./libs/lit.md) ·
+[LiveScript](./libs/livescript.md) ·
+[lodash](./libs/lodash.md) ·
 [Lynx](./libs/lynxjs.md) ·
 [Marko](./libs/marko.md) ·
 [MDX](./libs/mdx.md) ·
@@ -35,6 +39,8 @@
 [PostCSS](./libs/postcss.md) ·
 [Preact](./libs/preact.md) ·
 [Ramda](./libs/ramda.md) ·
+[React](./libs/react.md) ·
+[ReScript](./libs/rescript.md) ·
 [RxJS](./libs/rxjs.md) ·
 [SolidJS](./libs/solidjs.md) ·
 [StyleX](./libs/stylex.md) ·
@@ -42,6 +48,15 @@
 [Tailwind CSS](./libs/tailwind.md) ·
 [TSRX](./libs/tsrx.md) ·
 [TypeScript](./libs/typescript.md) ·
+[Underscore.js](./libs/underscore.md) ·
 [UnoCSS](./libs/unocss.md) ·
 [Valibot](./libs/valibot.md) ·
-[Zod](./libs/zod.md)
+[Vue](./libs/vue.md) ·
+[YUI](./libs/yui.md) ·
+[Zod](./libs/zod.md) ·
+[Zustand](./libs/zustand.md)
+
+## misc
+[GraphQL](./graphql.md) ·
+[Standard Schema](./standard-schema.md) ·
+[terminology](./terminology.md)

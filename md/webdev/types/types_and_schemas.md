@@ -2,7 +2,7 @@
 
 „Typ“ ist eines der Wörter, die in der Programmierung an fünf Stellen fünf verschiedene Dinge meinen. Dieses Dokument sortiert sie: was ein Typ eigentlich ist, was `typeof`, `<input type>` und TypeScript damit zu tun haben, und wo Schemas wie Zod und Valibot dazwischen stehen.
 
-Weiterführend: [codecs.md](codecs.md), [generics.md](generics.md), [data_structures.md](data_structures.md), [zod.md](libs/zod.md), [valibot.md](libs/valibot.md), `rat/.md/causa_types.md`.
+Weiterführend: [codecs.md](../codecs.md), [generics.md](generics.md), [data_structures.md](data_structures.md), [zod.md](../libs/zod.md), [valibot.md](../libs/valibot.md), `rat/.md/causa_types.md`.
 
 ---
 

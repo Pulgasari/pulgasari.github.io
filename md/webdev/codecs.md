@@ -2,7 +2,7 @@
 
 Ein **Codec** ist ein Paar aus zwei Umwandlungen: **en**coden und **dec**oden (daher der Name, *coder-decoder*). Er übersetzt zwischen zwei Darstellungen *derselben Sache*, hin und zurück. Das Wort kommt aus der Nachrichtentechnik, wo es Geräte bezeichnete, die analoge Signale digital machen und zurück; heute meint es meist ein Stück Software.
 
-Weiterführend: [data_structures.md](data_structures.md) (Daten zur Laufzeit prüfen), [protocols.md](types/protocols.md), `rat/.md/causa_types.md` (Typen, Schemas, Darstellungen).
+Weiterführend: [data_structures.md](types/data_structures.md) (Daten zur Laufzeit prüfen), [protocols.md](types/protocols.md), `rat/.md/causa_types.md` (Typen, Schemas, Darstellungen).
 
 ---
 

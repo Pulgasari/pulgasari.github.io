@@ -2,7 +2,7 @@
 
 Das **Language Server Protocol** legt fest, wie ein Editor und ein Programm, das eine Sprache versteht, miteinander reden. Der Editor schickt „diese Datei wurde geöffnet, hier hat sich etwas geändert, was steht an Zeile 12, Zeichen 8?“. Der Server antwortet mit Fehlern, Vervollständigungen, Sprungzielen, Umbenennungen.
 
-Es ist ein Protokoll im Sinne von [../protocols.md](../protocols.md): kein Code, sondern eine Absprache. Wer sie einhält, funktioniert mit jedem Editor, der sie ebenfalls einhält.
+Es ist ein Protokoll im Sinne von [../protocols.md](../types/protocols.md): kein Code, sondern eine Absprache. Wer sie einhält, funktioniert mit jedem Editor, der sie ebenfalls einhält.
 
 ## Die Dateien
 

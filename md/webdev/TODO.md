@@ -6,9 +6,9 @@
 - [x] server
 
 ## `/langs`
-- [ ] [Bend](https://bend-lang.com/)
+- [x] [Bend](https://bend-lang.com/)
 - [x] Dart
-- [ ] Haskell
+- [x] Haskell
 - [x] Lua
 
 ## `/libs`
@@ -39,8 +39,8 @@
 - [x] jQuery
 - [x] knockout
 - [x] Lit
-- [ ] LiveScript
-- [ ] lodash
+- [x] LiveScript
+- [x] lodash
 - [x] Lynx JS
 - [x] MarkoJS
 - [x] MDX
@@ -54,8 +54,8 @@
 - [x] Ractive.js
 - [x] Ramda
 - [x] RE:DOM
-- [ ] React
-- [ ] ReScript
+- [x] React
+- [x] ReScript
 - [x] riot
 - [x] RxJS
 - [x] SolidJS
@@ -65,16 +65,16 @@
 - [x] TanStack
 - [x] TSRX
 - [x] TypeScript
-- [ ] Underscore
+- [x] Underscore
 - [x] UnoCSS
 - [x] Valibot
 - [x] Vite
-- [ ] Vue
-- [ ] YUI
+- [x] Vue
+- [x] YUI
 - [x] XState
 - [x] zod
-- [ ] Zustand
+- [x] Zustand
 
 ## misc
-- [ ] GraphQL
-- [ ] Standard Schema
+- [x] GraphQL
+- [x] Standard Schema

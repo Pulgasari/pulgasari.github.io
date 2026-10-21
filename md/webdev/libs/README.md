@@ -25,6 +25,8 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [jQuery](jquery.md) | DOM-Bibliothek | 2006– | 28,0 kb | nein |
 | [Knockout](knockout.md) | MVVM mit Observables | 2010–, 3.x in Wartung, TKO seit 2026 | 25,8 kb | nein |
 | [Lit](lit.md) | Web Components | 2017– | 6,2 kb | nein |
+| [LiveScript](livescript.md) | funktionale Sprache, CoffeeScript-Nachfahre | 2012–, ruht seit 2020 | – (Browser-Compiler 64,3 kb) | ja, oder Compiler im Browser |
+| [lodash](lodash.md) | Hilfsfunktionen für Daten und Funktionen | 2012–, Feature-Complete seit 2025/26 | 26,4 kb, `lodash-es` alles 30,1 kb, typisch 10,6 kb | nein |
 | [Lynx](lynxjs.md) | native UI mit Web-Technik | 2025– | – (eigene Engine) | ja (Rspeedy) |
 | [Marko](marko.md) | HTML-Obermenge mit Compiler | 2014– | bis 12,5 kb (Runtime, pro App gekürzt) | ja |
 | [MDX](mdx.md) | Markdown mit JSX | 2018– | – (Compiler, Ausgabe ist eine Komponente) | ja, oder `evaluate()` |
@@ -34,6 +36,8 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [PostCSS](postcss.md) | CSS-Syntaxbaum mit Plugins | 2013– | – (Build; im Browser 18,7 kb) | ja |
 | [Preact](preact.md) | React-API in klein | 2015– | 4,9 kb, mit Hooks 6,3 kb, Signals 8,2 kb | nein (mit htm) |
 | [Ramda](ramda.md) | funktionale Hilfsfunktionen, gecurried | 2014– | 16,0 kb alles, typisch 3,6 kb | nein |
+| [React](react.md) | Komponenten mit Virtual DOM, Hooks, Server Components | 2013– | 67,2 kb mit `react-dom/client`, `react` allein 3,4 kb | ja (JSX), ohne mit `createElement`/htm |
+| [ReScript](rescript.md) | typisierte Sprache aus OCaml, compiliert zu JavaScript | 2020– (BuckleScript 2016) | – (Compiler; Laufzeit nur, was benutzt wird) | ja |
 | [RxJS](rxjs.md) | Ereignisströme | 2012– (RxJS 5: 2016) | 7,6 kb typisch, 18,5 kb alles | nein |
 | [SolidJS](solidjs.md) | JSX ohne VDOM, Signals | 2018– (1.0: 2021, 2.0 im RC) | 4,7 kb typisch, 14,7 kb alles | ja (JSX) |
 | [StyleX](stylex.md) | atomares CSS aus JS-Objekten | 2023– | 1,7 kb Runtime, CSS statisch | ja |
@@ -41,11 +45,15 @@ Steckbriefe zu Bibliotheken, Frameworks und Sprachen aus dem Web-Umfeld: wofür 
 | [Tailwind CSS](tailwind.md) | Utility-CSS-Framework | 2017– | – (CSS aus dem Build; Browser-Skript 73,5 kb) | ja |
 | [TSRX](tsrx.md) | Nachfolger von JSX | 2026– | – (Compiler, Runtime je Ziel) | ja |
 | [TypeScript](typescript.md) | statische Typen für JavaScript | 2012– | – (Compiler, Typen werden entfernt) | ja, oder Type Stripping |
+| [Underscore.js](underscore.md) | funktionale Hilfsfunktionen unter `_` | 2009–, in Wartung | 8,4 kb, typisch 5,5 kb (über `underscore/modules`) | nein |
 | [UnoCSS](unocss.md) | Engine für Utility-CSS, Regeln statt Vokabular | 2021– | Laufzeit 9,8 kb Kern, bis 58 kb mit Presets | ja, oder Laufzeit im Browser |
 | [Valibot](valibot.md) | Schemas und Validierung, modular | 2023– | 14,9 kb alles, typisch 1,6 kb | nein |
+| [Vue](vue.md) | Templates, Reaktivität, SFCs; Vapor ohne VDOM (3.6 im RC) | 2014– (3.0: 2020, 3.6 im RC) | 24,6 kb typisch, 45,6 kb alles, mit Template-Compiler 62,2 kb | ja (SFC), ohne mit `vue.esm-browser.js` |
+| [YUI](yui.md) | Yahoos UI-Bibliothek mit Sandbox-Loader | 2006–2014 | Seed mit Loader 26,6 kb, Core-Seed 9,2 kb | nein |
 | [Zod](zod.md) | Schemas und Validierung | 2020– | 25,6 kb typisch, `zod/mini` 5,8 kb | nein |
+| [Zustand](zustand.md) | Store mit Selektoren, für React | 2019– | 0,4 kb ohne React, `vanilla` 0,3 kb, Middleware 2,8 kb | nein |
 
-Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`), Zod, Valibot und ArkType ein Objekt-Schema mit drei bis vier Feldern (`import * as z`; `import { z }` zieht die Locales mit, 90 kb). Datastar aus dem Repository (`bundles/datastar.js`, v1.0.4), weil npm nur eine alte Beta hat; Open Props ist CSS, gzip der `.min.css`. Preact „mit Hooks“ ist `preact` plus `preact/hooks`, Signals ist `@preact/signals` allein; SolidJS „typisch“ ist `createSignal` plus `render`, `template`, `insert`; Svelte ist eine compilierte Komponente mit `$state`, `$derived`, `{#each}`, `{#if}` und `bind:` samt Laufzeit; Immer `produce` ohne Plugins. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
+Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Oktober 2026), alle Exporte eingebunden. Backbone ohne jQuery (für Views und `sync` nötig, 28,0 kb). „Typisch“: RxJS zehn häufige Operatoren und Subjects, Ramda zehn häufige Funktionen, MobX der Kern (`observable`, `computed`, `autorun`, `action`, `makeAutoObservable`), Zod, Valibot und ArkType ein Objekt-Schema mit drei bis vier Feldern (`import * as z`; `import { z }` zieht die Locales mit, 90 kb). Datastar aus dem Repository (`bundles/datastar.js`, v1.0.4), weil npm nur eine alte Beta hat; Open Props ist CSS, gzip der `.min.css`. Preact „mit Hooks“ ist `preact` plus `preact/hooks`, Signals ist `@preact/signals` allein; SolidJS „typisch“ ist `createSignal` plus `render`, `template`, `insert`; Svelte ist eine compilierte Komponente mit `$state`, `$derived`, `{#each}`, `{#if}` und `bind:` samt Laufzeit; Immer `produce` ohne Plugins. React ist `react` plus `react-dom/client` (`createRoot`, `useState`), Vue „typisch“ `createApp`, `ref`, `computed` (3.5.44). lodash und Underscore „typisch“: dieselben zehn Funktionen (`debounce`, `filter`, `groupBy`, `isEqual`, `map`, `pick`, `sortBy`, `template`, `throttle`, `uniq`), lodash aus `lodash-es`, Underscore aus `underscore/modules/index.js` (über den Paket-Einstieg 7,6 kb). Zustand ohne React; YUI die fertigen Dateien aus dem npm-Paket 3.18.1. „–" wo im Browser nichts Eigenes läuft oder die Größe von der App abhängt.
 
 ## Querverbindungen
 
@@ -78,7 +86,7 @@ Größe: minifiziert und gzip, mit esbuild am aktuellen npm-Paket gemessen (Okto
 - **Komponente läuft einmal:** [SolidJS](solidjs.md), [Svelte](svelte.md) und rat bauen das DOM einmal und lassen Signals einzelne Knoten schreiben; [Preact](preact.md) und [Hyperapp](hyperapp.md) rendern die Komponente neu und vergleichen. `@preact/signals` steht dazwischen.
 - **Markup mit Parametern:** Snippets ([Svelte](svelte.md)), `@fragment` in rat, Funktionen, die ``html`…` `` liefern ([htm](htm.md), [Lit](lit.md)).
 - **Unveränderlich ändern:** [Immer](immer.md) (Entwurf und Patches), [Ramda](ramda.md) (Funktionen, die kopieren), Stores in [SolidJS](solidjs.md) mit `produce`; Gegenstück: tiefe Mutation bei [MobX](mobx.md) und `$state` in [Svelte](svelte.md). Alles Antworten auf rats d-23.
-- **Statisch und zur Laufzeit:** [TypeScript](typescript.md) prüft Code und verschwindet, [Zod](zod.md), [Valibot](valibot.md), [ArkType](arktype.md) prüfen Daten und bleiben. Grundlagen in [types_and_schemas.md](../types_and_schemas.md).
+- **Statisch und zur Laufzeit:** [TypeScript](typescript.md) prüft Code und verschwindet, [Zod](zod.md), [Valibot](valibot.md), [ArkType](arktype.md) prüfen Daten und bleiben. Grundlagen in [types_and_schemas.md](../types/types_and_schemas.md).
 
 ## Aufbau eines Steckbriefs
 

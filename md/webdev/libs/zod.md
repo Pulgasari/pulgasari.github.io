@@ -30,7 +30,7 @@ const User = z.object({
 // in typescript: type User = z.infer<typeof User>
 ```
 
-Schemas sind Werte, aus kleinen Bausteinen zusammengesetzt. Jede Methode (`.min`, `.optional`, `.default`) gibt ein neues Schema zurück. `z.infer` macht daraus den Typ, ohne dass er irgendwo von Hand steht (wie das über Generics funktioniert, steht in [generics.md](../generics.md)).
+Schemas sind Werte, aus kleinen Bausteinen zusammengesetzt. Jede Methode (`.min`, `.optional`, `.default`) gibt ein neues Schema zurück. `z.infer` macht daraus den Typ, ohne dass er irgendwo von Hand steht (wie das über Generics funktioniert, steht in [generics.md](../types/generics.md)).
 
 ### 2. `parse` und `safeParse`
 

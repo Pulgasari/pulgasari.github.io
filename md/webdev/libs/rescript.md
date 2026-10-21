@@ -11,7 +11,7 @@ Eine statisch typisierte Sprache, die zu JavaScript compiliert, mit dem Typsyste
 
 [TypeScript](typescript.md) legt Typen über JavaScript, übernimmt dafür aber dessen Semantik: `any`, unsound Casts, strukturelle Typen, die sich gegenseitig zuweisen lassen, und einen Typchecker, der bei großen Projekten langsam wird. [Elm](elm.md) ist sound und fehlerfrei, verlangt aber eine eigene Architektur und macht den Austausch mit JavaScript mühsam.
 
-ReScript liegt dazwischen: ein **sound** Typsystem mit vollständiger Typinferenz (Hindley-Milner, aus OCaml), Varianten und erschöpfendem Pattern Matching wie in Elm, aber ohne vorgeschriebene Architektur und mit direkten Bindings an jede JS-Bibliothek. Der Compiler ist auf Geschwindigkeit gebaut (Builds im Millisekundenbereich pro Datei) und erzeugt JavaScript, das so aussieht, als hätte es jemand von Hand geschrieben.
+ReScript liegt dazwischen: ein **sound** Typsystem mit vollständiger Typinferenz (Hindley-Milner, aus OCaml), Varianten und erschöpfendem Pattern Matching wie in Elm, aber ohne vorgeschriebene Architektur und mit direkten Bindings an jede JS-Bibliothek. Der Compiler ist auf kurze Build-Zeiten ausgelegt und erzeugt JavaScript, das so aussieht, als hätte es jemand von Hand geschrieben.
 
 ## Kernkonzepte
 
