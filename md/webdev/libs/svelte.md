@@ -82,7 +82,11 @@ Kontrollfluss steht im Markup, mit eigener Syntax (`{#…}`, `{:…}`, `{/…}`)
 <input bind:value={name} />
 ```
 
-Snippets sind Markup mit Parametern (rats `@fragment`). Attachments (`{@attach fn}`, seit 5.29) bekommen das Element, wenn es erscheint, und geben eine Aufräumfunktion zurück; sie ersetzen die älteren Actions (`use:`). `bind:` verbindet Formularwerte in beide Richtungen.
+Snippets sind Markup mit Parametern (rats `@fragment`).
+
+Attachments (`{@attach fn}`, seit 5.29) bekommen das Element, wenn es erscheint, und geben eine Aufräumfunktion zurück; sie ersetzen die älteren Actions (`use:`). 
+
+`bind:` verbindet Formularwerte in beide Richtungen.
 
 ### 5. Async (experimentell)
 
