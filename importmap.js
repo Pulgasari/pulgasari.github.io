@@ -109,6 +109,7 @@ const map = { imports: {
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
   "@rat/app"      : "./rat/packages/app/index.js",
+  "@rat/app/"     : "./rat/packages/app/",
   "@rat/bunker"   : "./rat/packages/bunker/index.js",
   "@rat/commands" : "./rat/packages/commands/index.js",
   "@rat/compiler" : "./rat/packages/compiler/index.js",
