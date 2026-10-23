@@ -118,6 +118,7 @@ const map = { imports: {
   "@rat/runtime"  : "./rat/packages/runtime/index.js",
   "@rat/signals"  : "./rat/packages/signals/index.js",
   "@rat/types"    : "./rat/packages/types/index.js",
+  "@rat/types/"   : "./rat/packages/types/",
 
   "@rat/syntax"            : "./rat/packages/syntax/spec.js",
   "@rat/syntax/"           : "./rat/packages/syntax/",
