@@ -109,15 +109,16 @@ const map = { imports: {
   "@pulgasari/url"              : "./js-packages/url/index.js",
 
   "@rat/app"      : "./rat/packages/app/index.js",
+  "@rat/app/"     : "./rat/packages/app/",
   "@rat/bunker"   : "./rat/packages/bunker/index.js",
   "@rat/commands" : "./rat/packages/commands/index.js",
   "@rat/compiler" : "./rat/packages/compiler/index.js",
   "@rat/hotkeys"  : "./rat/packages/hotkeys/index.js",
   "@rat/import"   : "./rat/packages/import/index.js",
-  "@rat/router"   : "./rat/packages/router/index.js",
   "@rat/runtime"  : "./rat/packages/runtime/index.js",
   "@rat/signals"  : "./rat/packages/signals/index.js",
   "@rat/types"    : "./rat/packages/types/index.js",
+  "@rat/types/"   : "./rat/packages/types/",
 
   "@rat/syntax"            : "./rat/packages/syntax/spec.js",
   "@rat/syntax/"           : "./rat/packages/syntax/",
