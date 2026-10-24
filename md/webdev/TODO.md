@@ -7,6 +7,7 @@
 
 ## `/langs`
 - [x] [Bend](https://bend-lang.com/)
+- [ ] Civet
 - [x] Dart
 - [x] Haskell
 - [x] Lua
