@@ -1,5 +1,26 @@
 # MDS :: markdown-sucks
 
+## the goal
+
+make markdown suck less by keeping the basic concept but eliminate all the quirks and enhance it with some useful syntax and dynamics.
+
+it won't be end up as an markdown flavour i guess.
+
+---
+
+```md
+# line introducers
++ - * | > # =
+
+# wrappers
+() [] {} <>
+
+# misc
+... ,,,
+```
+
+---
+
 **Origin tags**
 
 | tag | meaning |
@@ -188,37 +209,23 @@ and this line are one quoted paragraph.
 
 ## 6. Lists
 
-`CM`
-
-### Bullet lists
-
-Marker `-`, `+` or `*`, then 1 to 4 spaces.
+### bullet list | unordered list | `<ul>`
 
 ```md
 - one
 - two
 - three
+-- sublevel
+--- even deeper
+- four
 ```
 
-Changing the marker starts a **new list**:
+### ordered list | `<ol>`
 
 ```md
-- a
-- b
-+ c        ← a second list
-```
-
-### Ordered lists
-
-1 to 9 digits, then `.` or `)`. Only the **first** number counts: it sets `start`.
-
-```md
-1. one
-1. two
-1. three
-
-3) starts at three
-4) four
++ one
++ two
++ three
 ```
 
 ### Nesting and content
@@ -340,6 +347,10 @@ Without the blank lines, the content stays raw HTML and Markdown inside is not p
 *em*  _em_
 **strong**  __strong__
 ***both***  **_both_**  *__both__*
+
+
+-linethrough-
+_underline_
 ```
 
 - `_` does not work **inside words**: `snake_case_name` stays as is. `*` does: `un*frigging*believable`.
@@ -356,6 +367,8 @@ Without the blank lines, the content stays raw HTML and Markdown inside is not p
 `code`
 ``code with a ` backtick``
 `` `starts with a backtick` ``
+
+|{some code}|
 ```
 
 - Delimited by equal-length backtick strings.
