@@ -93,12 +93,27 @@ the native method expects, so the chain stays a normal array chain. No wrapper, 
 ```js
 rows.filter(match({ hidden: false, kind: 'file' }))   // row => row.kind === 'file' && row.hidden === false
 rows.map(get('name'))                                 // row => row.name
-rows.filter(not(match({ id })))                       // row => row.id !== id
-names.filter(not(SKIP))                               // a Set is a pattern: name => !SKIP.has(name)
-keys.filter(match(/^--/))                             // key => key.startsWith('--')
-parts.map(call('trim'))                               // part => part.trim()
-rows.toSorted(by('artist', 'album', 'track'))         // the comparator for three keys
+rows.filter(not(match({ id })))               // row => row.id !== id
+names.filter(not(SKIP))                       // a Set is a pattern: name => !SKIP.has(name)
+keys.filter(match(/^--/))                     // key => key.startsWith('--')
+parts.map(call('trim'))                       // part => part.trim()
+rows.toSorted(by('artist', 'album', 'track'); // the comparator for three keys
 rows.toSorted(by('added', 'desc'))
+```
+
+```js
+// is auch noch anstrengend
+rows.toSorted(by('artist', 'album', 'track'));
+
+// das is schon besser aber wieder nich machbar ohne prototype
+rows.toSortedBy('artist', 'album', 'track');
+rows.toSorted.by('artist', 'album', 'track');
+
+// darum dachte ich iwie an fp-zeug als notbehelf
+import { by } from 'xxx';
+const noisySorting = by('artist', 'album', 'track');
+
+rows.toSorted(noisySorting);
 ```
 
 The set this codebase needs, by the count above:
