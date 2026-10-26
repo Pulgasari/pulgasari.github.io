@@ -199,7 +199,7 @@ export function host (win) {
 // the app's deno entrypoint (main.ts), next to its built apps/<name>
 import { host } from '@rat/app/host/deno.js';
 const win = …;   // the window deno desktop opens
-host(win);
+host(win, { name: 'noisy' });     // name: the data folder
 win.bind('scanLibrary', path => …);   // the app's own, without the rat: prefix
 ```
 
@@ -234,20 +234,51 @@ The target then also says what comes after the build:
 
 | mod | web | capacitor (android, ios) | deno desktop |
 |---|---|---|---|
-| `store` | localStorage, … (bunker) | Preferences | a json file in the app's data folder |
-| `database` | indexeddb (bunker) | sqlite | sqlite (deno) |
-| `files` | opfs (bunker) | Filesystem (app data) | the app's data folder |
-| `folders` | showDirectoryPicker, only chromium | a folder picker + Filesystem | a folder dialog + Deno fs: real paths, any folder |
-| `thumbnails` | opfs + canvas | the same, files through Filesystem | the same |
-| `clipboard` | navigator.clipboard (reading often not allowed) | Clipboard | the system's |
-| `notifications` | Notification api, permission | LocalNotifications | the system's |
-| `dialogs` | `<pop-prompt>`, pickers of the browser | Dialog | native dialogs |
-| `external` (open a url, a file) | window.open | Browser, App Launcher | the default app |
-| `share` | navigator.share where there is one | Share | – (no share sheet on the desktop) |
+| `clipboard` | navigator.clipboard (reading often not allowed) | `@capacitor/clipboard` | the system's tools |
+| `store` | localStorage (bunker) | `@capacitor/preferences` | sqlite in the data folder, a table of its own |
+| `database` | indexeddb (bunker) | `@capacitor-community/sqlite` | sqlite in the data folder (`node:sqlite`) |
+| `files` | opfs (bunker) | `@capacitor/filesystem`, the app's data folder | the data folder |
+| `folders` | showDirectoryPicker, only chromium | `@capawesome/capacitor-file-picker` + `@capacitor/filesystem` | the system's folder dialog + Deno fs: real paths, any folder |
+| `thumbnails` | no drivers of its own: it lives in `files` | | |
+| `dialogs` | a `<dialog class="rat-dialog">` | `@capacitor/dialog` | the web one: the page is a webview |
+| `external` (open a url) | a new tab | `@capacitor/browser`, `@capacitor/app-launcher` | the default app (`open`, `xdg-open`, `rundll32`) |
+| `notifications` | Notification api, through the service worker where there is one | `@capacitor/local-notifications` | `osascript`, `notify-send`, powershell |
+| `hotkeys` | keydown, no drivers | the same | the same. global shortcuts (the app not focused) would be a deno driver, later |
 | `offline` | service worker | not needed: the files are in the app | not needed |
 
 `folders` is the one that gains most: noisy, ebooks and notes read folders the user grants. On the desktop
 and on android a driver reaches real paths and any folder, not only what chromium's picker allows.
+
+### store, database, files: bunker's drivers
+
+Two things were called a driver: `@rat/bunker`'s (where values live: `local`, `indexeddb`, `opfs` …) and the
+shell's of this table. For `store`, `database` and `files` they are the same thing: a native store is just
+another bunker driver of the same contract (`{ holds, sync, get, set, delete, keys, clear }`), a native file
+system another root shaped like a `FileSystemDirectoryHandle`. So their driver modules give bunker what it
+takes, and nothing else:
+
+```js
+// drivers/store/web.js
+export default 'local';
+
+// drivers/database/capacitor.js: a function bunker calls with name and table
+export default sqlite({ query: …, run: … });   // the plugin's query and run
+
+// drivers/files/deno.js: a root over the deno side's fs
+export default async () => new Handle(fs, `${await bindings['rat:fs.data']()}/files`);
+```
+
+`driver` in `config.rat.js` takes either: a shell (`store: { driver: 'web' }`) or a bunker driver by its name
+(`store: { driver: 'memory' }`). Without it the shell's goes. `Files`, `folders` and `thumbnails` run unchanged
+on a native file system: `drivers/_fs.js` makes one look like the browser's handles.
+
+### what a native app has to bring
+
+- **capacitor:** the plugins of the mods it names, in its capacitor project (`npm i @capacitor/filesystem …`,
+  `npx cap sync`). A missing one rejects with its package name.
+- **deno desktop:** `host(win, { name })` in its entrypoint. `name` picks the data folder
+  (`~/.local/share/<name>`, `~/Library/Application Support/<name>`, `%APPDATA%\<name>`). On linux the
+  tools: `wl-clipboard` or `xclip`, `zenity`, `notify-send`, `xdg-open`.
 
 ---
 
@@ -258,6 +289,10 @@ and on android a driver reaches real paths and any folder, not only what chromiu
    the deno side has no clipboard of its own: the system's tools (pbcopy/pbpaste, wl-clipboard or xclip, powershell)
 3. ~~**`rat build --target`**: the constant for the platform, the steps after the build (capacitor, deno desktop).~~
    done: `capacitor` and `desktop` in `config.rat.js` name the capacitor project and the deno entrypoint
-4. **The mods that exist** (`store`, `database`, `files`, `folders`) get their native drivers, bunker's driver
-   option and this table become one.
-5. **New mods** (`notifications`, `dialogs`, `external`, `share`) when an app needs them.
+4. ~~**The mods that exist** (`store`, `database`, `files`, `folders`, `thumbnails`) get their native drivers.~~ done:
+   bunker drivers for the first three, `folders` picks through its driver, `thumbnails` lives in `files`
+5. ~~**New mods** (`dialogs`, `external`, `notifications`).~~ done
+6. **On a device:** none of the native drivers has run yet. A capacitor project and a deno desktop entrypoint of
+   one app (notes: database, folders, store) to find what the plugins really answer (the picked folder's path on
+   android is the open one)
+7. **Later:** global shortcuts on the desktop, `share`, a native `dialogs` on the desktop if the webview's is not enough
