@@ -185,7 +185,7 @@ exists, a Capacitor plugin of rat's own (kotlin and swift) is the way, the same 
 The deno side binds a handler per call, under rat's own prefix so they do not mix with the app's:
 
 ```js
-// @rat/host/deno.js: the deno side of rat's drivers, called by the app's deno entrypoint
+// @rat/app/host/deno.js: the deno side of rat's drivers, called by the app's deno entrypoint
 export function host (win) {
   win.bind('rat:clipboard.read',  () => clipboard.readText());
   win.bind('rat:clipboard.write', text => clipboard.writeText(text));
@@ -197,7 +197,7 @@ export function host (win) {
 
 ```js
 // the app's deno entrypoint (main.ts), next to its built apps/<name>
-import { host } from '@rat/host/deno.js';
+import { host } from '@rat/app/host/deno.js';
 const win = …;   // the window deno desktop opens
 host(win);
 win.bind('scanLibrary', path => …);   // the app's own, without the rat: prefix
@@ -253,10 +253,11 @@ and on android a driver reaches real paths and any folder, not only what chromiu
 
 ## steps
 
-1. **`platform.js` and `drivers.js`** in `@rat/app`, the table empty except for web.
-2. **One small mod through all three platforms**, `clipboard`: contract, three drivers, the deno host. It shows
-   whether the layers carry before the big ones (`files`, `folders`) move.
-3. **`rat build --target`**: the constant for the platform, the steps after the build (capacitor, deno desktop).
+1. ~~**`platform.js` and `drivers.js`** in `@rat/app`, the table empty except for web.~~ done
+2. ~~**One small mod through all three platforms**, `clipboard`: contract, three drivers, the deno host.~~ done.
+   the deno side has no clipboard of its own: the system's tools (pbcopy/pbpaste, wl-clipboard or xclip, powershell)
+3. ~~**`rat build --target`**: the constant for the platform, the steps after the build (capacitor, deno desktop).~~
+   done: `capacitor` and `desktop` in `config.rat.js` name the capacitor project and the deno entrypoint
 4. **The mods that exist** (`store`, `database`, `files`, `folders`) get their native drivers, bunker's driver
    option and this table become one.
 5. **New mods** (`notifications`, `dialogs`, `external`, `share`) when an app needs them.
