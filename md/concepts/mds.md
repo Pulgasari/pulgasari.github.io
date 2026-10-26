@@ -1,3 +1,9 @@
+---
+title: Hello
+tags: [a, b]
+draft: false
+---
+
 # MDS :: markdown-sucks
 
 ## the goal
@@ -18,6 +24,8 @@ it won't be end up as an markdown flavour i guess.
 # misc
 ... ,,,
 ```
+
+
 
 ---
 
