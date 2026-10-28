@@ -308,3 +308,25 @@ settings.viewmode
 - Sprachen mit Typprüfer lösen das mit `Option`/`Maybe` oder mit nullable Typen (`T?`): die Abwesenheit steht im Typ, der Compiler erzwingt die Behandlung.
 - JavaScript kann das nicht erzwingen. Was hilft: **leere Werte, benannte Zustände, Prüfung an der Grenze.**
 - rat hat die Bausteine schon (`case`, `@match`, typisierte Signale, Schemas). Was fehlt, sind ein **exhaustives `@match`** und **Signale, die null nur mit `.optional()` annehmen**. Mit beidem würde null in rat-Code vom Normalfall zur Ausnahme mit Ansage.
+
+---
+
+## Anmerkung
+
+Hm, ich find `null` teilweise durchaus sinnvoll:
+- als bezeichner der "leeren form" typ-übergreifend
+- als echtes "(noch) nicht bekannt"
+
+### normalisierung von null
+
+in den RAT types/schemas wäre mein ansatz erstmal schlichtweg `null` zu normalisieren zu "leeren" form des types, ob beim Erstellen oder Updaten.
+
+```
+0  <= Num
+'' <= Str
+[] <= List, Segments, Table, Tuple
+{} <= Dict, Record
+```
+
+### echtes "(noch) nicht bekannt
+
