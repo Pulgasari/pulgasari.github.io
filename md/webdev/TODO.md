@@ -1,6 +1,7 @@
 # todo
 
 - [x] generic(s)
+- [ ] mcp + webmcp
 - [x] middleware
 - [x] protokoll
 - [x] server
