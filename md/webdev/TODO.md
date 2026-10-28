@@ -11,6 +11,9 @@
 - [x] Dart
 - [x] Haskell
 - [x] Lua
+- [ ] Odin
+- [ ] Rust
+- [ ] Zig
 
 ## `/libs`
 - [x] alien-signals
@@ -20,11 +23,13 @@
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
+- [ ] Capacitor
 - [x] CoffeScript
 - [x] Cycle.js
 - [x] Datastar
 - [x] D3
 - [x] EJS
+- [ ] Electrobun
 - [x] Eleventy
 - [x] Elm
 - [x] esbuild
@@ -37,6 +42,7 @@
 - [x] Hyperapp
 - [x] Immer
 - [x] Inferno JS
+- [ ] Ionic
 - [x] jQuery
 - [x] knockout
 - [x] Lit
@@ -49,6 +55,7 @@
 - [x] morphdom / idiomorph
 - [x] MooTools
 - [x] Open Props
+- [ ] Playwright
 - [x] PostCSS
 - [x] Preact
 - [x] Qwik
@@ -58,16 +65,19 @@
 - [x] React
 - [x] ReScript
 - [x] riot
+- [ ] Ripple
 - [x] RxJS
 - [x] SolidJS
 - [x] StyleX
 - [x] Svelte
 - [x] Tailwind
 - [x] TanStack
+- [ ] Tauri
 - [x] TSRX
 - [x] TypeScript
 - [x] Underscore
 - [x] UnoCSS
+- [ ] unplugin
 - [x] Valibot
 - [x] Vite
 - [x] Vue
