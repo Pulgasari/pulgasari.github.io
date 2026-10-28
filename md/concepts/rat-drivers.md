@@ -238,7 +238,7 @@ The target then also says what comes after the build:
 | `store` | localStorage (bunker) | `@capacitor/preferences` | sqlite in the data folder, a table of its own |
 | `database` | indexeddb (bunker) | `@capacitor-community/sqlite` | sqlite in the data folder (`node:sqlite`) |
 | `files` | opfs (bunker) | `@capacitor/filesystem`, the app's data folder | the data folder |
-| `folders` | showDirectoryPicker, only chromium | `@capawesome/capacitor-file-picker` + `@capacitor/filesystem` | the system's folder dialog + Deno fs: real paths, any folder |
+| `folders` | showDirectoryPicker, only chromium | rat's own `Saf` plugin: the storage access framework, the grant persisted | the system's folder dialog + Deno fs: real paths, any folder |
 | `thumbnails` | no drivers of its own: it lives in `files` | | |
 | `dialogs` | a `<dialog class="rat-dialog">` | `@capacitor/dialog` | the web one: the page is a webview |
 | `external` (open a url) | a new tab | `@capacitor/browser`, `@capacitor/app-launcher` | the default app (`open`, `xdg-open`, `rundll32`) |
@@ -274,8 +274,10 @@ on a native file system: `drivers/_fs.js` makes one look like the browser's hand
 
 ### what a native app has to bring
 
-- **capacitor:** the plugins of the mods it names, in its capacitor project (`npm i @capacitor/filesystem …`,
-  `npx cap sync`). A missing one rejects with its package name.
+- **capacitor:** nothing by hand. `rat build --target android` makes the capacitor project beside the app
+  (`.capacitor/`, not in git): the npm plugins its mods need, rat's own java plugins (`@rat/app/native/android`:
+  `Saf` for folders, `NativeHttp` for requests without cors, `FileSync` where `android.plugins` names it),
+  `cap sync`, and gradle where an android sdk is. The ci workflow `android.yml` builds the apks.
 - **deno desktop:** `host(win, { name })` in its entrypoint. `name` picks the data folder
   (`~/.local/share/<name>`, `~/Library/Application Support/<name>`, `%APPDATA%\<name>`). On linux the
   tools: `wl-clipboard` or `xclip`, `zenity`, `notify-send`, `xdg-open`.
@@ -292,7 +294,9 @@ on a native file system: `drivers/_fs.js` makes one look like the browser's hand
 4. ~~**The mods that exist** (`store`, `database`, `files`, `folders`, `thumbnails`) get their native drivers.~~ done:
    bunker drivers for the first three, `folders` picks through its driver, `thumbnails` lives in `files`
 5. ~~**New mods** (`dialogs`, `external`, `notifications`).~~ done
-6. **On a device:** none of the native drivers has run yet. A capacitor project and a deno desktop entrypoint of
-   one app (notes: database, folders, store) to find what the plugins really answer (the picked folder's path on
-   android is the open one)
-7. **Later:** global shortcuts on the desktop, `share`, a native `dialogs` on the desktop if the webview's is not enough
+6. ~~**The android build:** `rat build --target android`, the plugins from the mods, rat's own plugins.~~ done.
+   folders on android through the storage access framework (rat's `Saf` plugin, from zugriff) instead of a file
+   picker plugin: a picked folder is a `content://` tree, `@capacitor/filesystem` can not read it
+7. **On a device:** none of the native drivers has run yet. files and noisy first (`android.yml`), then a deno
+   desktop entrypoint
+8. **Later:** global shortcuts on the desktop, `share`, a native `dialogs` on the desktop if the webview's is not enough
