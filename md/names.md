@@ -58,3 +58,7 @@ ZK  zeichenkette   =  string (
     umwandler      =  transformer
     vergleicher    =  comparizer (cheker)
 ```
+
+## val.js
+
+stands for both: `value` and `validate`
