@@ -86,6 +86,9 @@
 - [x] zod
 - [x] Zustand
 
+### mini-libs
+- [ ] https://github.com/purifyjs/core
+
 ## misc
 - [x] GraphQL
 - [x] Standard Schema
