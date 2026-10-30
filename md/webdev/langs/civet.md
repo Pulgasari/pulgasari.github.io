@@ -17,14 +17,14 @@ Eine Sprache, die zu TypeScript oder JavaScript compiliert, als „modernes Coff
 
 ```js
 // einrückung statt klammern, klammern bleiben erlaubt
-greet := (name: string) => `hallo ${name}`   // := ist const
-count .= 0                                    // .= ist let
+greet := (name: string) => `hallo ${name}` // := ist const
+count .= 0                                 // .= ist let
 
 function total(items: Item[])
   sum .= 0
   for item of items
     sum += item.price
-  sum                                          // implizite rückgabe
+  sum // implizite rückgabe
 
 if user?.admin
   show settings
