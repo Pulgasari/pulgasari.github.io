@@ -15,7 +15,7 @@ Eine Sprache, die zu TypeScript oder JavaScript compiliert, als „modernes Coff
 
 ## Syntax auf einen Blick
 
-```civet
+```js
 // einrückung statt klammern, klammern bleiben erlaubt
 greet := (name: string) => `hallo ${name}`   // := ist const
 count .= 0                                    // .= ist let
@@ -50,7 +50,7 @@ name := user?.name ?? "gast"
 
 ### 1. Ausdrücke überall
 
-```civet
+```js
 label := if count > 2 then "viele" else "wenige"
 
 status := switch code
@@ -69,7 +69,7 @@ squares := for n of [1..5]
 
 ### 2. Pattern Matching
 
-```civet
+```js
 area := (shape: Shape) =>
   switch shape
     {kind: "circle", radius}
@@ -86,7 +86,7 @@ area := (shape: Shape) =>
 
 ### 3. Pipes und Kurz-Lambdas
 
-```civet
+```js
 data |> Object.keys |> console.log      // console.log(Object.keys(data))
 
 port := input
@@ -105,7 +105,7 @@ Die Pipe nimmt eine Funktion; ein Pfeil oder die `&`-Kurzform sagt, wie der Wert
 
 ### 4. Bereiche und Slices
 
-```civet
+```js
 for i of [0...10]       // 0 bis 9 (... exklusiv, .. inklusiv)
   log i
 
