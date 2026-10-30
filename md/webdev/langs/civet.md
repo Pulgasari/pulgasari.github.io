@@ -87,7 +87,7 @@ area := (shape: Shape) =>
 ### 3. Pipes und Kurz-Lambdas
 
 ```js
-data |> Object.keys |> console.log      // console.log(Object.keys(data))
+data |> Object.keys |> console.log // console.log(Object.keys(data))
 
 port := input
   |> .trim()
@@ -95,10 +95,10 @@ port := input
   |> (n) => Math.max(0, n)
 
 names   := users.filter(.active).map .name
-doubled := list.map &+1                  // list.map($ => $+1)
+doubled := list.map &+1 // list.map($ => $+1)
 shout   := words.map &.toUpperCase()
 
-url |> fetch |> await                    // await am ende der kette
+url |> fetch |> await // await am ende der kette
 ```
 
 Die Pipe nimmt eine Funktion; ein Pfeil oder die `&`-Kurzform sagt, wie der Wert eingesetzt wird. `&` steht für den einen Parameter eines Kurz-Lambdas, `.name` allein ist der Feldzugriff. `|> await`, `|> yield` und `|> return` hängen das Schlüsselwort an die Kette.
@@ -106,7 +106,7 @@ Die Pipe nimmt eine Funktion; ein Pfeil oder die `&`-Kurzform sagt, wie der Wert
 ### 4. Bereiche und Slices
 
 ```js
-for i of [0...10]       // 0 bis 9 (... exklusiv, .. inklusiv)
+for i of [0...10] // 0 bis 9 (... exklusiv, .. inklusiv)
   log i
 
 last3 := list[-3..]
@@ -115,25 +115,25 @@ middle := text[2...5]
 
 ### 5. Kleinigkeiten, die sich summieren
 
-```civet
+```js
 {name, ...rest} := user
-point := data{x, y}                  // {x: data.x, y: data.y}
-flags := {+debug, -live}             // {debug: true, live: false}
+point := data{x, y}      // {x: data.x, y: data.y}
+flags := {+debug, -live} // {debug: true, live: false}
 config.port ??= 8080
-return unless ready                  // nachgestellte bedingung
-x from ./x                           // import x from "./x"
-export a, b                          // export {a, b}
+return unless ready      // nachgestellte bedingung
+x from ./x               // import x from "./x"
+export a, b              // export {a, b}
 class Point
-  @(@x: number, @y: number)          // konstruktor, der felder setzt
+  @(@x: number, @y: number) // konstruktor, der felder setzt
 ```
 
 Dazu eigene Infix-Operatoren aus jeder Funktion mit zwei Parametern und `///`-Regex mit Leerraum und Kommentaren wie in Pythons `re.X`.
 
 ### 6. Konfiguration pro Datei
 
-```civet
-"civet coffeeCompat"     // coffeescript-kompatibel: 'is', 'isnt', 'and', 'or', … 
-"civet autoVar"          // deklarationen ohne const/let
+```js
+"civet coffeeCompat" // coffeescript-kompatibel: 'is', 'isnt', 'and', 'or', … 
+"civet autoVar"      // deklarationen ohne const/let
 ```
 
 Mit Direktiven am Dateianfang lässt sich das Verhalten umstellen, etwa um alten CoffeeScript-Code Datei für Datei zu übernehmen.
