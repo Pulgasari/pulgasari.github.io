@@ -1,20 +1,20 @@
 # todo
 
 - [x] generic(s)
-- [ ] mcp + webmcp
+- [x] mcp + webmcp
 - [x] middleware
 - [x] protokoll
 - [x] server
 
 ## `/langs`
 - [x] [Bend](https://bend-lang.com/)
-- [ ] Civet
+- [x] Civet
 - [x] Dart
 - [x] Haskell
 - [x] Lua
-- [ ] Odin
-- [ ] Rust
-- [ ] Zig
+- [x] Odin
+- [x] Rust
+- [x] Zig
 
 ## `/libs`
 - [x] alien-signals
@@ -24,13 +24,13 @@
 - [x] ArrowJS
 - [x] Astro
 - [x] BackboneJS
-- [ ] Capacitor
+- [x] Capacitor
 - [x] CoffeScript
 - [x] Cycle.js
 - [x] Datastar
 - [x] D3
 - [x] EJS
-- [ ] Electrobun
+- [x] Electrobun
 - [x] Eleventy
 - [x] Elm
 - [x] esbuild
@@ -43,7 +43,7 @@
 - [x] Hyperapp
 - [x] Immer
 - [x] Inferno JS
-- [ ] Ionic
+- [x] Ionic
 - [x] jQuery
 - [x] knockout
 - [x] Lit
@@ -56,7 +56,7 @@
 - [x] morphdom / idiomorph
 - [x] MooTools
 - [x] Open Props
-- [ ] Playwright
+- [x] Playwright
 - [x] PostCSS
 - [x] Preact
 - [x] Qwik
@@ -66,19 +66,19 @@
 - [x] React
 - [x] ReScript
 - [x] riot
-- [ ] Ripple
+- [x] Ripple
 - [x] RxJS
 - [x] SolidJS
 - [x] StyleX
 - [x] Svelte
 - [x] Tailwind
 - [x] TanStack
-- [ ] Tauri
+- [x] Tauri
 - [x] TSRX
 - [x] TypeScript
 - [x] Underscore
 - [x] UnoCSS
-- [ ] unplugin
+- [x] unplugin
 - [x] Valibot
 - [x] Vite
 - [x] Vue
@@ -88,7 +88,7 @@
 - [x] Zustand
 
 ### mini-libs
-- [ ] https://github.com/purifyjs/core
+- [x] https://github.com/purifyjs/core
 
 ## misc
 - [x] GraphQL
