@@ -28,12 +28,12 @@ Gerettet hat die Sprache ein internes Projekt: Flutter (1.0 im Dezember 2018) br
 
 ```dart
 void main() {
-  final name  = 'rat';            // einmal zuweisbar, typ wird abgeleitet (String)
-  var   count = 3;                 // veränderlich
-  const limit = 10;                // compile-zeit-konstante
-  int?  maybe;                     // darf null sein, sonst nie
+  final name  = 'rat'; // einmal zuweisbar, typ wird abgeleitet (String)
+  var   count = 3;     // veränderlich
+  const limit = 10;    // compile-zeit-konstante
+  int?  maybe;         // darf null sein, sonst nie
 
-  print('hallo $name, ${count * 2}');   // interpolation mit $ und ${}
+  print('hallo $name, ${count * 2}'); // interpolation mit $ und ${}
 
   if (count > 2) {
     print('viele');
@@ -45,7 +45,7 @@ void main() {
   for (final item in ['a', 'b']) print(item);
 
   final doubled = [1, 2, 3].map((n) => n * 2).toList();
-  print(doubled);                  // [2, 4, 6]
+  print(doubled); // [2, 4, 6]
 }
 ```
 
@@ -59,14 +59,14 @@ Kein Typ enthält `null`, außer man schreibt `?` dahinter. Der Compiler verfolg
 
 ```dart
 String  name  = 'ada';
-String? title;                         // darf null sein
+String? title; // darf null sein
 
-print(title?.length);                  // null-aware zugriff
-print(title ?? 'ohne titel');          // default
-title ??= 'neu';                       // zuweisen, wenn null
-if (title != null) print(title.length);   // hier ist title ein String (promotion)
+print(title?.length); // null-aware zugriff
+print(title ?? 'ohne titel'); // default
+title ??= 'neu'; // zuweisen, wenn null
+if (title != null) print(title.length); // hier ist title ein String (promotion)
 
-late final String config;              // wird später gesetzt, versprochen
+late final String config; // wird später gesetzt, versprochen
 ```
 
 „Sound“ heißt: Der Compiler **garantiert** das. Anders als TypeScript, wo `any` und Casts die Prüfung aushebeln, kann ein `String` in Dart zur Laufzeit nie `null` sein. Das erlaubt dem Compiler auch Optimierungen (keine Null-Prüfungen im erzeugten Code).
@@ -76,14 +76,14 @@ late final String config;              // wird später gesetzt, versprochen
 ```dart
 class Point {
   final double x, y;
-  const Point(this.x, this.y);                       // this.x: direkt ins feld
-  Point.origin() : x = 0, y = 0;                     // benannter konstruktor, initializer list
-  factory Point.parse(String s) {                    // factory: darf auch cache oder subtyp liefern
+  const Point(this.x, this.y); // this.x: direkt ins feld
+  Point.origin() : x = 0, y = 0; // benannter konstruktor, initializer list
+  factory Point.parse(String s) { // factory: darf auch cache oder subtyp liefern
     final [a, b] = s.split(',').map(double.parse).toList();
     return Point(a, b);
   }
 
-  double get length => sqrt(x * x + y * y);          // getter
+  double get length => sqrt(x * x + y * y); // getter
   Point operator +(Point other) => Point(x + other.x, y + other.y);
 }
 
@@ -125,7 +125,7 @@ final items = [
   if (loggedIn) 'profil' else 'login',
   for (final tab in tabs) tab.title,
   ...extra,
-  ...?maybeMore,                 // spread, wenn nicht null
+  ...?maybeMore, // spread, wenn nicht null
 ];
 ```
 
@@ -134,12 +134,12 @@ Kontrollfluss **innerhalb** eines Listen-, Set- oder Map-Literals. Dafür gemach
 ### 6. Records und Patterns (Dart 3)
 
 ```dart
-(String, int) parse() => ('ada', 36);           // record: anonymes tupel
-final (name, age) = parse();                     // destrukturieren
+(String, int) parse() => ('ada', 36); // record: anonymes tupel
+final (name, age) = parse(); // destrukturieren
 
-({double lat, double lng}) home = (lat: 52.5, lng: 13.4);   // benannte felder
+({double lat, double lng}) home = (lat: 52.5, lng: 13.4); // benannte felder
 
-final description = switch (shape) {             // switch-ausdruck mit patterns
+final description = switch (shape) { // switch-ausdruck mit patterns
   Circle(radius: var r) when r > 10 => 'großer kreis',
   Circle()                          => 'kreis',
   Square(side: var s)               => 'quadrat $s',
@@ -157,10 +157,10 @@ class Failure<T> extends Remote<T> { final Object error; Failure(this.error); }
 class Success<T> extends Remote<T> { final T value;      Success(this.value); }
 
 String show(Remote<String> state) => switch (state) {
-  Loading()          => 'lädt',
+  Loading()           => 'lädt',
   Failure(:var error) => 'fehler: $error',
   Success(:var value) => value,
-};   // fehlt ein fall, meldet der compiler einen fehler
+}; // fehlt ein fall, meldet der compiler einen fehler
 ```
 
 `sealed` heißt: Alle Untertypen stehen in derselben Datei, der Compiler kennt die vollständige Liste. Dazu die Class Modifiers `base`, `interface`, `final` und `mixin class`, die festlegen, ob eine Klasse außerhalb ihrer Datei erweitert oder implementiert werden darf.
@@ -190,7 +190,8 @@ Echte Parallelität gibt es über **Isolates**: eigene Heaps, kein geteilter Spe
 extension on String { String get shout => '${toUpperCase()}!'; }
 'ratte'.shout;   // 'RATTE!'
 
-extension type UserId(int value) { bool get valid => value > 0; }   // eigener typ, zur laufzeit nur ein int
+// eigener typ, zur laufzeit nur ein int
+extension type UserId(int value) { bool get valid => value > 0; }
 ```
 
 Extension Methods hängen Methoden an fremde Typen, ohne sie zu ändern (statisch aufgelöst). Extension Types sind Typen ohne Laufzeitkosten: `UserId` und `int` lassen sich im Code nicht verwechseln, im kompilierten Programm ist es derselbe Wert.
