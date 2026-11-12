@@ -82,9 +82,8 @@ const map = { imports: {
   "@gestalt/webfonts/"          : "./gestalt/packages/webfonts/",
   "@gestalt/webfonts/google"    : "./gestalt/packages/webfonts/google.js",
 
-  "@htx/compiler" : "./htx/packages/compiler/index.js",
-  "@htx/elements" : "./htx/packages/elements/index.js",
   "@htx/htx"      : "./htx/packages/htx/index.js",
+  "@htx/htx/scan" : "./htx/packages/htx/scan.js",
   "@htx/js"       : "./htx/packages/js/index.js",
   "@htx/js/render": "./htx/packages/js/render.js",
   "@htx/preact"   : "./htx/packages/preact/index.js",
